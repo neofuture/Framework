@@ -16,7 +16,9 @@
        (touchstart)="moveStart($event, windowItem)"
        (dblclick)="maximiseWindow($event, windowItem)">
     <span class="titleBarIcon ow-{{ windowItem.icon }}"></span>
-    <div class="titleBarText" [ngClass]="{'singleIcon': !windowItem.resizable && windowItem.hasTab, 'doubleIcon': windowItem.resizable && windowItem.hasTab}">{{ windowItem.title }}</div>
+    <div class="titleBarText" [ngClass]="{'singleIcon': !windowItem.resizable && windowItem.hasTab, 'doubleIcon': windowItem.resizable && windowItem.hasTab}">
+      {{ locale[windowItem.title] || windowItem.title }}
+    </div>
     <button title="{{ locale['window'].close }}" class="windowButton ow-close" (click)="closeWindow($event, windowItem)"></button>
     <button class="windowButton" *ngIf="windowItem.resizable" (click)="maximiseWindow($event, windowItem)">
       <span title="{{ locale['window'].restore }}" *ngIf="windowItem.state.isMaximised" class="ow-restore"></span>

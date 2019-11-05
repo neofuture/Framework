@@ -53,11 +53,11 @@ export class TitleBarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.windowService.new(this.getIcon(), true, 'No Tab', false, true, 'contact-manager');
-    this.windowService.new(this.getIcon(), true, 'Not Resizable', true, false, 'contact-manager');
-    this.windowService.new(this.getIcon(), false, 'No Title Bar', true, true, 'contact-manager');
-    this.windowService.new(this.getIcon(), true, 'Test Window 4', true, true, 'contact-manager');
-    this.windowService.new(this.getIcon(), true, 'Test Window 5', true, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', false, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', true, false, 'contact-manager');
+    this.windowService.new(this.getIcon(), false, 'contactManager', true, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', true, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', true, true, 'contact-manager');
 
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;

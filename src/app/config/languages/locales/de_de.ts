@@ -12,7 +12,6 @@ export const de_de = {
     maximise: 'Maximieren',
     restore: 'Wiederherstellen'
   },
-  contactManager: {
-    contactManager: 'Manager Kontaktieren'
-  }
+  contactManager: 'Manager Kontaktieren',
+  orders: 'Aufträge'
 };

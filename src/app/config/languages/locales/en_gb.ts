@@ -12,7 +12,6 @@ export const en_gb = {
     maximise: 'Maximise',
     restore: 'Restore'
   },
-  contactManager: {
-    contactManager: 'Contact Manager Works'
-  }
+  contactManager: 'Contact Manager',
+  orders: 'Orders'
 };
