@@ -30,8 +30,6 @@ export class MainComponent implements OnInit {
   }
 
   closeWindow(event) {
-    event.stopPropagation();
-    console.log(this.windowItem.id);
-    this.windowService.closeById(this.windowItem.id);
+    this.windowService.close(event, this.windowItem);
   }
 }

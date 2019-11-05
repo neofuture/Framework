@@ -102,6 +102,11 @@ export class WindowService {
     return false;
   }
 
+  close(event, windowItem: WindowModel) {
+    event.stopPropagation();
+    this.closeById(windowItem.id);
+  }
+
   closeById(id: number) {
     if (typeof this.windowList[id] !== 'undefined') {
       this.windowList[id].class = 'closed';
