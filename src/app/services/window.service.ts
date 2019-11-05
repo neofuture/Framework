@@ -102,8 +102,8 @@ export class WindowService {
     return false;
   }
 
-  close(event, windowItem: WindowModel) {
-    event.stopPropagation();
+  close(windowItem: WindowModel) {
+    window.event.stopPropagation();
     this.closeById(windowItem.id);
   }
 

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
+import {LanguageService} from '../../services/language.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,12 +13,20 @@ export class ToolbarComponent implements OnInit {
   windowList: {};
 
   objectKeys = Object.keys;
+  language$: Subscription;
+  locale: object;
 
-  constructor(private windowService: WindowService) {
-  }
+  constructor(
+    private windowService: WindowService,
+    private languageService: LanguageService
+  ) {}
 
   ngOnInit() {
     this.windowList = this.windowService.windowList;
+
+    this.language$ = this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
   }
 
   makeWindowActive(windowItem: WindowModel) {

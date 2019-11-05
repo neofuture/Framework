@@ -29,7 +29,11 @@ export class MainComponent implements OnInit {
     );
   }
 
-  closeWindow(event) {
-    this.windowService.close(event, this.windowItem);
+  closeWindow() {
+    this.windowService.close(this.windowItem);
+  }
+
+  maximiseWindow() {
+    this.windowService.maximise(this.windowItem);
   }
 }

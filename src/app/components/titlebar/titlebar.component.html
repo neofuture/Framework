@@ -154,6 +154,13 @@
           <td>
             <button (click)="toggleCompusoft()">{{ theme }}</button>
           </td>
+          <td>
+            <button (click)="getLanguage('en_gb')">{{ locale['en_gb'] }}</button>
+          </td>
+          <td>
+            <button (click)="getLanguage('de_de')">{{ locale['de_de'] }}</button>
+          </td>
+          <td> {{ locale[locale.language] }}</td>
         </tr>
         <tr>
           <td colspan="10">
