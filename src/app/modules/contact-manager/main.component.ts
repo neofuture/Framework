@@ -28,4 +28,10 @@ export class MainComponent implements OnInit {
     {id: this.id}
     );
   }
+
+  closeWindow(event) {
+    event.stopPropagation();
+    console.log(this.windowItem.id);
+    this.windowService.closeById(this.windowItem.id);
+  }
 }

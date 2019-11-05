@@ -28,6 +28,7 @@ export class WindowService {
 
     let windowItem: WindowModel;
     windowItem = {
+      id,
       icon,
       title,
       body: 'testing - ' + title,
@@ -55,7 +56,7 @@ export class WindowService {
       }
     };
 
-    if (data !== null){
+    if (data !== null) {
       windowItem.data = data;
     }
     this.windowList[id] = windowItem;

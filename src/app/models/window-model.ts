@@ -1,4 +1,5 @@
 export interface WindowModel {
+  id: number;
   icon?: string;
   title: string;
   class: string;
