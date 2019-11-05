@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {WindowService} from '../../services/window.service';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-titlebar',
@@ -45,7 +46,7 @@ export class TitleBarComponent implements OnInit {
   boxShadow = 'none';
   theme = 'CS Theme';
   language$: Subscription;
-  locale: object;
+  locale: LanguageModel;
 
   constructor(
     private windowService: WindowService,

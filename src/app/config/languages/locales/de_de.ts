@@ -1,5 +1,7 @@
+import {LanguageModel} from '../../../models/language-model';
+
 // tslint:disable-next-line:variable-name
-export const de_de = {
+export const de_de: LanguageModel = {
   language: 'de_de',
   flag: '🇩🇪',
   en_gb: 'Englisch',

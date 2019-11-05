@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {WindowService} from '../../services/window.service';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,7 @@ export class MainComponent implements OnInit {
   @Input() windowItem: any;
   id: number;
   language$: Subscription;
-  locale: object;
+  locale: LanguageModel;
 
   constructor(
     private windowService: WindowService,

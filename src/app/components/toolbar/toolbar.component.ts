@@ -3,6 +3,7 @@ import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
 import {LanguageService} from '../../services/language.service';
 import {Subscription} from 'rxjs';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-toolbar',
@@ -14,7 +15,7 @@ export class ToolbarComponent implements OnInit {
 
   objectKeys = Object.keys;
   language$: Subscription;
-  locale: object;
+  locale: LanguageModel;
 
   constructor(
     private windowService: WindowService,

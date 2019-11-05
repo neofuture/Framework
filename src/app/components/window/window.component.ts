@@ -13,6 +13,7 @@ import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
 import {LanguageService} from '../../services/language.service';
 import {Subscription} from 'rxjs';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-window',
@@ -21,7 +22,7 @@ import {Subscription} from 'rxjs';
 })
 export class WindowComponent implements OnInit {
   language$: Subscription;
-  locale: object;
+  locale: LanguageModel;
 
   constructor(
     private windowService: WindowService,
