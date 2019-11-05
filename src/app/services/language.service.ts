@@ -1,27 +1,29 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {language} from '../config/languages/languages';
+import {blank} from '../config/languages/locales/blank';
 import {LanguageModel} from '../models/language-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-  private objectSource = new BehaviorSubject<LanguageModel>(language[localStorage.getItem('language') || 'en_gb']);
+  private objectSource = new BehaviorSubject<LanguageModel>(blank);
   object = this.objectSource.asObservable();
 
   constructor() {
+    this.getLanguage(localStorage.getItem('language') || 'en_gb');
   }
 
   getLanguage(lang) {
-    this.objectSource.next(language[lang]);
-    localStorage.setItem('language', lang);
+    this.loadLanguage(lang).then(result => {
+      this.objectSource.next(result);
+    });
 
-    this.loadLanguage('en_gb');
+    localStorage.setItem('language', lang);
   }
 
   async loadLanguage(lang) {
-    const {en_gb} = await import('../config/languages/locales/' + lang);
-    return en_gb;
+    const language = await import('../config/languages/locales/' + lang);
+    return language[lang];
   }
 }
