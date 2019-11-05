@@ -1,6 +1,7 @@
 // tslint:disable-next-line:variable-name
 export const de_de = {
   language: 'de_de',
+  flag: '🇩🇪',
   en_gb: 'Englisch',
   fr_fr: 'Französisch',
   de_de: 'Deutsche',
@@ -10,5 +11,8 @@ export const de_de = {
     minimise: 'Minimieren',
     maximise: 'Maximieren',
     restore: 'Wiederherstellen'
+  },
+  contactManager: {
+    contactManager: 'Manager Kontaktieren'
   }
 };

@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {WindowService} from '../../services/window.service';
+import {Subscription} from 'rxjs';
+import {LanguageService} from '../../services/language.service';
 
 @Component({
   selector: 'app-main',
@@ -9,12 +11,22 @@ import {WindowService} from '../../services/window.service';
 export class MainComponent implements OnInit {
   @Input() windowItem: any;
   id: number;
-  constructor(private windowService: WindowService) { }
+  language$: Subscription;
+  locale: object;
+
+  constructor(
+    private windowService: WindowService,
+    private languageService: LanguageService
+  ) { }
 
   ngOnInit() {
     const min = 10000;
     const max = 99999;
     this.id = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    this.language$ = this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
   }
 
   addWindow() {

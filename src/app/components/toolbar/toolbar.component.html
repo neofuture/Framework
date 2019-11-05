@@ -9,8 +9,8 @@
     <span class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
   <div class="text">{{ windowList[windowItem].title}}</div>
     <button class="tabButton" *ngIf="windowList[windowItem].resizable" (click)="maximiseWindow($event, windowList[windowItem])">
-      <span title="{{ locale.window.retsore }}" *ngIf="windowList[windowItem].state.isMaximised" class="ow-restore"></span>
-      <span title="{{ locale.window.maximise }}" *ngIf="!windowList[windowItem].state.isMaximised" class="ow-maximise"></span>
+      <span title="{{ locale['window'].retsore }}" *ngIf="windowList[windowItem].state.isMaximised" class="ow-restore"></span>
+      <span title="{{ locale['window'].maximise }}" *ngIf="!windowList[windowItem].state.isMaximised" class="ow-maximise"></span>
     </button>
   </span>
   </span>
