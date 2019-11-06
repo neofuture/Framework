@@ -9,8 +9,8 @@ import {LanguageModel} from '../../models/language-model';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  private language$: Subscription;
-  private locale: LanguageModel;
+  language$: Subscription;
+  locale: LanguageModel;
 
   constructor(private languageService: LanguageService) {
   }
