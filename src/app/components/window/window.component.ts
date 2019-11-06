@@ -312,9 +312,9 @@ export class WindowComponent implements OnInit {
   }
 
   moveStart(event, windowItem: WindowModel) {
-    // if (!event.target.classList.contains('titleBar')) {
-    //   return false;
-    // }
+    if (windowItem.state.isMaximised) {
+      return false;
+    }
     this.dragWindowItem = windowItem;
     this.makeWindowActive(this.dragWindowItem);
 

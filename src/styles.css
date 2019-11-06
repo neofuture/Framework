@@ -234,3 +234,7 @@ button {
   margin:2px;
   font-size: 14px;
 }
+
+:focus {
+  outline: 0;
+}
