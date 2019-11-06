@@ -1,4 +1,4 @@
-import {LanguageModel} from '../../../models/language-model';
+import {LanguageModel} from '../../models/language-model';
 
 // tslint:disable-next-line:variable-name
 export const blank: LanguageModel = {

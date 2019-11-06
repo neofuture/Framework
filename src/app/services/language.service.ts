@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {blank} from '../config/languages/locales/blank';
+import {blank} from '../config/languages/blank';
 import {LanguageModel} from '../models/language-model';
 
 @Injectable({

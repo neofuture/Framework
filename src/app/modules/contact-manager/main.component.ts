@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
     this.windowService.new(
       'orders',
       true,
-      'orders',
+      'quotes',
       true,
       true,
       'quotes',

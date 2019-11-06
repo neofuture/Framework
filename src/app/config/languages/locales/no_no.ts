@@ -15,5 +15,5 @@ export const no_no: LanguageModel = {
     restore: 'Restore'
   },
   contactManager: 'Contact Manager',
-  orders: 'Orders'
+  quotes: 'Quotes'
 };

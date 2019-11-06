@@ -12,5 +12,5 @@ export interface LanguageModel {
     restore: string;
   },
   contactManager: string;
-  orders: string;
+  quotes: string;
 }
