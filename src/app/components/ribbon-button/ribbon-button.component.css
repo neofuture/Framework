@@ -3,9 +3,9 @@
   width:80px;
   text-align:center;
   position:relative;
-  height:80px;
+  height:70px;
   padding-top:10px;
-  padding-bottom:10px;
+  padding-bottom:6px;
   color:var(--text);
   cursor:pointer;
   font-size:14px;
@@ -26,5 +26,5 @@
 
 .icon {
   font-size:32px;
-  margin-top:8px;
+  margin-top:2px;
 }

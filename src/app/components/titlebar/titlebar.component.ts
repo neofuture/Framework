@@ -51,23 +51,7 @@ export class TitleBarComponent implements OnInit {
   language$: Subscription;
   locale: LanguageModel;
 
-  ribbonButtons: ({ icon: string; label: string; iconOver: string } | { icon: string; label: string; iconOver: string })[] = [{
-    icon: 'ow-contacts',
-    iconOver: 'ow-contacts_over',
-    label: 'contactManager'
-  }, {
-    icon: 'ow-quotations',
-    iconOver: 'ow-quotations_over',
-    label: 'quotes'
-  }, {
-    icon: 'ow-cog',
-    iconOver: 'ow-cog_over',
-    label: 'settings'
-  }, {
-    icon: 'ow-messages',
-    iconOver: 'ow-messages_over',
-    label: 'messages'
-  }];
+  ribbonButtons: RibbonButtonModel[];
 
   constructor(
     private windowService: WindowService,
@@ -84,6 +68,24 @@ export class TitleBarComponent implements OnInit {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
+
+    this.ribbonButtons = [{
+      icon: 'ow-contacts',
+      iconOver: 'ow-contacts_over',
+      label: 'contactManager'
+    }, {
+      icon: 'ow-quotations',
+      iconOver: 'ow-quotations_over',
+      label: 'quotes'
+    }, {
+      icon: 'ow-cog',
+      iconOver: 'ow-cog_over',
+      label: 'settings'
+    }, {
+      icon: 'ow-messages',
+      iconOver: 'ow-messages_over',
+      label: 'messages'
+    }];
   }
 
   getLanguage(lang) {
