@@ -27,4 +27,8 @@ export class RibbonButtonComponent implements OnInit {
     });
   }
 
+  clickAction(ribbonItem: RibbonButtonModel) {
+    console.log(ribbonItem);
+    alert(ribbonItem.label + ' Clicked (To Be Implemented)');
+  }
 }
