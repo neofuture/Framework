@@ -7,7 +7,9 @@
     (dblclick)="maximiseWindow($event, windowList[windowItem])">
   <span [ngClass]="{'minimised': windowList[windowItem].state.isMinimised}">
     <span class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
-  <div class="text">{{ windowList[windowItem].title}}</div>
+  <div class="text">
+    {{ locale[windowList[windowItem].title] || windowList[windowItem].title }}
+  </div>
     <button class="tabButton" *ngIf="windowList[windowItem].resizable" (click)="maximiseWindow($event, windowList[windowItem])">
       <span title="{{ locale.window.restore }}" *ngIf="windowList[windowItem].state.isMaximised" class="ow-restore"></span>
       <span title="{{ locale.window.maximise }}" *ngIf="!windowList[windowItem].state.isMaximised" class="ow-maximise"></span>

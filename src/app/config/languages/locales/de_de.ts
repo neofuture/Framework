@@ -15,5 +15,6 @@ export const de_de: LanguageModel = {
     restore: 'Wiederherstellen'
   },
   contactManager: 'Manager Kontaktieren',
-  quotes: 'Schätzungen'
+  quotes: 'Schätzungen',
+  settings: 'Die Einstellungen'
 };

@@ -10,9 +10,13 @@
 .toolbar {
   background-color:var(--background-grey);
   color:var(--text);
-  height:140px;
+  height:130px;
 }
 
 .icon {
   font-family: 'Window';
+}
+
+.ribbon {
+  padding:4px;
 }

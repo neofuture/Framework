@@ -3,6 +3,7 @@ import {WindowService} from '../../services/window.service';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
+import {RibbonButtonModel} from '../../models/ribbon-button-model';
 
 @Component({
   selector: 'app-titlebar',
@@ -10,6 +11,7 @@ import {LanguageModel} from '../../models/language-model';
   styleUrls: ['./titlebar.component.css']
 })
 export class TitleBarComponent implements OnInit {
+  objectKeys = Object.keys;
   hasTitleBar = true;
   title = 'Test Window';
   hasTab = true;
@@ -43,10 +45,25 @@ export class TitleBarComponent implements OnInit {
   backgroundGrey = '#282828';
   backgroundMidGrey = '#6c6c6c';
   backgroundDarkerGrey = '#353535';
+  backgroundDarkestGrey = '#484848';
   boxShadow = 'none';
   theme = 'CS Theme';
   language$: Subscription;
   locale: LanguageModel;
+
+  ribbonButtons: ({ icon: string; label: string; iconOver: string } | { icon: string; label: string; iconOver: string })[] = [{
+    icon: 'ow-contacts',
+    iconOver: 'ow-contacts_over',
+    label: 'contactManager'
+  }, {
+    icon: 'ow-quotations',
+    iconOver: 'ow-quotations_over',
+    label: 'quotes'
+  }, {
+    icon: 'ow-cog',
+    iconOver: 'ow-cog_over',
+    label: 'settings'
+  }];
 
   constructor(
     private windowService: WindowService,
@@ -106,6 +123,7 @@ export class TitleBarComponent implements OnInit {
     document.documentElement.style.setProperty('--background-grey', this.backgroundGrey);
     document.documentElement.style.setProperty('--background-mid-grey', this.backgroundMidGrey);
     document.documentElement.style.setProperty('--background-darker-grey', this.backgroundDarkerGrey);
+    document.documentElement.style.setProperty('--background-darkest-grey', this.backgroundDarkestGrey);
     document.documentElement.style.setProperty('--box-shadow', this.boxShadow);
   }
 
@@ -117,6 +135,7 @@ export class TitleBarComponent implements OnInit {
     document.documentElement.style.removeProperty('--background-grey');
     document.documentElement.style.removeProperty('--background-mid-grey');
     document.documentElement.style.removeProperty('--background-darker-grey');
+    document.documentElement.style.removeProperty('--background-darkest-grey');
     document.documentElement.style.removeProperty('--box-shadow');
   }
 }

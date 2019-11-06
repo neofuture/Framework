@@ -1,0 +1,6 @@
+<div (mouseover)="hover = true" (mouseleave)="hover = false" class="ribbonButton">
+  <i [ngClass]="['icon', hover == true ? ribbonItem.iconOver : ribbonItem.icon]"></i>
+  <div>
+    {{ locale[ribbonItem.label] || ribbonItem.label }}
+  </div>
+</div>

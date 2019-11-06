@@ -1,0 +1,23 @@
+.ribbonButton {
+  display:inline-grid;
+  width:80px;
+  text-align:center;
+  position:relative;
+  height:80px;
+  padding-top:10px;
+  color:var(--text);
+  cursor:pointer;
+  font-size:14px;
+  border-radius:4px;
+  transition: all 200ms;
+  border:1px solid var(--background-grey);
+}
+.ribbonButton:hover {
+  background-color:var(--background-darker-grey);
+  transition: all 200ms;
+  border:1px solid var(--background-darkest-grey);
+}
+.icon {
+  font-size:32px;
+  margin-top:8px;
+}

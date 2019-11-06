@@ -15,5 +15,6 @@ export const en_gb: LanguageModel = {
     restore: 'Restore'
   },
   contactManager: 'Contact Manager',
-  quotes: 'Quotes'
+  quotes: 'Quotes',
+  settings: 'Settings'
 };

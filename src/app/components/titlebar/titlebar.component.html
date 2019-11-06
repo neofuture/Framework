@@ -1,237 +1,253 @@
 <div>
   <div class="titleBarTop">titlebar works!</div>
   <div class="toolbar">
-    <div style="padding:10px;">
+    <div style="ribbon">
       <table>
         <tr>
-          <td>Icon</td>
-          <td>Title</td>
-          <td>Component</td>
-          <td>Title Bar</td>
-          <td>Tab</td>
-          <td>Resizable</td>
-        </tr>
-        <tr>
-          <td>
-            <select [(ngModel)]="icon" name="icon">
-              <option value="alarm">Alarm</option>
-              <option value="bin">Bin</option>
-              <option value="catalogue_over">Catalogue Over</option>
-              <option value="catalogue">Catalogue</option>
-              <option value="catalogues_over">Catalogues Over</option>
-              <option value="catalogues">Catalogues</option>
-              <option value="clipboard">Clipboard</option>
-              <option value="clock">Clock</option>
-              <option value="cloud">Cloud</option>
-              <option value="cog_over">Cog Over</option>
-              <option value="cog">Cog</option>
-              <option value="company_over">Company Over</option>
-              <option value="company">Company</option>
-              <option value="computer">Computer</option>
-              <option value="contacts_over">Contacts Over</option>
-              <option value="contacts">Contacts</option>
-              <option value="content_area">Content Area</option>
-              <option value="creditcard">Credit Card</option>
-              <option value="dashboard_over">Dashboard Over</option>
-              <option value="dashboard">Dashboard</option>
-              <option value="diary_over">Diary Over</option>
-              <option value="diary">Diary</option>
-              <option value="downArrow">Down Arrow</option>
-              <option value="download">Download</option>
-              <option value="duplicate_page">Duplicate Page</option>
-              <option value="email">Email</option>
-              <option value="exclamation_mark_circle">Exclamation in a Circle</option>
-              <option value="external_link">External Link</option>
-              <option value="eye">Eye</option>
-              <option value="fat_close">Bold Close</option>
-              <option value="fat_tick">Bold Tick</option>
-              <option value="folder">Folder</option>
-              <option value="forms">Forms</option>
-              <option value="formsResponses">Form Responses</option>
-              <option value="framework">Framework</option>
-              <option value="funnel_over">Funnel Over</option>
-              <option value="funnel">Funnel</option>
-              <option value="ghost_over">Ghost Over</option>
-              <option value="ghost">Ghost</option>
-              <option value="globe">Globe</option>
-              <option value="home_over">Home Over</option>
-              <option value="home">Home</option>
-              <option value="leftArrow">Left Arrow</option>
-              <option value="leftArrowStart">Left Arrow Start</option>
-              <option value="link">Link</option>
-              <option value="locationPin">Location Pin</option>
-              <option value="lock_closed">Lock Closed</option>
-              <option value="lock_open">Lock Open</option>
-              <option value="media">Media</option>
-              <option value="menu_over">Menu Over</option>
-              <option value="menu">Menu</option>
-              <option value="messages_over">Messages Over</option>
-              <option value="messages">Messages</option>
-              <option value="minus">Minus</option>
-              <option value="move">Move</option>
-              <option value="orders_over">Orders Over</option>
-              <option value="orders">Orders</option>
-              <option value="page_add">Page Add</option>
-              <option value="page_settings">Page Settings</option>
-              <option value="page_tags">Page Tags</option>
-              <option value="pages">Pages</option>
-              <option value="pencil">Pencil</option>
-              <option value="phone_over">Phone Over</option>
-              <option value="phone">Phone</option>
-              <option value="piechart_over">Piechart Over</option>
-              <option value="piechart">Piechart</option>
-              <option value="playbutton">Play Button</option>
-              <option value="plus">Plus</option>
-              <option value="print_over">Print Over</option>
-              <option value="print">Print</option>
-              <option value="question_mark_circle">Question Mark in a Circle</option>
-              <option value="question_mark">Question Mark</option>
-              <option value="quotations_over">Quotations Over</option>
-              <option value="quotations">Quotations</option>
-              <option value="reminder_over">Reminder Over</option>
-              <option value="reminder">Reminder</option>
-              <option value="reorder">Reorder</option>
-              <option value="rightArrow">Right Arrow</option>
-              <option value="rightArrowEnd">Right Arrow End</option>
-              <option value="save">Save</option>
-              <option value="search_over">Search Over</option>
-              <option value="search">Search</option>
-              <option value="styles">Styles</option>
-              <option value="tasks_over">Tasks Over</option>
-              <option value="tasks">Tasks</option>
-              <option value="templates">Template</option>
-              <option value="tree_corner">Tree Corner</option>
-              <option value="tree_line_horizontal">Tree Line Horizontal</option>
-              <option value="tree_line">Tree Line</option>
-              <option value="tree_t">Tree T</option>
-              <option value="upArrow">Up Arrow</option>
-              <option value="users_over">Users Over</option>
-              <option value="users">Users</option>
-              <option value="world">World</option>
-              <option value="oceanworks">Oceanworks</option>
-              <option value="minimise">Minimise</option>
-              <option value="restore">Restore</option>
-              <option value="maximise">Maximise</option>
-              <option value="close">Close</option>
-            </select>
+          <td valign="top">
+            <app-ribbon-button *ngFor="let ribbonItem of objectKeys(ribbonButtons)" [ribbonItem]="ribbonButtons[ribbonItem]"></app-ribbon-button>
           </td>
-          <td>
-            <input name="title" [(ngModel)]="title" value="Test Window">
-          </td>
-          <td>
-            <select [(ngModel)]="bodyComponent" name="bodyComponent">
-              <option value="contact-manager">contact-manager</option>
-              <option value="quotes">quotes</option>
-            </select>
-          </td>
-          <td>
-            <select name="hasTitleBar" [(ngModel)]="hasTitleBar">
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </td>
-          <td>
-            <select name="hasTab" [(ngModel)]="hasTab">
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </td>
-          <td>
-            <select name="resizable" [(ngModel)]="resizable">
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </td>
-          <td>
-            <button (click)="addWindow()">Add</button>
-          </td>
-          <td>
-            |
-          </td>
-          <td>
-            <button (click)="closeAllWindows()">Close All</button>
-          </td>
-          <td>
-            <button (click)="toggleCompusoft()">{{ theme }}</button>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="10">
+          <td valign="top">
             <table>
               <tr>
-                <td>
-                  Primary
-                </td>
-                <td>
-                  Light
-                </td>
-                <td>
-                  Text
-                </td>
-                <td>
-                  Back
-                </td>
-                <td>
-                  Grey
-                </td>
-                <td>
-                  Mid
-                </td>
-                <td>
-                  Darker
-                </td>
-                <td>
-                  Box
-                </td>
+                <td>Icon</td>
+                <td>Title</td>
+                <td>Component</td>
+                <td>Title Bar</td>
+                <td>Tab</td>
+                <td>Resizable</td>
               </tr>
               <tr>
                 <td>
-                  <input [(ngModel)]="primary" size="6">
-                  <div [ngStyle]="{backgroundColor: primary, display:'inline-block', width: '10px'}">&nbsp;</div>
+                  <select [(ngModel)]="icon" name="icon">
+                    <option value="alarm">Alarm</option>
+                    <option value="bin">Bin</option>
+                    <option value="catalogue_over">Catalogue Over</option>
+                    <option value="catalogue">Catalogue</option>
+                    <option value="catalogues_over">Catalogues Over</option>
+                    <option value="catalogues">Catalogues</option>
+                    <option value="clipboard">Clipboard</option>
+                    <option value="clock">Clock</option>
+                    <option value="cloud">Cloud</option>
+                    <option value="cog_over">Cog Over</option>
+                    <option value="cog">Cog</option>
+                    <option value="company_over">Company Over</option>
+                    <option value="company">Company</option>
+                    <option value="computer">Computer</option>
+                    <option value="contacts_over">Contacts Over</option>
+                    <option value="contacts">Contacts</option>
+                    <option value="content_area">Content Area</option>
+                    <option value="creditcard">Credit Card</option>
+                    <option value="dashboard_over">Dashboard Over</option>
+                    <option value="dashboard">Dashboard</option>
+                    <option value="diary_over">Diary Over</option>
+                    <option value="diary">Diary</option>
+                    <option value="downArrow">Down Arrow</option>
+                    <option value="download">Download</option>
+                    <option value="duplicate_page">Duplicate Page</option>
+                    <option value="email">Email</option>
+                    <option value="exclamation_mark_circle">Exclamation in a Circle</option>
+                    <option value="external_link">External Link</option>
+                    <option value="eye">Eye</option>
+                    <option value="fat_close">Bold Close</option>
+                    <option value="fat_tick">Bold Tick</option>
+                    <option value="folder">Folder</option>
+                    <option value="forms">Forms</option>
+                    <option value="formsResponses">Form Responses</option>
+                    <option value="framework">Framework</option>
+                    <option value="funnel_over">Funnel Over</option>
+                    <option value="funnel">Funnel</option>
+                    <option value="ghost_over">Ghost Over</option>
+                    <option value="ghost">Ghost</option>
+                    <option value="globe">Globe</option>
+                    <option value="home_over">Home Over</option>
+                    <option value="home">Home</option>
+                    <option value="leftArrow">Left Arrow</option>
+                    <option value="leftArrowStart">Left Arrow Start</option>
+                    <option value="link">Link</option>
+                    <option value="locationPin">Location Pin</option>
+                    <option value="lock_closed">Lock Closed</option>
+                    <option value="lock_open">Lock Open</option>
+                    <option value="media">Media</option>
+                    <option value="menu_over">Menu Over</option>
+                    <option value="menu">Menu</option>
+                    <option value="messages_over">Messages Over</option>
+                    <option value="messages">Messages</option>
+                    <option value="minus">Minus</option>
+                    <option value="move">Move</option>
+                    <option value="orders_over">Orders Over</option>
+                    <option value="orders">Orders</option>
+                    <option value="page_add">Page Add</option>
+                    <option value="page_settings">Page Settings</option>
+                    <option value="page_tags">Page Tags</option>
+                    <option value="pages">Pages</option>
+                    <option value="pencil">Pencil</option>
+                    <option value="phone_over">Phone Over</option>
+                    <option value="phone">Phone</option>
+                    <option value="piechart_over">Piechart Over</option>
+                    <option value="piechart">Piechart</option>
+                    <option value="playbutton">Play Button</option>
+                    <option value="plus">Plus</option>
+                    <option value="print_over">Print Over</option>
+                    <option value="print">Print</option>
+                    <option value="question_mark_circle">Question Mark in a Circle</option>
+                    <option value="question_mark">Question Mark</option>
+                    <option value="quotations_over">Quotations Over</option>
+                    <option value="quotations">Quotations</option>
+                    <option value="reminder_over">Reminder Over</option>
+                    <option value="reminder">Reminder</option>
+                    <option value="reorder">Reorder</option>
+                    <option value="rightArrow">Right Arrow</option>
+                    <option value="rightArrowEnd">Right Arrow End</option>
+                    <option value="save">Save</option>
+                    <option value="search_over">Search Over</option>
+                    <option value="search">Search</option>
+                    <option value="styles">Styles</option>
+                    <option value="tasks_over">Tasks Over</option>
+                    <option value="tasks">Tasks</option>
+                    <option value="templates">Template</option>
+                    <option value="tree_corner">Tree Corner</option>
+                    <option value="tree_line_horizontal">Tree Line Horizontal</option>
+                    <option value="tree_line">Tree Line</option>
+                    <option value="tree_t">Tree T</option>
+                    <option value="upArrow">Up Arrow</option>
+                    <option value="users_over">Users Over</option>
+                    <option value="users">Users</option>
+                    <option value="world">World</option>
+                    <option value="oceanworks">Oceanworks</option>
+                    <option value="minimise">Minimise</option>
+                    <option value="restore">Restore</option>
+                    <option value="maximise">Maximise</option>
+                    <option value="close">Close</option>
+                  </select>
                 </td>
                 <td>
-                  <input [(ngModel)]="primaryLight" size="6">
-                  <div [ngStyle]="{backgroundColor: primaryLight, display:'inline-block', width: '10px'}">&nbsp;</div>
+                  <input name="title" [(ngModel)]="title" value="Test Window">
                 </td>
                 <td>
-                  <input [(ngModel)]="text" size="6">
-                  <div [ngStyle]="{backgroundColor: text, display:'inline-block', width: '10px'}">&nbsp;</div>
+                  <select [(ngModel)]="bodyComponent" name="bodyComponent">
+                    <option value="contact-manager">contact-manager</option>
+                    <option value="quotes">quotes</option>
+                  </select>
                 </td>
                 <td>
-                  <input [(ngModel)]="backgroundColor" size="6">
-                  <div [ngStyle]="{backgroundColor: backgroundColor, display:'inline-block', width: '10px'}">&nbsp;</div>
+                  <select name="hasTitleBar" [(ngModel)]="hasTitleBar">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
                 </td>
                 <td>
-                  <input [(ngModel)]="backgroundGrey" size="6">
-                  <div [ngStyle]="{backgroundColor: backgroundGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
+                  <select name="hasTab" [(ngModel)]="hasTab">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
                 </td>
                 <td>
-                  <input [(ngModel)]="backgroundMidGrey" size="6">
-                  <div [ngStyle]="{backgroundColor: backgroundMidGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
+                  <select name="resizable" [(ngModel)]="resizable">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
                 </td>
                 <td>
-                  <input [(ngModel)]="backgroundDarkerGrey" size="6">
-                  <div [ngStyle]="{backgroundColor: backgroundDarkerGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
+                  <button (click)="addWindow()">Add</button>
                 </td>
                 <td>
-                  <input [(ngModel)]="boxShadow" size="14">
+                  |
                 </td>
                 <td>
-                  <button (click)="setTheme()">Set Theme</button>
+                  <button (click)="closeAllWindows()">Close All</button>
                 </td>
                 <td>
-                  <button (click)="revertTheme()">Reset Theme</button>
+                  <button (click)="toggleCompusoft()">{{ theme }}</button>
                 </td>
-                <td>
-                  <button (click)="getLanguage('en_gb')">{{ locale.en_gb }}</button>
+              </tr>
+              <tr>
+                <td colspan="10">
+                  <table>
+                    <tr>
+                      <td>
+                        Primary
+                      </td>
+                      <td>
+                        Light
+                      </td>
+                      <td>
+                        Text
+                      </td>
+                      <td>
+                        Back
+                      </td>
+                      <td>
+                        Grey
+                      </td>
+                      <td>
+                        Mid
+                      </td>
+                      <td>
+                        Darker
+                      </td>
+                      <td>
+                        Darkest
+                      </td>
+                      <td>
+                        Box
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input [(ngModel)]="primary" size="6">
+                        <div [ngStyle]="{backgroundColor: primary, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="primaryLight" size="6">
+                        <div [ngStyle]="{backgroundColor: primaryLight, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="text" size="6">
+                        <div [ngStyle]="{backgroundColor: text, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="backgroundColor" size="6">
+                        <div [ngStyle]="{backgroundColor: backgroundColor, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="backgroundGrey" size="6">
+                        <div [ngStyle]="{backgroundColor: backgroundGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="backgroundMidGrey" size="6">
+                        <div [ngStyle]="{backgroundColor: backgroundMidGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="backgroundDarkerGrey" size="6">
+                        <div [ngStyle]="{backgroundColor: backgroundDarkerGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="backgroundDarkestGrey" size="6">
+                        <div [ngStyle]="{backgroundColor: backgroundDarkestGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="boxShadow" size="14">
+                      </td>
+                      <td>
+                        <button (click)="setTheme()">Set Theme</button>
+                      </td>
+                      <td>
+                        <button (click)="revertTheme()">Reset Theme</button>
+                      </td>
+                      <td>
+                        <button (click)="getLanguage('en_gb')">{{ locale.en_gb }}</button>
+                      </td>
+                      <td>
+                        <button (click)="getLanguage('de_de')">{{ locale.de_de }}</button>
+                      </td>
+                      <td> {{ locale['flag'] }} {{ locale[locale.language] }}</td>
+                    </tr>
+                  </table>
+
                 </td>
-                <td>
-                  <button (click)="getLanguage('de_de')">{{ locale.de_de }}</button>
-                </td>
-                <td> {{ locale['flag'] }} {{ locale[locale.language] }}</td>
               </tr>
             </table>
-
           </td>
         </tr>
       </table>

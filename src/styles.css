@@ -120,6 +120,7 @@
   --background-grey: #f0f0f0;
   --background-mid-grey: #dedede;
   --background-darker-grey: #e0dfe1;
+  --background-darkest-grey: #bab9bb;
   --box-shadow: 0 0 52px 12px rgba(0,0,0,0.10);
 }
 
@@ -217,6 +218,14 @@ body.compusoft, .compusoft *:not(pre) {
 
 .compusoft .active .titleBar {
   border-color:var(--primary) !important;
+}
+
+.compusoft .ribbonButton {
+  border-radius:0 !important;
+}
+
+.compusoft .ribbonButton:hover {
+  border:1px solid var(--background-grey) !important;
 }
 
 .noTransition * {

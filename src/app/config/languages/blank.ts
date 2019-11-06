@@ -15,5 +15,6 @@ export const blank: LanguageModel = {
     restore: ''
   },
   contactManager: '',
-  quotes: ''
+  quotes: '',
+  settings: ''
 };
