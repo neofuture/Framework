@@ -16,5 +16,6 @@ export const de_de: LanguageModel = {
   },
   contactManager: 'Manager Kontaktieren',
   quotes: 'Schätzungen',
-  settings: 'Die Einstellungen'
+  settings: 'Die Einstellungen',
+  messages: 'Mitteilungen'
 };

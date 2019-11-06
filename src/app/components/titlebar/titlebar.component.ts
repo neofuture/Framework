@@ -63,6 +63,10 @@ export class TitleBarComponent implements OnInit {
     icon: 'ow-cog',
     iconOver: 'ow-cog_over',
     label: 'settings'
+  }, {
+    icon: 'ow-messages',
+    iconOver: 'ow-messages_over',
+    label: 'messages'
   }];
 
   constructor(

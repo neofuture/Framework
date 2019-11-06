@@ -14,4 +14,5 @@ export interface LanguageModel {
   contactManager: string;
   quotes: string;
   settings: string;
+  messages: string;
 }

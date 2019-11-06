@@ -16,5 +16,6 @@ export const fr_fr: LanguageModel = {
   },
   contactManager: 'Contact Manager',
   quotes: 'Quotes',
-  settings: 'Settings'
+  settings: 'Settings',
+  messages: 'Messages'
 };

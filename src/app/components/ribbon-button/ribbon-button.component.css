@@ -5,6 +5,7 @@
   position:relative;
   height:80px;
   padding-top:10px;
+  padding-bottom:10px;
   color:var(--text);
   cursor:pointer;
   font-size:14px;
@@ -17,6 +18,12 @@
   transition: all 200ms;
   border:1px solid var(--background-darkest-grey);
 }
+
+.ribbonButton:active {
+  background-color: var(--background-darkest-grey);
+  color:var(--background-grey);
+}
+
 .icon {
   font-size:32px;
   margin-top:8px;

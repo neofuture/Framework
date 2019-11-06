@@ -225,7 +225,8 @@ body.compusoft, .compusoft *:not(pre) {
 }
 
 .compusoft .ribbonButton:hover {
-  border:1px solid var(--background-grey) !important;
+  border:1px solid !important;
+  border-color:var(--background-grey) !important;
 }
 
 .noTransition * {
