@@ -16,13 +16,15 @@
        (touchstart)="moveStart($event, windowItem)"
        (dblclick)="maximiseWindow($event, windowItem)">
     <span class="titleBarIcon ow-{{ windowItem.icon }}"></span>
-    <div class="titleBarText" [ngClass]="{'singleIcon': !windowItem.resizable && windowItem.hasTab, 'doubleIcon': windowItem.resizable && windowItem.hasTab}">{{ windowItem.title }}</div>
-    <button class="windowButton ow-close" (click)="closeWindow($event, windowItem)"></button>
+    <div class="titleBarText" [ngClass]="{'singleIcon': !windowItem.resizable && windowItem.hasTab, 'doubleIcon': windowItem.resizable && windowItem.hasTab}">
+      {{ locale[windowItem.title] || windowItem.title }}
+    </div>
+    <button title="{{ locale.window.close }}" class="windowButton ow-close" (click)="closeWindow($event, windowItem)"></button>
     <button class="windowButton" *ngIf="windowItem.resizable" (click)="maximiseWindow($event, windowItem)">
-      <span *ngIf="windowItem.state.isMaximised" class="ow-restore"></span>
-      <span *ngIf="!windowItem.state.isMaximised" class="ow-maximise"></span>
+      <span title="{{ locale.window.restore }}" *ngIf="windowItem.state.isMaximised" class="ow-restore"></span>
+      <span title="{{ locale.window.maximise }}" *ngIf="!windowItem.state.isMaximised" class="ow-maximise"></span>
     </button>
-    <button class="windowButton ow-minimise" *ngIf="windowItem.resizable && windowItem.hasTab" (click)="minimiseWindow($event, windowItem)">
+    <button  title="{{ locale.window.minimise }}" class="windowButton ow-minimise" *ngIf="windowItem.resizable && windowItem.hasTab" (click)="minimiseWindow($event, windowItem)">
     </button>
   </div>
   <div class="clientArea" [ngClass]="{'fullHeight': windowItem.hasTitleBar !== true}">

@@ -11,6 +11,9 @@ import {
 } from '@angular/core';
 import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
+import {LanguageService} from '../../services/language.service';
+import {Subscription} from 'rxjs';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-window',
@@ -18,11 +21,15 @@ import {WindowService} from '../../services/window.service';
   styleUrls: ['./window.component.css']
 })
 export class WindowComponent implements OnInit {
+  language$: Subscription;
+  locale: LanguageModel;
 
   constructor(
     private windowService: WindowService,
-    private cfr: ComponentFactoryResolver) {
+    private cfr: ComponentFactoryResolver,
+    private languageService: LanguageService) {
   }
+
   resizeDirection: any;
   innerWidth: number;
   innerHeight: number;
@@ -88,11 +95,14 @@ export class WindowComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.windowItem);
 
     this.resize();
     this.windowList = this.windowService.windowList;
     this.loadComponent();
+
+    this.language$ = this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
   }
 
   async loadComponent() {

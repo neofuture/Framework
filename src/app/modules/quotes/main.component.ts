@@ -1,4 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {LanguageService} from '../../services/language.service';
+import {Subscription} from 'rxjs';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-main',
@@ -6,8 +9,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  language$: Subscription;
+  locale: LanguageModel;
 
-  constructor() {
+  constructor(private languageService: LanguageService) {
   }
 
   @Input() data: any;
@@ -19,6 +24,10 @@ export class MainComponent implements OnInit {
       this.data = {};
       this.data.id = 0;
     }
+
+    this.language$ = this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
   }
 
 }

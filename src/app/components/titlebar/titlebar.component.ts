@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {WindowService} from '../../services/window.service';
+import {Subscription} from 'rxjs';
+import {LanguageService} from '../../services/language.service';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-titlebar',
@@ -42,16 +45,28 @@ export class TitleBarComponent implements OnInit {
   backgroundDarkerGrey = '#353535';
   boxShadow = 'none';
   theme = 'CS Theme';
+  language$: Subscription;
+  locale: LanguageModel;
 
-  constructor(private windowService: WindowService) {
-  }
+  constructor(
+    private windowService: WindowService,
+    private languageService: LanguageService
+  ) {}
 
   ngOnInit() {
-    this.windowService.new(this.getIcon(), true, 'No Tab', false, true, 'contact-manager');
-    this.windowService.new(this.getIcon(), true, 'Not Resizable', true, false, 'contact-manager');
-    this.windowService.new(this.getIcon(), false, 'No Title Bar', true, true, 'contact-manager');
-    this.windowService.new(this.getIcon(), true, 'Test Window 4', true, true, 'contact-manager');
-    this.windowService.new(this.getIcon(), true, 'Test Window 5', true, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', false, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', true, false, 'contact-manager');
+    this.windowService.new(this.getIcon(), false, 'contactManager', true, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', true, true, 'contact-manager');
+    this.windowService.new(this.getIcon(), true, 'contactManager', true, true, 'contact-manager');
+
+    this.language$ = this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
+  }
+
+  getLanguage(lang) {
+    this.languageService.getLanguage(lang);
   }
 
   getIcon() {
