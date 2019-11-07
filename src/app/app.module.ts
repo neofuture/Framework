@@ -11,6 +11,7 @@ import { JsonPipe } from './pipes/json.pipe';
 import { WindowService } from './services/window.service';
 import { FormsModule } from '@angular/forms';
 import { RibbonButtonComponent } from './components/ribbon-button/ribbon-button.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RibbonButtonComponent } from './components/ribbon-button/ribbon-button.
     TitleBarComponent,
     PrettyPrintPipe,
     JsonPipe,
-    RibbonButtonComponent
+    RibbonButtonComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

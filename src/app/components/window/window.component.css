@@ -67,7 +67,6 @@
 }
 
 .active {
-  /*background-color: var(--background-color);*/
   box-shadow: var(--box-shadow);
 }
 
@@ -91,8 +90,6 @@
 }
 
 .active button {
-  /*color: #379;*/
-  /*background-color:white;*/
   transition: opacity 200ms, width 200ms, height, 200ms;
 
 }
