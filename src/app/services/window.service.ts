@@ -10,12 +10,26 @@ export class WindowService {
   constructor() {
   }
 
-  new(icon: string, hasTitleBar: boolean, title: string, hasTab: boolean, resizable: boolean, bodyComponent: string, data = null) {
+  new(
+    icon: string,
+    hasTitleBar: boolean,
+    title: string,
+    hasTab: boolean,
+    resizable: boolean,
+    bodyComponent: string,
+    data = null,
+    height = null,
+    width = null
+  ) {
     let id = parseInt(Object.keys(this.windowList)[Object.keys(this.windowList).length - 1], 10) || 0;
     id++;
 
-    const height = this.randomIntFromInterval(200, 400);
-    const width = this.randomIntFromInterval(400, 800);
+    if (height === null) {
+      height = this.randomIntFromInterval(200, 400);
+    }
+    if (width === null) {
+      width = this.randomIntFromInterval(400, 800);
+    }
 
     const position = this.findXYPosition(height, width);
     let zIndex = 0;
@@ -39,8 +53,8 @@ export class WindowService {
       left: position.left,
       height,
       width,
-      minimumWidth: 300,
-      minimumHeight: 200,
+      minimumWidth: 200,
+      minimumHeight: 120,
       maximizable: true,
       minimizable: true,
       resizable,

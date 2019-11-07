@@ -107,6 +107,12 @@ export class WindowComponent implements OnInit {
 
   async loadComponent() {
 
+    if (this.windowItem.bodyComponent === 'demo') {
+      const {DemoComponent} = await import('../demo/demo.component');
+      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(DemoComponent));
+      componentRef.instance.windowItem = this.windowItem;
+    }
+
     if (this.windowItem.bodyComponent === 'contact-manager') {
       const {MainComponent} = await import('../../modules/contact-manager/main.component');
       const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(MainComponent));
@@ -205,20 +211,18 @@ export class WindowComponent implements OnInit {
   }
 
   resizeStart(event, windowItem: WindowModel) {
-    if (!event.target.classList.contains('windowItem')) {
-      return false;
+    if (event.target.classList.contains('windowItem')) {
+      this.resizeWindowItem = windowItem;
+      this.makeWindowActive(this.resizeWindowItem);
+
+      this.resizeWindowItem.entities.xPosition = event.x || event.pageX;
+      this.resizeWindowItem.entities.yPosition = event.y || event.pageY;
+
+      this.resizeWindowItem.entities.left = parseInt(this.resizeWindowItem.left, 10);
+      this.resizeWindowItem.entities.top = parseInt(this.resizeWindowItem.top, 10);
+      this.resizeWindowItem.entities.width = parseInt(this.resizeWindowItem.width, 10);
+      this.resizeWindowItem.entities.height = parseInt(this.resizeWindowItem.height, 10);
     }
-    this.resizeWindowItem = windowItem;
-    this.makeWindowActive(this.resizeWindowItem);
-
-    this.resizeWindowItem.entities.xPosition = event.x || event.pageX;
-    this.resizeWindowItem.entities.yPosition = event.y || event.pageY;
-
-    this.resizeWindowItem.entities.left = parseInt(this.resizeWindowItem.left, 10);
-    this.resizeWindowItem.entities.top = parseInt(this.resizeWindowItem.top, 10);
-    this.resizeWindowItem.entities.width = parseInt(this.resizeWindowItem.width, 10);
-    this.resizeWindowItem.entities.height = parseInt(this.resizeWindowItem.height, 10);
-
   }
 
   resizeGo(event) {

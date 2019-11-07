@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { WindowComponent } from './components/window/window.component';
 import { DesktopComponent } from './components/desktop/desktop.component';
@@ -12,6 +11,7 @@ import { WindowService } from './services/window.service';
 import { FormsModule } from '@angular/forms';
 import { RibbonButtonComponent } from './components/ribbon-button/ribbon-button.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { DemoComponent } from './components/demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     PrettyPrintPipe,
     JsonPipe,
     RibbonButtonComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,

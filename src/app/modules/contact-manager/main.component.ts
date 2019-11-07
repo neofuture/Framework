@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   id: number;
   language$: Subscription;
   locale: LanguageModel;
+  option = 3;
 
   constructor(
     private windowService: WindowService,
