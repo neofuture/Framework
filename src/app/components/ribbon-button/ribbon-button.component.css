@@ -24,6 +24,10 @@
   color:var(--background-grey);
 }
 
+.ribbonButton:hover .icon{
+  color:var(--primary);
+}
+
 .icon {
   font-size:30px;
   margin-top:10px;

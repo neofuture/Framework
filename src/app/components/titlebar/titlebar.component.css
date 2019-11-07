@@ -14,9 +14,16 @@
 }
 
 .icon {
-  font-family: 'Window';
+  font-family: 'Window', serif;
 }
 
 .ribbon {
   padding:4px;
+}
+
+app-search-bar{
+  float:right;
+  padding-right:10px;
+  width:400px;
+  position:relative;
 }

@@ -114,7 +114,9 @@
 
 :root {
   --primary: #337799;
-  --primary-light: #438eb5;
+  --primary-light: #b8d6e7;
+  --primary-mid: #438eb5;
+  --primary-dark: #2e5671;
   --text: #444444;
   --background-color: #ffffff;
   --background-grey: #f0f0f0;
@@ -126,7 +128,9 @@
 
 .compusoft {
   --primary: #009b3a;
-  --primary-light: #00bc3e;
+  --primary-light: #bac696;
+  --primary-mid: #009b3a;
+  --primary-dark: #214332;
 }
 
 
@@ -234,7 +238,7 @@ body.compusoft, .compusoft *:not(pre) {
 }
 button {
   border: none;
-  background-color: var(--primary-light);
+  background-color: var(--primary);
   border-radius: 2px;
   padding:6px;
   color: var(--background-color);

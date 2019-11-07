@@ -39,7 +39,9 @@ export class TitleBarComponent implements OnInit {
   bodyComponent = 'contact-manager';
 
   primary = '#337799';
-  primaryLight = '#438eb5';
+  primaryLight = '#b8d6e7';
+  primaryMid = '#438eb5';
+  primaryDark = '#2e5671';
   text = '#c1c1c1';
   backgroundColor = '#1d1d1d';
   backgroundGrey = '#282828';
@@ -124,6 +126,8 @@ export class TitleBarComponent implements OnInit {
   setTheme() {
     document.documentElement.style.setProperty('--primary', this.primary);
     document.documentElement.style.setProperty('--primary-light', this.primaryLight);
+    document.documentElement.style.setProperty('--primary-mid', this.primaryMid);
+    document.documentElement.style.setProperty('--primary-dark', this.primaryDark);
     document.documentElement.style.setProperty('--text', this.text);
     document.documentElement.style.setProperty('--background-color', this.backgroundColor);
     document.documentElement.style.setProperty('--background-grey', this.backgroundGrey);
@@ -136,6 +140,8 @@ export class TitleBarComponent implements OnInit {
   revertTheme() {
     document.documentElement.style.removeProperty('--primary');
     document.documentElement.style.removeProperty('--primary-light');
+    document.documentElement.style.removeProperty('--primary-mid');
+    document.documentElement.style.removeProperty('--primary-dark');
     document.documentElement.style.removeProperty('--text');
     document.documentElement.style.removeProperty('--background-color');
     document.documentElement.style.removeProperty('--background-grey');

@@ -45,13 +45,13 @@
 
 .active {
   color: var(--background-color);
-  background-color: var(--primary-light);
+  background-color: var(--primary-mid);
   font-weight:600;
 }
 
 .tabButton {
   border: none;
-  background-color: var(--primary-light);
+  background-color: var(--primary-mid);
   border-radius: 4px;
   min-width: 20px;
   min-height: 20px;

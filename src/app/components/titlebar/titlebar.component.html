@@ -1,7 +1,9 @@
 <div>
-  <div class="titleBarTop">titlebar works!</div>
+  <div class="titleBarTop">
+    <app-search-bar></app-search-bar>
+  </div>
   <div class="toolbar">
-    <div style="ribbon">
+    <div class="ribbon">
       <table>
         <tr>
           <td valign="top">
@@ -172,6 +174,12 @@
                         Light
                       </td>
                       <td>
+                        Mid
+                      </td>
+                      <td>
+                        Dark
+                      </td>
+                      <td>
                         Text
                       </td>
                       <td>
@@ -201,6 +209,14 @@
                       <td>
                         <input [(ngModel)]="primaryLight" size="6">
                         <div [ngStyle]="{backgroundColor: primaryLight, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="primaryDark" size="6">
+                        <div [ngStyle]="{backgroundColor: primaryDark, display:'inline-block', width: '10px'}">&nbsp;</div>
+                      </td>
+                      <td>
+                        <input [(ngModel)]="primaryMid" size="6">
+                        <div [ngStyle]="{backgroundColor: primaryMid, display:'inline-block', width: '10px'}">&nbsp;</div>
                       </td>
                       <td>
                         <input [(ngModel)]="text" size="6">

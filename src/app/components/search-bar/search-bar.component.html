@@ -1,1 +1,16 @@
-<p>search-bar works!</p>
+<div>
+  <label>
+    <input [(ngModel)]="searchTerm"
+           (keyup)="checkKeys($event)"
+           (keydown)="preventCursor($event)"
+           autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false">
+  </label>
+  <div class="searchResults" [ngClass]="objectKeys(searchHits).length > 0 ? 'on' : 'off'">
+    <div *ngFor="let item of objectKeys(searchHits)"
+         [ngClass]="item == searchHitIndex ? 'highlight' : ''"
+         (click)="search($event, item)"
+         (mouseover)="searchHitIndex = int(item)">
+      {{ searchHits[item] }}
+    </div>
+  </div>
+</div>
