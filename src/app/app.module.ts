@@ -13,6 +13,9 @@ import { RibbonButtonComponent } from './components/ribbon-button/ribbon-button.
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DemoComponent } from './components/demo/demo.component';
 
+import { ContactManagerComponent } from './modules/contact-manager/contact-manager.component';
+import { QuotesModule } from './modules/quotes/quotes.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,11 +27,14 @@ import { DemoComponent } from './components/demo/demo.component';
     JsonPipe,
     RibbonButtonComponent,
     SearchBarComponent,
-    DemoComponent
+    DemoComponent,
+
+    ContactManagerComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    QuotesModule
   ],
   providers: [WindowService],
   bootstrap: [AppComponent]

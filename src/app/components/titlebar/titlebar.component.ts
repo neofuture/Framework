@@ -52,7 +52,6 @@ export class TitleBarComponent implements OnInit {
     this.windowService.new(this.getIcon(), false, 'contactManager', true, true, 'contact-manager');
     this.windowService.new(this.getIcon(), true, 'contactManager', true, true, 'contact-manager');
     this.windowService.new(this.getIcon(), true, 'contactManager', true, true, 'contact-manager');
-    this.windowService.new('cog_over', true, 'demo', true, true, 'demo', null, 196, 1100);
 
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;

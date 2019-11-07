@@ -1,13 +1,16 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MainComponent } from './main.component';
-
-
+import {FormsModule} from '@angular/forms';
+import {QuotesComponent} from './quotes.component';
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [
+    QuotesComponent
+  ],
   imports: [
-    CommonModule
-  ]
+    BrowserModule,
+    FormsModule
+  ],
+  providers: []
 })
 export class QuotesModule { }

@@ -5,11 +5,11 @@ import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-contact-manager',
+  templateUrl: './contact-manager.component.html',
+  styleUrls: ['./contact-manager.component.css']
 })
-export class MainComponent implements OnInit {
+export class ContactManagerComponent implements OnInit {
   @Input() windowItem: any;
   id: number;
   language$: Subscription;

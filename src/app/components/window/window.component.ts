@@ -114,14 +114,14 @@ export class WindowComponent implements OnInit {
     }
 
     if (this.windowItem.bodyComponent === 'contact-manager') {
-      const {MainComponent} = await import('../../modules/contact-manager/main.component');
-      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(MainComponent));
+      const {ContactManagerComponent} = await import('../../modules/contact-manager/contact-manager.component');
+      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(ContactManagerComponent));
       componentRef.instance.windowItem = this.windowItem;
     }
 
     if (this.windowItem.bodyComponent === 'quotes') {
-      const {MainComponent} = await import('../../modules/quotes/main.component');
-      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(MainComponent));
+      const {QuotesComponent} = await import('../../modules/quotes/quotes.component');
+      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(QuotesComponent));
       componentRef.instance.data = this.windowItem.data;
     }
 

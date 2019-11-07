@@ -3,6 +3,7 @@ import {LanguageService} from '../../services/language.service';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../models/language-model';
 import {RibbonButtonModel} from '../../models/ribbon-button-model';
+import {WindowService} from '../../services/window.service';
 
 @Component({
   selector: 'app-ribbon-button',
@@ -18,8 +19,10 @@ export class RibbonButtonComponent implements OnInit {
   hover = false;
 
   constructor(
-    private languageService: LanguageService
-  ) { }
+    private languageService: LanguageService,
+    private windowService: WindowService
+  ) {
+  }
 
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
@@ -28,7 +31,10 @@ export class RibbonButtonComponent implements OnInit {
   }
 
   clickAction(ribbonItem: RibbonButtonModel) {
-    console.log(ribbonItem);
-    alert(ribbonItem.label + ' Clicked (To Be Implemented)');
+    if (ribbonItem.label === 'settings') {
+      this.windowService.new('cog_over', true, 'settings', true, true, 'demo', null, 196, 1100);
+    } else {
+      alert(ribbonItem.label + ' Clicked (To Be Implemented)');
+    }
   }
 }

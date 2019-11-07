@@ -4,11 +4,12 @@ import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../models/language-model';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-quotes',
+  templateUrl: './quotes.component.html',
+  styleUrls: ['./quotes.component.css']
 })
-export class MainComponent implements OnInit {
+export class QuotesComponent implements OnInit {
+  option = 3;
   language$: Subscription;
   locale: LanguageModel;
 
