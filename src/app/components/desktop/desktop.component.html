@@ -1,8 +1,5 @@
 <app-titlebar class="titleBarTop" id="titleBarTop"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
-  <pre style="width:300px;height:300px;overflow:auto;float:right;">
-{{ windowList | json }}
-  </pre>
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
                 [titleBarTopHeight]="titleBarTopHeight"

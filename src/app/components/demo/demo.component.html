@@ -149,42 +149,8 @@
     </td>
   </tr>
 </table>
+<hr>
 <table>
-  <tr>
-    <td>
-      Primary
-    </td>
-    <td>
-      Light
-    </td>
-    <td>
-      Mid
-    </td>
-    <td>
-      Dark
-    </td>
-    <td>
-      Text
-    </td>
-    <td>
-      Back
-    </td>
-    <td>
-      Grey
-    </td>
-    <td>
-      Mid
-    </td>
-    <td>
-      Darker
-    </td>
-    <td>
-      Darkest
-    </td>
-    <td>
-      Box
-    </td>
-  </tr>
   <tr>
     <td>
       <input [(ngModel)]="primary" size="6">
@@ -202,6 +168,8 @@
       <input [(ngModel)]="primaryMid" size="6">
       <div [ngStyle]="{backgroundColor: primaryMid, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
+  </tr>
+  <tr>
     <td>
       <input [(ngModel)]="text" size="6">
       <div [ngStyle]="{backgroundColor: text, display:'inline-block', width: '10px'}">&nbsp;</div>
@@ -227,8 +195,10 @@
       <div [ngStyle]="{backgroundColor: backgroundDarkestGrey, display:'inline-block', width: '10px'}">&nbsp;
       </div>
     </td>
+  </tr>
+  <tr>
     <td>
-      <input [(ngModel)]="boxShadow" size="14">
+      <input [(ngModel)]="boxShadow" size="8">
     </td>
     <td>
       <button (click)="setTheme()">Set Theme</button>
@@ -238,6 +208,7 @@
     </td>
   </tr>
 </table>
+<hr>
 <table>
   <tr>
     <td>
@@ -247,6 +218,9 @@
 
       {{ locale['flag'] }} {{ locale[locale.language] }}</td>
   </tr>
+</table>
+<hr>
+<table>
   <tr>
     <td><input type="text" [(ngModel)]="title">
       <button (click)="setTitle()">Set Title</button>

@@ -132,10 +132,17 @@ input, select {
   color: var(--text);
   background-color: var(--background-color);
   border-radius: 4px;
-  padding:4px;
+  padding:6px;
+  font-size:14px;
 }
 
-
+select {
+  background-image: url('/assets/svg/downArrow.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 5px);
+  background-size: 16px;
+  padding-right: 26px;
+}
 
 :root {
   --primary: #337799;
@@ -167,7 +174,7 @@ body {
 }
 
 body.compusoft, .compusoft *:not(pre) {
-  font-family: "IBM Plex Sans Condensed";
+  font-family: "IBM Plex Sans";
 }
 
 .compusoft .windowItem {

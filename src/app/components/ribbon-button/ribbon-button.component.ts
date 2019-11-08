@@ -32,7 +32,7 @@ export class RibbonButtonComponent implements OnInit {
 
   clickAction(ribbonItem: RibbonButtonModel) {
     if (ribbonItem.label === 'settings') {
-      this.windowService.new('cog_over', true, 'settings', null, true, true, 'demo', null, 300, 1100);
+      this.windowService.new('cog_over', true, 'settings', null, true, true, 'demo', null, 400, 980);
     }
     if (ribbonItem.label === 'contactManager') {
       this.windowService.new('contacts_over', true, 'contactManager',  null, true, true, 'contact-manager');
