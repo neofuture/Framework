@@ -18,7 +18,7 @@
     <span class="titleBarIcon ow-{{ windowItem.icon }}"></span>
     <div class="titleBarText" [ngClass]="{'singleIcon': !windowItem.resizable && windowItem.hasTab, 'doubleIcon': windowItem.resizable && windowItem.hasTab}">
       {{ locale[windowItem.title] || windowItem.title }}
-      <span *ngIf="windowItem.title2"> - {{ windowItem.title2 }}</span>
+      <span *ngIf="windowItem.extendedTitle"> - {{ windowItem.extendedTitle }}</span>
     </div>
     <button title="{{ locale.window.close }}" class="windowButton ow-close" (click)="closeWindow($event, windowItem)"></button>
     <button class="windowButton" *ngIf="windowItem.resizable" (click)="maximiseWindow($event, windowItem)">

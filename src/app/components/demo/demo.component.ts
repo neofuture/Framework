@@ -13,7 +13,7 @@ export class DemoComponent implements OnInit {
   @Input() windowItem: any;
   hasTitleBar = true;
   title = 'Test Window';
-  title2 = 'New Title 2';
+  extendedTitle = 'New Title 2';
   hasTab = true;
   resizable = true;
   icon = 'locationPin';
@@ -108,7 +108,7 @@ export class DemoComponent implements OnInit {
     this.windowService.setTitle(this.windowItem, this.title);
   }
 
-  setTitle2() {
-    this.windowService.setTitle2(this.windowItem, this.title2);
+  setExtendedTitle() {
+    this.windowService.setExtendedTitle(this.windowItem, this.extendedTitle);
   }
 }

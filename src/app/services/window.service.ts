@@ -14,7 +14,7 @@ export class WindowService {
     icon: string,
     hasTitleBar: boolean,
     title: string,
-    title2: any,
+    extendedTitle: any,
     hasTab: boolean,
     resizable: boolean,
     bodyComponent: string,
@@ -52,7 +52,7 @@ export class WindowService {
       id,
       icon,
       title,
-      title2,
+      extendedTitle,
       body: data.body,
       bodyComponent,
       class: 'new active',
@@ -219,7 +219,7 @@ export class WindowService {
     windowItem.title = str;
   }
 
-  setTitle2(windowItem: WindowModel, str: string) {
-    windowItem.title2 = str;
+  setExtendedTitle(windowItem: WindowModel, str: string) {
+    windowItem.extendedTitle = str;
   }
 }
