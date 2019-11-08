@@ -2,6 +2,7 @@ export interface WindowModel {
   id: number;
   icon?: string;
   title: string;
+  title2: any;
   class: string;
   body: string;
   bodyComponent?: string;

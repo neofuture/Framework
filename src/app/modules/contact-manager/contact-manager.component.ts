@@ -36,6 +36,7 @@ export class ContactManagerComponent implements OnInit {
       'orders',
       true,
       'quotes',
+      this.id,
       true,
       true,
       'quotes',

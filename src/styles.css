@@ -20,6 +20,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Regular.woff') format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
+
 /* cyrillic */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -28,6 +29,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Regular.woff') format('woff2');
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
+
 /* greek */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -36,6 +38,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Regular.woff') format('woff2');
   unicode-range: U+0370-03FF;
 }
+
 /* vietnamese */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -44,6 +47,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Regular.woff') format('woff2');
   unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
 }
+
 /* latin-ext */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -52,6 +56,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Regular.woff') format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -60,7 +65,6 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Regular.woff') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 
 
 /* cyrillic-ext */
@@ -71,6 +75,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Bold.woff') format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
+
 /* cyrillic */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -79,6 +84,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Bold.woff') format('woff2');
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
+
 /* greek */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -87,6 +93,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Bold.woff') format('woff2');
   unicode-range: U+0370-03FF;
 }
+
 /* vietnamese */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -95,6 +102,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Bold.woff') format('woff2');
   unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
 }
+
 /* latin-ext */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -103,6 +111,7 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Bold.woff') format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
   font-family: 'IBM Plex Sans Condensed';
@@ -111,6 +120,22 @@
   src: url('/assets/fonts/IBMPlexSansCondensed-Bold.woff') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+input, select {
+  -webkit-appearance: none;
+  border: 1px solid;
+  border-color: var(--background-darker-grey);
+  color: var(--text);
+  background-color: var(--background-color);
+  border-radius: 4px;
+  padding:4px;
+}
+
+
 
 :root {
   --primary: #337799;
@@ -123,7 +148,7 @@
   --background-mid-grey: #dedede;
   --background-darker-grey: #e0dfe1;
   --background-darkest-grey: #bab9bb;
-  --box-shadow: 0 0 52px 12px rgba(0,0,0,0.10);
+  --box-shadow: 0 0 52px 12px rgba(0, 0, 0, 0.10);
 }
 
 .compusoft {
@@ -134,69 +159,72 @@
 }
 
 
-body{
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  margin:0;
-  padding:0;
-  font-size:13px;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
 }
+
 body.compusoft, .compusoft *:not(pre) {
   font-family: "IBM Plex Sans Condensed";
 }
 
 .compusoft .windowItem {
   border: none !important;
-  background-color: rgba(0,0,0,0) !important;
-  padding:7px !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  padding: 7px !important;
 }
 
 .compusoft .windowItem.active {
   box-shadow: none !important;
-  padding:7px !important;
+  padding: 7px !important;
   border: none !important;
-  background-color: rgba(0,0,0,0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .compusoft .windowItem.maximised {
-  padding:0 !important;
+  padding: 0 !important;
 }
 
-.compusoft .titleBar{
-  border:1px solid !important;
+.compusoft .titleBar {
+  border: 1px solid !important;
   border-color: var(--background-darker-grey) !important;
   /*border-bottom:none !important;*/
-  margin:0 !important;
-  width: calc(100% - 10px) !important;
-  border-radius:0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  border-radius: 0 !important;
 }
-.compusoft .clientArea{
-  border:1px solid !important;
-  border-color:var(--background-darker-grey) !important;
-  border-top:none !important;
-  margin:0 !important;
-  padding:6px !important;
-  border-radius:0 !important;
-  width:calc(100% - 14px) !important;
-  height:calc(100% - 46px) !important;
+
+.compusoft .clientArea {
+  border: 1px solid !important;
+  border-color: var(--background-darker-grey) !important;
+  border-top: none !important;
+  margin: 0 !important;
+  padding: 6px !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: calc(100% - 32px) !important;
 }
+
 .compusoft .windowButton {
-  border-radius:0 !important;
-  background-color:transparent !important;
-  color:var(--text) !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: var(--text) !important;
 }
 
 .compusoft .active .windowButton {
-  color:var(--background-color) !important;
+  color: var(--background-color) !important;
 }
 
 .compusoft .tabButton {
-  border-radius:0 !important;
-  background-color:transparent !important;
-  color:var(--text) !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: var(--text) !important;
 }
 
 .compusoft .active .tabButton {
-  color:var(--background-color) !important;
+  color: var(--background-color) !important;
 }
 
 .compusoft .tabItem {
@@ -204,48 +232,59 @@ body.compusoft, .compusoft *:not(pre) {
 }
 
 .compusoft .fullHeight {
-  height:100% !important;
-  margin-top:1px !important;
-  border-top:1px solid !important;
-  border-color:var(--background-grey) !important;
+  height: 100% !important;
+  margin-top: 1px !important;
+  border-top: 1px solid !important;
+  border-color: var(--background-grey) !important;
 }
+
 .compusoft .titleBarText {
-  text-align:center;
+  text-align: center;
 }
 
 .compusoft .tabItem .text {
   text-align: center;
 }
+
 .compusoft button {
-  border-radius:0;
+  border-radius: 0;
 }
 
 .compusoft .active .titleBar {
-  border-color:var(--primary) !important;
+  border-color: var(--primary) !important;
 }
 
 .compusoft .ribbonButton {
-  border-radius:0 !important;
+  border-radius: 0 !important;
 }
 
 .compusoft .ribbonButton:hover {
-  border:1px solid !important;
-  border-color:var(--background-grey) !important;
+  border: 1px solid !important;
+  border-color: var(--background-grey) !important;
+}
+
+.compusoft input, .compusoft select {
+  border-radius: 0;
+}
+
+.compusoft .searchResults div {
+  border-radius:0;
 }
 
 .noTransition * {
   transition: all 0s !important;
 }
+
 button {
   border: none;
   background-color: var(--primary);
   border-radius: 2px;
-  padding:6px;
+  padding: 6px;
   color: var(--background-color);
-  cursor:pointer;
-  position:relative;
+  cursor: pointer;
+  position: relative;
   transition: opacity 200ms, width 200ms, height, 200ms;
-  margin:2px;
+  margin: 2px;
   font-size: 14px;
 }
 

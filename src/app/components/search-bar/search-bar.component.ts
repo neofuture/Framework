@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LanguageService} from '../../services/language.service';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../models/language-model';
+import {WindowService} from '../../services/window.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,11 +17,13 @@ export class SearchBarComponent implements OnInit {
   searchHits: object = [];
   searchHitIndex = -1;
 
-  private language$: Subscription;
-  private locale: LanguageModel;
+  language$: Subscription;
+  locale: LanguageModel;
+  searchResults: boolean;
 
   constructor(
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private windowService: WindowService
   ) {
   }
 
@@ -40,6 +43,7 @@ export class SearchBarComponent implements OnInit {
 
     if (event.target.value.length > 1) {
       this.searchHits = this.searchTerms;
+      this.searchResults = true;
     } else {
       this.closeSearch();
       return false;
@@ -66,11 +70,11 @@ export class SearchBarComponent implements OnInit {
 
   scrollIntoView(block) {
     setTimeout(() => {
-      const elms = document.getElementsByClassName('highlight');
+      const elms = document.getElementsByClassName('selectedItem');
       const searchResults = document.getElementsByClassName('searchResults');
       if (typeof elms[0] !== 'undefined') {
         elms[0].scrollIntoView({behavior: 'smooth', block: 'end', inline: 'end'});
-        if(this.searchHitIndex > 4) {
+        if (this.searchHitIndex > 4) {
           searchResults[0].scrollTop += 4;
         }
       }
@@ -79,12 +83,24 @@ export class SearchBarComponent implements OnInit {
 
   search(event, item) {
     if (item === -1) {
-      console.log('SEARCH', event.target.value);
+      this.searchTerm = event.target.value;
     } else {
-      console.log('SEARCH', this.searchHits[item]);
       this.searchTerm = this.searchHits[item];
-      this.closeSearch();
     }
+    this.closeSearch();
+    event.target.blur();
+
+    this.windowService.new(
+      'search_over',
+      true,
+      'search',
+      this.searchTerm,
+      true,
+      true,
+      null,
+      {body: 'Search Results For: ' + this.searchTerm},
+      200,
+      400);
   }
 
   preventCursor(event) {
@@ -95,8 +111,13 @@ export class SearchBarComponent implements OnInit {
   }
 
   closeSearch() {
-    this.searchHits = [];
+    setTimeout(() => {
+      this.searchHits = [];
+    }, 200);
+
     this.searchHitIndex = -1;
+    this.searchResults = false;
+
   }
 
   clearSearch() {
@@ -104,4 +125,15 @@ export class SearchBarComponent implements OnInit {
     this.searchTerm = '';
   }
 
+  closeSearchDebounce() {
+    setTimeout(() => {
+      this.closeSearch();
+    }, 200);
+  }
+
+  highlight(str, term) {
+    return str.replace(new RegExp(term, 'gi'), (rep) => {
+      return '<span class="highlight">' + rep + '</span>';
+    });
+  }
 }

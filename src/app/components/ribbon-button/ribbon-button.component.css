@@ -1,6 +1,6 @@
 .ribbonButton {
   display:inline-grid;
-  width:80px;
+  width:90px;
   text-align:center;
   position:relative;
   height:80px;
@@ -8,7 +8,6 @@
   padding-bottom:6px;
   color:var(--text);
   cursor:pointer;
-  font-size:14px;
   border-radius:4px;
   transition: all 200ms;
   border:1px solid var(--background-grey);
@@ -21,7 +20,6 @@
 
 .ribbonButton:active {
   background-color: var(--background-darkest-grey);
-  color:var(--background-grey);
 }
 
 .ribbonButton:hover .icon{
@@ -29,7 +27,7 @@
 }
 
 .icon {
-  font-size:30px;
-  margin-top:10px;
-  margin-bottom:6px;
+  font-size: 32px;
+  margin-top: 2px;
+  margin-bottom: 0px;
 }

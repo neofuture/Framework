@@ -1,16 +1,19 @@
 .titleBarTop {
   background-color:var(--primary);
   left:0;
-  height:28px;
+  height:38px;
   line-height:28px;
   padding:0 0 0 8px;
   color:white;
 }
-
+.titleBarTop span{
+  display:inline-block;
+  padding:4px;
+}
 .toolbar {
   background-color:var(--background-grey);
   color:var(--text);
-  height:130px;
+  height:88px;
 }
 
 .icon {
@@ -18,12 +21,10 @@
 }
 
 .ribbon {
-  padding:4px;
 }
 
 app-search-bar{
   float:right;
-  padding-right:10px;
-  width:400px;
+  padding-right:2px;
   position:relative;
 }

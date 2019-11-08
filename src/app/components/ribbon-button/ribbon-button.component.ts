@@ -32,9 +32,19 @@ export class RibbonButtonComponent implements OnInit {
 
   clickAction(ribbonItem: RibbonButtonModel) {
     if (ribbonItem.label === 'settings') {
-      this.windowService.new('cog_over', true, 'settings', true, true, 'demo', null, 196, 1100);
-    } else {
-      alert(ribbonItem.label + ' Clicked (To Be Implemented)');
+      this.windowService.new('cog_over', true, 'settings', null, true, true, 'demo', null, 300, 1100);
     }
+    if (ribbonItem.label === 'contactManager') {
+      this.windowService.new('contacts_over', true, 'contactManager',  null, true, true, 'contact-manager');
+    }
+
+    if (ribbonItem.label === 'quotes') {
+      this.windowService.new('quotations_over', true, 'quotes', null, true, true, 'quotes');
+    }
+
+    if (ribbonItem.label === 'messages') {
+      this.windowService.new('messages_over', true, 'messages', null, true, true, null, {body: 'Testing Messages'});
+    }
+
   }
 }

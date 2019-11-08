@@ -31,7 +31,7 @@
 
 .titleBar {
   background-color: var(--background-grey);
-  height: 24px;
+  height: 32px;
   padding: 4px;
   border-radius: 3px;
   transition: all 0.3s;

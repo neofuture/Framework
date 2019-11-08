@@ -145,9 +145,6 @@
       |
     </td>
     <td>
-      <button (click)="closeAllWindows()">Close All</button>
-    </td>
-    <td>
       <button (click)="toggleCompusoft()">{{ theme }}</button>
     </td>
   </tr>
@@ -245,10 +242,17 @@
   <tr>
     <td>
       <button (click)="getLanguage('en_gb')">{{ locale.en_gb }}</button>
-    </td>
-    <td>
+
       <button (click)="getLanguage('de_de')">{{ locale.de_de }}</button>
+
+      {{ locale['flag'] }} {{ locale[locale.language] }}</td>
+  </tr>
+  <tr>
+    <td><input type="text" [(ngModel)]="title">
+      <button (click)="setTitle()">Set Title</button>
     </td>
-    <td> {{ locale['flag'] }} {{ locale[locale.language] }}</td>
+    <td><input type="text" [(ngModel)]="title2">
+      <button (click)="setTitle2()">Set Title 2</button>
+    </td>
   </tr>
 </table>

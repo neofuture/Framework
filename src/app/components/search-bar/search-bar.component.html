@@ -1,13 +1,14 @@
 <div>
   <label>
-    <input [(ngModel)]="searchTerm"
+    <input placeholder="{{ locale.searchDots }}" [(ngModel)]="searchTerm"
            (keyup)="checkKeys($event)"
            (keydown)="preventCursor($event)"
-           autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false">
+           autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" [ngClass]="objectKeys(searchHits).length > 0 ? 'results' : ''" (blur)="closeSearchDebounce()">
+    <i class="ow-search search"></i>
   </label>
-  <div class="searchResults" [ngClass]="objectKeys(searchHits).length > 0 ? 'on' : 'off'">
+  <div class="searchResults" [ngClass]="searchResults ? 'on' : 'off'">
     <div *ngFor="let item of objectKeys(searchHits)"
-         [ngClass]="item == searchHitIndex ? 'highlight' : ''"
+         [ngClass]="item == searchHitIndex ? 'selectedItem' : ''"
          (click)="search($event, item)"
          (mouseover)="searchHitIndex = int(item)">
       {{ searchHits[item] }}

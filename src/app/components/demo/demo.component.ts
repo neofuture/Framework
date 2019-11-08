@@ -13,28 +13,10 @@ export class DemoComponent implements OnInit {
   @Input() windowItem: any;
   hasTitleBar = true;
   title = 'Test Window';
+  title2 = 'New Title 2';
   hasTab = true;
   resizable = true;
   icon = 'locationPin';
-  iconArray = [
-    'alarm', 'bin', 'catalogue_over', 'catalogue', 'catalogues_over',
-    'catalogues', 'clipboard', 'clock', 'cloud', 'cog_over', 'cog',
-    'company_over', 'company', 'computer', 'contacts_over', 'contacts',
-    'content_area', 'creditcard', 'dashboard_over', 'dashboard', 'diary_over',
-    'diary', 'downArrow', 'download', 'duplicate_page', 'email',
-    'exclamation_mark_circle', 'external_link', 'eye', 'fat_close', 'fat_tick',
-    'folder', 'forms', 'formsResponses', 'framework', 'funnel_over', 'funnel',
-    'ghost_over', 'ghost', 'globe', 'home_over', 'home', 'leftArrow',
-    'leftArrowStart', 'link', 'locationPin', 'lock_closed', 'lock_open',
-    'media', 'menu_over', 'menu', 'messages_over', 'messages', 'minus',
-    'move', 'orders_over', 'orders', 'page_add', 'page_settings', 'page_tags',
-    'pages', 'pencil', 'phone_over', 'phone', 'piechart_over', 'piechart',
-    'playbutton', 'plus', 'print_over', 'print', 'question_mark_circle',
-    'question_mark', 'quotations_over', 'quotations', 'reminder_over',
-    'reminder', 'reorder', 'rightArrow', 'rightArrowEnd', 'save', 'search_over',
-    'search', 'styles', 'tasks_over', 'tasks', 'templates', 'tree_corner',
-    'tree_line_horizontal', 'tree_line', 'tree_t', 'upArrow', 'users_over',
-    'users', 'world', 'oceanworks', 'minimise', 'restore', 'maximise', 'close'];
   bodyComponent = 'contact-manager';
 
   primary = '#337799';
@@ -55,13 +37,15 @@ export class DemoComponent implements OnInit {
   constructor(
     private windowService: WindowService,
     private languageService: LanguageService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
   }
+
   getLanguage(lang) {
     this.languageService.getLanguage(lang);
   }
@@ -81,6 +65,7 @@ export class DemoComponent implements OnInit {
       this.icon,
       JSON.parse(String(this.hasTitleBar)),
       this.title,
+      null,
       JSON.parse(String(this.hasTab)),
       JSON.parse(String(this.resizable)),
       this.bodyComponent
@@ -117,5 +102,13 @@ export class DemoComponent implements OnInit {
     document.documentElement.style.removeProperty('--background-darker-grey');
     document.documentElement.style.removeProperty('--background-darkest-grey');
     document.documentElement.style.removeProperty('--box-shadow');
+  }
+
+  setTitle() {
+    this.windowService.setTitle(this.windowItem, this.title);
+  }
+
+  setTitle2() {
+    this.windowService.setTitle2(this.windowItem, this.title2);
   }
 }

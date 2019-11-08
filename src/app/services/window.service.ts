@@ -14,6 +14,7 @@ export class WindowService {
     icon: string,
     hasTitleBar: boolean,
     title: string,
+    title2: any,
     hasTab: boolean,
     resizable: boolean,
     bodyComponent: string,
@@ -40,12 +41,19 @@ export class WindowService {
       }
     }
 
+    // Todo Refactor this so its not needed
+    if (data === null) {
+      data = {};
+      data.body = null;
+    }
+
     let windowItem: WindowModel;
     windowItem = {
       id,
       icon,
       title,
-      body: 'testing - ' + title,
+      title2,
+      body: data.body,
       bodyComponent,
       class: 'new active',
       zIndex,
@@ -205,5 +213,13 @@ export class WindowService {
     }
     windowItem.state.isMinimised = !windowItem.state.isMinimised;
     this.inactive(windowItem);
+  }
+
+  setTitle(windowItem: WindowModel, str: string) {
+    windowItem.title = str;
+  }
+
+  setTitle2(windowItem: WindowModel, str: string) {
+    windowItem.title2 = str;
   }
 }

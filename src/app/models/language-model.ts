@@ -15,4 +15,6 @@ export interface LanguageModel {
   quotes: string;
   settings: string;
   messages: string;
+  search: string;
+  searchDots: string;
 }
