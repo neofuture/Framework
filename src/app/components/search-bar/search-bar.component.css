@@ -6,10 +6,12 @@ input {
   /*width: calc(100% - 2px);*/
   font-size: 16px;
   margin: 6px;
-  padding: 2px;
   position:relative;
   width:150px;
   transition: all 0.2s;
+  text-overflow: ellipsis;
+  padding: 2px 22px 2px 2px;
+  overflow: hidden;
 }
 
 input:focus {
@@ -33,10 +35,9 @@ input:focus {
   border: 1px solid;
   border-color: var(--background-grey);
   border-top: 0;
-  margin: 6px;
   z-index: 99;
   overflow: auto;
-  margin-top: -7px;
+  margin: -7px 6px 6px;
   box-shadow: 0 9px 12px -4px rgba(0,0,0,0.18);
 }
 
@@ -72,4 +73,9 @@ input:focus {
 
 .highlight {
   text-decoration: underline;
+}
+i {
+  font-size:16px;
+  position:relative;
+  top:2px;
 }

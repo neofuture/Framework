@@ -11,7 +11,8 @@
          [ngClass]="item == searchHitIndex ? 'selectedItem' : ''"
          (click)="search($event, item)"
          (mouseover)="searchHitIndex = int(item)">
-      {{ searchHits[item] }}
+      <i *ngIf="searchHits[item].icon" [ngClass]="searchHits[item].icon"></i>
+      {{ searchHits[item].label }}
     </div>
   </div>
 </div>

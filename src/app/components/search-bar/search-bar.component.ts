@@ -28,11 +28,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchTerms = [
-      'demo string', 'test string', 'test demo string', 'contact manager',
-      'quotes', 'testing', 'oven', 'housing', 'a long test string to break the search',
-      'testing is fun', 'demo demo demo'
-    ];
 
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
@@ -40,6 +35,19 @@ export class SearchBarComponent implements OnInit {
   }
 
   checkKeys(event) {
+    this.searchTerms = [
+      {label: 'demo string'},
+      {label: 'test string'},
+      {label: 'test demo string'},
+      {icon: 'ow-contacts_over', label: this.locale.contactManager},
+      {icon: 'ow-quotations_over', label: this.locale.quotes},
+      {label: 'testing'},
+      {label: 'oven'},
+      {label: 'housing'},
+      {label: 'a long test string to break the search'},
+      {label: 'testing is fun'},
+      {label: 'demo demo demo'}
+    ];
 
     if (event.target.value.length > 1) {
       this.searchHits = this.searchTerms;
@@ -85,7 +93,7 @@ export class SearchBarComponent implements OnInit {
     if (item === -1) {
       this.searchTerm = event.target.value;
     } else {
-      this.searchTerm = this.searchHits[item];
+      this.searchTerm = this.locale[this.searchHits[item].label] || this.searchHits[item].label;
     }
     this.closeSearch();
     event.target.blur();
