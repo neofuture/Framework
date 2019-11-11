@@ -57,6 +57,10 @@ export class SearchBarComponent implements OnInit {
       return false;
     }
 
+    for (const item of Object.keys(this.searchHits)) {
+      this.searchHits[item].highlighted = this.highlight(this.searchHits[item].label, this.searchTerm);
+    }
+
     if (event.key === 'Escape') {
       this.closeSearch();
     }

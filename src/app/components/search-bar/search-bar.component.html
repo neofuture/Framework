@@ -12,7 +12,7 @@
          (click)="search($event, item)"
          (mouseover)="searchHitIndex = int(item)">
       <i *ngIf="searchHits[item].icon" [ngClass]="searchHits[item].icon"></i>
-      {{ searchHits[item].label }}
+      <span [innerHTML]="searchHits[item].highlighted"></span>
     </div>
   </div>
 </div>
