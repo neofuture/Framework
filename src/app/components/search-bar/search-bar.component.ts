@@ -67,12 +67,12 @@ export class SearchBarComponent implements OnInit {
 
     if (event.key === 'ArrowUp' && this.searchHitIndex > -1) {
       this.searchHitIndex--;
-      this.scrollIntoView('start');
+      this.scrollIntoView();
     }
 
     if (event.key === 'ArrowDown' && this.searchHitIndex < Object.keys(this.searchHits).length - 1) {
       this.searchHitIndex++;
-      this.scrollIntoView('end');
+      this.scrollIntoView();
     }
 
     if (event.key === 'Enter') {
@@ -80,7 +80,7 @@ export class SearchBarComponent implements OnInit {
     }
   }
 
-  scrollIntoView(block) {
+  scrollIntoView() {
     setTimeout(() => {
       const elms = document.getElementsByClassName('selectedItem');
       const searchResults = document.getElementsByClassName('searchResults');
@@ -132,11 +132,6 @@ export class SearchBarComponent implements OnInit {
 
   }
 
-  clearSearch() {
-    this.closeSearch();
-    this.searchTerm = '';
-  }
-
   closeSearchDebounce() {
     setTimeout(() => {
       this.closeSearch();
@@ -145,7 +140,7 @@ export class SearchBarComponent implements OnInit {
 
   highlight(str, term) {
     return str.replace(new RegExp(term, 'gi'), (rep) => {
-      return '<span class="highlight">' + rep + '</span>';
+      return `<span class="highlight">${rep}</span>`;
     });
   }
 }
