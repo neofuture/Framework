@@ -319,7 +319,6 @@ export class WindowComponent implements OnInit {
     if (windowItem.state.isMaximised) {
       return false;
     }
-    windowItem.centered = false;
     this.dragWindowItem = windowItem;
     this.makeWindowActive(this.dragWindowItem);
 
@@ -341,6 +340,8 @@ export class WindowComponent implements OnInit {
 
   moveGo(event) {
     if (this.dragWindowItem !== null) {
+      this.dragWindowItem.centered = false;
+
       let padding = 0;
       if (document.body.classList.contains('blocky')) {
         padding = 10;
@@ -390,5 +391,9 @@ export class WindowComponent implements OnInit {
 
   minimiseWindow(event: MouseEvent, windowItem: WindowModel) {
     this.windowService.minimise(event, windowItem);
+  }
+
+  centreWindow($event: MouseEvent, windowItem: WindowModel) {
+    this.windowService.centre(event, windowItem);
   }
 }

@@ -27,6 +27,8 @@
     </button>
     <button  title="{{ locale.window.minimise }}" class="windowButton ow-minimise" *ngIf="windowItem.resizable && windowItem.hasTab" (click)="minimiseWindow($event, windowItem)">
     </button>
+    <button  title="{{ locale.window.minimise }}" class="windowButton ow-centered" *ngIf="windowItem.resizable && windowItem.hasTab" (click)="centreWindow($event, windowItem)">
+    </button>
   </div>
   <div class="clientArea" [ngClass]="{'fullHeight': windowItem.hasTitleBar !== true}">
     <div *ngIf="!loaded">Loading... </div>

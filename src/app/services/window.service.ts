@@ -232,4 +232,14 @@ export class WindowService {
   setExtendedTitle(windowItem: WindowModel, str: string) {
     windowItem.extendedTitle = str;
   }
+
+  centre(event: Event, windowItem: WindowModel) {
+    windowItem.centered = true;
+    const desktop = document.getElementsByClassName('desktop')[0];
+
+    // @ts-ignore
+    windowItem.top = (desktop.offsetHeight / 2 - windowItem.height / 2);
+    // @ts-ignore
+    windowItem.left = (desktop.offsetWidth / 2 - windowItem.width / 2);
+  }
 }

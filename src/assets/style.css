@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ow-centered:before {
+  content: "\e963";
+}
 .ow-alarm:before {
   content: "\e905";
 }

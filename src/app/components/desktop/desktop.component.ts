@@ -49,13 +49,15 @@ export class DesktopComponent implements OnInit {
 
     for (const windowItem of Object.keys(this.windowList)) {
       if (this.windowList[windowItem].centered) {
-        this.windowList[windowItem].class = 'noTransition';
+        let classes = '';
         if (this.windowList[windowItem].class.indexOf('open') !== -1) {
-          this.windowList[windowItem].class += 'open';
+          classes += ' open';
         }
         if (this.windowList[windowItem].class.indexOf('active') !== -1) {
-          this.windowList[windowItem].class += 'active';
+          classes += ' active';
         }
+        this.windowList[windowItem].class = classes + ' noTransition';
+
         this.windowList[windowItem].top = (this.desktopHeight / 2 - this.windowList[windowItem].height / 2);
         this.windowList[windowItem].left = (this.desktopWidth / 2 - this.windowList[windowItem].width / 2);
       }
