@@ -8,11 +8,14 @@
       <table>
         <tr>
           <td valign="top">
-            <app-ribbon-button *ngFor="let ribbonItem of objectKeys(ribbonButtons)" [ribbonItem]="ribbonButtons[ribbonItem]"></app-ribbon-button>
+            <app-ribbon-button *ngFor="let ribbonItem of objectKeys(ribbonButtons)" [ribbonItem]="ribbonButtons[ribbonItem]" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth" [size]="size">
+
+            </app-ribbon-button>
           </td>
         </tr>
       </table>
     </div>
+    <span (click)="toggleSize()" [ngClass]="size ? 'ow-upArrow toolChange' : 'ow-downArrow toolChange'" [title]="size ? locale.contractRibbon : locale.expandRibbon"></span>
   </div>
 </div>
 

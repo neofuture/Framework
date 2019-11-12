@@ -1,9 +1,11 @@
-<app-titlebar class="titleBarTop" id="titleBarTop"></app-titlebar>
+<app-titlebar class="titleBarTop" id="titleBarTop" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth" (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
                 [titleBarTopHeight]="titleBarTopHeight"
                 [toolbarHeight]="toolbarHeight"
+                [desktopHeight]="desktopHeight"
+                [desktopWidth]="desktopWidth"
                 (closing)="onClose(windowList[windowItem])"
                 (closed)="onClosed(windowList[windowItem])"
                 (click)="makeWindowActive(windowList[windowItem])">

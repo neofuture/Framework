@@ -9,7 +9,7 @@
                   left: windowItem.left + 'px',
                   width: windowItem.width + 'px',
                   height: windowItem.height + 'px',
-                  zIndex: windowItem.zIndex
+                  zIndex: windowItem.alwaysOnTop ? 999999 : windowItem.zIndex
                  }">
   <div *ngIf="windowItem.hasTitleBar === true" class="titleBar"
        (mousedown)="moveStart($event, windowItem)"

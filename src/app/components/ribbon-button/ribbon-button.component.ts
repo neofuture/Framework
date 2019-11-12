@@ -3,7 +3,6 @@ import {LanguageService} from '../../services/language.service';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../models/language-model';
 import {RibbonButtonModel} from '../../models/ribbon-button-model';
-import {WindowService} from '../../services/window.service';
 import {ModuleService} from '../../services/module.service';
 
 @Component({
@@ -13,18 +12,20 @@ import {ModuleService} from '../../services/module.service';
 })
 export class RibbonButtonComponent implements OnInit {
 
+  constructor(
+    private languageService: LanguageService,
+    private moduleService: ModuleService
+  ) {
+  }
+
   @Input() ribbonItem: RibbonButtonModel;
+  @Input() size: boolean;
+  @Input() desktopWidth: number;
+  @Input() desktopHeight: number;
 
   language$: Subscription;
   locale: LanguageModel;
   hover = false;
-
-  constructor(
-    private languageService: LanguageService,
-    private windowService: WindowService,
-    private moduleService: ModuleService
-  ) {
-  }
 
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
@@ -33,6 +34,7 @@ export class RibbonButtonComponent implements OnInit {
   }
 
   clickAction(ribbonItem: RibbonButtonModel) {
-    this.moduleService[ribbonItem.label]();
+    this.moduleService[ribbonItem.label](this.desktopWidth, this.desktopHeight);
   }
+
 }

@@ -15,9 +15,10 @@ export class DesktopComponent implements OnInit {
 
   innerWidth: number;
   innerHeight: number;
-  desktopHeight: number;
   titleBarTopHeight: any;
   toolbarHeight: any;
+
+  desktopHeight: number;
   desktopWidth: number;
 
   @HostListener('window:resize')
@@ -27,13 +28,14 @@ export class DesktopComponent implements OnInit {
 
   constructor(
     private windowService: WindowService,
-    private moduleService: ModuleService) {
+    private moduleService: ModuleService
+  ) {
   }
 
   ngOnInit() {
-    this.resize();
     setTimeout(() => {
-      this.moduleService.settings();
+      this.resize();
+      this.moduleService.settings(this.desktopWidth, this.desktopHeight);
     });
   }
 
@@ -48,7 +50,7 @@ export class DesktopComponent implements OnInit {
     this.windowList = this.windowService.windowList;
 
     for (const windowItem of Object.keys(this.windowList)) {
-      if (this.windowList[windowItem].centered) {
+      if (this.windowList[windowItem].centered && this.windowList[windowItem].state.isMaximised === false) {
         let classes = '';
         if (this.windowList[windowItem].class.indexOf('open') !== -1) {
           classes += ' open';
@@ -74,5 +76,11 @@ export class DesktopComponent implements OnInit {
 
   makeWindowActive(windowItem: WindowModel) {
     this.windowService.active(windowItem);
+  }
+
+  resizeToolBar() {
+    setTimeout(() => {
+      this.resize();
+    }, 200);
   }
 }

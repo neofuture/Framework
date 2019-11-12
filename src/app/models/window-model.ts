@@ -29,4 +29,5 @@ export interface WindowModel {
   };
   data?: object;
   centered: boolean;
+  alwaysOnTop: boolean;
 }

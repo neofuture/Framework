@@ -9,19 +9,79 @@ export class ModuleService {
   constructor(private windowService: WindowService) {
   }
 
-  contactManager() {
-    this.windowService.new('contacts_over', true, 'contactManager', null, true, true, 'contact-manager');
+  contactManager(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'contacts_over',
+      true,
+      'contactManager',
+      null,
+      true,
+      true,
+      'contact-manager',
+      null,
+      null,
+      null,
+      null,
+      desktopWidth,
+      desktopHeight,
+      true
+    );
   }
 
-  settings() {
-    this.windowService.new('cog_over', true, 'settings', null, true, true, 'demo', null, 400, 980, true);
+  settings(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'cog_over',
+      true,
+      'settings',
+      null,
+      true,
+      true,
+      'demo',
+      null,
+      400,
+      980,
+      true,
+      desktopWidth,
+      desktopHeight,
+      false
+    );
   }
 
-  quotes() {
-    this.windowService.new('quotations_over', true, 'quotes', null, true, true, 'quotes');
+  quotes(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'quotations_over',
+      true,
+      'quotes',
+      null,
+      true,
+      true,
+      'quotes',
+      null,
+      null,
+      null,
+      false,
+      desktopWidth,
+      desktopHeight,
+      false
+    );
   }
 
-  messages() {
-    this.windowService.new('messages_over', true, 'messages', null, true, true, null, {body: 'Testing Messages'});
+  messages(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'messages_over',
+      true,
+      'messages',
+      null,
+      true,
+      true,
+      null,
+      {body: 'Testing Messages'},
+      null,
+      null,
+      false,
+      desktopWidth,
+      desktopHeight,
+      false
+    );
   }
 }

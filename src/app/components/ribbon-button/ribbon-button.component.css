@@ -31,3 +31,23 @@
   margin-top: 2px;
   margin-bottom: 0px;
 }
+
+.ribbonButton.small {
+  height:42px !important;
+  overflow:hidden;
+  padding-top:0;
+  width:46px;
+}
+.ribbonButton.small .icon{
+  transition: all 0s;
+  padding-bottom:20px;
+}
+
+.ribbonButton .ribbonText{
+  opacity:1;
+}
+
+.ribbonButton.small .ribbonText{
+  opacity:0;
+  display:none;
+}

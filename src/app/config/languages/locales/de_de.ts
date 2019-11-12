@@ -19,5 +19,7 @@ export const de_de: LanguageModel = {
   settings: 'Die Einstellungen',
   messages: 'Mitteilungen',
   search: 'Suche',
-  searchDots: 'Suche…'
+  searchDots: 'Suche…',
+  expandRibbon: 'Erweitern Sie Multifunktionsleiste',
+  contractRibbon: 'Vertragsband'
 };

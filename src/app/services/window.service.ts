@@ -22,6 +22,9 @@ export class WindowService {
     height = null,
     width = null,
     centered = false,
+    desktopWidth = null,
+    desktopHeight = null,
+    alwaysOnTop = false,
   ) {
     let id = parseInt(Object.keys(this.windowList)[Object.keys(this.windowList).length - 1], 10) || 0;
     id++;
@@ -49,11 +52,8 @@ export class WindowService {
     }
 
     if (centered) {
-      const desktop = document.getElementsByClassName('desktop')[0];
-      // @ts-ignore
-      position.top = (desktop.offsetHeight / 2 - height / 2);
-      // @ts-ignore
-      position.left = (desktop.offsetWidth / 2 - width / 2);
+      position.top = (desktopHeight / 2 - height / 2);
+      position.left = (desktopWidth / 2 - width / 2);
     }
 
     let windowItem: WindowModel;
@@ -85,7 +85,8 @@ export class WindowService {
         isMaximisedLeft: false,
         isMaximisedRight: false
       },
-      centered
+      centered,
+      alwaysOnTop
     };
 
     if (data !== null) {
@@ -233,13 +234,13 @@ export class WindowService {
     windowItem.extendedTitle = str;
   }
 
-  centre(event: Event, windowItem: WindowModel) {
+  centre(event: Event, windowItem: WindowModel, desktopWidth: number, desktopHeight: number) {
     windowItem.centered = true;
     const desktop = document.getElementsByClassName('desktop')[0];
 
     // @ts-ignore
-    windowItem.top = (desktop.offsetHeight / 2 - windowItem.height / 2);
+    windowItem.top = (desktopHeight / 2 - windowItem.height / 2);
     // @ts-ignore
-    windowItem.left = (desktop.offsetWidth / 2 - windowItem.width / 2);
+    windowItem.left = (desktopWidth / 2 - windowItem.width / 2);
   }
 }

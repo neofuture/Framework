@@ -19,5 +19,7 @@ export const blank: LanguageModel = {
   settings: '',
   messages: '',
   search: '',
-  searchDots: ''
+  searchDots: '',
+  expandRibbon: '',
+  contractRibbon: ''
 };

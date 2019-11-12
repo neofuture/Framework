@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {WindowService} from '../../services/window.service';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
@@ -12,6 +12,10 @@ import {RibbonButtonModel} from '../../models/ribbon-button-model';
 })
 export class TitleBarComponent implements OnInit {
   objectKeys = Object.keys;
+
+  @Input() desktopWidth: number;
+  @Input() desktopHeight: number;
+  @Output() changedSize = new EventEmitter<boolean>();
 
   icon = 'locationPin';
   iconArray = [
@@ -40,10 +44,12 @@ export class TitleBarComponent implements OnInit {
   locale: LanguageModel;
 
   ribbonButtons: RibbonButtonModel[];
+  size = true;
 
   constructor(
     private windowService: WindowService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private el: ElementRef
   ) {
   }
 
@@ -52,6 +58,8 @@ export class TitleBarComponent implements OnInit {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
+
+    console.log(this.el.nativeElement.offsetHeight);
 
     this.ribbonButtons = [{
       icon: 'ow-contacts',
@@ -81,4 +89,8 @@ export class TitleBarComponent implements OnInit {
     return this.iconArray[Math.floor(Math.random() * this.iconArray.length)];
   }
 
+  toggleSize() {
+    this.size = !this.size;
+    this.changedSize.emit(this.size);
+  }
 }

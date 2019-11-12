@@ -19,5 +19,7 @@ export const en_gb: LanguageModel = {
   settings: 'Settings',
   messages: 'Messages',
   search: 'Search',
-  searchDots: 'Search…'
+  searchDots: 'Search…',
+  expandRibbon: 'Expand Ribbon',
+  contractRibbon: 'Contract Ribbon'
 };

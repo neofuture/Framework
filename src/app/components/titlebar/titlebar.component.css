@@ -1,19 +1,20 @@
 .titleBarTop {
-  background-color:var(--primary);
-  left:0;
-  height:38px;
-  line-height:28px;
-  padding:0 0 0 8px;
-  color:white;
+  background-color: var(--primary);
+  left: 0;
+  line-height: 28px;
+  padding: 0 0 0 8px;
+  color: white;
 }
-.titleBarTop span{
-  display:inline-block;
-  padding:4px;
+
+.titleBarTop span {
+  display: inline-block;
+  padding: 4px;
 }
+
 .toolbar {
-  background-color:var(--background-grey);
-  color:var(--text);
-  height:88px;
+  background-color: var(--background-grey);
+  color: var(--text);
+  position: relative;
 }
 
 .icon {
@@ -23,8 +24,31 @@
 .ribbon {
 }
 
-app-search-bar{
-  float:right;
-  padding-right:2px;
-  position:relative;
+app-search-bar {
+  float: right;
+  padding-right: 2px;
+  position: relative;
+}
+
+.toolChange {
+  text-align: center;
+  width: 30px;
+  position: absolute;
+  right: calc(50% - 15px);
+  z-index: 99999;
+  bottom: -18px;
+  font-size: 18px;
+  background-color: var(--background-grey);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  transition: all 200ms;
+}
+
+.toolChange:hover {
+  width: 100%;
+  right: 0;
+}
+
+.toolChange:active {
+  background-color: var(--background-darker-grey);
 }

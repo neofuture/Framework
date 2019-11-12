@@ -43,6 +43,8 @@ export class WindowComponent implements OnInit {
   @Input() toolbarHeight: number;
 
   @Input() windowItem: WindowModel;
+  @Input() desktopWidth: number;
+  @Input() desktopHeight: number;
 
   @Output() closing = new EventEmitter<boolean>();
   @Output() closed = new EventEmitter<boolean>();
@@ -103,6 +105,7 @@ export class WindowComponent implements OnInit {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
+
   }
 
   async loadComponent() {
@@ -393,7 +396,7 @@ export class WindowComponent implements OnInit {
     this.windowService.minimise(event, windowItem);
   }
 
-  centreWindow($event: MouseEvent, windowItem: WindowModel) {
-    this.windowService.centre(event, windowItem);
+  centreWindow(event: MouseEvent, windowItem: WindowModel) {
+    this.windowService.centre(event, windowItem, this.desktopWidth, this.desktopHeight);
   }
 }
