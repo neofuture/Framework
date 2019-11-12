@@ -20,7 +20,8 @@ export class WindowService {
     bodyComponent: string,
     data = null,
     height = null,
-    width = null
+    width = null,
+    centered = false,
   ) {
     let id = parseInt(Object.keys(this.windowList)[Object.keys(this.windowList).length - 1], 10) || 0;
     id++;
@@ -45,6 +46,14 @@ export class WindowService {
     if (data === null) {
       data = {};
       data.body = null;
+    }
+
+    if (centered) {
+      const desktop = document.getElementsByClassName('desktop')[0];
+      // @ts-ignore
+      position.top = (desktop.offsetHeight / 2 - height / 2);
+      // @ts-ignore
+      position.left = (desktop.offsetWidth / 2 - width / 2);
     }
 
     let windowItem: WindowModel;
@@ -75,7 +84,8 @@ export class WindowService {
         isMaximised: false,
         isMaximisedLeft: false,
         isMaximisedRight: false
-      }
+      },
+      centered
     };
 
     if (data !== null) {

@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../models/language-model';
 import {RibbonButtonModel} from '../../models/ribbon-button-model';
 import {WindowService} from '../../services/window.service';
+import {ModuleService} from '../../services/module.service';
 
 @Component({
   selector: 'app-ribbon-button',
@@ -20,7 +21,8 @@ export class RibbonButtonComponent implements OnInit {
 
   constructor(
     private languageService: LanguageService,
-    private windowService: WindowService
+    private windowService: WindowService,
+    private moduleService: ModuleService
   ) {
   }
 
@@ -31,20 +33,6 @@ export class RibbonButtonComponent implements OnInit {
   }
 
   clickAction(ribbonItem: RibbonButtonModel) {
-    if (ribbonItem.label === 'settings') {
-      this.windowService.new('cog_over', true, 'settings', null, true, true, 'demo', null, 400, 980);
-    }
-    if (ribbonItem.label === 'contactManager') {
-      this.windowService.new('contacts_over', true, 'contactManager',  null, true, true, 'contact-manager');
-    }
-
-    if (ribbonItem.label === 'quotes') {
-      this.windowService.new('quotations_over', true, 'quotes', null, true, true, 'quotes');
-    }
-
-    if (ribbonItem.label === 'messages') {
-      this.windowService.new('messages_over', true, 'messages', null, true, true, null, {body: 'Testing Messages'});
-    }
-
+    this.moduleService[ribbonItem.label]();
   }
 }

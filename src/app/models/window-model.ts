@@ -28,4 +28,5 @@ export interface WindowModel {
     isMaximisedRight: boolean;
   };
   data?: object;
+  centered: boolean;
 }

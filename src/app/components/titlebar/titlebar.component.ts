@@ -44,7 +44,8 @@ export class TitleBarComponent implements OnInit {
   constructor(
     private windowService: WindowService,
     private languageService: LanguageService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
 
@@ -55,22 +56,25 @@ export class TitleBarComponent implements OnInit {
     this.ribbonButtons = [{
       icon: 'ow-contacts',
       iconOver: 'ow-contacts_over',
-      label: 'contactManager'
+      label: 'contactManager',
+      module: 'contactManager'
     }, {
       icon: 'ow-quotations',
       iconOver: 'ow-quotations_over',
-      label: 'quotes'
+      label: 'quotes',
+      module: 'quotes'
     }, {
       icon: 'ow-cog',
       iconOver: 'ow-cog_over',
-      label: 'settings'
+      label: 'settings',
+      module: 'settings'
     }, {
       icon: 'ow-messages',
       iconOver: 'ow-messages_over',
-      label: 'messages'
+      label: 'messages',
+      module: 'messages'
     }];
   }
-
 
 
   getIcon() {

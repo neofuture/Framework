@@ -319,6 +319,7 @@ export class WindowComponent implements OnInit {
     if (windowItem.state.isMaximised) {
       return false;
     }
+    windowItem.centered = false;
     this.dragWindowItem = windowItem;
     this.makeWindowActive(this.dragWindowItem);
 
