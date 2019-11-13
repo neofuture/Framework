@@ -60,8 +60,16 @@ export class DesktopComponent implements OnInit {
         }
         this.windowList[windowItem].class = classes + ' noTransition';
 
-        this.windowList[windowItem].top = (this.desktopHeight / 2 - this.windowList[windowItem].height / 2);
-        this.windowList[windowItem].left = (this.desktopWidth / 2 - this.windowList[windowItem].width / 2);
+        let top = this.desktopHeight / 2 - this.windowList[windowItem].height / 2;
+        if (top < 0) {
+          top = 0;
+        }
+        let left = this.desktopWidth / 2 - this.windowList[windowItem].width / 2;
+        if (left < 0) {
+          left = 0;
+        }
+        this.windowList[windowItem].top = top;
+        this.windowList[windowItem].left = left;
       }
     }
   }
