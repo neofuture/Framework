@@ -1,4 +1,4 @@
-<div>
+<div class="toolbarContainer">
   <div class="titleBarTop">
     <span>This is a Playground, click the buttons below for demonstrations</span>
     <app-search-bar></app-search-bar>
@@ -15,7 +15,7 @@
         </tr>
       </table>
     </div>
-    <span (click)="toggleSize()" [ngClass]="size ? 'ow-upArrow toolChange' : 'ow-downArrow toolChange'" [title]="size ? locale.contractRibbon : locale.expandRibbon"></span>
   </div>
+  <span (click)="toggleSize()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)" [ngClass]="barWidth" [title]="size ? locale.contractRibbon : locale.expandRibbon"></span>
 </div>
 

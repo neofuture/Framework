@@ -1,3 +1,6 @@
+.toolbarContainer {
+  position:relative;
+}
 .titleBarTop {
   background-color: var(--primary);
   left: 0;
@@ -15,6 +18,11 @@
   background-color: var(--background-grey);
   color: var(--text);
   position: relative;
+  border-bottom:1px solid;
+  border-color:var(--background-darkest-grey);
+  white-space: nowrap;
+  overflow:auto;
+  width:100%;
 }
 
 .icon {
@@ -33,22 +41,22 @@ app-search-bar {
 .toolChange {
   text-align: center;
   width: 30px;
+  height:19px;
   position: absolute;
   right: calc(50% - 15px);
   z-index: 99999;
-  bottom: -18px;
   font-size: 18px;
   background-color: var(--background-grey);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  transition: all 200ms;
+  transition: all 400ms;
+  border:1px solid;
+  border-top:0;
+  border-color:var(--background-darkest-grey);
+  bottom:-18px;
 }
 
-.toolChange:hover {
+.toolChangeWide {
   width: 100%;
   right: 0;
-}
-
-.toolChange:active {
-  background-color: var(--background-darker-grey);
 }

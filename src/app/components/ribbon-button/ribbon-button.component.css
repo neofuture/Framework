@@ -11,6 +11,7 @@
   border-radius:4px;
   transition: all 200ms;
   border:1px solid var(--background-grey);
+  white-space: normal;
 }
 .ribbonButton:hover {
   background-color:var(--background-darker-grey);

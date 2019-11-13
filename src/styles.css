@@ -273,6 +273,14 @@ body.compusoft, .compusoft *:not(pre) {
   border-radius: 0;
 }
 
+.compusoft .toolChange {
+  border:0 !important;
+}
+
+.compusoft .toolbar {
+  border:0 !important;
+}
+
 .compusoft .searchResults div {
   border-radius:0;
 }
