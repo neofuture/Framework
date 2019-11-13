@@ -63,6 +63,7 @@ export class DemoComponent implements OnInit {
   addWindow() {
     this.windowService.new(
       this.icon,
+      this.icon,
       JSON.parse(String(this.hasTitleBar)),
       this.title,
       null,

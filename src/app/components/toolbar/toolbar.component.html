@@ -6,7 +6,8 @@
     (click)="makeWindowActive(windowList[windowItem])"
     (dblclick)="maximiseWindow($event, windowList[windowItem])">
   <span [ngClass]="{'minimised': windowList[windowItem].state.isMinimised}">
-    <span class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
+    <span *ngIf="!windowList[windowItem].state.active" class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
+    <span *ngIf="windowList[windowItem].state.active" class="tabItemIcon ow-{{ windowList[windowItem].iconActive }}"></span>
   <div class="text">
     {{ locale[windowList[windowItem].title] || windowList[windowItem].title }}
   </div>

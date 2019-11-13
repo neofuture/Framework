@@ -12,6 +12,7 @@ export class WindowService {
 
   new(
     icon: string,
+    iconActive: string,
     hasTitleBar: boolean,
     title: string,
     extendedTitle: any,
@@ -70,6 +71,7 @@ export class WindowService {
     windowItem = {
       id,
       icon,
+      iconActive,
       title,
       extendedTitle,
       body: data.body,

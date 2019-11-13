@@ -11,6 +11,7 @@ export class ModuleService {
 
   contactManager(desktopWidth, desktopHeight) {
     this.windowService.new(
+      'contacts',
       'contacts_over',
       true,
       'contactManager',
@@ -30,6 +31,7 @@ export class ModuleService {
 
   settings(desktopWidth, desktopHeight) {
     this.windowService.new(
+      'cog',
       'cog_over',
       true,
       'settings',
@@ -49,6 +51,7 @@ export class ModuleService {
 
   quotes(desktopWidth, desktopHeight) {
     this.windowService.new(
+      'quotations',
       'quotations_over',
       true,
       'quotes',
@@ -68,6 +71,7 @@ export class ModuleService {
 
   messages(desktopWidth, desktopHeight) {
     this.windowService.new(
+      'messages',
       'messages_over',
       true,
       'messages',

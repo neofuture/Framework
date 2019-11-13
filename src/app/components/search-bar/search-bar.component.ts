@@ -103,6 +103,7 @@ export class SearchBarComponent implements OnInit {
     event.target.blur();
 
     this.windowService.new(
+      'search',
       'search_over',
       true,
       'search',

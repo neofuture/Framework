@@ -7,6 +7,7 @@
   line-height: 28px;
   padding: 0 0 0 8px;
   color: white;
+  height: 36px;
 }
 
 .titleBarTop span {
@@ -34,7 +35,6 @@
 
 app-search-bar {
   float: right;
-  padding-right: 2px;
   position: relative;
 }
 
@@ -54,6 +54,7 @@ app-search-bar {
   border-top:0;
   border-color:var(--background-darkest-grey);
   bottom:-18px;
+  color:var(--text);
 }
 
 .toolChangeWide {

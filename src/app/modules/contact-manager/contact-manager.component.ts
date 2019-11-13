@@ -34,6 +34,7 @@ export class ContactManagerComponent implements OnInit {
   addWindow() {
     this.windowService.new(
       'orders',
+      'orders',
       true,
       'quotes',
       this.id,

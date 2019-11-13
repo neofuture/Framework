@@ -15,7 +15,8 @@
        (mousedown)="moveStart($event, windowItem)"
        (touchstart)="moveStart($event, windowItem)"
        (dblclick)="maximiseWindow($event, windowItem)">
-    <span class="titleBarIcon ow-{{ windowItem.icon }}"></span>
+    <span *ngIf="!windowItem.state.active" class="titleBarIcon ow-{{ windowItem.icon }}"></span>
+    <span *ngIf="windowItem.state.active" class="titleBarIcon ow-{{ windowItem.iconActive }}"></span>
     <div class="titleBarText" [ngClass]="{'singleIcon': !windowItem.resizable && windowItem.hasTab, 'doubleIcon': windowItem.resizable && windowItem.hasTab}">
       {{ locale[windowItem.title] || windowItem.title }}
       <span *ngIf="windowItem.extendedTitle"> - {{ windowItem.extendedTitle }}</span>
