@@ -52,8 +52,18 @@ export class WindowService {
     }
 
     if (centered) {
-      position.top = (desktopHeight / 2 - height / 2);
-      position.left = (desktopWidth / 2 - width / 2);
+
+      let top = desktopHeight / 2 - height / 2;
+      if (top < 0) {
+        top = 0;
+      }
+      let left = desktopWidth / 2 - width / 2;
+      if (left < 0) {
+        left = 0;
+      }
+      position.top = top;
+      position.left = left;
+
     }
 
     let windowItem: WindowModel;
@@ -236,11 +246,16 @@ export class WindowService {
 
   centre(event: Event, windowItem: WindowModel, desktopWidth: number, desktopHeight: number) {
     windowItem.centered = true;
-    const desktop = document.getElementsByClassName('desktop')[0];
+    let top = desktopHeight / 2 - windowItem.height / 2;
+    if (top < 0) {
+      top = 0;
+    }
+    let left = desktopWidth / 2 - windowItem.width / 2;
+    if (left < 0) {
+      left = 0;
+    }
+    windowItem.top = top;
+    windowItem.left = left;
 
-    // @ts-ignore
-    windowItem.top = (desktopHeight / 2 - windowItem.height / 2);
-    // @ts-ignore
-    windowItem.left = (desktopWidth / 2 - windowItem.width / 2);
   }
 }
