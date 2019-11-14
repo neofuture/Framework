@@ -154,12 +154,12 @@ app-search-bar {
 }
 
 .hideBorder {
-  width: 24px;
+  width: 22px;
   position: absolute;
   top: 25px;
   opacity:0;
   height: 2px;
-  right: 0;
+  right: 1px;
   background-color: var(--background-color);
   z-index: 999;
   display:none;
@@ -221,17 +221,23 @@ app-search-bar {
   top: -2px;
   left: 4px;
 }
-
+.menuItemsBig .menuSubTree {
+  border-top-right-radius:0;
+}
 
 .menuItemsBig .hideBorder{
   background-color: white;
   display: inline;
   z-index: 99999999999;
-  right: 0px;
+  right: 0.5px;
   top: 25px;
-  opacity: 1;
+  width:25px;
+  opacity: 0;
 }
-
+.menu:hover .hideBorder {
+  opacity:1;
+}
 .menuItemsBig .menuSubTree {
-  right: -2px;
+  right: -1px;
+  top:25px;
 }
