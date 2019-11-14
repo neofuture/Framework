@@ -12,7 +12,6 @@
   background-color:var(--primary);
   left:0;
   height:42px;
-  overflow:hidden;
   padding:2px 4px 0 4px;
   position:fixed;
   z-index:999999999;

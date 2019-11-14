@@ -285,6 +285,17 @@ body.compusoft, .compusoft *:not(pre) {
   border-radius:0;
 }
 
+.compusoft .menuSubTree {
+  border-radius:0 !important;
+}
+
+.compusoft .menuSubTree div{
+  border-radius:0 !important;
+}
+.compusoft .menu{
+  border-radius:0 !important;
+}
+
 .noTransition * {
   transition: all 0s !important;
 }

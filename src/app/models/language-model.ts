@@ -19,4 +19,5 @@ export interface LanguageModel {
   searchDots: string;
   expandRibbon: string;
   contractRibbon: string;
+  moreModules: string;
 }

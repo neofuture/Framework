@@ -33,10 +33,11 @@ export class DesktopComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.resize();
     setTimeout(() => {
       this.resize();
       this.moduleService.settings(this.desktopWidth, this.desktopHeight);
-    });
+    }, 200);
   }
 
   resize() {

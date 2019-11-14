@@ -31,11 +31,11 @@ input:focus {
   position: absolute;
   background-color: var(--background-color);
   color: var(--text);
-  width: calc(100% - 14px);
+  width: calc(100% - 12px);
   border: 1px solid;
   border-color: var(--background-grey);
   border-top: 0;
-  z-index: 99;
+  z-index: 9999999999;
   overflow: auto;
   margin: -7px 6px 6px;
   box-shadow: 0 9px 12px -4px rgba(0,0,0,0.18);

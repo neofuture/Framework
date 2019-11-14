@@ -3,17 +3,34 @@
     <span>This is a Playground, click the buttons below for demonstrations</span>
     <app-search-bar></app-search-bar>
   </div>
-  <div class="toolbar">
+  <div class="toolbar" *ngIf="ribbonBar">
     <div class="ribbon">
       <table>
         <tr>
           <td valign="top">
-            <app-ribbon-button *ngFor="let ribbonItem of objectKeys(ribbonButtons)" [ribbonItem]="ribbonButtons[ribbonItem]" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth" [size]="size">
-
+            <app-ribbon-button *ngFor="let ribbonItem of objectKeys(ribbonButtons)"
+                               [ribbonItem]="ribbonButtons[ribbonItem]"
+                               [desktopHeight]="desktopHeight"
+                               [desktopWidth]="desktopWidth"
+                               [size]="size">
             </app-ribbon-button>
           </td>
         </tr>
       </table>
+    </div>
+    <div *ngIf="menuButtons.length>0" [ngClass]="size ? 'menuItems' : 'menuItemsBig'">
+      <div [ngClass]="size ? 'menu big ow-downArrow' : 'menu ow-downArrow'">
+        <span class="label">{{ objectKeys(menuButtons).length }}</span>
+        <div class="menuSubTree">
+          <div *ngFor="let menuItem of objectKeys(menuButtons)" (click)="clickAction(menuButtons[menuItem])">
+            <i class="icon {{ menuButtons[menuItem].icon }}"></i>
+            <i class="iconOver {{ menuButtons[menuItem].iconOver }}"></i>
+            <span>{{ locale[menuButtons[menuItem].label] || menuButtons[menuItem].label }}</span>
+          </div>
+        </div>
+        <div class="hideBorder"></div>
+      </div>
+      {{ locale.moreModules }}
     </div>
   </div>
   <span (click)="toggleSize()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)" [ngClass]="barWidth" [title]="size ? locale.contractRibbon : locale.expandRibbon"></span>

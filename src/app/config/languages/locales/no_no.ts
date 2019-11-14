@@ -21,5 +21,6 @@ export const no_no: LanguageModel = {
   search: 'Search',
   searchDots: 'Search...',
   expandRibbon: 'Expand Ribbon',
-  contractRibbon: 'Contract Ribbon'
+  contractRibbon: 'Contract Ribbon',
+  moreModules: 'More Modules'
 };
