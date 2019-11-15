@@ -102,17 +102,19 @@ app-search-bar {
 }
 
 .menu .label {
-  color:#ffffff;
+  color:var(--text);
   position: absolute;
-  background-color: red;
-  border-radius: 8px;
-  padding: 3px 2px 2px 2px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  padding: 2px 2px 3px 2px;
   left: 15px;
   top: -7px;
-  min-width: 17px;
-  height: 17px;
+  min-width: 18px;
+  height: 20px;
   text-align: center;
   font-size: 11px;
+  border:1px solid;
+  border-color:var(--primary)
 }
 
 
@@ -140,9 +142,9 @@ app-search-bar {
 
 .menuSubTree {
   position:absolute;
-  top:26px;
+  top:25px;
   width:200px;
-  right:-30px;
+  right:-1px;
   word-wrap: initial;
   overflow:auto;
   max-height:0;
@@ -151,15 +153,16 @@ app-search-bar {
   border-color:transparent;
   border-radius: 4px;
   text-align: left;
+  border-top-right-radius:0;
 }
 
 .hideBorder {
-  width: 22px;
+  width: 23px;
   position: absolute;
   top: 25px;
   opacity:0;
   height: 2px;
-  right: 1px;
+  right: 0px;
   background-color: var(--background-color);
   z-index: 999;
   display:none;
