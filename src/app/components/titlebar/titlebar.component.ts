@@ -199,4 +199,9 @@ export class TitleBarComponent implements OnInit {
   clickAction(ribbonItem: RibbonButtonModel) {
     this.moduleService[ribbonItem.label](this.desktopWidth, this.desktopHeight);
   }
+
+  setClass(event, classNormal: string, classOver: string) {
+    event.target.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
+
+  }
 }

@@ -1,6 +1,20 @@
 <div class="toolbarContainer">
-  <div class="titleBarTop">
+  <div class="titleBarTop"><i class="logo ow-oceanworks"></i>
     <span>This is a Playground, click the buttons below for demonstrations</span>
+    <div class="titleBarQuickLinks">
+      <i class="titleBarQuickLink ow-user"
+         (mouseover)="setClass($event, 'titleBarQuickLink ow-user', 'titleBarQuickLink ow-user_over')"
+         (mouseout)="setClass($event, 'titleBarQuickLink ow-user', 'titleBarQuickLink ow-user_over')"
+      ></i>
+      <i class="titleBarQuickLink ow-cog"
+         (mouseover)="setClass($event, 'titleBarQuickLink ow-cog', 'titleBarQuickLink ow-cog_over')"
+         (mouseout)="setClass($event, 'titleBarQuickLink ow-cog', 'titleBarQuickLink ow-cog_over')"
+      ></i>
+      <i class="titleBarQuickLink ow-menu"
+         (mouseover)="setClass($event, 'titleBarQuickLink ow-menu', 'titleBarQuickLink ow-menu_over')"
+         (mouseout)="setClass($event, 'titleBarQuickLink ow-menu', 'titleBarQuickLink ow-menu_over')"
+      ></i>
+    </div>
     <app-search-bar></app-search-bar>
   </div>
   <div class="toolbar" *ngIf="ribbonBar">

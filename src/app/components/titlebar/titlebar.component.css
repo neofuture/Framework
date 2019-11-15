@@ -33,8 +33,10 @@
 }
 
 app-search-bar {
-  position: absolute;
-  right: 0;
+  /*position: absolute;*/
+  /*right: 0;*/
+  float:right;
+  position:relative;
 }
 
 .toolChange {
@@ -243,4 +245,30 @@ app-search-bar {
 .menuItemsBig .menuSubTree {
   right: -1px;
   top:25px;
+}
+
+.logo{
+  font-size:26px;
+  line-height:26px;
+  color:white;
+  position:relative;
+  top:5px;
+}
+
+.titleBarQuickLinks{
+  color:var(--background-grey);
+  display:inline-block;
+  float:right;
+  transition: all 300ms;
+}
+.titleBarQuickLink {
+  font-size:26px;
+  line-height:26px;
+  position:relative;
+  top:5px;
+  margin:0 8px 0 8px;
+  transition: all 300ms;
+}
+.titleBarQuickLink:hover {
+  color:white;
 }
