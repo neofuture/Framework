@@ -201,6 +201,9 @@ export class TitleBarComponent implements OnInit {
   }
 
   setClass(event, classNormal: string, classOver: string) {
+    if (!event.target.classList.contains('titleBarQuickLink')) {
+      return false;
+    }
     event.target.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
 
   }
