@@ -26,6 +26,8 @@ export class WindowService {
     desktopWidth = null,
     desktopHeight = null,
     alwaysOnTop = false,
+    label = '',
+    alerted = false
   ) {
     let id = parseInt(Object.keys(this.windowList)[Object.keys(this.windowList).length - 1], 10) || 0;
     id++;
@@ -98,7 +100,9 @@ export class WindowService {
         isMaximisedRight: false
       },
       centered,
-      alwaysOnTop
+      alwaysOnTop,
+      label,
+      alerted
     };
 
     if (data !== null) {
@@ -145,6 +149,14 @@ export class WindowService {
       }
     }
     return false;
+  }
+
+  setLabel(windowItem: WindowModel, label) {
+    windowItem.label = label;
+  }
+
+  setAlerted(windowItem: WindowModel, alerted) {
+    windowItem.alerted = alerted;
   }
 
   close(windowItem: WindowModel) {

@@ -33,6 +33,7 @@ export class DemoComponent implements OnInit {
   theme = 'CS Theme';
   language$: Subscription;
   locale: LanguageModel;
+  label: string;
 
   constructor(
     private windowService: WindowService,
@@ -111,5 +112,9 @@ export class DemoComponent implements OnInit {
 
   setExtendedTitle() {
     this.windowService.setExtendedTitle(this.windowItem, this.extendedTitle);
+  }
+
+  setLabel() {
+    this.windowService.setLabel(this.windowItem, this.label);
   }
 }

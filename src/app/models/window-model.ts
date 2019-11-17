@@ -31,4 +31,6 @@ export interface WindowModel {
   data?: object;
   centered: boolean;
   alwaysOnTop: boolean;
+  label: string;
+  alerted: boolean;
 }

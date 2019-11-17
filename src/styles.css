@@ -125,7 +125,7 @@
   box-sizing: border-box;
 }
 
-input, select {
+input[type='text'], select {
   -webkit-appearance: none;
   border: 1px solid;
   border-color: var(--background-darker-grey);
@@ -156,6 +156,7 @@ select {
   --background-darker-grey: #e0dfe1;
   --background-darkest-grey: #bab9bb;
   --box-shadow: 0 0 52px 12px rgba(0, 0, 0, 0.10);
+  --alerted: #ff0000;
 }
 
 .compusoft {
@@ -165,7 +166,7 @@ select {
   --primary-dark: #214332;
 }
 
-body {
+body, .menuSubTree {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   margin: 0;
   padding: 0;

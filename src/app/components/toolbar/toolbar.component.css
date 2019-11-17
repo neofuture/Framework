@@ -46,7 +46,7 @@
 .active {
   color: var(--background-color);
   background-color: var(--primary-mid);
-  font-weight:600;
+  font-weight: 600;
 }
 
 .tabButton {
@@ -79,4 +79,89 @@
 
 .minimised * {
   border: none;
+}
+
+.label {
+  color: white;
+  position: absolute;
+  background-color: red;
+  border-radius: 10px;
+  padding: 2px;
+  right: -8px;
+  top: -8px;
+  min-width: 22px;
+  height: 22px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 16px;
+  border: 1px solid #660000;
+  font-weight: 400;
+}
+
+/*.alerted {*/
+/*  animation: colorchange 2s infinite;*/
+/*  -webkit-animation: colorchange 2s infinite;*/
+/*}*/
+/*@keyframes colorchange*/
+/*{*/
+/*  0%   {background: var(--primary);}*/
+/*  50%  {background: var(--primary-light);}*/
+/*  100% {background: var(--primary);}*/
+/*}*/
+
+/*.active.alerted {*/
+/*  animation: colorchangeActive 2s infinite ease-in-out;*/
+/*  -webkit-animation: colorchangeActive 2s infinite ease-in-out;*/
+/*}*/
+
+.alerted {
+  animation: colorchange 2s infinite ease-in-out;
+  -webkit-animation: colorchange 2s infinite ease-in-out;
+}
+
+.alerted.active {
+  animation: colorchangeTabActive 2s infinite ease-in-out;
+  -webkit-animation: colorchangeTabActive 2s infinite ease-in-out;
+}
+
+@keyframes colorchange {
+  0% {
+    background: var(--background-grey);
+  }
+  10% {
+    background: var(--alerted)
+  }
+  20% {
+    background: var(--background-grey);
+  }
+  30% {
+    background: var(--alerted);
+  }
+  40% {
+    background: var(--background-grey);
+  }
+  100% {
+    background: var(--background-grey);
+  }
+}
+
+@keyframes colorchangeTabActive {
+  0% {
+    background: var(--primary-mid);
+  }
+  10% {
+    background: var(--alerted)
+  }
+  20% {
+    background: var(--primary-mid);
+  }
+  30% {
+    background: var(--alerted);
+  }
+  40% {
+    background: var(--primary-mid);
+  }
+  100% {
+    background: var(--primary-mid);
+  }
 }

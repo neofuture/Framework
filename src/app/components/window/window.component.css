@@ -1,23 +1,23 @@
 .closed, .new {
-  opacity:0;
+  opacity: 0;
   transition: opacity 200ms, width 200ms, height, 200ms;
-  padding:0;
-  height:0;
+  padding: 0;
+  height: 0;
 }
 
 .open {
-  opacity:1;
+  opacity: 1;
   transition: opacity 200ms, width 200ms, height, 200ms;
 }
 
 .windowItem {
-  border:1px solid var(--background-darker-grey);
+  border: 1px solid var(--background-darker-grey);
   background-color: var(--background-grey);
-  height:100%;
-  width:100%;
-  padding:4px;
-  border-radius:4px;
-  position:absolute;
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  position: absolute;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -26,7 +26,7 @@
 }
 
 .windowItem div {
-  opacity:1;
+  opacity: 1;
 }
 
 .titleBar {
@@ -38,31 +38,33 @@
   cursor: move;
   color: var(--text);
 }
+
 .titleBarIcon {
-  font-size:21px;
-  position:relative;
-  top:1px;
+  font-size: 21px;
+  position: relative;
+  top: 1px;
 }
+
 .titleBarText {
   display: inline-block;
   line-height: 0;
   position: relative;
   top: -3px;
   left: 5px;
-  width:calc(100% - 80px);
+  width: calc(100% - 80px);
 }
 
 .singleIcon {
-  width:calc(100% - 56px);
+  width: calc(100% - 56px);
 }
 
 .doubleIcon {
-  width:calc(100% - 118px);
+  width: calc(100% - 118px);
 }
 
 .active .titleBar {
   background-color: var(--primary);
-  color:var(--background-color);
+  color: var(--background-color);
   transition: opacity 200ms, width 200ms, height, 200ms;
 }
 
@@ -81,12 +83,12 @@
   min-width: 20px;
   min-height: 20px;
   color: var(--background-color);
-  float:right;
+  float: right;
   padding: 0;
-  cursor:pointer;
-  position:relative;
+  cursor: pointer;
+  position: relative;
   transition: opacity 200ms, width 200ms, height, 200ms;
-  margin:2px;
+  margin: 2px;
 }
 
 .active button {
@@ -100,40 +102,92 @@
 }
 
 .clientArea {
-  height:calc(100% - 36px);
-  width:100%;
-  background-color:var(--background-color);
-  border-radius:3px;
-  margin-top:4px;
-  overflow:auto;
-  color:var(--text);
+  height: calc(100% - 36px);
+  width: 100%;
+  background-color: var(--background-color);
+  border-radius: 3px;
+  margin-top: 4px;
+  overflow: auto;
+  color: var(--text);
 }
 
 .maximised {
-  border-radius:0;
-  padding:0 !important;
-  width:100% !important;
-  height:100% !important;
-  top:0 !important;
-  left:0 !important;
-  border:none;
+  border-radius: 0;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  border: none;
   box-shadow: none;
 }
 
 
 .maximised .titleBar {
-  border-radius:0;
-  border:0;
-  cursor:default !important;
+  border-radius: 0;
+  border: 0;
+  cursor: default !important;
 }
 
 .minimised {
-  top:100% !important;
-  width:100px !important;
-  opacity:0;
+  top: 100% !important;
+  width: 100px !important;
+  opacity: 0;
 }
 
 .fullHeight {
-  height:100%;
-  margin-top:0;
+  height: 100%;
+  margin-top: 0;
+}
+
+.alerted {
+  animation: colorchange 2s infinite ease-in-out;
+  -webkit-animation: colorchange 2s infinite ease-in-out;
+}
+
+.active .alerted {
+  animation: colorchangeActive 2s infinite ease-in-out;
+  -webkit-animation: colorchangeActive 2s infinite ease-in-out;
+}
+
+@keyframes colorchange {
+  0% {
+    background: var(--background-grey);
+  }
+  10% {
+    background: var(--alerted);
+  }
+  20% {
+    background: var(--background-grey);
+  }
+  30% {
+    background: var(--alerted);
+  }
+  40% {
+    background: var(--background-grey);
+  }
+  100% {
+    background: var(--background-grey);
+  }
+}
+
+@keyframes colorchangeActive {
+  0% {
+    background: var(--primary);
+  }
+  10% {
+    background: var(--alerted);
+  }
+  20% {
+    background: var(--primary);
+  }
+  30% {
+    background: var(--alerted);
+  }
+  40% {
+    background: var(--primary);
+  }
+  100% {
+    background: var(--primary);
+  }
 }

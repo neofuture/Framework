@@ -228,5 +228,11 @@
     <td><input type="text" [(ngModel)]="extendedTitle">
       <button (click)="setExtendedTitle()">Set Title 2</button>
     </td>
+    <td><input type="text" [(ngModel)]="label">
+      <button (click)="setLabel()">Set Label</button>
+    </td>
+    <td>
+      <input type="checkbox" [(ngModel)]="windowItem.alerted"> Alerted {{ windowItem.alerted | json}}
+    </td>
   </tr>
 </table>

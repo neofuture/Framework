@@ -14,7 +14,7 @@
   <div *ngIf="windowItem.hasTitleBar === true" class="titleBar"
        (mousedown)="moveStart($event, windowItem)"
        (touchstart)="moveStart($event, windowItem)"
-       (dblclick)="maximiseWindow($event, windowItem)">
+       (dblclick)="maximiseWindow($event, windowItem)" [ngClass]="windowItem.alerted ? 'alerted' : ''">
     <span *ngIf="!windowItem.state.active" class="titleBarIcon ow-{{ windowItem.icon }}"></span>
     <span *ngIf="windowItem.state.active" class="titleBarIcon ow-{{ windowItem.iconActive }}"></span>
     <div class="titleBarText" [ngClass]="{'singleIcon': !windowItem.resizable && windowItem.hasTab, 'doubleIcon': windowItem.resizable && windowItem.hasTab}">
