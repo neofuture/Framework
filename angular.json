@@ -27,9 +27,7 @@
               "src/styles.css",
               "src/assets/style.css"
             ],
-            "scripts": [
-              "src/assets/js/particles.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -94,9 +92,7 @@
               "src/styles.css",
               "src/assets/style.css"
             ],
-            "scripts": [
-              "src/assets/js/particles.js"
-            ]
+            "scripts": []
           }
         },
         "lint": {

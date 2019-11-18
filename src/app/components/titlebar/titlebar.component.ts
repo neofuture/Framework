@@ -37,6 +37,7 @@ export class TitleBarComponent implements OnInit {
   size = true;
   barWidth = 'toolChange ow-upArrow';
   ribbonBar = false;
+  danger =  false;
 
   @HostListener('window:resize')
   onResize() {
@@ -169,6 +170,9 @@ export class TitleBarComponent implements OnInit {
 
   resize() {
     this.setRibbonButtons();
+    if (this.desktopWidth < 600 && this.size === true) {
+      this.size = false;
+    }
   }
 
   setRibbonButtons() {
