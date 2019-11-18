@@ -4,10 +4,10 @@
 .titleBarTop {
   background-color: var(--primary);
   left: 0;
-  line-height: 28px;
+  line-height: 34px;
   padding: 0 0 0 8px;
   color: white;
-  height: 36px;
+  height: 40px;
 }
 
 .titleBarTop span {
@@ -27,6 +27,11 @@
 
 .icon {
   font-family: 'Window', serif;
+}
+.iconBackground {
+  font-family: 'Window', serif;
+  position:absolute;
+  top:0;
 }
 
 .ribbon {

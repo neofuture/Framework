@@ -1,5 +1,6 @@
 <div (mouseover)="hover = true" (mouseleave)="hover = false" [ngClass]="size ? 'ribbonButton' : 'ribbonButton small'" (click)="clickAction(ribbonItem)" title="{{ locale[ribbonItem.label] || ribbonItem.label }}">
-  <i [ngClass]="['icon', hover == true ? ribbonItem.iconOver : ribbonItem.icon]"></i>
+  <i [ngClass]="['icon', hover == true ? ribbonItem.iconOver : ribbonItem.icon]" [ngStyle]="{'color': hover  ? ribbonItem.overColor : '' }"></i>
+  <i [ngClass]="['iconBackground', ribbonItem.icon]"></i>
   <div class="ribbonText">
     {{ locale[ribbonItem.label] || ribbonItem.label }}
   </div>

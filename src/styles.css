@@ -125,15 +125,18 @@
   box-sizing: border-box;
 }
 
-input[type='text'], select {
+input[type='text'],input[type='search'], select {
   -webkit-appearance: none;
   border: 1px solid;
   border-color: var(--background-darker-grey);
   color: var(--text);
   background-color: var(--background-color);
-  border-radius: 4px;
+  border-radius: 6px;
   padding:6px;
   font-size:14px;
+}
+button {
+  border-radius: 6px;
 }
 
 select {
@@ -304,7 +307,6 @@ body.compusoft, .compusoft *:not(pre) {
 button {
   border: none;
   background-color: var(--primary);
-  border-radius: 2px;
   padding: 6px;
   color: var(--background-color);
   cursor: pointer;

@@ -10,7 +10,7 @@ import {WindowService} from '../../services/window.service';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  searchTerm: string;
+  searchTerm = '';
   objectKeys = Object.keys;
   int = parseInt;
   searchTerms: object;
@@ -20,6 +20,8 @@ export class SearchBarComponent implements OnInit {
   language$: Subscription;
   locale: LanguageModel;
   searchResults: boolean;
+
+  consolelog = console.log;
 
   constructor(
     private languageService: LanguageService,

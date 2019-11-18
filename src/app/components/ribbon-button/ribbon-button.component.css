@@ -32,6 +32,14 @@
   margin-top: 2px;
   margin-bottom: 0px;
 }
+.iconBackground {
+  font-size: 32px;
+  margin-top: 2px;
+  margin-bottom: 0px;
+  position:absolute;
+  top:6px;
+  width:100%;
+}
 
 .ribbonButton.small {
   height:32px !important;
@@ -43,6 +51,15 @@
   transition: all 0s;
   padding-bottom:20px;
   font-size:24px;
+}
+
+.ribbonButton.small .iconBackground{
+  transition: all 0s;
+  padding-bottom:20px;
+  font-size:24px;
+  position:absolute;
+  width:100%;
+  top:0px !important;
 }
 
 .ribbonButton .ribbonText{

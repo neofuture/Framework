@@ -152,28 +152,37 @@
 
 @keyframes colorchange {
   0% {
+    background: var(--alerted);
+  }
+  25% {
     background: var(--background-grey);
-    color:var(--text);
   }
   50% {
     background: var(--alerted);
-    color:white;
+  }
+  75% {
+    background: var(--background-grey);
   }
   100% {
-    background: var(--background-grey);
-    color:var(--text);
+    background: var(--alerted);
   }
 }
 
 @keyframes colorchangeActive {
   0% {
-    background: var(--primary);
+    background: var(--alerted);
+  }
+  25% {
+    background: var(--text);
   }
   50% {
     background: var(--alerted);
   }
+  75% {
+    background: var(--text);
+  }
   100% {
-    background: var(--primary);
+    background: var(--alerted);
   }
 }
 
