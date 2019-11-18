@@ -24,7 +24,7 @@
 }
 
 .ribbonButton:hover .icon{
-  color:var(--primary);
+  color:var(--primary-light);
 }
 
 .icon {
