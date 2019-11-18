@@ -15,6 +15,8 @@ import { DemoComponent } from './components/demo/demo.component';
 
 import { ContactManagerComponent } from './modules/contact-manager/contact-manager.component';
 import { QuotesModule } from './modules/quotes/quotes.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { QuotesModule } from './modules/quotes/quotes.module';
   imports: [
     BrowserModule,
     FormsModule,
-    QuotesModule
+    QuotesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [WindowService],
   bootstrap: [AppComponent]
