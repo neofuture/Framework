@@ -153,21 +153,27 @@
 @keyframes colorchange {
   0% {
     background: var(--background-grey);
+    color:var(--text);
   }
   10% {
     background: var(--alerted);
+    color:white;
   }
   20% {
     background: var(--background-grey);
+    color:var(--text);
   }
   30% {
     background: var(--alerted);
+    color:white;
   }
   40% {
     background: var(--background-grey);
+    color:var(--text);
   }
   100% {
     background: var(--background-grey);
+    color:var(--text);
   }
 }
 

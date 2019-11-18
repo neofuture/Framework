@@ -115,8 +115,8 @@
 /*}*/
 
 .alerted {
-  animation: colorchange 2s infinite ease-in-out;
-  -webkit-animation: colorchange 2s infinite ease-in-out;
+  animation: colorchangeTab 2s infinite ease-in-out;
+  -webkit-animation: colorchangeTab 2s infinite ease-in-out;
 }
 
 .alerted.active {
@@ -124,24 +124,30 @@
   -webkit-animation: colorchangeTabActive 2s infinite ease-in-out;
 }
 
-@keyframes colorchange {
+@keyframes colorchangeTab {
   0% {
     background: var(--background-grey);
+    color:var(--text);
   }
   10% {
-    background: var(--alerted)
+    background: var(--alerted);
+    color:white;
   }
   20% {
     background: var(--background-grey);
+    color:var(--text);
   }
   30% {
     background: var(--alerted);
+    color:white;
   }
   40% {
     background: var(--background-grey);
+    color:var(--text);
   }
   100% {
     background: var(--background-grey);
+    color:var(--text);
   }
 }
 
@@ -150,7 +156,7 @@
     background: var(--primary-mid);
   }
   10% {
-    background: var(--alerted)
+    background: var(--alerted);
   }
   20% {
     background: var(--primary-mid);
