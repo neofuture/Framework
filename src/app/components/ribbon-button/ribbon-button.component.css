@@ -24,13 +24,17 @@
 }
 
 .ribbonButton:hover .icon{
-  color:var(--primary-light);
+  color:var(--primary-mid);
+  opacity:1;
 }
-
+.ribbonButton:hover .iconBackground{
+  color:var(--primary-dark);
+}
 .icon {
   font-size: 32px;
   margin-top: 2px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
+  opacity:0;
 }
 .iconBackground {
   font-size: 32px;
