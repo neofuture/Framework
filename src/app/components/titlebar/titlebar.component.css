@@ -4,10 +4,10 @@
 .titleBarTop {
   background-color: var(--primary);
   left: 0;
-  line-height: 34px;
+  line-height: 30px;
   padding: 0 0 0 8px;
   color: white;
-  height: 40px;
+  height: 36px;
 }
 
 .titleBarTop span {
