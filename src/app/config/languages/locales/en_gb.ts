@@ -12,7 +12,8 @@ export const en_gb: LanguageModel = {
     close: 'Close',
     minimise: 'Minimise',
     maximise: 'Maximise',
-    restore: 'Restore'
+    restore: 'Restore',
+    centered: 'Centered'
   },
   contactManager: 'Contact Manager',
   quotes: 'Quotes',

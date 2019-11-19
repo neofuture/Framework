@@ -10,6 +10,7 @@ export interface LanguageModel {
     minimise: string;
     maximise: string;
     restore: string;
+    centered: string;
   };
   contactManager: string;
   quotes: string;

@@ -12,7 +12,8 @@ export const de_de: LanguageModel = {
     close: 'Schließen',
     minimise: 'Minimieren',
     maximise: 'Maximieren',
-    restore: 'Wiederherstellen'
+    restore: 'Wiederherstellen',
+    centered: 'Zentriert'
   },
   contactManager: 'Manager Kontaktieren',
   quotes: 'Schätzungen',

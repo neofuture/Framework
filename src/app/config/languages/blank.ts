@@ -12,7 +12,8 @@ export const blank: LanguageModel = {
     close: '',
     minimise: '',
     maximise: '',
-    restore: ''
+    restore: '',
+    centered: ''
   },
   contactManager: '',
   quotes: '',
