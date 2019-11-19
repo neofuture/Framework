@@ -25,7 +25,7 @@ export class ModuleService {
       null,
       desktopWidth,
       desktopHeight,
-      true,
+      false,
       ''
     );
   }
