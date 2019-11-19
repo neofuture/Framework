@@ -12,6 +12,11 @@
   transition: all 200ms;
   border:1px solid var(--background-grey);
   white-space: normal;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .ribbonButton:hover {
   background-color:var(--background-darker-grey);
