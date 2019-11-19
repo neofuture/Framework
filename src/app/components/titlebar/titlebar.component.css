@@ -97,7 +97,7 @@ app-search-bar {
 
 .menu {
   background-color: var(--primary);
-  border-radius: 15px;
+  border-radius: 6px;
   width:26px;
   height:26px;
   color: var(--background-color);
