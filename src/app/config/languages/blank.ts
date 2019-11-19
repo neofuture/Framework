@@ -23,5 +23,7 @@ export const blank: LanguageModel = {
   searchDots: '',
   expandRibbon: '',
   contractRibbon: '',
-  moreModules: ''
+  moreModules: '',
+  ribbon1: '',
+  ribbon2: ''
 };

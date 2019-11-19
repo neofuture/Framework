@@ -23,5 +23,7 @@ export const fr_fr: LanguageModel = {
   searchDots: 'Search...',
   expandRibbon: 'Expand Ribbon',
   contractRibbon: 'Contract Ribbon',
-  moreModules: 'More Modules'
+  moreModules: 'More Modules',
+  ribbon1: 'Ribbon 1',
+  ribbon2: 'Ribbon 2'
 };

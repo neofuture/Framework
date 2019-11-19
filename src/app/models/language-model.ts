@@ -21,4 +21,6 @@ export interface LanguageModel {
   expandRibbon: string;
   contractRibbon: string;
   moreModules: string;
+  ribbon1: string;
+  ribbon2: string;
 }

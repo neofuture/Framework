@@ -1,7 +1,10 @@
 <div class="toolbarContainer">
   <div class="progress-bar progress-bar-danger" *ngIf="danger">&nbsp;</div>
   <div class="titleBarTop"><i class="logo ow-oceanworks"></i>
-    <span>Playground</span>
+    <span>Playground
+      <div (click)="setOpt1()" class="button" [ngClass]="activeTab === 1 ? 'active' : ''">{{ locale.ribbon1 }}</div>
+      <div (click)="setOpt2()" class="button" [ngClass]="activeTab === 2 ? 'active' : ''">{{ locale.ribbon2 }}</div>
+    </span>
     <div class="titleBarQuickLinks">
       <i class="titleBarQuickLink ow-user"
          (mouseover)="setClass($event, 'titleBarQuickLink ow-user', 'titleBarQuickLink ow-user_over')"
@@ -22,13 +25,13 @@
     </div>
     <app-search-bar></app-search-bar>
   </div>
-  <div class="toolbar" *ngIf="ribbonBar">
+  <div class="toolbar">
     <div class="ribbon">
       <table>
         <tr>
           <td valign="top">
-            <app-ribbon-button *ngFor="let ribbonItem of objectKeys(ribbonButtons)"
-                               [ribbonItem]="ribbonButtons[ribbonItem]"
+            <app-ribbon-button *ngFor="let ribbonItem of ribbonButtons"
+                               [ribbonItem]="ribbonItem"
                                [desktopHeight]="desktopHeight"
                                [desktopWidth]="desktopWidth"
                                [size]="size">
@@ -37,14 +40,14 @@
         </tr>
       </table>
     </div>
-    <div *ngIf="menuButtons.length>0" [ngClass]="size ? 'menuItems' : 'menuItemsBig'">
+    <div *ngIf="objectKeys(menuButtons).length > 0" [ngClass]="size ? 'menuItems' : 'menuItemsBig'">
       <div [ngClass]="size ? 'menu big ow-downArrow' : 'menu ow-downArrow'">
         <span class="label">{{ objectKeys(menuButtons).length }}</span>
         <div class="menuSubTree">
-          <div *ngFor="let menuItem of objectKeys(menuButtons)" (click)="clickAction(menuButtons[menuItem])">
-            <i class="icon {{ menuButtons[menuItem].icon }}"></i>
-            <i class="iconOver {{ menuButtons[menuItem].iconOver }}"></i>
-            <span>{{ locale[menuButtons[menuItem].label] || menuButtons[menuItem].label }}</span>
+          <div *ngFor="let menuItem of menuButtons" (click)="ribbonService.clickAction(menuItem, desktopWidth, desktopHeight)">
+            <i class="icon {{ menuItem.icon }}"></i>
+            <i class="iconOver {{ menuItem.iconOver }}"></i>
+            <span>{{ locale[menuItem.label] || menuItem.label }}</span>
           </div>
         </div>
         <div class="hideBorder"></div>

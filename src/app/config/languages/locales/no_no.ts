@@ -23,5 +23,7 @@ export const no_no: LanguageModel = {
   searchDots: 'Search...',
   expandRibbon: 'Expand Ribbon',
   contractRibbon: 'Contract Ribbon',
-  moreModules: 'More Modules'
+  moreModules: 'More Modules',
+  ribbon1: 'Ribbon 1',
+  ribbon2: 'Ribbon 2'
 };

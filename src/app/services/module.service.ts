@@ -46,9 +46,7 @@ export class ModuleService {
       true,
       desktopWidth,
       desktopHeight,
-      false,
-      '10',
-      true
+      false
     );
   }
 
@@ -90,7 +88,8 @@ export class ModuleService {
       desktopWidth,
       desktopHeight,
       false,
-      ''
+      '10',
+      true
     );
   }
 }

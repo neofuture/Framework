@@ -1,6 +1,7 @@
 .toolbarContainer {
-  position:relative;
+  position: relative;
 }
+
 .titleBarTop {
   background-color: var(--primary);
   left: 0;
@@ -12,26 +13,27 @@
 
 .titleBarTop span {
   display: inline-block;
-  padding: 4px;
+  padding-left: 6px;
 }
 
 .toolbar {
   background-color: var(--background-grey);
   color: var(--text);
   position: relative;
-  border-bottom:1px solid;
-  border-color:var(--background-darkest-grey);
+  border-bottom: 1px solid;
+  border-color: var(--background-darkest-grey);
   white-space: nowrap;
-  width:100%;
+  width: 100%;
 }
 
 .icon {
   font-family: 'Window', serif;
 }
+
 .iconBackground {
   font-family: 'Window', serif;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
 }
 
 .ribbon {
@@ -45,14 +47,14 @@
 app-search-bar {
   /*position: absolute;*/
   /*right: 0;*/
-  float:right;
-  position:relative;
+  float: right;
+  position: relative;
 }
 
 .toolChange {
   text-align: center;
   width: 30px;
-  height:19px;
+  height: 19px;
   position: absolute;
   right: calc(50% - 15px);
   z-index: 99999;
@@ -61,11 +63,11 @@ app-search-bar {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   transition: all 400ms;
-  border:1px solid;
-  border-top:0;
-  border-color:var(--background-darkest-grey);
-  bottom:-18px;
-  color:var(--text);
+  border: 1px solid;
+  border-top: 0;
+  border-color: var(--background-darkest-grey);
+  bottom: -18px;
+  color: var(--text);
 }
 
 .toolChangeWide {
@@ -73,18 +75,18 @@ app-search-bar {
   right: 0;
 }
 
-.menuItems{
-  display:inline-grid;
+.menuItems {
+  display: inline-grid;
   position: absolute;
   top: 4px;
   right: 7px;
-  width:86px;
-  text-align:center;
-  height:86px;
+  width: 86px;
+  text-align: center;
+  height: 86px;
   white-space: normal;
 }
 
-.menuItemsBig{
+.menuItemsBig {
   display: inline-grid;
   position: absolute;
   top: 5px;
@@ -98,15 +100,31 @@ app-search-bar {
 .menu {
   background-color: var(--primary);
   border-radius: 6px;
-  width:26px;
-  height:26px;
+  width: 26px;
+  height: 26px;
   color: var(--background-color);
   font-size: 19px;
   padding: 3px;
-  border:1px solid var(--primary);
+  border: 1px solid var(--primary);
   transition: all 300ms;
-  left:30px;
-  position:relative;
+  left: 30px;
+  position: relative;
+}
+
+.big.menu {
+  background-color: var(--primary);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  color: var(--background-color);
+  font-size: 19px;
+  padding: 3px;
+  border: 1px solid var(--primary);
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  left: 28px;
+  position: relative;
+  line-height: 26px;
 }
 
 .menu {
@@ -114,7 +132,7 @@ app-search-bar {
 }
 
 .menu .label {
-  color:var(--text);
+  color: var(--text);
   position: absolute;
   background-color: var(--background-color);
   border-radius: 10px;
@@ -125,14 +143,15 @@ app-search-bar {
   height: 20px;
   text-align: center;
   font-size: 11px;
-  border:1px solid;
-  border-color:var(--primary)
+  border: 1px solid;
+  border-color: var(--primary);
+  line-height: 13px;
 }
 
 
 .big {
-  top:13px;
-  right:28px;
+  top: 7px;
+  right: 28px;
 }
 
 .big .label {
@@ -141,152 +160,158 @@ app-search-bar {
 }
 
 .menu:hover, .menuItems:hover .menu {
-  color:var(--text);
-  background-color:var(--background-color);
-  height: 26px;
-  border-bottom-left-radius:0;
-  border-bottom-right-radius:0;
-  border:1px solid var(--background-darkest-grey);
-  border-bottom:0;
-  z-index:98;
+  color: var(--text);
+  background-color: var(--background-color);
+  height: 32px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 1px solid var(--background-darkest-grey);
+  border-bottom: 0;
+  z-index: 98;
   transition: all 300ms;
 }
 
 .menuSubTree {
-  position:absolute;
-  top:25px;
-  width:0px;
-  right:-1px;
+  position: absolute;
+  top: 30px;
+  width: 0;
+  right: -1px;
   word-wrap: initial;
-  overflow:auto;
-  max-height:0;
+  overflow: auto;
+  max-height: 0;
   transition: all 300ms;
-  border:1px solid;
-  border-color:transparent;
+  border: 1px solid;
+  border-color: transparent;
   border-radius: 4px;
   text-align: left;
-  border-top-right-radius:0;
+  border-top-right-radius: 0;
 }
 
 .hideBorder {
-  width: 23px;
+  width: 29px;
   position: absolute;
-  top: 25px;
-  opacity:0;
+  top: 30px;
+  opacity: 0;
   height: 2px;
   right: 0px;
   background-color: var(--background-color);
   z-index: 999;
-  display:none;
+  display: none;
 }
 
 .menuItems:hover .hideBorder {
-  display:inline;
-  top: 25px;
-  opacity:1
+  display: inline;
+  top: 30px;
+  opacity: 1
 }
 
-.menuItems:hover .menuSubTree, .menu:hover .menuSubTree{
-  max-height:200px;
-  width:200px;
+.menuItems:hover .menuSubTree, .menu:hover .menuSubTree {
+  max-height: 200px;
+  width: 200px;
   transition: all 300ms;
-  border:1px solid;
-  background-color:var(--background-color);
-  border-color:var(--background-darkest-grey);
-  box-shadow: 0 9px 12px -4px rgba(0,0,0,0.18);
-  z-index:98;
+  border: 1px solid;
+  background-color: var(--background-color);
+  border-color: var(--background-darkest-grey);
+  box-shadow: 0 9px 12px -4px rgba(0, 0, 0, 0.18);
+  z-index: 98;
 
 }
 
 .menuSubTree div {
-  display:block;
-  color:var(--text);
-  font-size:14px;
-  line-height:24px;
-  border-radius:4px;
+  display: block;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 24px;
+  border-radius: 4px;
   transition: all 200ms;
-  cursor:pointer;
-  padding:2px 6px 2px 6px;
-  margin:4px;
+  cursor: pointer;
+  padding: 2px 6px 2px 6px;
+  margin: 4px;
 }
 
 .menuSubTree div:hover {
-  background-color:var(--primary-light);
+  background-color: var(--primary-light);
   transition: all 200ms;
 }
 
 .iconOver {
-  display:none;
+  display: none;
 }
 
 .menuSubTree div:hover .iconOver {
-  display:inline;
+  display: inline;
 }
 
 .menuSubTree div:hover .icon {
-  display:none;
+  display: none;
 }
 
 .menuSubTree div i {
-  font-size:18px;
-  position:relative;
-  top:1px;
+  font-size: 18px;
+  position: relative;
+  top: 1px;
 }
+
 .menuSubTree div span {
   position: relative;
   top: -2px;
   left: 4px;
 }
+
 .menuItemsBig .menuSubTree {
-  border-top-right-radius:0;
+  border-top-right-radius: 0;
 }
 
-.menuItemsBig .hideBorder{
+.menuItemsBig .hideBorder {
   background-color: white;
   display: inline;
   z-index: 99999999999;
   right: 0.5px;
   top: 25px;
-  width:25px;
+  width: 25px;
   opacity: 0;
 }
+
 .menu:hover .hideBorder {
-  opacity:1;
+  opacity: 1;
 }
+
 .menuItemsBig .menuSubTree {
   right: -1px;
-  top:25px;
+  top: 25px;
 }
 
-.logo{
-  font-size:26px;
-  line-height:26px;
-  color:white;
-  position:relative;
-  top:5px;
+.logo {
+  font-size: 26px;
+  line-height: 26px;
+  color: white;
+  position: relative;
+  top: 5px;
 }
 
-.titleBarQuickLinks{
-  color:var(--background-grey);
-  display:inline-block;
-  float:right;
+.titleBarQuickLinks {
+  color: var(--background-grey);
+  display: inline-block;
+  float: right;
   transition: all 300ms;
 }
+
 .titleBarQuickLink {
-  font-size:20px;
-  line-height:20px;
-  position:relative;
-  top:7px;
-  margin:0 8px 0 8px;
+  font-size: 20px;
+  line-height: 20px;
+  position: relative;
+  top: 7px;
+  margin: 0 8px 0 8px;
   transition: all 300ms;
-  cursor:pointer;
-}
-.titleBarQuickLink:hover {
-  color:white;
+  cursor: pointer;
 }
 
-.titleBarQuickLink .label{
-  color:white;
+.titleBarQuickLink:hover {
+  color: white;
+}
+
+.titleBarQuickLink .label {
+  color: white;
   position: absolute;
   background-color: red;
   border-radius: 10px;
@@ -310,10 +335,28 @@ app-search-bar {
     background-position: 40px 0;
   }
 }
+
 .progress-bar {
   animation: progress-bar-stripes 300ms linear infinite;
 }
 
+.button:first-child {
+  margin-left: 16px;
+}
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 12px 4px 12px;
+  margin-top: 4px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.button.active {
+  background-color: var(--background-grey);
+  color: var(--text);
+}
 
 .progress-bar {
   background-image: linear-gradient(-45deg,
@@ -326,7 +369,6 @@ app-search-bar {
 .progress-bar-danger {
   background-color: #efa50e;
 }
-
 
 @media only screen and (max-width: 600px) {
 

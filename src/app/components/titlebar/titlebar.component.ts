@@ -1,22 +1,25 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {WindowService} from '../../services/window.service';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
 import {RibbonButtonModel} from '../../models/ribbon-button-model';
 import {ModuleService} from '../../services/module.service';
+import {RibbonService} from '../../services/ribbon.service';
 
 @Component({
   selector: 'app-titlebar',
   templateUrl: './titlebar.component.html',
   styleUrls: ['./titlebar.component.css']
 })
-export class TitleBarComponent implements OnInit {
+export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
+  ribbonButtons$: Subscription;
+  menuButtons$: Subscription;
 
   constructor(
     private windowService: WindowService,
+    public ribbonService: RibbonService,
     private languageService: LanguageService,
-    private moduleService: ModuleService
   ) {
   }
 
@@ -28,16 +31,18 @@ export class TitleBarComponent implements OnInit {
 
   icon = 'locationPin';
   language$: Subscription;
+
   locale: LanguageModel;
 
-  buttons: RibbonButtonModel[];
+  // buttons: RibbonButtonModel[];
   ribbonButtons: RibbonButtonModel[];
   menuButtons: RibbonButtonModel[];
 
   size = true;
   barWidth = 'toolChange ow-upArrow';
-  ribbonBar = false;
-  danger =  false;
+  // ribbonBar = false;
+  danger = false;
+  activeTab: number;
 
   @HostListener('window:resize')
   onResize() {
@@ -50,116 +55,68 @@ export class TitleBarComponent implements OnInit {
       this.locale = locale;
     });
 
-    this.buttons = [{
-      icon: 'ow-contacts',
-      iconOver: 'ow-contacts_over',
-      label: 'contactManager',
-      module: 'contactManager'
-    }, {
-      icon: 'ow-quotations',
-      iconOver: 'ow-quotations_over',
-      label: 'quotes',
-      module: 'quotes'
-    }, {
-      icon: 'ow-cog',
-      iconOver: 'ow-cog_over',
-      label: 'settings',
-      module: 'settings'
-    }, {
-      icon: 'ow-messages',
-      iconOver: 'ow-messages_over',
-      label: 'messages',
-      module: 'messages'
-    }, {
-      icon: 'ow-contacts',
-      iconOver: 'ow-contacts_over',
-      label: 'contactManager',
-      module: 'contactManager'
-    }, {
-      icon: 'ow-quotations',
-      iconOver: 'ow-quotations_over',
-      label: 'quotes',
-      module: 'quotes'
-    }, {
-      icon: 'ow-cog',
-      iconOver: 'ow-cog_over',
-      label: 'settings',
-      module: 'settings'
-    }, {
-      icon: 'ow-messages',
-      iconOver: 'ow-messages_over',
-      label: 'messages',
-      module: 'messages'
-    }, {
-      icon: 'ow-contacts',
-      iconOver: 'ow-contacts_over',
-      label: 'contactManager',
-      module: 'contactManager'
-    }, {
-      icon: 'ow-quotations',
-      iconOver: 'ow-quotations_over',
-      label: 'quotes',
-      module: 'quotes'
-    }, {
-      icon: 'ow-cog',
-      iconOver: 'ow-cog_over',
-      label: 'settings',
-      module: 'settings'
-    }, {
-      icon: 'ow-messages',
-      iconOver: 'ow-messages_over',
-      label: 'messages',
-      module: 'messages'
-    }, {
-      icon: 'ow-contacts',
-      iconOver: 'ow-contacts_over',
-      label: 'contactManager',
-      module: 'contactManager'
-    }, {
-      icon: 'ow-quotations',
-      iconOver: 'ow-quotations_over',
-      label: 'quotes',
-      module: 'quotes'
-    }, {
-      icon: 'ow-cog',
-      iconOver: 'ow-cog_over',
-      label: 'settings',
-      module: 'settings'
-    }, {
-      icon: 'ow-messages',
-      iconOver: 'ow-messages_over',
-      label: 'messages',
-      module: 'messages'
-    }, {
-      icon: 'ow-contacts',
-      iconOver: 'ow-contacts_over',
-      label: 'contactManager',
-      module: 'contactManager'
-    }, {
-      icon: 'ow-quotations',
-      iconOver: 'ow-quotations_over',
-      label: 'quotes',
-      module: 'quotes'
-    }, {
-      icon: 'ow-cog',
-      iconOver: 'ow-cog_over',
-      label: 'settings',
-      module: 'settings'
-    }, {
-      icon: 'ow-messages',
-      iconOver: 'ow-messages_over',
-      label: 'messages',
-      module: 'messages'
-    }];
+    this.ribbonButtons$ = this.ribbonService.ribbonButtons.subscribe(buttons => {
+      this.ribbonButtons = buttons;
+    });
+    this.menuButtons$ = this.ribbonService.menuButtons.subscribe(buttons => {
+      this.menuButtons = buttons;
+    });
+  }
 
-    setTimeout(() => {this.setRibbonButtons(); });
+  ngAfterViewInit() {
+    this.setOpt1();
+  }
+
+  setOpt1() {
+    this.activeTab = 1;
+    this.ribbonService.clearRibbon();
+
+    this.ribbonService.add('contactManager');
+    this.ribbonService.add('quotes');
+    this.ribbonService.add('settings');
+    this.ribbonService.add('messages');
+    this.ribbonService.add('contactManager');
+    this.ribbonService.add('quotes');
+    this.ribbonService.add('settings');
+    this.ribbonService.add('messages');
+    this.ribbonService.add('contactManager');
+    this.ribbonService.add('quotes');
+    this.ribbonService.add('settings');
+    this.ribbonService.add('messages');
+    this.ribbonService.add('contactManager');
+    this.ribbonService.add('quotes');
+    this.ribbonService.add('settings');
+    this.ribbonService.add('messages');
+    this.ribbonService.add('contactManager');
+    this.ribbonService.add('quotes');
+    this.ribbonService.add('settings');
+    this.ribbonService.add('messages');
+
+    this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
+  }
+
+  setOpt2() {
+    this.activeTab = 2;
+    this.ribbonService.clearRibbon();
+
+    this.ribbonService.add('quotes');
+    this.ribbonService.add('settings');
+    this.ribbonService.add('messages');
+    this.ribbonService.add('contactManager');
+
+    this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
+  }
+
+  ngOnDestroy() {
+    this.ribbonButtons$.unsubscribe();
+    this.menuButtons$.unsubscribe();
   }
 
   toggleSize() {
     this.size = !this.size;
     this.barWidth = 'toolChange';
     this.barWidth += this.size ? ' ow-upArrow' : ' ow-downArrow';
-    this.setRibbonButtons();
+    this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
     this.changedSize.emit(this.size);
   }
 
@@ -169,39 +126,10 @@ export class TitleBarComponent implements OnInit {
   }
 
   resize() {
-    this.setRibbonButtons();
+    this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
     if (this.desktopWidth < 600 && this.size === true) {
       this.size = false;
     }
-  }
-
-  setRibbonButtons() {
-    let icons = 0;
-    if (this.size) {
-      icons = (this.desktopWidth - 160) / 90;
-    } else {
-      icons = (this.desktopWidth - 102) / 34 ;
-    }
-    if (icons > this.buttons.length) {
-      icons = this.buttons.length;
-    }
-
-    this.ribbonButtons = [];
-    this.menuButtons = [];
-    let index = 0;
-    for (let i = 0; i < icons; i++) {
-      this.ribbonButtons.push(this.buttons[i]);
-      index = i;
-    }
-    index++;
-    for (let i = index; i < this.buttons.length; i++) {
-      this.menuButtons.push(this.buttons[i]);
-    }
-    this.ribbonBar = true;
-  }
-
-  clickAction(ribbonItem: RibbonButtonModel) {
-    this.moduleService[ribbonItem.label](this.desktopWidth, this.desktopHeight);
   }
 
   setClass(event, classNormal: string, classOver: string) {
@@ -209,6 +137,5 @@ export class TitleBarComponent implements OnInit {
       return false;
     }
     event.target.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
-
   }
 }

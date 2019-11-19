@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../models/language-model';
 import {RibbonButtonModel} from '../../models/ribbon-button-model';
 import {ModuleService} from '../../services/module.service';
+import {RibbonService} from '../../services/ribbon.service';
 
 @Component({
   selector: 'app-ribbon-button',
@@ -14,7 +15,7 @@ export class RibbonButtonComponent implements OnInit {
 
   constructor(
     private languageService: LanguageService,
-    private moduleService: ModuleService
+    public ribbonService: RibbonService
   ) {
   }
 
@@ -32,9 +33,4 @@ export class RibbonButtonComponent implements OnInit {
       this.locale = locale;
     });
   }
-
-  clickAction(ribbonItem: RibbonButtonModel) {
-    this.moduleService[ribbonItem.label](this.desktopWidth, this.desktopHeight);
-  }
-
 }

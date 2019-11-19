@@ -33,8 +33,10 @@
   </div>
   <div class="clientArea" [ngClass]="{'fullHeight': windowItem.hasTitleBar !== true}">
     <div *ngIf="!loaded">Loading... </div>
-    <div *ngIf="windowItem.bodyComponent === null">{{ windowItem.body }}</div>
-    <ng-container  *ngIf="windowItem.bodyComponent !== null" #viewContainer></ng-container>
+    <ng-container  *ngIf="windowItem.bodyComponent !== null else windowBody" #viewContainer></ng-container>
   </div>
 </div>
 
+<ng-template #windowBody>
+  {{ windowItem.body }}
+</ng-template>

@@ -23,5 +23,7 @@ export const de_de: LanguageModel = {
   searchDots: 'Suche…',
   expandRibbon: 'Erweitern Sie Multifunktionsleiste',
   contractRibbon: 'Vertragsband',
-  moreModules: 'Weitere Module'
+  moreModules: 'Weitere Module',
+  ribbon1: 'Ribbon 1',
+  ribbon2: 'Ribbon 2'
 };

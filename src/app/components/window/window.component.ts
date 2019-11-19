@@ -149,7 +149,6 @@ export class WindowComponent implements OnInit {
   }
 
   resizeCursorSet(event, windowItem) {
-    // @ts-ignore
     if (!event.target.classList.contains('windowItem') || windowItem.resizable === false) {
       return false;
     }

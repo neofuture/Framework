@@ -300,6 +300,13 @@ body.compusoft, .compusoft *:not(pre) {
   border-radius:0 !important;
 }
 
+.compusoft .button {
+  display:inline-block;
+  padding:4px 12px 4px 12px !important;
+  border-radius:0 !important;
+  margin-top:0 !important;
+}
+
 .noTransition * {
   transition: all 0s !important;
 }
