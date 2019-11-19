@@ -24,7 +24,7 @@ input:focus {
   left: 8px;
   color: var(--text);
   font-size: 21px;
-  margin-top: -4px;
+  margin-top: 6px;
   transition: all 300ms;
 }
 

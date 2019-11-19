@@ -9,7 +9,8 @@
   </tr>
   <tr>
     <td>
-      <select [(ngModel)]="icon" name="icon">
+
+      <select [(ngModel)]="icon" name="icon" [attr.[attr.aria-label]]="'icon'">
         <option value="alarm">Alarm</option>
         <option value="bin">Bin</option>
         <option value="catalogue_over">Catalogue Over</option>
@@ -112,28 +113,28 @@
       </select>
     </td>
     <td>
-      <input type="text" name="title" [(ngModel)]="title" value="Test Window">
+      <input type="text" name="title" [(ngModel)]="title" value="Test Window" [attr.[attr.aria-label]]="'title'">
     </td>
     <td>
-      <select [(ngModel)]="bodyComponent" name="bodyComponent">
+      <select [(ngModel)]="bodyComponent" name="bodyComponent" [attr.aria-label]="'Body Component'">
         <option value="contact-manager">contact-manager</option>
         <option value="quotes">quotes</option>
       </select>
     </td>
     <td>
-      <select name="hasTitleBar" [(ngModel)]="hasTitleBar">
+      <select name="hasTitleBar" [(ngModel)]="hasTitleBar" [attr.aria-label]="'Has Title Bar'">
         <option value="true">Yes</option>
         <option value="false">No</option>
       </select>
     </td>
     <td>
-      <select name="hasTab" [(ngModel)]="hasTab">
+      <select name="hasTab" [(ngModel)]="hasTab"  [attr.aria-label]="'Has Tab'">
         <option value="true">Yes</option>
         <option value="false">No</option>
       </select>
     </td>
     <td>
-      <select name="resizable" [(ngModel)]="resizable">
+      <select name="resizable" [(ngModel)]="resizable" [attr.aria-label]="'Resizable'">
         <option value="true">Yes</option>
         <option value="false">No</option>
       </select>
@@ -153,52 +154,54 @@
 <table>
   <tr>
     <td>
-      <input [(ngModel)]="primary" size="6">
+      <input [(ngModel)]="primary" size="6"  [attr.aria-label]="'Primary'">
       <div [ngStyle]="{backgroundColor: primary, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="primaryLight" size="6">
+
+      <input [(ngModel)]="primaryLight" size="6" [attr.aria-label]="'Primary Light'">
       <div [ngStyle]="{backgroundColor: primaryLight, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="primaryDark" size="6">
+
+      <input [(ngModel)]="primaryDark" size="6" [attr.aria-label]="'Primary Dark'">
       <div [ngStyle]="{backgroundColor: primaryDark, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="primaryMid" size="6">
+      <input [(ngModel)]="primaryMid" size="6" [attr.aria-label]="'Primary Mid'">
       <div [ngStyle]="{backgroundColor: primaryMid, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
   </tr>
   <tr>
     <td>
-      <input [(ngModel)]="text" size="6">
+      <input [(ngModel)]="text" size="6" [attr.aria-label]="'text'">
       <div [ngStyle]="{backgroundColor: text, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="backgroundColor" size="6">
+      <input [(ngModel)]="backgroundColor" size="6" [attr.aria-label]="'Background Colour'">
       <div [ngStyle]="{backgroundColor: backgroundColor, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="backgroundGrey" size="6">
+      <input [(ngModel)]="backgroundGrey" size="6" [attr.aria-label]="'Background Grey'">
       <div [ngStyle]="{backgroundColor: backgroundGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="backgroundMidGrey" size="6">
+      <input [(ngModel)]="backgroundMidGrey" size="6" [attr.aria-label]="'Background Mid Grey'">
       <div [ngStyle]="{backgroundColor: backgroundMidGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="backgroundDarkerGrey" size="6">
+      <input [(ngModel)]="backgroundDarkerGrey" size="6" [attr.aria-label]="'Background Darker Grey'">
       <div [ngStyle]="{backgroundColor: backgroundDarkerGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
     </td>
     <td>
-      <input [(ngModel)]="backgroundDarkestGrey" size="6">
+      <input [(ngModel)]="backgroundDarkestGrey" size="6" [attr.aria-label]="'Bakcground Darkest Grey'">
       <div [ngStyle]="{backgroundColor: backgroundDarkestGrey, display:'inline-block', width: '10px'}">&nbsp;
       </div>
     </td>
   </tr>
   <tr>
     <td>
-      <input [(ngModel)]="boxShadow" size="8">
+      <input [(ngModel)]="boxShadow" size="8" [attr.aria-label]="'Box Shadow'">
     </td>
     <td>
       <button (click)="setTheme()">Set Theme</button>
@@ -222,17 +225,16 @@
 <hr>
 <table>
   <tr>
-    <td><input type="text" [(ngModel)]="title">
+    <td><input type="text" [(ngModel)]="title"  [attr.aria-label]="'Title'">
       <button (click)="setTitle()">Set Title</button>
     </td>
-    <td><input type="text" [(ngModel)]="extendedTitle">
-      <button (click)="setExtendedTitle()">Set Title 2</button>
+    <td><input type="text" [(ngModel)]="extendedTitle" [attr.aria-label]="'Extended Title'">
     </td>
-    <td><input type="text" [(ngModel)]="label">
+    <td><input type="text" [(ngModel)]="label"  [attr.aria-label]="'Label'">
       <button (click)="setLabel()">Set Label</button>
     </td>
     <td>
-      <input type="checkbox" [(ngModel)]="windowItem.alerted"> Alerted {{ windowItem.alerted | json}}
+      <input type="checkbox" [(ngModel)]="windowItem.alerted" [attr.aria-label]="'Alerted'"> Alerted {{ windowItem.alerted | json}}
     </td>
   </tr>
 </table>
