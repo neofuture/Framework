@@ -1,6 +1,8 @@
 <app-titlebar class="titleBarTop" id="titleBarTop" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth" (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
-  <div id="particles-js"></div>
+<pre>
+{{ data.message | json }}
+</pre>
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
                 [titleBarTopHeight]="titleBarTopHeight"

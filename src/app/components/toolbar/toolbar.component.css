@@ -51,7 +51,7 @@
 
 .tabButton {
   border: none;
-  background-color: var(--primary-mid);
+  background-color: rbga(0,0,0,0.2);
   border-radius: 4px;
   min-width: 20px;
   min-height: 20px;

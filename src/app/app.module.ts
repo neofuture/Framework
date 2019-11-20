@@ -17,6 +17,7 @@ import { ContactManagerComponent } from './modules/contact-manager/contact-manag
 import { QuotesModule } from './modules/quotes/quotes.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {ExternalComponent} from './components/external/external.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { environment } from '../environments/environment';
     SearchBarComponent,
     DemoComponent,
 
-    ContactManagerComponent
+    ContactManagerComponent,
+    ExternalComponent
   ],
   imports: [
     BrowserModule,

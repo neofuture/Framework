@@ -2,6 +2,8 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
 import {ModuleService} from '../../services/module.service';
+import {Subscription} from 'rxjs';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-desktop',
@@ -21,6 +23,9 @@ export class DesktopComponent implements OnInit {
   desktopHeight: number;
   desktopWidth: number;
 
+  dataSub: Subscription;
+  data: any;
+
   @HostListener('window:resize')
   onResize() {
     this.resize();
@@ -28,7 +33,8 @@ export class DesktopComponent implements OnInit {
 
   constructor(
     private windowService: WindowService,
-    private moduleService: ModuleService
+    private moduleService: ModuleService,
+    private dataService: DataService
   ) {
   }
 
@@ -38,6 +44,10 @@ export class DesktopComponent implements OnInit {
       this.resize();
       this.moduleService.settings(this.desktopWidth, this.desktopHeight);
     }, 200);
+
+    this.dataSub = this.dataService.object.subscribe(object => {
+      this.data = object || {};
+    });
   }
 
   resize() {

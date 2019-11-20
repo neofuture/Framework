@@ -70,7 +70,6 @@ export class RibbonService {
   }
 
   setRibbonButtons(size, desktopWidth, desktopHeight) {
-    console.log(desktopWidth);
     let icons = 0;
     if (size) {
       icons = (desktopWidth - 160) / 90;

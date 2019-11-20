@@ -34,13 +34,11 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
 
   locale: LanguageModel;
 
-  // buttons: RibbonButtonModel[];
   ribbonButtons: RibbonButtonModel[];
   menuButtons: RibbonButtonModel[];
 
   size = true;
   barWidth = 'toolChange ow-upArrow';
-  // ribbonBar = false;
   danger = false;
   activeTab: number;
 
@@ -64,7 +62,9 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.setOpt1();
+    setTimeout(() => {
+      this.setOpt1();
+    });
   }
 
   setOpt1() {

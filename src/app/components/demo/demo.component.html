@@ -121,6 +121,8 @@
         <option value="quotes">quotes</option>
       </select>
     </td>
+  </tr>
+  <tr>
     <td>
       <select name="hasTitleBar" [(ngModel)]="hasTitleBar" [attr.aria-label]="'Has Title Bar'">
         <option value="true">Yes</option>
@@ -154,59 +156,39 @@
 <table>
   <tr>
     <td>
-      <input [(ngModel)]="primary" size="6"  [attr.aria-label]="'Primary'">
-      <div [ngStyle]="{backgroundColor: primary, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
+      <input type="color" [(ngModel)]="primary" size="6"  [attr.aria-label]="'Primary'">
 
-      <input [(ngModel)]="primaryLight" size="6" [attr.aria-label]="'Primary Light'">
-      <div [ngStyle]="{backgroundColor: primaryLight, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
 
-      <input [(ngModel)]="primaryDark" size="6" [attr.aria-label]="'Primary Dark'">
-      <div [ngStyle]="{backgroundColor: primaryDark, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
-      <input [(ngModel)]="primaryMid" size="6" [attr.aria-label]="'Primary Mid'">
-      <div [ngStyle]="{backgroundColor: primaryMid, display:'inline-block', width: '10px'}">&nbsp;</div>
+      <input type="color" [(ngModel)]="primaryLight" size="6" [attr.aria-label]="'Primary Light'">
+
+
+      <input type="color" [(ngModel)]="primaryDark" size="6" [attr.aria-label]="'Primary Dark'">
+
+      <input type="color" [(ngModel)]="primaryMid" size="6" [attr.aria-label]="'Primary Mid'">
     </td>
   </tr>
   <tr>
     <td>
-      <input [(ngModel)]="text" size="6" [attr.aria-label]="'text'">
-      <div [ngStyle]="{backgroundColor: text, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
-      <input [(ngModel)]="backgroundColor" size="6" [attr.aria-label]="'Background Colour'">
-      <div [ngStyle]="{backgroundColor: backgroundColor, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
-      <input [(ngModel)]="backgroundGrey" size="6" [attr.aria-label]="'Background Grey'">
-      <div [ngStyle]="{backgroundColor: backgroundGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
-      <input [(ngModel)]="backgroundMidGrey" size="6" [attr.aria-label]="'Background Mid Grey'">
-      <div [ngStyle]="{backgroundColor: backgroundMidGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
-      <input [(ngModel)]="backgroundDarkerGrey" size="6" [attr.aria-label]="'Background Darker Grey'">
-      <div [ngStyle]="{backgroundColor: backgroundDarkerGrey, display:'inline-block', width: '10px'}">&nbsp;</div>
-    </td>
-    <td>
-      <input [(ngModel)]="backgroundDarkestGrey" size="6" [attr.aria-label]="'Bakcground Darkest Grey'">
-      <div [ngStyle]="{backgroundColor: backgroundDarkestGrey, display:'inline-block', width: '10px'}">&nbsp;
-      </div>
+      <input type="color" [(ngModel)]="text" size="6" [attr.aria-label]="'text'">
+
+      <input type="color" [(ngModel)]="backgroundColor" size="6" [attr.aria-label]="'Background Colour'">
+
+      <input type="color" [(ngModel)]="backgroundGrey" size="6" [attr.aria-label]="'Background Grey'">
+
+      <input type="color" [(ngModel)]="backgroundMidGrey" size="6" [attr.aria-label]="'Background Mid Grey'">
+
+      <input type="color" [(ngModel)]="backgroundDarkerGrey" size="6" [attr.aria-label]="'Background Darker Grey'">
+
+      <input type="color" [(ngModel)]="backgroundDarkestGrey" size="6" [attr.aria-label]="'Bakcground Darkest Grey'">
+
     </td>
   </tr>
   <tr>
     <td>
-      <input [(ngModel)]="boxShadow" size="8" [attr.aria-label]="'Box Shadow'">
-    </td>
-    <td>
+      <input type="text" [(ngModel)]="boxShadow" size="8" [attr.aria-label]="'Box Shadow'">
+
       <button (click)="setTheme()">Set Theme</button>
-    </td>
-    <td>
+
       <button (click)="revertTheme()">Reset Theme</button>
     </td>
   </tr>
@@ -230,6 +212,11 @@
     </td>
     <td><input type="text" [(ngModel)]="extendedTitle" [attr.aria-label]="'Extended Title'">
     </td>
+  </tr>
+</table>
+<hr>
+<table>
+  <tr>
     <td><input type="text" [(ngModel)]="label"  [attr.aria-label]="'Label'">
       <button (click)="setLabel()">Set Label</button>
     </td>
