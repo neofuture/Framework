@@ -87,7 +87,7 @@ export class SearchBarComponent implements OnInit {
       const elms = document.getElementsByClassName('selectedItem');
       const searchResults = document.getElementsByClassName('searchResults');
       if (typeof elms[0] !== 'undefined') {
-        elms[0].scrollIntoView({behavior: 'smooth', block: 'end', inline: 'end'});
+        elms[0].scrollIntoView({behavior: 'auto', block: 'end', inline: 'end'});
         if (this.searchHitIndex > 4) {
           searchResults[0].scrollTop += 4;
         }
