@@ -128,6 +128,12 @@ export class WindowComponent implements OnInit {
       componentRef.instance.data = this.windowItem.data;
     }
 
+    if (this.windowItem.bodyComponent === 'welcome') {
+      const {WelcomeComponent} = await import('../welcome/welcome.component');
+      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(WelcomeComponent));
+      componentRef.instance.windowItem = this.windowItem;
+    }
+
     this.loaded = true;
   }
 

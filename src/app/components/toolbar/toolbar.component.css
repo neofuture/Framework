@@ -71,6 +71,10 @@
 
 }
 
+.alerted .tabButton {
+  background-color: #b50000;
+}
+
 .minimised {
   border-bottom: 4px solid orange;
   border-bottom-style: inset;

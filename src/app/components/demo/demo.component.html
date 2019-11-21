@@ -130,7 +130,7 @@
       </select>
     </td>
     <td>
-      <select name="hasTab" [(ngModel)]="hasTab"  [attr.aria-label]="'Has Tab'">
+      <select name="hasTab" [(ngModel)]="hasTab" [attr.aria-label]="'Has Tab'">
         <option value="true">Yes</option>
         <option value="false">No</option>
       </select>
@@ -156,7 +156,7 @@
 <table>
   <tr>
     <td>
-      <input type="color" [(ngModel)]="primary" size="6"  [attr.aria-label]="'Primary'">
+      <input type="color" [(ngModel)]="primary" size="6" [attr.aria-label]="'Primary'">
 
 
       <input type="color" [(ngModel)]="primaryLight" size="6" [attr.aria-label]="'Primary Light'">
@@ -207,24 +207,27 @@
 <hr>
 <table>
   <tr>
-    <td><input type="text" [(ngModel)]="title"  [attr.aria-label]="'Title'">
+    <td><input type="text" [(ngModel)]="title" [attr.aria-label]="'Title'">
       <button (click)="setTitle()">Set Title</button>
     </td>
     <td><input type="text" [(ngModel)]="extendedTitle" [attr.aria-label]="'Extended Title'">
+      <button (click)="setExtendedTitle()">Set Extended Title</button>
     </td>
   </tr>
 </table>
 <hr>
 <table>
   <tr>
-    <td><input type="text" [(ngModel)]="label"  [attr.aria-label]="'Label'">
+    <td><input type="text" [(ngModel)]="label" [attr.aria-label]="'Label'">
       <button (click)="setLabel()">Set Label</button>
     </td>
     <td>
-      <input type="checkbox" [(ngModel)]="windowItem.alerted" [attr.aria-label]="'Alerted'"> Alerted {{ windowItem.alerted | json}}
+      <input type="checkbox" [(ngModel)]="windowItem.alerted" [attr.aria-label]="'Alerted'">
+      Alerted {{ windowItem.alerted | json}}
     </td>
     <td>
-      <input type="checkbox" [(ngModel)]="windowItem.alwaysOnTop" [attr.aria-label]="'Always On Top'"> Always On Top {{ windowItem.alwaysOnTop | json}}
+      <input type="checkbox" [(ngModel)]="windowItem.alwaysOnTop" [attr.aria-label]="'Always On Top'"> Always On
+      Top {{ windowItem.alwaysOnTop | json}}
     </td>
   </tr>
 </table>

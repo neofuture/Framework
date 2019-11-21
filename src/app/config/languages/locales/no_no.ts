@@ -25,5 +25,8 @@ export const no_no: LanguageModel = {
   contractRibbon: 'Contract Ribbon',
   moreModules: 'More Modules',
   ribbon1: 'Ribbon 1',
-  ribbon2: 'Ribbon 2'
+  ribbon2: 'Ribbon 2',
+  welcome: 'Welcome',
+  close: 'Close',
+  product: 'Product Name'
 };

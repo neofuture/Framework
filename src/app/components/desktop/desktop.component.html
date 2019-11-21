@@ -3,6 +3,9 @@
 <pre>
 {{ data.message | json }}
 </pre>
+<pre>
+{{ params | json }}
+</pre>
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
                 [titleBarTopHeight]="titleBarTopHeight"

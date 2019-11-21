@@ -23,4 +23,7 @@ export interface LanguageModel {
   moreModules: string;
   ribbon1: string;
   ribbon2: string;
+  welcome: string;
+  close: string;
+  product: string;
 }

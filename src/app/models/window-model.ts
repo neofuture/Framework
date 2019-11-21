@@ -33,4 +33,6 @@ export interface WindowModel {
   alwaysOnTop: boolean;
   label: string;
   alerted: boolean;
+  autoClose?: number;
+  intervalTimer?: any;
 }

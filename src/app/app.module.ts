@@ -17,7 +17,9 @@ import { ContactManagerComponent } from './modules/contact-manager/contact-manag
 import { QuotesModule } from './modules/quotes/quotes.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import {ExternalComponent} from './components/external/external.component';
+import { ExternalComponent } from './components/external/external.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,14 +33,15 @@ import {ExternalComponent} from './components/external/external.component';
     RibbonButtonComponent,
     SearchBarComponent,
     DemoComponent,
-
     ContactManagerComponent,
-    ExternalComponent
+    ExternalComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     QuotesModule,
+    RouterModule.forRoot([]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [WindowService],

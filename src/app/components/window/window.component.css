@@ -150,6 +150,10 @@
   -webkit-animation: colorchangeActive 2s infinite ease-in-out;
 }
 
+.alerted .windowButton {
+  background-color: #b50000;
+}
+
 @keyframes colorchange {
   0% {
     background: var(--alerted);

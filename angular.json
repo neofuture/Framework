@@ -29,7 +29,9 @@
               "src/styles.css",
               "src/assets/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/external.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -98,7 +100,9 @@
               "src/styles.css",
               "src/assets/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/external.js"
+            ]
           }
         },
         "lint": {

@@ -4,6 +4,7 @@ import {WindowService} from '../../services/window.service';
 import {ModuleService} from '../../services/module.service';
 import {Subscription} from 'rxjs';
 import {DataService} from '../../services/data.service';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-desktop',
@@ -25,6 +26,7 @@ export class DesktopComponent implements OnInit {
 
   dataSub: Subscription;
   data: any;
+  params: Params;
 
   @HostListener('window:resize')
   onResize() {
@@ -34,20 +36,46 @@ export class DesktopComponent implements OnInit {
   constructor(
     private windowService: WindowService,
     private moduleService: ModuleService,
-    private dataService: DataService
+    private dataService: DataService,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(params => {
+      this.params = params;
+    });
+
     this.resize();
     setTimeout(() => {
       this.resize();
-      this.moduleService.settings(this.desktopWidth, this.desktopHeight);
-    }, 200);
+    }, 100);
 
     this.dataSub = this.dataService.object.subscribe(object => {
       this.data = object || {};
     });
+
+    this.windowService.new(
+      'oceanworks',
+      'oceanworks',
+      false,
+      'welcome',
+      null,
+      false,
+      false,
+      'welcome',
+      null,
+      400,
+      600,
+      true,
+      this.desktopWidth,
+      this.desktopHeight,
+      true,
+      '0',
+      false,
+      8000
+    );
   }
 
   resize() {

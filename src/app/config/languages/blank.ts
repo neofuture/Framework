@@ -25,5 +25,8 @@ export const blank: LanguageModel = {
   contractRibbon: '',
   moreModules: '',
   ribbon1: '',
-  ribbon2: ''
+  ribbon2: '',
+  welcome: '',
+  close: '',
+  product: ''
 };

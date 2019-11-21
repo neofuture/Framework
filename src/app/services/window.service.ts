@@ -27,7 +27,8 @@ export class WindowService {
     desktopHeight = null,
     alwaysOnTop = false,
     label = '',
-    alerted = false
+    alerted = false,
+    autoClose = 0
   ) {
     let id = parseInt(Object.keys(this.windowList)[Object.keys(this.windowList).length - 1], 10) || 0;
     id++;
@@ -48,7 +49,6 @@ export class WindowService {
       }
     }
 
-    // Todo Refactor this so its not needed
     if (data === null) {
       data = {};
       data.body = null;
@@ -102,7 +102,8 @@ export class WindowService {
       centered,
       alwaysOnTop,
       label,
-      alerted
+      alerted,
+      autoClose
     };
 
     if (data !== null) {
@@ -113,6 +114,16 @@ export class WindowService {
       this.windowList[id].class = 'open';
       this.active(windowItem);
     });
+
+    if (this.windowList[id].autoClose > 0) {
+      this.windowList[id].intervalTimer = setInterval(() => {
+        this.windowList[id].autoClose -= 100;
+        if (this.windowList[id].autoClose < -1) {
+          clearInterval(this.windowList[id].intervalTimer);
+          this.close(this.windowList[id]);
+        }
+      }, 100);
+    }
   }
 
   findXYPosition(height, width) {
@@ -160,7 +171,9 @@ export class WindowService {
   }
 
   close(windowItem: WindowModel) {
-    window.event.stopPropagation();
+    if (window.event) {
+      window.event.stopPropagation();
+    }
     this.closeById(windowItem.id);
   }
 
@@ -211,6 +224,10 @@ export class WindowService {
   onClosed(windowItem: WindowModel) {
     let lastWindow: WindowModel;
     let windowActive = false;
+    if (windowItem.intervalTimer) {
+      clearInterval(windowItem.intervalTimer);
+    }
+
     for (const key in this.windowList) {
       if (this.windowList[key].state.isMinimised === false) {
         if (windowItem === this.windowList[key]) {

@@ -25,5 +25,8 @@ export const de_de: LanguageModel = {
   contractRibbon: 'Vertragsband',
   moreModules: 'Weitere Module',
   ribbon1: 'Ribbon 1',
-  ribbon2: 'Ribbon 2'
+  ribbon2: 'Ribbon 2',
+  welcome: 'Welcome',
+  close: 'Close',
+  product: 'Product Name'
 };
