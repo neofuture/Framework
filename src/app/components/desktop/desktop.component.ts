@@ -48,9 +48,7 @@ export class DesktopComponent implements OnInit {
     });
 
     this.resize();
-    setTimeout(() => {
-      this.resize();
-    }, 100);
+    this.resizeToolBar();
 
     this.dataSub = this.dataService.object.subscribe(object => {
       this.data = object || {};
@@ -128,6 +126,6 @@ export class DesktopComponent implements OnInit {
   resizeToolBar() {
     setTimeout(() => {
       this.resize();
-    }, 200);
+    }, 60);
   }
 }
