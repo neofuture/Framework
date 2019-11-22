@@ -1,6 +1,6 @@
 # UI Framework Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-rc.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9
 =======
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.
 
