@@ -74,7 +74,7 @@ export class DesktopComponent implements OnInit {
       true,
       '0',
       false,
-      8000
+      5000
     );
   }
 
