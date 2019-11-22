@@ -28,5 +28,11 @@ export const en_gb: LanguageModel = {
   ribbon2: 'Ribbon 2',
   welcome: 'Welcome',
   close: 'Close',
-  product: 'Framework'
+  product: 'Framework',
+  online: 'Online',
+  offline: 'Offline',
+  away: 'Away',
+  busy: 'Busy',
+  profile: 'Profile',
+  logout: 'Logout'
 };

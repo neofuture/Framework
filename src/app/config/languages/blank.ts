@@ -28,5 +28,11 @@ export const blank: LanguageModel = {
   ribbon2: '',
   welcome: '',
   close: '',
-  product: ''
+  product: '',
+  online: '',
+  offline: '',
+  away: '',
+  busy: '',
+  profile: '',
+  logout: ''
 };

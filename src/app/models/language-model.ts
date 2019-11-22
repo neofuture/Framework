@@ -26,4 +26,10 @@ export interface LanguageModel {
   welcome: string;
   close: string;
   product: string;
+  online: string;
+  offline: string;
+  away: string;
+  busy: string;
+  profile: string;
+  logout: string;
 }

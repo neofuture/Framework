@@ -1,5 +1,5 @@
 <div class="tabs" id="tabs">
-<span *ngFor="let windowItem of objectKeys(windowList)" >
+<span *ngFor="let windowItem of objectKeys(windowList)">
   <span
     *ngIf="windowList[windowItem].hasTab"
     [ngClass]="windowList[windowItem].alerted ? ['tabItem alerted ',  windowList[windowItem].class] : ['tabItem ',  windowList[windowItem].class]"
@@ -8,13 +8,17 @@
     (dblclick)="maximiseWindow($event, windowList[windowItem])">
   <span [ngClass]="{'minimised': windowList[windowItem].state.isMinimised}">
     <span *ngIf="!windowList[windowItem].state.active" class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
-    <span *ngIf="windowList[windowItem].state.active" class="tabItemIcon ow-{{ windowList[windowItem].iconActive }}"></span>
+    <span *ngIf="windowList[windowItem].state.active"
+          class="tabItemIcon ow-{{ windowList[windowItem].iconActive }}"></span>
   <div class="text">
     {{ locale[windowList[windowItem].title] || windowList[windowItem].title }}
   </div>
-    <button class="tabButton" *ngIf="windowList[windowItem].resizable" (click)="maximiseWindow($event, windowList[windowItem])">
-      <span title="{{ locale.window.restore }}" *ngIf="windowList[windowItem].state.isMaximised" class="ow-restore"></span>
-      <span title="{{ locale.window.maximise }}" *ngIf="!windowList[windowItem].state.isMaximised" class="ow-maximise"></span>
+    <button class="tabButton" *ngIf="windowList[windowItem].resizable"
+            (click)="maximiseWindow($event, windowList[windowItem])">
+      <span title="{{ locale.window.restore }}" *ngIf="windowList[windowItem].state.isMaximised"
+            class="ow-restore"></span>
+      <span title="{{ locale.window.maximise }}" *ngIf="!windowList[windowItem].state.isMaximised"
+            class="ow-maximise"></span>
     </button>
   </span>
     <div *ngIf="windowList[windowItem].label" class="label">{{ windowList[windowItem].label }}</div>
@@ -25,6 +29,23 @@
   <div class="profileImage">
     <img src="/assets/images/profile.jpeg" class="profileImage" alt="">
     <div class="label"></div>
+
+    <div class="userMenu">
+      <img src="/assets/images/profile.jpeg" class="profileImageMenu" alt="">
+      <span class="profileName">Carl Fearby</span>
+      <span class="label"></span>
+      <div></div>
+      <div><i class="ow-user menuIcon"></i>{{locale.profile}}</div>
+      <hr>
+      <div><span class="online dot"></span> {{ locale.online }}</div>
+      <div><span class="busy dot"></span> {{ locale.busy }}</div>
+      <div><span class="away dot"></span> {{ locale.away }}</div>
+      <div><span class="offline dot"></span>  {{ locale.offline }}</div>
+      <hr>
+      <div><i class="ow-lock_open menuIcon"></i>{{locale.logout}}</div>
+    </div>
+
+
   </div>
 
 </div>
