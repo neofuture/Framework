@@ -1,3 +1,43 @@
+.tabs {
+  display:inline-block;
+}
+
+.tools {
+  display:inline-block;
+  float:right;
+  position:relative;
+}
+
+.profileImage {
+  display:inline-block;
+}
+
+.profileImage img {
+  width:36px;
+  height:36px;
+  border-radius:23px;
+  padding:1px;
+  margin-top:1px;
+  border:1px solid var(--background-color);
+}
+
+.profileImage .label {
+  color: white;
+  position: absolute;
+  background-color: rgb(0, 210, 0);
+  border-radius: 10px;
+  padding: 2px;
+  right: -2px;
+  top: 2px;
+  min-width: 11px;
+  height: 11px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 16px;
+  border: 0;
+  font-weight: 400;
+}
+
 .closed, .new {
   opacity: 0;
   transition: opacity 200ms, width 200ms, height, 200ms;

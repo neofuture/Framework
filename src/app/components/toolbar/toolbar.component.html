@@ -1,3 +1,4 @@
+<div class="tabs" id="tabs">
 <span *ngFor="let windowItem of objectKeys(windowList)" >
   <span
     *ngIf="windowList[windowItem].hasTab"
@@ -19,3 +20,11 @@
     <div *ngIf="windowList[windowItem].label" class="label">{{ windowList[windowItem].label }}</div>
   </span>
 </span>
+</div>
+<div class="tools" id="tools">
+  <div class="profileImage">
+    <img src="/assets/images/profile.jpeg" class="profileImage" alt="">
+    <div class="label"></div>
+  </div>
+
+</div>

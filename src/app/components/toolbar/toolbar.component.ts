@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
 import {LanguageService} from '../../services/language.service';
@@ -17,6 +17,11 @@ export class ToolbarComponent implements OnInit {
   language$: Subscription;
   locale: LanguageModel;
 
+  @HostListener('window:resize')
+  onResize() {
+    this.resize();
+  }
+
   constructor(
     private windowService: WindowService,
     private languageService: LanguageService
@@ -28,6 +33,13 @@ export class ToolbarComponent implements OnInit {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
+    setTimeout(() => {
+      this.resize();
+    }, 100);
+  }
+  resize() {
+    const tools = document.getElementById('tools');
+    document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
   }
 
   makeWindowActive(windowItem: WindowModel) {
