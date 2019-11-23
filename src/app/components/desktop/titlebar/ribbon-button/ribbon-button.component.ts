@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {LanguageService} from '../../services/language.service';
+import {LanguageService} from '../../../../services/language.service';
 import {Subscription} from 'rxjs';
-import {LanguageModel} from '../../models/language-model';
-import {RibbonButtonModel} from '../../models/ribbon-button-model';
-import {ModuleService} from '../../services/module.service';
-import {RibbonService} from '../../services/ribbon.service';
+import {LanguageModel} from '../../../../models/language-model';
+import {RibbonButtonModel} from '../../../../models/ribbon-button-model';
+import {ModuleService} from '../../../../services/module.service';
+import {RibbonService} from '../../../../services/ribbon.service';
 
 @Component({
   selector: 'app-ribbon-button',

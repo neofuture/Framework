@@ -1,0 +1,136 @@
+.profileImage {
+  display: inline-block;
+  position: relative;
+}
+
+.profileImage img {
+  width: 36px;
+  height: 36px;
+  border-radius: 23px;
+  padding: 1px;
+  margin-top: 1px;
+  border: 1px solid var(--background-color);
+}
+
+.profileImage .label {
+  color: white;
+  position: absolute;
+  background-color: rgb(0, 210, 0);
+  border-radius: 10px;
+  padding: 2px;
+  right: -2px;
+  top: 2px;
+  min-width: 11px;
+  height: 11px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 16px;
+  border: 0;
+  font-weight: 400;
+}
+
+.userMenu {
+  position: absolute;
+  bottom: 4px;
+  right: 0;
+  width: 0;
+  max-height: 0;
+  transition: all 300ms;
+  opacity: 0;
+}
+
+.profileName {
+  display: inline-block;
+  line-height: 34px;
+  padding-bottom: 20px;
+  position: absolute;
+  top: -3px;
+  margin-top: 10px;
+  left: 44px;
+  font-weight: 600;
+}
+
+.profileImage:hover .userMenu {
+  max-height: 300px;
+  width: 200px;
+  border: 1px solid;
+  border-radius: 8px;
+  background-color: var(--background-color);
+  border-color: var(--background-darkest-grey);
+  box-shadow: 0 9px 12px -4px rgba(0, 0, 0, 0.18);
+  z-index: 98;
+  transition: all 300ms;
+  padding: 4px;
+  opacity: 1;
+}
+
+.userMenu div {
+  padding: 1px 6px 3px 6px;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  margin: 1px 0 1px 0;
+  cursor: pointer;
+}
+
+.userMenu div i {
+  position: relative;
+  top: 2px;
+}
+
+.userMenu div.hover:hover {
+  background-color: var(--primary-light)
+}
+
+.online {
+  background-color: rgb(0, 210, 0);
+}
+
+.offline {
+  background-color: #b8b8b8;
+}
+
+.busy {
+  background-color: rgb(210, 0, 0);
+}
+
+.away {
+  background-color: rgb(255, 156, 5);
+}
+
+.dot {
+  display: inline-block;
+  margin-right: 4px;
+  margin-left: 4px;
+  color: white;
+  border-radius: 10px;
+  padding: 2px;
+  min-width: 10px;
+  height: 10px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.menuIcon:before {
+  font-size: 18px;
+  margin-right: 2px;
+  position: relative;
+  top: 2px;
+}
+
+.userMenu hr {
+  background-color: var(--background-darkest-grey);
+  border: 1px;
+  height: 1px;
+  width: 90%;
+}
+
+.userMenu .label {
+  position: relative;
+  display: block;
+  width: 98%;
+}

@@ -1,11 +1,11 @@
 import {AfterViewInit, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {WindowService} from '../../services/window.service';
+import {WindowService} from '../../../services/window.service';
 import {Subscription} from 'rxjs';
-import {LanguageService} from '../../services/language.service';
-import {LanguageModel} from '../../models/language-model';
-import {RibbonButtonModel} from '../../models/ribbon-button-model';
-import {ModuleService} from '../../services/module.service';
-import {RibbonService} from '../../services/ribbon.service';
+import {LanguageService} from '../../../services/language.service';
+import {LanguageModel} from '../../../models/language-model';
+import {RibbonButtonModel} from '../../../models/ribbon-button-model';
+import {ModuleService} from '../../../services/module.service';
+import {RibbonService} from '../../../services/ribbon.service';
 
 @Component({
   selector: 'app-titlebar',

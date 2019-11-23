@@ -1,9 +1,9 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {WindowModel} from '../../models/window-model';
-import {WindowService} from '../../services/window.service';
-import {LanguageService} from '../../services/language.service';
+import {WindowModel} from '../../../models/window-model';
+import {WindowService} from '../../../services/window.service';
+import {LanguageService} from '../../../services/language.service';
 import {Subscription} from 'rxjs';
-import {LanguageModel} from '../../models/language-model';
+import {LanguageModel} from '../../../models/language-model';
 
 @Component({
   selector: 'app-toolbar',
@@ -58,14 +58,5 @@ export class ToolbarComponent implements OnInit {
       }
     }
     return tabs;
-  }
-
-  setClass(event, classNormal: string, classOver: string) {
-    if (event.target.classList.contains('menuIcon')) {
-      event.target.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
-    } else {
-      event.target.parentNode.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
-
-    }
   }
 }

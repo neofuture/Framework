@@ -1,16 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { WindowComponent } from './components/window/window.component';
+import { WindowComponent } from './components/desktop/window/window.component';
 import { DesktopComponent } from './components/desktop/desktop.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { TitleBarComponent } from './components/titlebar/titlebar.component';
+import { ToolbarComponent } from './components/desktop/toolbar/toolbar.component';
+import { TitleBarComponent } from './components/desktop/titlebar/titlebar.component';
 import { PrettyPrintPipe } from './pipes/pretty-print.pipe';
 import { JsonPipe } from './pipes/json.pipe';
 import { WindowService } from './services/window.service';
 import { FormsModule } from '@angular/forms';
-import { RibbonButtonComponent } from './components/ribbon-button/ribbon-button.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { RibbonButtonComponent } from './components/desktop/titlebar/ribbon-button/ribbon-button.component';
+import { SearchBarComponent } from './components/desktop/titlebar/search-bar/search-bar.component';
 import { DemoComponent } from './components/demo/demo.component';
 
 import { ContactManagerComponent } from './modules/contact-manager/contact-manager.component';
@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { ExternalComponent } from './components/external/external.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RouterModule } from '@angular/router';
+import { UserStatusComponent } from './components/desktop/toolbar/user-status/user-status.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RouterModule } from '@angular/router';
     DemoComponent,
     ContactManagerComponent,
     ExternalComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    UserStatusComponent
   ],
   imports: [
     BrowserModule,

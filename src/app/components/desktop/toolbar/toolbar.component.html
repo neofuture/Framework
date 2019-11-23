@@ -26,32 +26,5 @@
 </span>
 </div>
 <div class="tools" id="tools">
-  <div class="profileImage">
-    <img src="/assets/images/profile.jpeg" class="profileImage" alt="">
-    <div class="label"></div>
-
-    <div class="userMenu">
-      <img src="/assets/images/profile.jpeg" class="profileImageMenu" alt="">
-      <span class="profileName">Carl Fearby</span>
-      <span class="label"></span>
-      <div></div>
-      <div (mouseover)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')"
-           (mouseout)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')" class="ow-user menuIcon hover">
-        <span>{{locale.profile}}</span>
-      </div>
-      <hr>
-      <div class="hover"><span class="online dot"></span> {{ locale.online }}</div>
-      <div class="hover"><span class="busy dot"></span> {{ locale.busy }}</div>
-      <div class="hover"><span class="away dot"></span> {{ locale.away }}</div>
-      <div class="hover"><span class="offline dot"></span>  {{ locale.offline }}</div>
-      <hr>
-      <div (mouseover)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')"
-           (mouseout)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')" class="ow-lock_closed menuIcon hover">
-        <span>{{locale.logout}}</span>
-      </div>
-    </div>
-
-
-  </div>
-
+  <app-user-status></app-user-status>
 </div>

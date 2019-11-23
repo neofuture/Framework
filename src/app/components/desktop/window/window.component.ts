@@ -9,11 +9,11 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {WindowModel} from '../../models/window-model';
-import {WindowService} from '../../services/window.service';
-import {LanguageService} from '../../services/language.service';
+import {WindowModel} from '../../../models/window-model';
+import {WindowService} from '../../../services/window.service';
+import {LanguageService} from '../../../services/language.service';
 import {Subscription} from 'rxjs';
-import {LanguageModel} from '../../models/language-model';
+import {LanguageModel} from '../../../models/language-model';
 
 @Component({
   selector: 'app-window',
@@ -111,25 +111,25 @@ export class WindowComponent implements OnInit {
   async loadComponent() {
 
     if (this.windowItem.bodyComponent === 'demo') {
-      const {DemoComponent} = await import('../demo/demo.component');
+      const {DemoComponent} = await import('../../demo/demo.component');
       const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(DemoComponent));
       componentRef.instance.windowItem = this.windowItem;
     }
 
     if (this.windowItem.bodyComponent === 'contact-manager') {
-      const {ContactManagerComponent} = await import('../../modules/contact-manager/contact-manager.component');
+      const {ContactManagerComponent} = await import('../../../modules/contact-manager/contact-manager.component');
       const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(ContactManagerComponent));
       componentRef.instance.windowItem = this.windowItem;
     }
 
     if (this.windowItem.bodyComponent === 'quotes') {
-      const {QuotesComponent} = await import('../../modules/quotes/quotes.component');
+      const {QuotesComponent} = await import('../../../modules/quotes/quotes.component');
       const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(QuotesComponent));
       componentRef.instance.data = this.windowItem.data;
     }
 
     if (this.windowItem.bodyComponent === 'welcome') {
-      const {WelcomeComponent} = await import('../welcome/welcome.component');
+      const {WelcomeComponent} = await import('../../welcome/welcome.component');
       const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(WelcomeComponent));
       componentRef.instance.windowItem = this.windowItem;
     }

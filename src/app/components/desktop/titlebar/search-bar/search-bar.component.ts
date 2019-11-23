@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {LanguageService} from '../../services/language.service';
+import {LanguageService} from '../../../../services/language.service';
 import {Subscription} from 'rxjs';
-import {LanguageModel} from '../../models/language-model';
-import {WindowService} from '../../services/window.service';
+import {LanguageModel} from '../../../../models/language-model';
+import {WindowService} from '../../../../services/window.service';
 
 @Component({
   selector: 'app-search-bar',
