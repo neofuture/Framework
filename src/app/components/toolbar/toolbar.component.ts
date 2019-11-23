@@ -59,4 +59,11 @@ export class ToolbarComponent implements OnInit {
     }
     return tabs;
   }
+
+  setClass(event, classNormal: string, classOver: string) {
+    // if (!event.target.classList.contains('menuIcon')) {
+    //   return false;
+    // }
+    event.target.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
+  }
 }

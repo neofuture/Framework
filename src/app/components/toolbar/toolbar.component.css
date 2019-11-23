@@ -226,7 +226,7 @@
 }
 
 .userMenu div {
-  padding:3px 6px 3px 6px;
+  padding:1px 6px 3px 6px;
   border-radius:6px;
   color:var(--text);
   font-size:14px;
@@ -239,7 +239,7 @@
   top:2px;
 }
 
-.userMenu div:hover {
+.userMenu div.hover:hover {
   background-color:var(--primary-light)
 }
 .online {
@@ -269,9 +269,11 @@
   font-weight: 400;
 }
 
-.menuIcon {
+.menuIcon:before {
   font-size:18px;
-  margin-right:4px;
+  margin-right:2px;
+  position:relative;
+  top:2px;
 }
 
 .userMenu hr {

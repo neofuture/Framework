@@ -35,14 +35,18 @@
       <span class="profileName">Carl Fearby</span>
       <span class="label"></span>
       <div></div>
-      <div><i class="ow-user menuIcon"></i>{{locale.profile}}</div>
+      <div (mouseover)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')"
+           (mouseout)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')" class="ow-user menuIcon hover">{{locale.profile}}</div>
       <hr>
-      <div><span class="online dot"></span> {{ locale.online }}</div>
-      <div><span class="busy dot"></span> {{ locale.busy }}</div>
-      <div><span class="away dot"></span> {{ locale.away }}</div>
-      <div><span class="offline dot"></span>  {{ locale.offline }}</div>
+      <div class="hover"><span class="online dot"></span> {{ locale.online }}</div>
+      <div class="hover"><span class="busy dot"></span> {{ locale.busy }}</div>
+      <div class="hover"><span class="away dot"></span> {{ locale.away }}</div>
+      <div class="hover"><span class="offline dot"></span>  {{ locale.offline }}</div>
       <hr>
-      <div><i class="ow-lock_open menuIcon"></i>{{locale.logout}}</div>
+      <div (mouseover)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')"
+           (mouseout)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')" class="ow-lock_closed menuIcon hover">
+        {{locale.logout}}
+      </div>
     </div>
 
 
