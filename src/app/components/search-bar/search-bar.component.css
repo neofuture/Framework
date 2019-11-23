@@ -9,6 +9,7 @@ input {
   position:relative;
   width:150px;
   transition: all 0.2s;
+  transition-delay: 100ms;
   text-overflow: ellipsis;
   padding: 2px 2px 2px 24px;
   overflow: hidden;
