@@ -1,29 +1,5 @@
 <div class="tabs" id="tabs">
-<span *ngFor="let windowItem of objectKeys(windowList)">
-  <span
-    *ngIf="windowList[windowItem].hasTab"
-    [ngClass]="windowList[windowItem].alerted ? ['tabItem alerted ',  windowList[windowItem].class] : ['tabItem ',  windowList[windowItem].class]"
-    [ngStyle]="{width: 'calc(' + (100 / tabCount()) + '% - 8px)'}"
-    (click)="makeWindowActive(windowList[windowItem])"
-    (dblclick)="maximiseWindow($event, windowList[windowItem])">
-  <span [ngClass]="{'minimised': windowList[windowItem].state.isMinimised}">
-    <span *ngIf="!windowList[windowItem].state.active" class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
-    <span *ngIf="windowList[windowItem].state.active"
-          class="tabItemIcon ow-{{ windowList[windowItem].iconActive }}"></span>
-  <div class="text">
-    {{ locale[windowList[windowItem].title] || windowList[windowItem].title }}
-  </div>
-    <button class="tabButton" *ngIf="windowList[windowItem].resizable"
-            (click)="maximiseWindow($event, windowList[windowItem])">
-      <span title="{{ locale.window.restore }}" *ngIf="windowList[windowItem].state.isMaximised"
-            class="ow-restore"></span>
-      <span title="{{ locale.window.maximise }}" *ngIf="!windowList[windowItem].state.isMaximised"
-            class="ow-maximise"></span>
-    </button>
-  </span>
-    <div *ngIf="windowList[windowItem].label" class="label">{{ windowList[windowItem].label }}</div>
-  </span>
-</span>
+ <app-tabs></app-tabs>
 </div>
 <div class="tools" id="tools">
   <app-user-status></app-user-status>

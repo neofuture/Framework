@@ -21,6 +21,7 @@ import { ExternalComponent } from './components/external/external.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RouterModule } from '@angular/router';
 import { UserStatusComponent } from './components/desktop/toolbar/user-status/user-status.component';
+import { TabsComponent } from './components/desktop/toolbar/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { UserStatusComponent } from './components/desktop/toolbar/user-status/us
     ContactManagerComponent,
     ExternalComponent,
     WelcomeComponent,
-    UserStatusComponent
+    UserStatusComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
