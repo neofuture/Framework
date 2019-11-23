@@ -2,8 +2,8 @@
   <div class="progress-bar progress-bar-danger" *ngIf="danger">&nbsp;</div>
   <div class="titleBarTop"><i class="logo ow-oceanworks"></i>
     <span>Playground
-      <div (click)="setOpt1()" class="button" [ngClass]="activeTab === 1 ? 'active' : ''">{{ locale.ribbon1 }}</div>
-      <div (click)="setOpt2()" class="button" [ngClass]="activeTab === 2 ? 'active' : ''">{{ locale.ribbon2 }}</div>
+      <div (click)="setOpt1()" class="button" [ngClass]="activeTab === 1 ? 'active' : ''"><i class="ow-contacts_over"></i> {{ locale.ribbon1 }}</div>
+      <div (click)="setOpt2()" class="button" [ngClass]="activeTab === 2 ? 'active' : ''"><i class="ow-messages_over"></i> {{ locale.ribbon2 }}</div>
     </span>
     <div class="titleBarQuickLinks">
       <i class="titleBarQuickLink ow-user"

@@ -10,6 +10,19 @@
   padding: 1px;
   margin-top: 1px;
   border: 1px solid var(--background-color);
+  transition: all 300ms;
+}
+
+.profileImageMenu {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 32px !important;
+  border: 1px solid !important;
+  border-color: white !important;
+  top: -36px !important;
+  left: 130px !important;
+  position: absolute;
+  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.18);
 }
 
 .profileImage .label {
@@ -27,6 +40,7 @@
   line-height: 16px;
   border: 0;
   font-weight: 400;
+  transition: all 300ms;
 }
 
 .userMenu {
@@ -41,17 +55,31 @@
 
 .profileName {
   display: inline-block;
-  line-height: 34px;
-  padding-bottom: 20px;
-  position: absolute;
-  top: -3px;
-  margin-top: 10px;
-  left: 44px;
+  left:8px;
   font-weight: 600;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  width:calc(100% - 10px);
+  overflow:hidden;
+  font-size:16px;
 }
 
+.profileStatus {
+  display: inline-block;
+  left:8px;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  width:calc(100% - 10px);
+  overflow:hidden;
+
+}
+.profileImage:hover > img, .profileImage:hover > .label{
+  opacity:0;
+  transition: all 300ms;
+
+}
 .profileImage:hover .userMenu {
-  max-height: 300px;
+  max-height: 330px;
   width: 200px;
   border: 1px solid;
   border-radius: 8px;
@@ -72,7 +100,6 @@
   line-height: 24px;
   position: relative;
   margin: 1px 0 1px 0;
-  cursor: pointer;
 }
 
 .userMenu div i {
@@ -81,7 +108,8 @@
 }
 
 .userMenu div.hover:hover {
-  background-color: var(--primary-light)
+  background-color: var(--primary-light);
+  cursor: pointer;
 }
 
 .online {
@@ -130,7 +158,11 @@
 }
 
 .userMenu .label {
-  position: relative;
-  display: block;
-  width: 98%;
+  display: inline-block;
+  position: absolute;
+  top: -34px;
+  right: 0px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
 }

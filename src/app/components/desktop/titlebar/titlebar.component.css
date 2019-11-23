@@ -370,6 +370,12 @@ app-search-bar {
   background-color: #efa50e;
 }
 
+i {
+  font-size: 18px;
+  position: relative;
+  top: 3px;
+}
+
 @media only screen and (max-width: 600px) {
 
 }
