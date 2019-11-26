@@ -5,7 +5,7 @@ import {ModuleService} from '../../services/module.service';
 import {Subscription} from 'rxjs';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Params} from '@angular/router';
-import {ApiService} from "../../services/api.service";
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-desktop',
@@ -60,7 +60,7 @@ export class DesktopComponent implements OnInit {
     this.moduleService.welcome(this.desktopWidth, this.desktopHeight);
 
     const obs = this.api.call(
-      'http://localhost:1234/api/',
+      'https://api.owuk.co.uk/',
       'post',
       {
         this: 'that',
@@ -146,7 +146,7 @@ export class DesktopComponent implements OnInit {
       };
     }
     const loginObs = this.api.call(
-      'http://localhost:1234/api/login',
+      'https://api.owuk.co.uk/login',
       'post',
       body
     );
