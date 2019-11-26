@@ -23,6 +23,7 @@
     "@angular/pwa": "^0.803.19",
     "@angular/router": "~9.0.0-next.12",
     "@angular/service-worker": "^9.0.0-rc.1",
+    "crypto-js": "^3.1.9-1",
     "primeicons": "^2.0.0",
     "primeng": "^8.1.1",
     "rxjs": "~6.5.3",

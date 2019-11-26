@@ -17,3 +17,11 @@ https://ng.owuk.co.uk
 https://gitter.im/neofuture/Framework
 
 [![Join the chat at https://gitter.im/neofuture/Framework](https://badges.gitter.im/neofuture/Framework.svg)](https://gitter.im/neofuture/Framework?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+## Test API
+
+We have started to include a test api (written in PHP) this include bidirectional encryption.
+
+To start the api
+
+`php -S 0.0.0.0:1234`

@@ -1,13 +1,12 @@
 <div class="profileImage">
-  <img src="/assets/images/profile.jpeg" class="profileImage" alt="">
-  <div class="label"></div>
-
-  <div class="userMenu">
-    <img src="/assets/images/profile.jpeg" class="profileImageMenu" alt="">
+  <img [src]="profile.image | safeHtml" class="profileImage" alt="">
+  <div class="label" *ngIf="profile.id > 0"></div>
+  <div class="userMenu" *ngIf="profile.id > 0">
+    <img [src]="profile.image | safeHtml" class="profileImageMenu" alt="">
     <span class="label"></span>
     <div>
-      <span class="profileName">Carl Fearby</span>
-      <span class="profileStatus">Coding Angular one line at a time...</span>
+      <span class="profileName">{{ profile.name }}</span>
+      <span class="profileStatus">{{ profile.status }}</span>
     </div>
     <hr>
     <div class="hover"><span class="online dot"></span> {{ locale.online }}</div>

@@ -110,19 +110,16 @@ export class WindowService {
       windowItem.data = data;
     }
     this.windowList[id] = windowItem;
+
     setTimeout(() => {
       this.windowList[id].class = 'open';
       this.active(windowItem);
     });
 
     if (this.windowList[id].autoClose > 0) {
-      this.windowList[id].intervalTimer = setInterval(() => {
-        this.windowList[id].autoClose -= 100;
-        if (this.windowList[id].autoClose < -1) {
-          clearInterval(this.windowList[id].intervalTimer);
-          this.close(this.windowList[id]);
-        }
-      }, 100);
+      this.windowList[id].intervalTimer = setTimeout(() => {
+        this.close(this.windowList[id]);
+      }, this.windowList[id].autoClose);
     }
   }
 

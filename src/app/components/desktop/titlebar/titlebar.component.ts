@@ -4,7 +4,6 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../services/language.service';
 import {LanguageModel} from '../../../models/language-model';
 import {RibbonButtonModel} from '../../../models/ribbon-button-model';
-import {ModuleService} from '../../../services/module.service';
 import {RibbonService} from '../../../services/ribbon.service';
 
 @Component({

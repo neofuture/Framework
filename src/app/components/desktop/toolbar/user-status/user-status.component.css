@@ -20,7 +20,7 @@
   border: 1px solid !important;
   border-color: white !important;
   top: -36px !important;
-  left: 130px !important;
+  left: 180px !important;
   position: absolute;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.18);
 }
@@ -45,8 +45,8 @@
 
 .userMenu {
   position: absolute;
-  bottom: 4px;
-  right: 0;
+  bottom: 2px;
+  right: -2px;
   width: 0;
   max-height: 0;
   transition: all 300ms;
@@ -74,13 +74,13 @@
 
 }
 .profileImage:hover > img, .profileImage:hover > .label{
-  opacity:0;
+  /*opacity:0;*/
   transition: all 300ms;
 
 }
 .profileImage:hover .userMenu {
   max-height: 330px;
-  width: 200px;
+  width: 250px;
   border: 1px solid;
   border-radius: 8px;
   background-color: var(--background-color);

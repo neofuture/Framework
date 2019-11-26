@@ -5,6 +5,7 @@ import {ModuleService} from '../../services/module.service';
 import {Subscription} from 'rxjs';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Params} from '@angular/router';
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-desktop',
@@ -27,6 +28,7 @@ export class DesktopComponent implements OnInit {
   dataSub: Subscription;
   data: any;
   params: Params;
+  profile = {id: 0, image: '/assets/images/profile-empty.jpg'};
 
   @HostListener('window:resize')
   onResize() {
@@ -37,7 +39,8 @@ export class DesktopComponent implements OnInit {
     private windowService: WindowService,
     private moduleService: ModuleService,
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private api: ApiService
   ) {
   }
 
@@ -54,26 +57,25 @@ export class DesktopComponent implements OnInit {
       this.data = object || {};
     });
 
-    this.windowService.new(
-      'oceanworks',
-      'oceanworks',
-      false,
-      'welcome',
-      null,
-      false,
-      false,
-      'welcome',
-      null,
-      400,
-      600,
-      true,
-      this.desktopWidth,
-      this.desktopHeight,
-      true,
-      '0',
-      false,
-      5000
+    this.moduleService.welcome(this.desktopWidth, this.desktopHeight);
+
+    const obs = this.api.call(
+      'http://localhost:1234/api/',
+      'post',
+      {
+        this: 'that',
+        demo: 'yes',
+        testing: true,
+        stuff: {
+          test: '1234'
+        }
+      }
     );
+
+    obs.subscribe(data => {
+      console.log('data', data);
+    });
+
   }
 
   resize() {
@@ -127,5 +129,35 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.resize();
     }, 60);
+  }
+
+  login(id) {
+    let body = {};
+    if (id === 1) {
+      body = {
+        username: 'admin',
+        password: 'password'
+      };
+    }
+    if (id === 2) {
+      body = {
+        username: 'test',
+        password: 'test'
+      };
+    }
+    const loginObs = this.api.call(
+      'http://localhost:1234/api/login',
+      'post',
+      body
+    );
+
+    loginObs.subscribe(data => {
+      console.log('login data', data);
+      // @ts-ignore
+      if (data.id) {
+        // @ts-ignore
+        this.profile = data;
+      }
+    });
   }
 }

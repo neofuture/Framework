@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {LanguageService} from "../../../../services/language.service";
-import {Subscription} from "rxjs";
-import {LanguageModel} from "../../../../models/language-model";
+import {Component, Input, OnInit} from '@angular/core';
+import {LanguageService} from '../../../../services/language.service';
+import {Subscription} from 'rxjs';
+import {LanguageModel} from '../../../../models/language-model';
 
 @Component({
   selector: 'app-user-status',
@@ -9,6 +9,9 @@ import {LanguageModel} from "../../../../models/language-model";
   styleUrls: ['./user-status.component.css']
 })
 export class UserStatusComponent implements OnInit {
+
+  @Input() profile;
+
   private language$: Subscription;
   locale: LanguageModel;
 

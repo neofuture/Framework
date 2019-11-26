@@ -9,6 +9,29 @@ export class ModuleService {
   constructor(private windowService: WindowService) {
   }
 
+  welcome(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'oceanworks',
+      'oceanworks',
+      false,
+      'welcome',
+      null,
+      false,
+      false,
+      'welcome',
+      null,
+      400,
+      600,
+      true,
+      desktopWidth,
+      desktopHeight,
+      true,
+      '0',
+      false,
+      5000
+    );
+  }
+
   contactManager(desktopWidth, desktopHeight) {
     this.windowService.new(
       'contacts',
