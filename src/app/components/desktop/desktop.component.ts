@@ -160,4 +160,8 @@ export class DesktopComponent implements OnInit {
       }
     });
   }
+
+  logout() {
+    this.profile = {id: 0, image: '/assets/images/profile-empty.jpg'};
+  }
 }
