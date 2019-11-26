@@ -158,6 +158,10 @@ export class DesktopComponent implements OnInit {
         // @ts-ignore
         this.profile = data;
       }
+      setTimeout(() => {
+        const tools = document.getElementById('tools');
+        document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
+      });
     });
   }
 

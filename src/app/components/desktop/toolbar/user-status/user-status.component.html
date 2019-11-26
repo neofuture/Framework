@@ -1,4 +1,4 @@
-<div class="profileImage">
+<div class="profileImage" *ngIf="profile.id > 0">
   <img [src]="profile.image | safeHtml" class="profileImage" alt="">
   <div class="label" *ngIf="profile.id > 0"></div>
   <div class="userMenu" *ngIf="profile.id > 0">
