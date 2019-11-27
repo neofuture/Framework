@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -7,10 +8,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  @Input() profile;
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
+
   }
 
 }

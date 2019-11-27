@@ -7,7 +7,7 @@ import {BehaviorSubject} from 'rxjs';
 export class ProfileService {
   serviceName = 'profile';
 
-  private objectSource = new BehaviorSubject(JSON.parse(localStorage.getItem(this.serviceName)) || {});
+  private objectSource = new BehaviorSubject(JSON.parse(localStorage.getItem(this.serviceName)) || false);
   object = this.objectSource.asObservable();
 
   constructor() {
@@ -39,6 +39,6 @@ export class ProfileService {
 
   nuke() {
     localStorage.removeItem(this.serviceName);
-    this.objectSource.next({});
+    this.objectSource.next(false);
   }
 }

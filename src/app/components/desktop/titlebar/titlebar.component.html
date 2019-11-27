@@ -2,10 +2,14 @@
   <div class="progress-bar progress-bar-danger" *ngIf="danger">&nbsp;</div>
   <div class="titleBarTop"><i class="logo ow-oceanworks"></i>
     <span>Playground
-      <div (click)="setOpt1()" class="button" [ngClass]="activeTab === 1 ? 'active' : ''"><i class="ow-contacts_over"></i> {{ locale.ribbon1 }}</div>
-      <div (click)="setOpt2()" class="button" [ngClass]="activeTab === 2 ? 'active' : ''"><i class="ow-messages_over"></i> {{ locale.ribbon2 }}</div>
+      <span  *ngIf="profile">
+      <div (click)="setOpt1()" class="button" [ngClass]="activeTab === 1 ? 'active' : ''"><i
+        class="ow-contacts_over"></i> {{ locale.ribbon1 }}</div>
+      <div (click)="setOpt2()" class="button" [ngClass]="activeTab === 2 ? 'active' : ''"><i
+        class="ow-messages_over"></i> {{ locale.ribbon2 }}</div>
+      </span>
     </span>
-    <div class="titleBarQuickLinks">
+    <div class="titleBarQuickLinks" *ngIf="profile">
       <i class="titleBarQuickLink ow-user"
          (mouseover)="setClass($event, 'titleBarQuickLink ow-user', 'titleBarQuickLink ow-user_over')"
          (mouseout)="setClass($event, 'titleBarQuickLink ow-user', 'titleBarQuickLink ow-user_over')"
@@ -23,9 +27,9 @@
          (mouseout)="setClass($event, 'titleBarQuickLink ow-menu', 'titleBarQuickLink ow-menu_over')"
       ></i>
     </div>
-    <app-search-bar></app-search-bar>
+    <app-search-bar  *ngIf="profile"></app-search-bar>
   </div>
-  <div class="toolbar">
+  <div class="toolbar"  *ngIf="profile">
     <div class="ribbon">
       <table>
         <tr>
@@ -55,6 +59,6 @@
       {{ locale.moreModules }}
     </div>
   </div>
-  <span (click)="toggleSize()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)" [ngClass]="barWidth" [title]="size ? locale.contractRibbon : locale.expandRibbon"></span>
+  <span  *ngIf="profile" (click)="toggleSize()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)" [ngClass]="barWidth" [title]="size ? locale.contractRibbon : locale.expandRibbon"></span>
 </div>
 

@@ -3,17 +3,18 @@ import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import * as CryptoJS from 'crypto-js';
-import {map} from "rxjs/operators";
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient
+  ) {
   }
 
-  token = 'abc123';
   key = '8QqJaytRg1buT?RkXo^Vy@4693BYL=I8';
 
   CryptoJSAesJson = {
@@ -43,17 +44,20 @@ export class ApiService {
     }
   };
 
-  call(url, requestType, body): Observable<object> {
-    const httpOptions = this.headers(this.token);
+  call(url, requestType, body, token = ''): Observable<object> {
+    const httpOptions = this.headers(token);
     let data;
-
 
     body = this.encrypt(JSON.stringify(body));
 
     data = this.http[requestType](url, body, httpOptions);
 
     return data.pipe(map((str) => {
-      return this.decrypt(str);
+      const decrypted = this.decrypt(str);
+      if (typeof decrypted.error !== 'undefined') {
+        console.error('Error Not Authorised API Access');
+      }
+      return decrypted;
     }));
   }
 

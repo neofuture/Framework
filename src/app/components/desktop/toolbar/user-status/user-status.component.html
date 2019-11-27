@@ -1,7 +1,7 @@
 <div class="profileImage" *ngIf="profile.id > 0">
-  <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}">
-  <div class="label" [ngClass]="profile.active" *ngIf="profile.id > 0"></div>
-  <div class="userMenu" *ngIf="profile.id > 0">
+  <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage">
+  <div class="label" [ngClass]="profile.active" *ngIf="profile.id > 0" id="profileLabel"></div>
+  <div class="userMenu" *ngIf="profile.id > 0" id="userMenu">
     <img [src]="profile.image | safeHtml" class="profileImageMenu" alt="{{ profile.name }}">
     <span class="label" [ngClass]="profile.active"></span>
     <div>
@@ -9,17 +9,21 @@
       <span class="profileStatus">{{ profile.status }}</span>
     </div>
     <hr>
-    <div class="hover" (click)="setActive($event,'online')"><span class="online dot"></span> {{ locale.online }}</div>
-    <div class="hover" (click)="setActive($event,'busy');"><span class="busy dot"></span> {{ locale.busy }}</div>
-    <div class="hover" (click)="setActive($event,'away');"><span class="away dot"></span> {{ locale.away }}</div>
-    <div class="hover" (click)="setActive($event,'offline');"><span class="offline dot"></span>  {{ locale.offline }}</div>
+    <div class="hover" (click)="setActive('online')"><span class="online dot"></span> {{ locale.online }}</div>
+    <div class="hover" (click)="setActive('busy');"><span class="busy dot"></span> {{ locale.busy }}</div>
+    <div class="hover" (click)="setActive('away');"><span class="away dot"></span> {{ locale.away }}</div>
+    <div class="hover" (click)="setActive('offline');"><span class="offline dot"></span>  {{ locale.offline }}</div>
     <hr>
-    <div (mouseover)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')"
-         (mouseout)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')" class="ow-user menuIcon hover">
+    <div (click)="openProfile()"
+         (mouseover)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')"
+         (mouseout)="setClass($event, 'ow-user menuIcon hover', 'ow-user_over menuIcon hover')"
+         class="ow-user menuIcon hover">
       <span>{{locale.profile}}</span>
     </div>
-    <div (mouseover)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')"
-         (mouseout)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')" class="ow-lock_closed menuIcon hover">
+    <div (click)="logout()"
+         (mouseover)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')"
+         (mouseout)="setClass($event, 'ow-lock_closed menuIcon hover', 'ow-lock_open menuIcon hover')"
+         class="ow-lock_closed menuIcon hover">
       <span>{{locale.logout}}</span>
     </div>
   </div>

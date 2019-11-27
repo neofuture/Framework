@@ -1,5 +1,8 @@
 export interface ProfileModel {
-  id?: number;
+  id: number;
   image?: string;
-  status?: string;
+  status: string;
+  name: string;
+  active: string;
+  token: string;
 }

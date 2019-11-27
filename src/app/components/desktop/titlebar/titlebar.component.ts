@@ -5,6 +5,8 @@ import {LanguageService} from '../../../services/language.service';
 import {LanguageModel} from '../../../models/language-model';
 import {RibbonButtonModel} from '../../../models/ribbon-button-model';
 import {RibbonService} from '../../../services/ribbon.service';
+import {ProfileService} from '../../../services/profile.service';
+import {ProfileModel} from '../../../models/profile-model';
 
 @Component({
   selector: 'app-titlebar',
@@ -14,11 +16,14 @@ import {RibbonService} from '../../../services/ribbon.service';
 export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
   ribbonButtons$: Subscription;
   menuButtons$: Subscription;
+  profileSub$: Subscription;
+  profile: ProfileModel;
 
   constructor(
     private windowService: WindowService,
     public ribbonService: RibbonService,
     private languageService: LanguageService,
+    private profileService: ProfileService
   ) {
   }
 
@@ -58,6 +63,10 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.menuButtons$ = this.ribbonService.menuButtons.subscribe(buttons => {
       this.menuButtons = buttons;
+    });
+
+    this.profileSub$ = this.profileService.object.subscribe(profile => {
+      this.profile = profile;
     });
   }
 

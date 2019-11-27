@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LanguageService} from '../../../../services/language.service';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
-import {ProfileService} from "../../../../services/profile.service";
+import {ProfileService} from '../../../../services/profile.service';
+import {ProfileModel} from '../../../../models/profile-model';
+import {ApiService} from '../../../../services/api.service';
 
 @Component({
   selector: 'app-user-status',
@@ -11,15 +13,16 @@ import {ProfileService} from "../../../../services/profile.service";
 })
 export class UserStatusComponent implements OnInit {
 
-  @Input() profile;
+  profile: ProfileModel;
+  locale: LanguageModel;
 
   language$: Subscription;
-  locale: LanguageModel;
   profileSub$: Subscription;
 
   constructor(
     private languageService: LanguageService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private api: ApiService
   ) {
   }
 
@@ -27,7 +30,9 @@ export class UserStatusComponent implements OnInit {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
-    this.profileSub$ = this.profileService.object.subscribe(object => {
+
+    this.profileSub$ = this.profileService.object.subscribe(profile => {
+      this.profile = profile;
     });
   }
 
@@ -36,16 +41,60 @@ export class UserStatusComponent implements OnInit {
       event.target.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
     } else {
       event.target.parentNode.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
-
     }
   }
 
-  setActive(event, active: string) {
+  setActive(active: string) {
     this.profileService.update({active});
-    
-    event.target.parentNode.style.pointerEvents = 'none';
+
+    const body = {
+      active
+    };
+    const statusObs = this.api.call(
+      'https://api.owuk.co.uk/user/status',
+      'post',
+      body,
+      this.profile.token
+    );
+
+    statusObs.subscribe((status) => {
+    });
+
+    this.closeMenu();
+  }
+
+  logout() {
     setTimeout(() => {
-      event.target.parentNode.style.pointerEvents = 'initial';
+      const statusObs = this.api.call(
+        'https://api.owuk.co.uk/user/logout',
+        'post',
+        {},
+        this.profile.token
+      );
+
+      statusObs.subscribe((status) => {
+        this.profileService.nuke();
+      });
     }, 300);
+    document.getElementById('profileImage').classList.add('hidden');
+    document.getElementById('profileLabel').classList.add('hidden');
+    this.closeMenu();
+  }
+
+  openProfile() {
+    this.closeMenu();
+  }
+
+  closeMenu() {
+    const menu = document.getElementById('profileImage');
+    const menu2 = document.getElementById('userMenu');
+    menu.style.pointerEvents = 'none';
+    menu2.style.pointerEvents = 'none';
+    menu2.classList.add('userMenuClosed');
+    menu2.addEventListener('mouseout', () => {
+      menu.style.pointerEvents = 'initial';
+      menu2.style.pointerEvents = 'initial';
+      menu2.classList.remove('userMenuClosed');
+    });
   }
 }

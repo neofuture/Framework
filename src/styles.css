@@ -307,6 +307,14 @@ body.compusoft, .compusoft *:not(pre) {
   margin-top:0 !important;
 }
 
+.compusoft .userMenu {
+  border-radius:0 !important;
+}
+
+.compusoft .profileImage, .compusoft .profileImageMenu, .compusoft .hover, .compusoft .profileImage .label {
+  border-radius:0 !important;
+}
+
 .noTransition * {
   transition: all 0s !important;
 }
