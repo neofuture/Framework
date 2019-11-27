@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LanguageService} from '../../../../services/language.service';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
+import {ProfileService} from "../../../../services/profile.service";
 
 @Component({
   selector: 'app-user-status',
@@ -12,16 +13,21 @@ export class UserStatusComponent implements OnInit {
 
   @Input() profile;
 
-  private language$: Subscription;
+  language$: Subscription;
   locale: LanguageModel;
+  profileSub$: Subscription;
 
   constructor(
-    private languageService: LanguageService
-  ) { }
+    private languageService: LanguageService,
+    private profileService: ProfileService
+  ) {
+  }
 
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
+    });
+    this.profileSub$ = this.profileService.object.subscribe(object => {
     });
   }
 
@@ -32,5 +38,14 @@ export class UserStatusComponent implements OnInit {
       event.target.parentNode.className = event.type === 'mouseover' ? '' + classOver : '' + classNormal;
 
     }
+  }
+
+  setActive(event, active: string) {
+    this.profileService.update({active});
+    
+    event.target.parentNode.style.pointerEvents = 'none';
+    setTimeout(() => {
+      event.target.parentNode.style.pointerEvents = 'initial';
+    }, 300);
   }
 }

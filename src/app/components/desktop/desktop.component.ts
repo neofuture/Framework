@@ -6,6 +6,9 @@ import {Subscription} from 'rxjs';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../services/api.service';
+import {ProfileService} from '../../services/profile.service';
+import {ProfileModel} from '../../models/profile-model';
+
 
 @Component({
   selector: 'app-desktop',
@@ -25,10 +28,11 @@ export class DesktopComponent implements OnInit {
   desktopHeight: number;
   desktopWidth: number;
 
-  dataSub: Subscription;
+  dataSub$: Subscription;
   data: any;
   params: Params;
-  profile = {id: 0, image: '/assets/images/profile-empty.jpg'};
+  profile: ProfileModel = {id: 0};
+  profileSub$: Subscription;
 
   @HostListener('window:resize')
   onResize() {
@@ -40,7 +44,8 @@ export class DesktopComponent implements OnInit {
     private moduleService: ModuleService,
     private dataService: DataService,
     private route: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
+    private profileService: ProfileService
   ) {
   }
 
@@ -53,7 +58,7 @@ export class DesktopComponent implements OnInit {
     this.resize();
     this.resizeToolBar();
 
-    this.dataSub = this.dataService.object.subscribe(object => {
+    this.dataSub$ = this.dataService.object.subscribe(object => {
       this.data = object || {};
     });
 
@@ -76,6 +81,13 @@ export class DesktopComponent implements OnInit {
       console.log('data', data);
     });
 
+    this.profileSub$ = this.profileService.object.subscribe(object => {
+      if (object.id > 0) {
+        this.profile = object;
+      } else {
+        this.profile.id = 0;
+      }
+    });
   }
 
   resize() {
@@ -133,31 +145,35 @@ export class DesktopComponent implements OnInit {
 
   login(id) {
     let body = {};
+
     if (id === 1) {
       body = {
         username: 'admin',
         password: 'password'
       };
     }
+
     if (id === 2) {
       body = {
         username: 'test',
         password: 'test'
       };
     }
+
     const loginObs = this.api.call(
       'https://api.owuk.co.uk/login',
       'post',
       body
     );
 
-    loginObs.subscribe(data => {
-      console.log('login data', data);
-      // @ts-ignore
-      if (data.id) {
-        // @ts-ignore
-        this.profile = data;
+    loginObs.subscribe((profile: ProfileModel) => {
+      if (profile.id) {
+        this.profile = profile;
+        this.profileService.set(this.profile);
+      } else {
+        this.profile.id = 0;
       }
+
       setTimeout(() => {
         const tools = document.getElementById('tools');
         document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
@@ -166,6 +182,6 @@ export class DesktopComponent implements OnInit {
   }
 
   logout() {
-    this.profile = {id: 0, image: '/assets/images/profile-empty.jpg'};
+    this.profileService.nuke();
   }
 }

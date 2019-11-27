@@ -24,20 +24,22 @@ $uri = explode("/", trim(explode("?", $_SERVER['REQUEST_URI'])[0], '/'));
 $jsonStrIn = file_get_contents('php://input');
 $jsonStr = cryptoJsAesDecrypt($key, $jsonStrIn);
 
-if($uri[1] === "login"){
+if($uri[0] === "login"){
   if($jsonStr['username']=== 'admin' AND $jsonStr['password'] === 'password'){
     $jsonStr = [];
     $jsonStr['id'] = 12112;
     $jsonStr['name'] = "Carl Fearby";
+    $jsonStr['active'] = "online";
     $jsonStr['status'] = "Coding Angular one line at a time...";
-    $jsonStr['image'] = 'data:image/jpeg;base64, ' . base64_encode(file_get_contents("../src/assets/images/profile.jpeg"));
+    $jsonStr['image'] = 'data:image/jpeg;base64, ' . base64_encode(file_get_contents("assets/images/profile.jpeg"));
 
   } else if($jsonStr['username']=== 'test' AND $jsonStr['password'] === 'test'){
     $jsonStr = [];
     $jsonStr['id'] = 332;
     $jsonStr['name'] = "Sandra Westwood";
+    $jsonStr['active'] = "busy";
     $jsonStr['status'] = "Currently Fixing Things";
-    $jsonStr['image'] = 'data:image/jpeg;base64, ' . base64_encode(file_get_contents("../src/assets/images/profile2.jpeg"));
+    $jsonStr['image'] = 'data:image/jpeg;base64, ' . base64_encode(file_get_contents("assets/images/profile2.jpeg"));
   } else {
     $jsonStr = [];
     $jsonStr['status'] = "Error " . $jsonStr['username'] . " " . $jsonStr['password'];

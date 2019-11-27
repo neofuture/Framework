@@ -11,8 +11,8 @@
                 (click)="makeWindowActive(windowList[windowItem])">
     </app-window>
   </div>
-  <button (click)="login(1)">Login 1</button>
-  <button (click)="login(2)">Login 2</button>
-  <button (click)="logout()">Log Out</button>
+  <button (click)="login(1)" *ngIf="profile.id === 0">Login 1</button>
+  <button (click)="login(2)" *ngIf="profile.id === 0">Login 2</button>
+  <button (click)="logout()" *ngIf="profile.id > 0">Log Out</button>
 </div>
 <app-toolbar class="toolbar" id="toolbar" [profile]="profile" ></app-toolbar>
