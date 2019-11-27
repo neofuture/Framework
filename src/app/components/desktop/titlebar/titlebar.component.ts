@@ -55,6 +55,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ribbonButtons$ = this.ribbonService.ribbonButtons.subscribe(buttons => {
       this.ribbonButtons = buttons;
     });
+
     this.menuButtons$ = this.ribbonService.menuButtons.subscribe(buttons => {
       this.menuButtons = buttons;
     });
