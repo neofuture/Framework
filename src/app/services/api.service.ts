@@ -16,6 +16,7 @@ export class ApiService {
   }
 
   key = '8QqJaytRg1buT?RkXo^Vy@4693BYL=I8';
+  url = 'https://api.owuk.co.uk';
 
   CryptoJSAesJson = {
     stringify(cipherParams) {
@@ -44,20 +45,16 @@ export class ApiService {
     }
   };
 
-  call(url, requestType, body, token = ''): Observable<object> {
+  call(url, requestType, body, token): Observable<object> {
     const httpOptions = this.headers(token);
     let data;
 
     body = this.encrypt(JSON.stringify(body));
 
-    data = this.http[requestType](url, body, httpOptions);
+    data = this.http[requestType](this.url + url, body, httpOptions);
 
     return data.pipe(map((str) => {
-      const decrypted = this.decrypt(str);
-      if (typeof decrypted.error !== 'undefined') {
-        console.error('Error Not Authorised API Access');
-      }
-      return decrypted;
+      return  this.decrypt(str);
     }));
   }
 

@@ -34,5 +34,11 @@ export const blank: LanguageModel = {
   away: '',
   busy: '',
   profile: '',
-  logout: ''
+  logout: '',
+  username: '',
+  password: '',
+  login: '',
+  userNotFound: '',
+  usernameTooShort: '',
+  passwordTooShort: ''
 };

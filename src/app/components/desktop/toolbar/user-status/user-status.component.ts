@@ -4,7 +4,6 @@ import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
 import {ProfileService} from '../../../../services/profile.service';
 import {ProfileModel} from '../../../../models/profile-model';
-import {ApiService} from '../../../../services/api.service';
 
 @Component({
   selector: 'app-user-status',
@@ -15,14 +14,12 @@ export class UserStatusComponent implements OnInit {
 
   profile: ProfileModel;
   locale: LanguageModel;
-
   language$: Subscription;
   profileSub$: Subscription;
 
   constructor(
     private languageService: LanguageService,
     private profileService: ProfileService,
-    private api: ApiService
   ) {
   }
 
@@ -33,6 +30,11 @@ export class UserStatusComponent implements OnInit {
 
     this.profileSub$ = this.profileService.object.subscribe(profile => {
       this.profile = profile;
+      if (this.profile) {
+        this.profileService.startHeartbeat();
+      } else {
+        this.profileService.stopHeartbeat();
+      }
     });
   }
 
@@ -45,36 +47,13 @@ export class UserStatusComponent implements OnInit {
   }
 
   setActive(active: string) {
-    this.profileService.update({active});
-
-    const body = {
-      active
-    };
-    const statusObs = this.api.call(
-      'https://api.owuk.co.uk/user/status',
-      'post',
-      body,
-      this.profile.token
-    );
-
-    statusObs.subscribe((status) => {
-    });
-
+    this.profileService.setActive(active);
     this.closeMenu();
   }
 
   logout() {
     setTimeout(() => {
-      const statusObs = this.api.call(
-        'https://api.owuk.co.uk/user/logout',
-        'post',
-        {},
-        this.profile.token
-      );
-
-      statusObs.subscribe((status) => {
-        this.profileService.nuke();
-      });
+      this.profileService.logout();
     }, 300);
     document.getElementById('profileImage').classList.add('hidden');
     document.getElementById('profileLabel').classList.add('hidden');

@@ -34,5 +34,11 @@ export const de_de: LanguageModel = {
   away: '',
   busy: '',
   profile: '',
-  logout: ''
+  logout: '',
+  username: '',
+  password: '',
+  login: '',
+  userNotFound: '',
+  usernameTooShort: '',
+  passwordTooShort: ''
 };

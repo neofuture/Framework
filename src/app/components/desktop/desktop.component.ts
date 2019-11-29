@@ -8,13 +8,15 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 import {ProfileService} from '../../services/profile.service';
 import {ProfileModel} from '../../models/profile-model';
-import {Md5} from 'ts-md5/dist/md5';
+import {LanguageService} from '../../services/language.service';
+import {LanguageModel} from '../../models/language-model';
 
 @Component({
   selector: 'app-desktop',
   templateUrl: './desktop.component.html',
   styleUrls: ['./desktop.component.css']
 })
+
 export class DesktopComponent implements OnInit {
 
   windowList = {};
@@ -34,6 +36,10 @@ export class DesktopComponent implements OnInit {
   profile: ProfileModel;
   profileSub$: Subscription;
 
+  private language$: Subscription;
+  private locale: LanguageModel;
+  loaded: boolean;
+
   @HostListener('window:resize')
   onResize() {
     this.resize();
@@ -45,7 +51,8 @@ export class DesktopComponent implements OnInit {
     private dataService: DataService,
     private route: ActivatedRoute,
     private api: ApiService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private languageService: LanguageService
   ) {
   }
 
@@ -58,6 +65,10 @@ export class DesktopComponent implements OnInit {
     this.resize();
     this.resizeToolBar();
 
+    this.language$ = this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
+
     this.dataSub$ = this.dataService.object.subscribe(object => {
       this.data = object || {};
     });
@@ -67,6 +78,10 @@ export class DesktopComponent implements OnInit {
     this.profileSub$ = this.profileService.object.subscribe(profile => {
       this.profile = profile;
     });
+
+    setTimeout(() => {
+      this.loaded = true;
+    }, 300);
   }
 
   resize() {
@@ -122,63 +137,5 @@ export class DesktopComponent implements OnInit {
     }, 60);
   }
 
-  login(id) {
 
-    let body = {};
-
-    if (id === 1) {
-      const md5 = new Md5();
-      const passMd5 = md5.appendStr('password').end();
-      body = {
-        username: 'admin',
-        password: passMd5
-      };
-    }
-
-    if (id === 2) {
-      const md5 = new Md5();
-      const passMd5 = md5.appendStr('test').end();
-      body = {
-        username: 'test',
-        password: passMd5
-      };
-    }
-
-    if (id === 3) {
-      const md5 = new Md5();
-      const passMd5 = md5.appendStr('demo').end();
-      body = {
-        username: 'demo',
-        password: passMd5
-      };
-    }
-
-    if (id === 4) {
-      const md5 = new Md5();
-      const passMd5 = md5.appendStr('john').end();
-      body = {
-        username: 'john',
-        password: passMd5
-      };
-    }
-
-    const loginObs = this.api.call(
-      'https://api.owuk.co.uk/user/login',
-      'post',
-      body
-    );
-
-    loginObs.subscribe((profile: ProfileModel) => {
-      if (profile) {
-        this.profileService.set(profile);
-      } else {
-        this.profileService.nuke();
-      }
-
-      setTimeout(() => {
-        const tools = document.getElementById('tools');
-        document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
-      });
-    });
-  }
 }

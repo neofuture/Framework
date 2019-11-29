@@ -34,5 +34,11 @@ export const en_gb: LanguageModel = {
   away: 'Away',
   busy: 'Busy',
   profile: 'Profile',
-  logout: 'Logout'
+  logout: 'Logout',
+  username: 'Username',
+  password: 'Password',
+  login: 'Login',
+  userNotFound: 'Account Not Found',
+  usernameTooShort: 'Username is too short',
+  passwordTooShort: 'Password is too short'
 };

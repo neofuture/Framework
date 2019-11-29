@@ -11,9 +11,6 @@
                 (click)="makeWindowActive(windowList[windowItem])">
     </app-window>
   </div>
-  <button (click)="login(1)" *ngIf="!profile">Login 1 (Carl)</button>
-  <button (click)="login(2)" *ngIf="!profile">Login 2 (Sandra)</button>
-  <button (click)="login(3)" *ngIf="!profile">Login 3 (No such user)</button>
-  <button (click)="login(4)" *ngIf="!profile">Login 4 (John no image)</button>
+  <app-login *ngIf="!profile && loaded"></app-login>
 </div>
 <app-toolbar class="toolbar" id="toolbar"></app-toolbar>

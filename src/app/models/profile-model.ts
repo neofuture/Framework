@@ -5,4 +5,5 @@ export interface ProfileModel {
   name: string;
   active: string;
   token: string;
+  error?: string;
 }

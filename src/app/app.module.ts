@@ -25,6 +25,7 @@ import {TabsComponent} from './components/desktop/toolbar/tabs/tabs.component';
 import {ApiService} from './services/api.service';
 import {HttpClientModule} from '@angular/common/http';
 import {SafeHtmlPipe} from './pipes/safe-html.pipe';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {SafeHtmlPipe} from './pipes/safe-html.pipe';
     UserStatusComponent,
     TabsComponent,
     SafeHtmlPipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

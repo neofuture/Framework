@@ -32,4 +32,10 @@ export interface LanguageModel {
   busy: string;
   profile: string;
   logout: string;
+  username: string;
+  password: string;
+  login: string;
+  userNotFound: string;
+  usernameTooShort: string;
+  passwordTooShort: string;
 }

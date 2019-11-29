@@ -1,7 +1,7 @@
 <div class="toolbarContainer">
   <div class="progress-bar progress-bar-danger" *ngIf="danger">&nbsp;</div>
   <div class="titleBarTop"><i class="logo ow-oceanworks"></i>
-    <span>Playground
+    <span>{{ locale.product }}
       <span  *ngIf="profile">
       <div (click)="setOpt1()" class="button" [ngClass]="activeTab === 1 ? 'active' : ''"><i
         class="ow-contacts_over"></i> {{ locale.ribbon1 }}</div>

@@ -54,13 +54,16 @@ if(strlen($headers['TOKEN']) > 24){
     echo cryptoJsAesEncrypt($key, $error);
     exit;
   }
-
-
-
 }
 
 
 if ($uri[0] === "user") {
+  if ($uri[1] === "heartbeat"){
+    $status['status'] = true;
+
+    echo cryptoJsAesEncrypt($key, $status);
+    exit;
+  }
 
   if ($uri[1] === "login") {
     $token = guidv4();
@@ -90,6 +93,16 @@ if ($uri[0] === "user") {
         $user['image'] = file_get_contents('./assets/images/profile-empty.txt');
       }
 
+    } else {
+      $user['error'] = 'userNotFound';
+
+      if(strlen($jsonStr['username'])<3){
+        $user['error'] = 'usernameTooShort';
+      }
+
+      if(strlen($jsonStr['password'])<3){
+        $user['error'] = 'passwordTooShort';
+      }
     }
 
     echo cryptoJsAesEncrypt($key, $user);

@@ -125,7 +125,7 @@
   box-sizing: border-box;
 }
 
-input[type='text'],input[type='search'], select {
+input[type='text'],input[type='search'],input[type='password'], select {
   -webkit-appearance: none;
   border: 1px solid;
   border-color: var(--background-darker-grey);
