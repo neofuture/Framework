@@ -1,0 +1,31 @@
+<div class="loginDialog">
+  <div class="container">
+    <i class="ow-oceanworks"></i>
+    <i class="ow-oceanworks back"></i>
+    <div class="product">
+      <h1> {{ locale.product }}</h1>
+      <div>v 0.3.5463</div>
+    </div>
+    <div class="loginForm">
+      <div *ngIf="error" class="error" id="error">{{ locale[error] }}</div>
+      <form (ngSubmit)="login()">
+        <div>
+          <label for="username">{{ locale.username }}</label>
+        </div>
+        <div>
+          <input type="text" [(ngModel)]="username" id="username" name="username">
+        </div>
+        <div>
+          <label for="password">{{ locale.password}}</label>
+        </div>
+        <div>
+          <input type="password" [(ngModel)]="password" id="password" name="password">
+        </div>
+        <div>
+          <button type="submit">{{ locale.login }}</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

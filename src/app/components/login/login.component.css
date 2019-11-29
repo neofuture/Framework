@@ -1,0 +1,88 @@
+.error {
+  background-color: red;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  position: absolute;
+  top: -43px;
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+  opacity:0;
+  transition:all 300ms;
+}
+
+.error.on {
+  opacity:1;
+  transition:all 300ms;
+}
+label {
+  font-size:16px;
+  line-height:32px;
+}
+
+.loginForm{
+  margin-right:18px;
+  width:50%;
+  left: 25%;
+  position: relative;
+  top: -7%;
+}
+
+.loginForm input {
+  width:100%;
+}
+
+.loginForm button {
+  float:right;
+  background-color:var(--background-color);
+  color:var(--text);
+  width:33%;
+  margin-top:12px;
+}
+
+.loginDialog {
+  width:600px;
+  height:400px;
+  position:absolute;
+  top:calc(50% - 200px);
+  left:calc(50% - 300px);
+  border: 1px solid var(--background-darker-grey);
+  background-color: var(--background-grey);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.container {
+  width:100%;
+  height:100%;
+  background-color:var(--primary);
+  color:var(--background-color);
+  padding:20px;
+}
+
+.container i {
+  font-size:120px;
+}
+.container i.back {
+  font-size: 420px;
+  position: absolute;
+  right: -129px;
+  top: 64px;
+  opacity: 0.1;
+}
+
+h1 {
+  font-weight:200;
+  margin:0;
+}
+
+.product{
+  bottom:24px;
+  position:absolute;
+  padding: 12px;
+}
+
+.product h1 {
+  font-size:42px;
+}
