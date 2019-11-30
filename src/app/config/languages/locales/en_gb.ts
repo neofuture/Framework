@@ -28,7 +28,7 @@ export const en_gb: LanguageModel = {
   ribbon2: 'Ribbon 2',
   welcome: 'Welcome',
   close: 'Close',
-  product: 'Framework',
+  product: 'Oceanworks',
   online: 'Online',
   offline: 'Offline',
   away: 'Away',

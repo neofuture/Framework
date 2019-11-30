@@ -1,0 +1,18 @@
+<div *ngFor="let notificationItem of objectKeys(notificationList)"
+     (transitionend)="closedNotification(notificationList[notificationItem])"
+     [ngClass]="['notification',  notificationList[notificationItem].class]"
+     (click)="clickHandler(notificationList[notificationItem])">
+  <div class="container">
+    <table>
+      <tr>
+        <td>
+          <i class="{{ notificationList[notificationItem].icon }}"></i>
+        </td>
+        <td>
+          {{ notificationList[notificationItem].title }}
+        </td>
+      </tr>
+    </table>
+    <i class="ow-close" (click)="close(notificationList[notificationItem])"></i>
+  </div>
+</div>

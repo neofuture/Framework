@@ -11,6 +11,15 @@
                 (click)="makeWindowActive(windowList[windowItem])">
     </app-window>
   </div>
+  <h2>Demo Logins</h2>
+  <div>admin/password</div>
+  <div>test/test</div>
+  <div>john/john</div>
   <app-login *ngIf="!profile && loaded"></app-login>
+  <button (click)="newNotificationSuccess('New Messages', 'ow-messages_over')">New Success Notification</button>
+  <button (click)="newNotificationSuccess('New Messages', 'ow-oceanworks')">New Success Notification</button>
+  <button (click)="newNotificationWarning('Warning', 'ow-warning')">New Warning Notification</button>
+  <button (click)="newNotificationError('Error Error Error', 'ow-error')">New Warning Notification</button>
+  <app-notifications></app-notifications>
 </div>
 <app-toolbar class="toolbar" id="toolbar"></app-toolbar>

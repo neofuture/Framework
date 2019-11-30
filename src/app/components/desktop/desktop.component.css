@@ -39,7 +39,13 @@
   height: 100%;
 }
 
-
+app-notifications {
+  position:absolute;
+  bottom:0;
+  width:300px;
+  right:0;
+  z-index:999999;
+}
 
 
 

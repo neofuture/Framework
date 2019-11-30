@@ -23,7 +23,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.ow-error:before {
+  content: "\e967";
+}
+.ow-warning:before {
+  content: "\e966";
+}
 .ow-user_over:before {
   content: "\e964";
 }

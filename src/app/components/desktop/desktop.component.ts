@@ -10,6 +10,7 @@ import {ProfileService} from '../../services/profile.service';
 import {ProfileModel} from '../../models/profile-model';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-desktop',
@@ -52,7 +53,8 @@ export class DesktopComponent implements OnInit {
     private route: ActivatedRoute,
     private api: ApiService,
     private profileService: ProfileService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private notificationService: NotificationsService
   ) {
   }
 
@@ -82,6 +84,20 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.loaded = true;
     }, 300);
+  }
+
+  newNotificationSuccess(title, icon) {
+    this.notificationService.new(title, icon, 'success', () => {
+      alert('clicked');
+    });
+  }
+
+  newNotificationWarning(title, icon) {
+    this.notificationService.new(title, icon, 'warning');
+  }
+
+  newNotificationError(title, icon) {
+    this.notificationService.new(title, icon, 'error');
   }
 
   resize() {
@@ -136,6 +152,5 @@ export class DesktopComponent implements OnInit {
       this.resize();
     }, 60);
   }
-
 
 }
