@@ -25,7 +25,9 @@ export class NotificationsService {
       title,
       class: 'notification',
       icon,
-      click
+      click,
+      pause: false,
+      timeRemaining: 10
     };
 
     this.notificationList[id] = notificationItem;
@@ -33,10 +35,15 @@ export class NotificationsService {
     setTimeout(() => {
       this.notificationList[id].class = 'open ' + type;
     });
-
-    this.notificationList[id].intervalTimer = setTimeout(() => {
-      this.close(this.notificationList[id]);
-    }, 5000);
+    this.notificationList[id].intervalTimer = setInterval(() => {
+      if (this.notificationList[id].pause === false) {
+        this.notificationList[id].timeRemaining--;
+      }
+      if (this.notificationList[id].timeRemaining <= 0) {
+        clearInterval(this.notificationList[id].intervalTimer);
+        this.close(this.notificationList[id]);
+      }
+    }, 1000);
   }
 
   close(notificationItem: NotificationModel) {

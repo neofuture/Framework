@@ -1,8 +1,13 @@
 <div *ngFor="let notificationItem of objectKeys(notificationList)"
      (transitionend)="closedNotification(notificationList[notificationItem])"
      [ngClass]="['notification',  notificationList[notificationItem].class]"
-     (click)="clickHandler(notificationList[notificationItem])">
+     (click)="clickHandler(notificationList[notificationItem])"
+     (mouseover)="pauseTimer(notificationList[notificationItem])"
+     (mouseout)="restartTimer(notificationList[notificationItem])"
+>
   <div class="container">
+    <div class="timer"
+         *ngIf="notificationList[notificationItem].timeRemaining > 0">{{ notificationList[notificationItem].timeRemaining}}</div>
     <table>
       <tr>
         <td>

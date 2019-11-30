@@ -36,4 +36,12 @@ export class NotificationsComponent implements OnInit {
       notificationList.click();
     }
   }
+
+  pauseTimer(notificationItem: NotificationModel) {
+    notificationItem.pause = true;
+  }
+
+  restartTimer(notificationItem: NotificationModel) {
+    notificationItem.pause = false;
+  }
 }

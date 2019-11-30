@@ -44,7 +44,11 @@ i {
 .warning {
   background-color: #ff8d05;
 }
-
+.timer {
+  position:absolute;
+  top:8px;
+  left:8px;
+}
 .ow-close {
   position: absolute;
   top: 10px;
