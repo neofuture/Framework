@@ -3,6 +3,7 @@ import {LanguageModel} from '../../models/language-model';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
 import {ProfileService} from '../../services/profile.service';
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private languageService: LanguageService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -36,13 +38,19 @@ export class LoginComponent implements OnInit {
         console.log(profile);
         if (profile.error) {
           this.error = profile.error;
+          this.notificationService.new(this.locale[profile.error], 'ow-lock_closed', 'error', 5);
+
+          // setTimeout(() => {
+          //   document.getElementById('error').classList.add('on');
+          // });
+        } else {
           setTimeout(() => {
-            document.getElementById('error').classList.add('on');
-          });
+            this.notificationService.new(this.locale.loginSuccessful, 'ow-lock_open', 'success', 5);
+          }, 200);
         }
         const tools = document.getElementById('tools');
         document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
-      });
+      }, 50);
     });
   }
 }

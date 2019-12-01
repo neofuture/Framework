@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
 import {ProfileService} from '../../../../services/profile.service';
 import {ProfileModel} from '../../../../models/profile-model';
+import {NotificationService} from "../../../../services/notification.service";
 
 @Component({
   selector: 'app-user-status',
@@ -20,6 +21,7 @@ export class UserStatusComponent implements OnInit {
   constructor(
     private languageService: LanguageService,
     private profileService: ProfileService,
+    private notificationService: NotificationService
   ) {
   }
 
@@ -58,6 +60,8 @@ export class UserStatusComponent implements OnInit {
     document.getElementById('profileImage').classList.add('hidden');
     document.getElementById('profileLabel').classList.add('hidden');
     this.closeMenu();
+    this.notificationService.new(this.locale.loggedOut, 'ow-lock_cloxed', 'success', 5);
+
   }
 
   openProfile() {

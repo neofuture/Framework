@@ -38,7 +38,9 @@ export const en_gb: LanguageModel = {
   username: 'Username',
   password: 'Password',
   login: 'Login',
-  userNotFound: 'Account Not Found',
+  userNotFound: 'Username and Password combination are incorrect',
   usernameTooShort: 'Username is too short',
-  passwordTooShort: 'Password is too short'
+  passwordTooShort: 'Password is too short',
+  loginSuccessful: 'Login Successful',
+  loggedOut: 'You have been logged out'
 };

@@ -1,6 +1,6 @@
 <div *ngFor="let notificationItem of objectKeys(notificationList)"
-     (transitionend)="closedNotification(notificationList[notificationItem])"
      [ngClass]="['notification',  notificationList[notificationItem].class]"
+     (transitionend)="closedNotification(notificationList[notificationItem])"
      (click)="clickHandler(notificationList[notificationItem])"
      (mouseover)="pauseTimer(notificationList[notificationItem])"
      (mouseout)="restartTimer(notificationList[notificationItem])"

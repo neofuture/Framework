@@ -10,7 +10,7 @@ import {ProfileService} from '../../services/profile.service';
 import {ProfileModel} from '../../models/profile-model';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
-import {NotificationsService} from "../../services/notifications.service";
+import {NotificationService} from "../../services/notification.service";
 
 @Component({
   selector: 'app-desktop',
@@ -54,7 +54,7 @@ export class DesktopComponent implements OnInit {
     private api: ApiService,
     private profileService: ProfileService,
     private languageService: LanguageService,
-    private notificationService: NotificationsService
+    private notificationService: NotificationService
   ) {
   }
 
@@ -87,17 +87,17 @@ export class DesktopComponent implements OnInit {
   }
 
   newNotificationSuccess(title, icon) {
-    this.notificationService.new(title, icon, 'success', () => {
+    this.notificationService.new(title, icon, 'success', 5, () => {
       alert('clicked');
     });
   }
 
   newNotificationWarning(title, icon) {
-    this.notificationService.new(title, icon, 'warning');
+    this.notificationService.new(title, icon, 'warning', 5);
   }
 
   newNotificationError(title, icon) {
-    this.notificationService.new(title, icon, 'error');
+    this.notificationService.new(title, icon, 'error', 5);
   }
 
   resize() {

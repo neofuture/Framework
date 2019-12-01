@@ -4,7 +4,7 @@ import {NotificationModel} from '../models/notification-model';
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationsService {
+export class NotificationService {
   notificationList = {};
 
   constructor() {
@@ -14,7 +14,8 @@ export class NotificationsService {
     title: string,
     icon: string,
     type: string,
-    click?: object
+    timer?: number,
+    click?: object,
   ) {
     let id = parseInt(Object.keys(this.notificationList)[Object.keys(this.notificationList).length - 1], 10) || 0;
     id++;
@@ -27,14 +28,14 @@ export class NotificationsService {
       icon,
       click,
       pause: false,
-      timeRemaining: 10
+      timeRemaining: timer || 5
     };
 
     this.notificationList[id] = notificationItem;
 
     setTimeout(() => {
       this.notificationList[id].class = 'open ' + type;
-    });
+    }, 60);
     this.notificationList[id].intervalTimer = setInterval(() => {
       if (this.notificationList[id].pause === false) {
         this.notificationList[id].timeRemaining--;

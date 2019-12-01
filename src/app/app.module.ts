@@ -26,7 +26,7 @@ import {ApiService} from './services/api.service';
 import {HttpClientModule} from '@angular/common/http';
 import {SafeHtmlPipe} from './pipes/safe-html.pipe';
 import { LoginComponent } from './components/login/login.component';
-import { NotificationsComponent } from './components/desktop/notifications/notifications.component';
+import { NotificationComponent } from './components/desktop/notifications/notification.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { NotificationsComponent } from './components/desktop/notifications/notif
     SafeHtmlPipe,
     SafeHtmlPipe,
     LoginComponent,
-    NotificationsComponent
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

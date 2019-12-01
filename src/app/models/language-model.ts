@@ -38,4 +38,6 @@ export interface LanguageModel {
   userNotFound: string;
   usernameTooShort: string;
   passwordTooShort: string;
+  loginSuccessful: string;
+  loggedOut: string;
 }

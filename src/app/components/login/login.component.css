@@ -60,7 +60,7 @@ label {
   background-color:var(--primary);
   color:var(--background-color);
   padding:20px;
-
+  border-radius:3px;
 }
 
 .container i {

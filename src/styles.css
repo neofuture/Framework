@@ -125,16 +125,17 @@
   box-sizing: border-box;
 }
 
-input[type='text'],input[type='search'],input[type='password'], select {
+input[type='text'], input[type='search'], input[type='password'], select {
   -webkit-appearance: none;
   border: 1px solid;
   border-color: var(--background-darker-grey);
   color: var(--text);
   background-color: var(--background-color);
   border-radius: 6px;
-  padding:6px;
-  font-size:14px;
+  padding: 6px;
+  font-size: 14px;
 }
+
 button {
   border-radius: 6px;
 }
@@ -148,18 +149,26 @@ select {
 }
 
 :root {
-  --primary: #337799;
-  --primary-light: #b8d6e7;
-  --primary-mid: #438eb5;
-  --primary-dark: #2e5671;
+  --hue: 200;
+  --primary: hsl(var(--hue), 67%, 40%);
+  --primary-light: hsl(var(--hue), 67%, 50%);
+  --primary-mid: hsl(var(--hue), 67%, 50%);
+  --primary-dark: hsl(var(--hue), 67%, 35%);
+
   --text: #444444;
   --background-color: #ffffff;
   --background-grey: #f0f0f0;
   --background-mid-grey: #dedede;
   --background-darker-grey: #e0dfe1;
-  --background-darkest-grey: #007126;
+  --background-darkest-grey: #afaeb0;
   --box-shadow: 0 0 52px 12px rgba(0, 0, 0, 0.10);
   --alerted: #ff0000;
+
+  ---darker: calc(
+    ((((var(--red) * 299) +
+    (var(--green) * 587) +
+    (var(--blue) * 114)) / 1000) - 128) * -1000
+  );
 }
 
 .compusoft {
@@ -278,41 +287,42 @@ body.compusoft, .compusoft *:not(pre) {
 }
 
 .compusoft .toolChange {
-  border:0 !important;
+  border: 0 !important;
 }
 
 .compusoft .toolbar {
-  border:0 !important;
+  border: 0 !important;
 }
 
 .compusoft .searchResults div {
-  border-radius:0;
+  border-radius: 0;
 }
 
 .compusoft .menuSubTree {
-  border-radius:0 !important;
+  border-radius: 0 !important;
 }
 
-.compusoft .menuSubTree div{
-  border-radius:0 !important;
+.compusoft .menuSubTree div {
+  border-radius: 0 !important;
 }
-.compusoft .menu{
-  border-radius:0 !important;
+
+.compusoft .menu {
+  border-radius: 0 !important;
 }
 
 .compusoft .button {
-  display:inline-block;
-  padding:4px 12px 4px 12px !important;
-  border-radius:0 !important;
-  margin-top:0 !important;
+  display: inline-block;
+  padding: 4px 12px 4px 12px !important;
+  border-radius: 0 !important;
+  margin-top: 0 !important;
 }
 
 .compusoft .userMenu {
-  border-radius:0 !important;
+  border-radius: 0 !important;
 }
 
 .compusoft .profileImage, .compusoft .profileImageMenu, .compusoft .hover, .compusoft .profileImage .label {
-  border-radius:0 !important;
+  border-radius: 0 !important;
 }
 
 .noTransition * {
@@ -339,5 +349,5 @@ button {
   background-color: var(--background-mid-grey);
   color: var(--primary);
   border-radius: 4px;
-  padding-bottom:2px;
+  padding-bottom: 2px;
 }

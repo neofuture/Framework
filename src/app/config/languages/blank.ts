@@ -40,5 +40,7 @@ export const blank: LanguageModel = {
   login: '',
   userNotFound: '',
   usernameTooShort: '',
-  passwordTooShort: ''
+  passwordTooShort: '',
+  loginSuccessful: '',
+  loggedOut: ''
 };

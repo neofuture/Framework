@@ -40,5 +40,7 @@ export const no_no: LanguageModel = {
   login: '',
   userNotFound: '',
   usernameTooShort: '',
-  passwordTooShort: ''
+  passwordTooShort: '',
+  loginSuccessful: '',
+  loggedOut: ''
 };

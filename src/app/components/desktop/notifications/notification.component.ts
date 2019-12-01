@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {NotificationsService} from '../../../services/notifications.service';
+import {NotificationService} from '../../../services/notification.service';
 import {NotificationModel} from '../../../models/notification-model';
 
 @Component({
-  selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  selector: 'app-notification',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.css']
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationComponent implements OnInit {
   notificationList = {};
   objectKeys = Object.keys;
 
   constructor(
-    private notificationService: NotificationsService
+    private notificationService: NotificationService
   ) {
   }
 
