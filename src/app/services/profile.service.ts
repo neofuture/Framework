@@ -5,6 +5,9 @@ import {ApiService} from './api.service';
 import {Md5} from 'ts-md5/dist/md5';
 import {ProfileModel} from '../models/profile-model';
 import {HeartbeatModel} from '../models/heartbeat-model';
+import {NotificationService} from './notification.service';
+import {LanguageService} from './language.service';
+import {LanguageModel} from '../models/language-model';
 
 
 @Injectable({
@@ -12,10 +15,12 @@ import {HeartbeatModel} from '../models/heartbeat-model';
 })
 export class ProfileService {
   private intervalTimer: any;
-
+  locale: LanguageModel;
   constructor(
     private windowService: WindowService,
-    private api: ApiService
+    private api: ApiService,
+    private notificationService: NotificationService,
+    private languageService: LanguageService
   ) {
   }
 
@@ -80,6 +85,10 @@ export class ProfileService {
       this.objectSource.value.token
     ).subscribe(() => {
       this.destroy();
+      this.languageService.object.subscribe(locale => {
+        this.locale = locale;
+        this.notificationService.new(this.locale.loggedOut, 'ow-lock_closed', 'error', 5);
+      });
     });
   }
 

@@ -84,6 +84,15 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.loaded = true;
     }, 300);
+
+    this.api.call(
+      '/settings',
+      'post',
+      {},
+      ''
+    ).subscribe((object: any) => {
+      document.documentElement.style.setProperty('--hue', object.hue);
+    });
   }
 
   newNotificationSuccess(title, icon) {

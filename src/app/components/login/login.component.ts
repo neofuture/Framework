@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   locale: LanguageModel;
   username = '';
   password = '';
-  error: string;
 
   constructor(
     private languageService: LanguageService,
@@ -37,12 +36,7 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         console.log(profile);
         if (profile.error) {
-          this.error = profile.error;
           this.notificationService.new(this.locale[profile.error], 'ow-lock_closed', 'error', 5);
-
-          // setTimeout(() => {
-          //   document.getElementById('error').classList.add('on');
-          // });
         } else {
           setTimeout(() => {
             this.notificationService.new(this.locale.loginSuccessful, 'ow-lock_open', 'success', 5);

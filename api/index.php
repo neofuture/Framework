@@ -26,10 +26,30 @@ $opt = [
 
 $uri = explode("/", trim(explode("?", $_SERVER['REQUEST_URI'])[0], '/'));
 
+$url = str_replace("https://", "", $_SERVER['HTTP_ORIGIN']);
+$url = str_replace("http://", "", $url);
+$url = explode(":", $url);
+$url = explode(".", $url[0]);
+
+$registration = $url[0];
+
 $host = '127.0.0.1';
 $user = 'owuk';
 $pass = 'Yoshi355466!';
-$db = "owuk";
+$db = "owuk_registrations";
+$dsn = "mysql:host=$host;dbname=$db;";
+$pdo = new PDO($dsn, $user, $pass, $opt);
+
+$stmt = $pdo->prepare("SELECT destination FROM datasets WHERE origin = ?");
+$stmt->execute([$registration]);
+$dataset = $stmt->fetch();
+
+
+// continue
+$host = '127.0.0.1';
+$user = 'owuk';
+$pass = 'Yoshi355466!';
+$db = "owuk_" . $dataset['destination'];
 $dsn = "mysql:host=$host;dbname=$db;";
 $pdo = new PDO($dsn, $user, $pass, $opt);
 
@@ -41,7 +61,23 @@ $fp = fopen("log.txt", "w");
 fwrite($fp, $headers['TOKEN']);
 fclose($fp);
 
+if ($uri[0]==="settings"){
+  $stmt = $pdo->prepare("SELECT setting, value FROM settings");
+  $stmt->execute();
+  $settings = $stmt->fetchAll();
+
+  foreach($settings as $setting){
+    $settingsArray[$setting['setting']] = $setting['value'];
+  }
+
+  echo cryptoJsAesEncrypt($key, $settingsArray);
+  exit;
+}
+
 if(strlen($headers['TOKEN']) > 24){
+  $stmt = $pdo->prepare("DELETE FROM userSessions WHERE heartbeat < ADDDATE(NOW(), INTERVAL -30 MINUTE)");
+  $stmt->execute();
+
   $stmt = $pdo->prepare("SELECT id, userId FROM userSessions WHERE token = ?");
   $stmt->execute([$headers['TOKEN']]);
   $session = $stmt->fetch();
@@ -73,6 +109,10 @@ if ($uri[0] === "user") {
     $user = $stmt->fetch();
 
     if ($user !== false) {
+      // Delete any old sessions (single seat)
+      $stmt = $pdo->prepare("DELETE FROM userSessions WHERE userId = ?");
+      $stmt->execute([$user['id']]);
+
       // Create Session
       $stmt = $pdo->prepare("INSERT INTO userSessions (heartbeat, token, userId) VALUES (?, ?, ?)");
       $stmt->execute([date("Y-m-d H:i:s"), $token, $user['id']]);
