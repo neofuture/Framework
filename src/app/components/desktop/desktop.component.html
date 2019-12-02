@@ -1,4 +1,5 @@
-<app-titlebar class="titleBarTop" id="titleBarTop" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth" (changedSize)="resizeToolBar()"></app-titlebar>
+<app-titlebar class="titleBarTop" id="titleBarTop" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth"
+              (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
@@ -17,9 +18,13 @@
   <div>john/john</div>
   <app-login *ngIf="!profile && loaded"></app-login>
   <button (click)="newNotificationSuccess('New Messages', 'ow-messages_over')">New Success Notification</button>
-  <button (click)="newNotificationSuccess('A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A', 'ow-oceanworks')">New Success Notification</button>
+  <button
+    (click)="newNotificationSuccess('A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A', 'ow-oceanworks')">
+    New Success Notification
+  </button>
   <button (click)="newNotificationWarning('Warning', 'ow-warning')">New Warning Notification</button>
   <button (click)="newNotificationError('Error Error Error', 'ow-error')">New Warning Notification</button>
 </div>
-<app-toolbar class="toolbar" id="toolbar"></app-toolbar>
+<app-toolbar class="toolbar" id="toolbar" [desktopHeight]="desktopHeight"
+             [desktopWidth]="desktopWidth"></app-toolbar>
 <app-notification></app-notification>

@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LanguageService} from '../../../../services/language.service';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
 import {ProfileService} from '../../../../services/profile.service';
 import {ProfileModel} from '../../../../models/profile-model';
 import {NotificationService} from '../../../../services/notification.service';
+import {ModuleService} from '../../../../services/module.service';
 
 @Component({
   selector: 'app-user-status',
@@ -12,6 +13,8 @@ import {NotificationService} from '../../../../services/notification.service';
   styleUrls: ['./user-status.component.css']
 })
 export class UserStatusComponent implements OnInit {
+  @Input() desktopWidth: number;
+  @Input() desktopHeight: number;
 
   profile: ProfileModel;
   locale: LanguageModel;
@@ -23,7 +26,8 @@ export class UserStatusComponent implements OnInit {
   constructor(
     private languageService: LanguageService,
     private profileService: ProfileService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private moduleService: ModuleService
   ) {
   }
 
@@ -65,6 +69,7 @@ export class UserStatusComponent implements OnInit {
   }
 
   openProfile() {
+    this.moduleService.userProfile(this.desktopWidth, this.desktopHeight);
     this.closeMenu();
   }
 

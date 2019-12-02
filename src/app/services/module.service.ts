@@ -53,6 +53,27 @@ export class ModuleService {
     );
   }
 
+  userProfile(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'user',
+      'user_over',
+      true,
+      'profile',
+      null,
+      true,
+      true,
+      null,
+      {body: 'Testing Profile'},
+      null,
+      null,
+      null,
+      desktopWidth,
+      desktopHeight,
+      false,
+      ''
+    );
+  }
+
   settings(desktopWidth, desktopHeight) {
     this.windowService.new(
       'cog',

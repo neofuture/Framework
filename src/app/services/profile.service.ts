@@ -148,7 +148,7 @@ export class ProfileService {
         this.update({image: object.image});
         this.languageService.object.subscribe(locale => {
           this.locale = locale;
-          this.notificationService.new(this.locale.profileImageUpdated, object.image, 'success');
+          this.notificationService.new(this.locale.profileImageUpdated, object.image, 'success', 3);
         });
       });
     };
