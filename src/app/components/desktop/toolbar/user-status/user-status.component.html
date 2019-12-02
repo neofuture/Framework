@@ -2,12 +2,23 @@
   <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage">
   <div class="label" [ngClass]="profile.active" *ngIf="profile.id > 0" id="profileLabel"></div>
   <div class="userMenu" *ngIf="profile.id > 0" id="userMenu">
-    <img [src]="profile.image | safeHtml" class="profileImageMenu" alt="{{ profile.name }}">
-    <span class="label" [ngClass]="profile.active"></span>
+
     <div>
       <span class="profileName">{{ profile.name }}</span>
       <span class="profileStatus">{{ profile.status }}</span>
     </div>
+    <img [src]="profile.image | safeHtml" class="profileImageMenu" alt="{{ profile.name }}"
+         (mouseover)="imageChange = true" (mouseout)="imageChange = false">
+    <div class="imageChange" [ngClass]="{'on': imageChange}" (mouseover)="imageChange = true"
+         (mouseout)="imageChange = false" (click)="fileInput.click()">{{ locale.changeImage }}</div>
+
+    <input
+      style="display: none"
+      type="file" (change)="changeProfileImage($event)"
+      #fileInput>
+
+    <span class="label" [ngClass]="profile.active"></span>
+
     <hr>
     <div class="hover" (click)="setActive('online')"><span class="online dot"></span> {{ locale.online }}</div>
     <div class="hover" (click)="setActive('busy');"><span class="busy dot"></span> {{ locale.busy }}</div>

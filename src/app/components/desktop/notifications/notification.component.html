@@ -10,10 +10,15 @@
          *ngIf="notificationList[notificationItem].timeRemaining > 0">{{ notificationList[notificationItem].timeRemaining}}</div>
     <table>
       <tr>
-        <td>
+        <td *ngIf="notificationList[notificationItem].icon.match('ow-')">
           <i class="{{ notificationList[notificationItem].icon }}"></i>
         </td>
-        <td>
+        <td *ngIf="notificationList[notificationItem].icon.match('jpeg')">
+          <div class="notificationImageContainer">
+            <img src="{{ notificationList[notificationItem].icon }}" alt="" class="notificationImage">
+          </div>
+        </td>
+        <td class="text">
           {{ notificationList[notificationItem].title }}
         </td>
       </tr>

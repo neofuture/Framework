@@ -183,4 +183,29 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
+
+}
+
+.imageChange{
+  background-color:rgba(0,0,0,0.5);
+  color:white !important;
+  line-height:16px !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 32px !important;
+  position:absolute !important;
+  right:10px;
+  top: -34px !important;
+  left: 162px !important;
+  transition: all 300ms;
+  opacity:0;
+  cursor:pointer;
+  text-align:center;
+  padding-top:16px !important;
+  padding-bottom:16px !important;
+  font-size:12px !important;
+}
+.imageChange.on {
+  transition: all 300ms;
+  opacity:1;
 }

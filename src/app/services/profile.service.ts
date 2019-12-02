@@ -129,4 +129,28 @@ export class ProfileService {
   stopHeartbeat() {
     clearInterval(this.intervalTimer);
   }
+
+  changeProfileImage(event) {
+    const selectedFile = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onload = () => {
+      const body = {
+        image: reader.result
+      };
+      this.api.call(
+        '/upload',
+        'post',
+        body,
+        this.objectSource.value.token
+      ).subscribe((object: any) => {
+        this.update({image: object.image});
+        this.languageService.object.subscribe(locale => {
+          this.locale = locale;
+          this.notificationService.new(this.locale.profileImageUpdated, object.image, 'success');
+        });
+      });
+    };
+  }
 }

@@ -63,11 +63,11 @@ export class NotificationService {
 
 
   onClosed(notificationItem: NotificationModel) {
-    if (notificationItem.class === 'closed') {
+    if (notificationItem.class.match('closed')) {
       if (notificationItem.intervalTimer) {
         clearInterval(notificationItem.intervalTimer);
       }
-      for (const key in this.notificationList) {
+      for (const key of Object.keys(this.notificationList)) {
         if (notificationItem === this.notificationList[key]) {
           delete this.notificationList[key];
         }

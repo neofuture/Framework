@@ -44,18 +44,45 @@ i {
 .warning {
   background-color: #ff8d05;
 }
+
 .timer {
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  width:22px;
-  text-align:center;
-  font-size:10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 22px;
+  text-align: center;
+  font-size: 10px;
 }
+
 .ow-close {
   position: absolute;
   top: 10px;
   right: 0px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.notificationImageContainer {
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  margin: auto 0;
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.notificationImage {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: white;
+}
+
+.text {
+  padding-right:22px;
 }

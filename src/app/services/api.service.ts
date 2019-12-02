@@ -58,6 +58,16 @@ export class ApiService {
     }));
   }
 
+  upload(url, body, token) {
+    const httpOptions = this.headers(token);
+    let data;
+    // @ts-ignore
+    data = this.http.post(this.url + url, body, httpOptions);
+
+    return data.pipe(map((str) => {
+      return str;
+    }));
+  }
   encrypt(value) {
     return CryptoJS.AES.encrypt(
       value,

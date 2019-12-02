@@ -322,8 +322,8 @@ app-search-bar {
   height: 16px;
   text-align: center;
   font-size: 11px;
-  line-height: 16px;
-  border: 1px solid #660000;
+  line-height: 14px;
+  border: 1px solid #cc0000;
 }
 
 

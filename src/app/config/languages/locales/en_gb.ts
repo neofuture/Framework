@@ -42,5 +42,7 @@ export const en_gb: LanguageModel = {
   usernameTooShort: 'Username is too short',
   passwordTooShort: 'Password is too short',
   loginSuccessful: 'Login Successful',
-  loggedOut: 'You have been logged out'
+  loggedOut: 'You have been logged out',
+  changeImage: 'Change Image',
+  profileImageUpdated: 'You\'re Profile Image has been updated'
 };

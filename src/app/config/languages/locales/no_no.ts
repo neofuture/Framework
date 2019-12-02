@@ -42,5 +42,7 @@ export const no_no: LanguageModel = {
   usernameTooShort: '',
   passwordTooShort: '',
   loginSuccessful: '',
-  loggedOut: ''
+  loggedOut: '',
+  changeImage: '',
+  profileImageUpdated: ''
 };

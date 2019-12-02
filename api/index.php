@@ -61,20 +61,23 @@ $fp = fopen("log.txt", "w");
 fwrite($fp, $headers['TOKEN']);
 fclose($fp);
 
-if ($uri[0]==="settings"){
+
+if ($uri[0] === "settings") {
   $stmt = $pdo->prepare("SELECT setting, value FROM settings");
   $stmt->execute();
   $settings = $stmt->fetchAll();
 
-  foreach($settings as $setting){
+  foreach ($settings as $setting) {
     $settingsArray[$setting['setting']] = $setting['value'];
   }
+
+  logOutput($pdo, $jsonStr, $settingsArray);
 
   echo cryptoJsAesEncrypt($key, $settingsArray);
   exit;
 }
 
-if(strlen($headers['TOKEN']) > 24){
+if (strlen($headers['TOKEN']) > 24) {
   $stmt = $pdo->prepare("DELETE FROM userSessions WHERE heartbeat < ADDDATE(NOW(), INTERVAL -30 MINUTE)");
   $stmt->execute();
 
@@ -82,7 +85,7 @@ if(strlen($headers['TOKEN']) > 24){
   $stmt->execute([$headers['TOKEN']]);
   $session = $stmt->fetch();
 
-  if($session !== false){
+  if ($session !== false) {
     $stmt = $pdo->prepare("UPDATE userSessions SET heartbeat = ? WHERE token = ?");
     $stmt->execute([date("Y-m-d H:i:s"), $headers['TOKEN']]);
   } else {
@@ -92,11 +95,67 @@ if(strlen($headers['TOKEN']) > 24){
   }
 }
 
+if ($uri[0] === "upload") {
+
+  file_put_contents($headers['TOKEN'] . "-test.jpg", base64_decode(explode(",", $jsonStr['image'], 2)[1]));
+
+  $image = imagecreatefromstring(base64_decode(explode(",", $jsonStr['image'], 2)[1]));
+  $thumb_width = 200;
+  $thumb_height = 200;
+
+  $width = imagesx($image);
+  $height = imagesy($image);
+
+  $original_aspect = $width / $height;
+  $thumb_aspect = $thumb_width / $thumb_height;
+
+  if ($original_aspect >= $thumb_aspect) {
+    // If image is wider than thumbnail (in aspect ratio sense)
+    $new_height = $thumb_height;
+    $new_width = $width / ($height / $thumb_height);
+  } else {
+    // If the thumbnail is wider than the image
+    $new_width = $thumb_width;
+    $new_height = $height / ($width / $thumb_width);
+  }
+
+  $thumb = imagecreatetruecolor($thumb_width, $thumb_height);
+
+  // Resize and crop
+  imagecopyresampled($thumb,
+    $image,
+    0 - ($new_width - $thumb_width) / 2, // Center the image horizontally
+    0 - ($new_height - $thumb_height) / 2, // Center the image vertically
+    0, 0,
+    $new_width, $new_height,
+    $width, $height);
+  $jpg = 'data:image/jpeg;base64,'.base64_encode(imagejpeg_tostring($thumb, 100));
+
+  $stmt = $pdo->prepare("DELETE FROM userProfileImages WHERE userId = ?");
+  $stmt->execute([$session['userId']]);
+
+  $stmt = $pdo->prepare("INSERT INTO userProfileImages (userId, image) VALUES (?, ?)");
+  $stmt->execute([$session['userId'], $jpg]);
+
+  $userReturn['image'] = $jpg;
+
+  echo cryptoJsAesEncrypt($key, $userReturn);
+  exit;
+}
+
+function imagejpeg_tostring($im,$quality=100) {
+  ob_start(); //Stdout --> buffer
+  imagejpeg($im,NULL,$quality); // output ...
+  $imgString = ob_get_contents(); //store stdout in $imgString
+  ob_end_clean(); //clear buffer
+  imagedestroy($im); //destroy img
+  return $imgString;
+}
+
 
 if ($uri[0] === "user") {
-  if ($uri[1] === "heartbeat"){
+  if ($uri[1] === "heartbeat") {
     $status['status'] = true;
-
     echo cryptoJsAesEncrypt($key, $status);
     exit;
   }
@@ -114,8 +173,8 @@ if ($uri[0] === "user") {
       $stmt->execute([$user['id']]);
 
       // Create Session
-      $stmt = $pdo->prepare("INSERT INTO userSessions (heartbeat, token, userId) VALUES (?, ?, ?)");
-      $stmt->execute([date("Y-m-d H:i:s"), $token, $user['id']]);
+      $stmt = $pdo->prepare("INSERT INTO userSessions (heartbeat, token, userId, hostname, ipAddress) VALUES (?, ?, ?, ?, ?)");
+      $stmt->execute([date("Y-m-d H:i:s"), $token, $user['id'], gethostbyaddr($_SERVER['REMOTE_ADDR']), $_SERVER['REMOTE_ADDR']]);
 
       $stmt = $pdo->prepare("SELECT image FROM userProfileImages WHERE userId=?");
       $stmt->execute([$user['id']]);
@@ -127,7 +186,7 @@ if ($uri[0] === "user") {
       $user['active'] = "online";
       $user['token'] = $token;
 
-      if($profileImage !== false){
+      if ($profileImage !== false) {
         $user['image'] = $profileImage['image'];
       } else {
         $user['image'] = file_get_contents('./assets/images/profile-empty.txt');
@@ -136,15 +195,15 @@ if ($uri[0] === "user") {
     } else {
       $user['error'] = 'userNotFound';
 
-      if(strlen($jsonStr['username'])<3){
+      if (strlen($jsonStr['username']) < 3) {
         $user['error'] = 'usernameTooShort';
       }
 
-      if(strlen($jsonStr['password'])<3){
+      if (strlen($jsonStr['password']) < 3) {
         $user['error'] = 'passwordTooShort';
       }
     }
-
+    logOutput($pdo, $jsonStr, $user);
     echo cryptoJsAesEncrypt($key, $user);
     exit;
   }
@@ -154,7 +213,7 @@ if ($uri[0] === "user") {
     $stmt = $pdo->prepare("UPDATE users SET active = ? WHERE id = ?");
     $stmt->execute([$jsonStr['active'], $session['userId']]);
     $count['rows'] = $stmt->rowCount();
-
+    logOutput($pdo, $jsonStr, $count);
     echo cryptoJsAesEncrypt($key, $count);
     exit;
   }
@@ -166,7 +225,7 @@ if ($uri[0] === "user") {
     $stmt = $pdo->prepare("UPDATE users SET active = ? WHERE id = ?");
     $stmt->execute(['offline', $session['userId']]);
     $count['rows'] = $stmt->rowCount();
-
+    logOutput($pdo, $jsonStr, $count);
     echo cryptoJsAesEncrypt($key, $count);
     exit;
   }
@@ -224,6 +283,17 @@ function guidv4()
   return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
 }
 
+function logOutput($pdo, $entry, $result)
+{
+  $stmt = $pdo->prepare("INSERT INTO log (ipAddress, dateTime, entry, result, url) VALUES (?, ?, ?, ?, ?)");
+  $stmt->execute([
+    $_SERVER['REMOTE_ADDR'],
+    date("Y-m-d H:i:s"),
+    json_encode($entry),
+    json_encode($result),
+    $_SERVER['REQUEST_URI']
+  ]);
+}
 
 function request_headers()
 {

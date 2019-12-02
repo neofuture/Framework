@@ -40,4 +40,6 @@ export interface LanguageModel {
   passwordTooShort: string;
   loginSuccessful: string;
   loggedOut: string;
+  changeImage: string;
+  profileImageUpdated: string;
 }

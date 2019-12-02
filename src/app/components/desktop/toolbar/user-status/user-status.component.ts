@@ -17,6 +17,8 @@ export class UserStatusComponent implements OnInit {
   locale: LanguageModel;
   language$: Subscription;
   profileSub$: Subscription;
+  imageChange = false;
+  selectedFile: any;
 
   constructor(
     private languageService: LanguageService,
@@ -77,5 +79,10 @@ export class UserStatusComponent implements OnInit {
       menu2.style.pointerEvents = 'initial';
       menu2.classList.remove('userMenuClosed');
     });
+  }
+
+
+  changeProfileImage(event: Event) {
+    this.profileService.changeProfileImage(event);
   }
 }

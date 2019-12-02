@@ -10,7 +10,7 @@ import {ProfileService} from '../../services/profile.service';
 import {ProfileModel} from '../../models/profile-model';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
-import {NotificationService} from "../../services/notification.service";
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-desktop',
@@ -40,6 +40,10 @@ export class DesktopComponent implements OnInit {
   private language$: Subscription;
   private locale: LanguageModel;
   loaded: boolean;
+
+  // * file uploads
+  selectedFile: any;
+  imgURL: string | ArrayBuffer;
 
   @HostListener('window:resize')
   onResize() {
@@ -162,4 +166,25 @@ export class DesktopComponent implements OnInit {
     }, 60);
   }
 
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = () => {
+      const body = {
+        image: reader.result
+      };
+      this.api.call(
+        '/upload',
+        'post',
+        body,
+        this.profile.token
+      ).subscribe((object: any) => {
+        this.profileService.update({image: object.image});
+        console.log(object);
+      });
+    };
+  }
 }
