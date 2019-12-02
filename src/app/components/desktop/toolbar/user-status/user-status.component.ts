@@ -21,7 +21,8 @@ export class UserStatusComponent implements OnInit {
   language$: Subscription;
   profileSub$: Subscription;
   imageChange = false;
-  selectedFile: any;
+  editStatus: boolean;
+  status: any;
 
   constructor(
     private languageService: LanguageService,
@@ -39,6 +40,7 @@ export class UserStatusComponent implements OnInit {
     this.profileSub$ = this.profileService.object.subscribe(profile => {
       this.profile = profile;
       if (this.profile) {
+        this.status = this.profile.status;
         this.profileService.startHeartbeat();
       } else {
         this.profileService.stopHeartbeat();
@@ -89,5 +91,17 @@ export class UserStatusComponent implements OnInit {
 
   changeProfileImage(event: Event) {
     this.profileService.changeProfileImage(event);
+  }
+
+  checkStatusKeys(event) {
+    if (event.code === 'Escape') {
+      this.editStatus = false;
+      event.target.value = this.profile.status;
+    }
+    if (event.code === 'Enter') {
+      this.profile.status = event.target.value.toString().trim();
+      this.profileService.updateStatusText(event.target.value.toString().trim());
+      event.target.blur();
+    }
   }
 }

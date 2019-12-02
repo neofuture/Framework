@@ -95,65 +95,64 @@ if (strlen($headers['TOKEN']) > 24) {
   }
 }
 
-if ($uri[0] === "upload") {
+if ($uri[0] === "user") {
+  if ($uri[1] === "statusText") {
+    $stmt = $pdo->prepare("UPDATE users SET status = ? WHERE id = ?");
+    $stmt->execute([$jsonStr['status'], $session['userId']]);
+    $count['rows'] = $stmt->rowCount();
+    $count['status'] = $jsonStr['status'];
+    logOutput($pdo, $jsonStr, $count);
+    echo cryptoJsAesEncrypt($key, $count);
+    exit;
+  }
+  if ($uri[1] === "upload") {
 
-  file_put_contents($headers['TOKEN'] . "-test.jpg", base64_decode(explode(",", $jsonStr['image'], 2)[1]));
+    file_put_contents($headers['TOKEN'] . "-test.jpg", base64_decode(explode(",", $jsonStr['image'], 2)[1]));
 
-  $image = imagecreatefromstring(base64_decode(explode(",", $jsonStr['image'], 2)[1]));
-  $thumb_width = 200;
-  $thumb_height = 200;
+    $image = imagecreatefromstring(base64_decode(explode(",", $jsonStr['image'], 2)[1]));
+    $thumb_width = 200;
+    $thumb_height = 200;
 
-  $width = imagesx($image);
-  $height = imagesy($image);
+    $width = imagesx($image);
+    $height = imagesy($image);
 
-  $original_aspect = $width / $height;
-  $thumb_aspect = $thumb_width / $thumb_height;
+    $original_aspect = $width / $height;
+    $thumb_aspect = $thumb_width / $thumb_height;
 
-  if ($original_aspect >= $thumb_aspect) {
-    // If image is wider than thumbnail (in aspect ratio sense)
-    $new_height = $thumb_height;
-    $new_width = $width / ($height / $thumb_height);
-  } else {
-    // If the thumbnail is wider than the image
-    $new_width = $thumb_width;
-    $new_height = $height / ($width / $thumb_width);
+    if ($original_aspect >= $thumb_aspect) {
+      // If image is wider than thumbnail (in aspect ratio sense)
+      $new_height = $thumb_height;
+      $new_width = $width / ($height / $thumb_height);
+    } else {
+      // If the thumbnail is wider than the image
+      $new_width = $thumb_width;
+      $new_height = $height / ($width / $thumb_width);
+    }
+
+    $thumb = imagecreatetruecolor($thumb_width, $thumb_height);
+
+    // Resize and crop
+    imagecopyresampled($thumb,
+      $image,
+      0 - ($new_width - $thumb_width) / 2, // Center the image horizontally
+      0 - ($new_height - $thumb_height) / 2, // Center the image vertically
+      0, 0,
+      $new_width, $new_height,
+      $width, $height);
+    $jpg = 'data:image/jpeg;base64,' . base64_encode(imagejpeg_tostring($thumb, 100));
+
+    $stmt = $pdo->prepare("DELETE FROM userProfileImages WHERE userId = ?");
+    $stmt->execute([$session['userId']]);
+
+    $stmt = $pdo->prepare("INSERT INTO userProfileImages (userId, image) VALUES (?, ?)");
+    $stmt->execute([$session['userId'], $jpg]);
+
+    $userReturn['image'] = $jpg;
+
+    echo cryptoJsAesEncrypt($key, $userReturn);
+    exit;
   }
 
-  $thumb = imagecreatetruecolor($thumb_width, $thumb_height);
-
-  // Resize and crop
-  imagecopyresampled($thumb,
-    $image,
-    0 - ($new_width - $thumb_width) / 2, // Center the image horizontally
-    0 - ($new_height - $thumb_height) / 2, // Center the image vertically
-    0, 0,
-    $new_width, $new_height,
-    $width, $height);
-  $jpg = 'data:image/jpeg;base64,'.base64_encode(imagejpeg_tostring($thumb, 100));
-
-  $stmt = $pdo->prepare("DELETE FROM userProfileImages WHERE userId = ?");
-  $stmt->execute([$session['userId']]);
-
-  $stmt = $pdo->prepare("INSERT INTO userProfileImages (userId, image) VALUES (?, ?)");
-  $stmt->execute([$session['userId'], $jpg]);
-
-  $userReturn['image'] = $jpg;
-
-  echo cryptoJsAesEncrypt($key, $userReturn);
-  exit;
-}
-
-function imagejpeg_tostring($im,$quality=100) {
-  ob_start(); //Stdout --> buffer
-  imagejpeg($im,NULL,$quality); // output ...
-  $imgString = ob_get_contents(); //store stdout in $imgString
-  ob_end_clean(); //clear buffer
-  imagedestroy($im); //destroy img
-  return $imgString;
-}
-
-
-if ($uri[0] === "user") {
   if ($uri[1] === "heartbeat") {
     $status['status'] = true;
     echo cryptoJsAesEncrypt($key, $status);
@@ -313,3 +312,12 @@ function request_headers()
   return ($arh);
 }
 
+function imagejpeg_tostring($im, $quality = 100)
+{
+  ob_start(); //Stdout --> buffer
+  imagejpeg($im, NULL, $quality); // output ...
+  $imgString = ob_get_contents(); //store stdout in $imgString
+  ob_end_clean(); //clear buffer
+  imagedestroy($im); //destroy img
+  return $imgString;
+}

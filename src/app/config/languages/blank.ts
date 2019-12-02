@@ -44,5 +44,6 @@ export const blank: LanguageModel = {
   loginSuccessful: '',
   loggedOut: '',
   changeImage: '',
-  profileImageUpdated: ''
+  profileImageUpdated: '',
+  statusTextUpdated: ''
 };

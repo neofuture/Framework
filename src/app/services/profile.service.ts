@@ -140,7 +140,7 @@ export class ProfileService {
         image: reader.result
       };
       this.api.call(
-        '/upload',
+        '/user/upload',
         'post',
         body,
         this.objectSource.value.token
@@ -152,5 +152,26 @@ export class ProfileService {
         });
       });
     };
+  }
+
+  updateStatusText(status) {
+    const body = {
+      status
+    };
+
+    this.api.call(
+      '/user/statusText',
+      'post',
+      body,
+      this.objectSource.value.token
+    ).subscribe((object: any) => {
+      console.log(object);
+      this.update({status: object.status});
+
+      this.languageService.object.subscribe(locale => {
+        this.locale = locale;
+        this.notificationService.new(this.locale.statusTextUpdated, 'ow-user_over', 'success', 3);
+      });
+    });
   }
 }

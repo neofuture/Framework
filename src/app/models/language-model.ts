@@ -42,4 +42,5 @@ export interface LanguageModel {
   loggedOut: string;
   changeImage: string;
   profileImageUpdated: string;
+  statusTextUpdated: string;
 }

@@ -44,5 +44,6 @@ export const no_no: LanguageModel = {
   loginSuccessful: '',
   loggedOut: '',
   changeImage: '',
-  profileImageUpdated: ''
+  profileImageUpdated: '',
+  statusTextUpdated: ''
 };

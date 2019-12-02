@@ -44,5 +44,6 @@ export const en_gb: LanguageModel = {
   loginSuccessful: 'Login Successful',
   loggedOut: 'You have been logged out',
   changeImage: 'Change Image',
-  profileImageUpdated: 'You\'re Profile Image has been updated'
+  profileImageUpdated: 'You\'re Profile Image has been updated',
+  statusTextUpdated: 'You\'re Status has been set'
 };

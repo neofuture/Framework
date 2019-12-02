@@ -44,5 +44,6 @@ export const fr_fr: LanguageModel = {
   loginSuccessful: '',
   loggedOut: '',
   changeImage: '',
-  profileImageUpdated: ''
+  profileImageUpdated: '',
+  statusTextUpdated: ''
 };

@@ -1,11 +1,15 @@
 <div class="profileImage" *ngIf="profile.id > 0">
   <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage">
   <div class="label" [ngClass]="profile.active" *ngIf="profile.id > 0" id="profileLabel"></div>
-  <div class="userMenu" *ngIf="profile.id > 0" id="userMenu">
+  <div class="userMenu" *ngIf="profile.id > 0" id="userMenu" [ngClass]="{'on': editStatus}">
 
     <div>
       <span class="profileName">{{ profile.name }}</span>
-      <span class="profileStatus">{{ profile.status }}</span>
+      <input type="text" name="status" class="statusBox"
+             [(ngModel)]="status" value="{{ profile.status }}"
+             *ngIf="editStatus" (blur)="editStatus = false" (keypress)="checkStatusKeys($event)" autofocus>
+      <div class="profileStatusText" (click)="editStatus = true" *ngIf="!editStatus">{{ profile.status }}</div>
+
     </div>
     <img [src]="profile.image | safeHtml" class="profileImageMenu" alt="{{ profile.name }}"
          (mouseover)="imageChange = true" (mouseout)="imageChange = false">
