@@ -1,5 +1,30 @@
 <div class="profileImage" *ngIf="profile.id > 0">
   <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage">
+  <span class="profileImageSvgSmall" *ngIf="uploading">
+    <svg width="24" height="24" viewBox="0 0 300 300">
+      <defs>
+        <linearGradient id="gradient-fill" gradientUnits="userSpaceOnUse"
+                        x1="0" y1="300" x2="300" y2="0">
+          <stop offset="0%">
+            <animate attributeName="stop-color" values="#00E06B;#CB0255;#00E06B" dur="5s" repeatCount="indefinite"/>
+          </stop>
+          <stop offset="100%">
+            <animate attributeName="stop-color" values="#04AFC8;#8904C5;#04AFC8" dur="8s" repeatCount="indefinite"/>
+          </stop>
+        </linearGradient>
+        <clipPath id="clip">
+          <rect class="square s1" x="0" y="0" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s2" x="100" y="0" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s3" x="200" y="0" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s4" x="0" y="100" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s5" x="200" y="100" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s6" x="0" y="200" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s7" x="100" y="200" rx="12" ry="12" height="90" width="90"></rect>
+        </clipPath>
+      </defs>
+      <rect class="gradient" clip-path="url('#clip')" height="300" width="300"></rect>
+    </svg>
+    </span>
   <div class="label" [ngClass]="profile.active" *ngIf="profile.id > 0" id="profileLabel"></div>
   <div class="userMenu" *ngIf="profile.id > 0" id="userMenu" [ngClass]="{'on': editStatus}">
 
@@ -8,18 +33,46 @@
       <input type="text" name="status" class="statusBox"
              [(ngModel)]="status" value="{{ profile.status }}"
              *ngIf="editStatus" (blur)="editStatus = false" (keypress)="checkStatusKeys($event)" autofocus>
-      <div class="profileStatusText" (click)="editStatus = true" *ngIf="!editStatus">{{ profile.status }}</div>
+      <div class="profileStatusText" (click)="editStatus = true" *ngIf="!editStatus">
+        <span *ngIf="profile.status">{{ profile.status }}</span>
+        <span *ngIf="!profile.status">{{ locale[profile.active] }}</span>
+      </div>
 
     </div>
     <img [src]="profile.image | safeHtml" class="profileImageMenu" alt="{{ profile.name }}"
          (mouseover)="imageChange = true" (mouseout)="imageChange = false">
+    <span class="profileImageSvg" *ngIf="uploading">
+    <svg width="48" height="48" viewBox="0 0 300 300">
+      <defs>
+        <linearGradient id="gradient-fill" gradientUnits="userSpaceOnUse"
+                        x1="0" y1="300" x2="300" y2="0">
+          <stop offset="0%">
+            <animate attributeName="stop-color" values="#00E06B;#CB0255;#00E06B" dur="5s" repeatCount="indefinite"/>
+          </stop>
+          <stop offset="100%">
+            <animate attributeName="stop-color" values="#04AFC8;#8904C5;#04AFC8" dur="8s" repeatCount="indefinite"/>
+          </stop>
+        </linearGradient>
+        <clipPath id="clip">
+          <rect class="square s1" x="0" y="0" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s2" x="100" y="0" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s3" x="200" y="0" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s4" x="0" y="100" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s5" x="200" y="100" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s6" x="0" y="200" rx="12" ry="12" height="90" width="90"></rect>
+          <rect class="square s7" x="100" y="200" rx="12" ry="12" height="90" width="90"></rect>
+        </clipPath>
+      </defs>
+      <rect class="gradient" clip-path="url('#clip')" height="300" width="300"></rect>
+    </svg>
+    </span>
     <div class="imageChange" [ngClass]="{'on': imageChange}" (mouseover)="imageChange = true"
          (mouseout)="imageChange = false" (click)="fileInput.click()">{{ locale.changeImage }}</div>
 
     <input
       style="display: none"
       type="file" (change)="changeProfileImage($event)"
-      #fileInput>
+      #fileInput accept="image/png, image/jpeg">
 
     <span class="label" [ngClass]="profile.active"></span>
 

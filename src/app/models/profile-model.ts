@@ -1,4 +1,5 @@
 export interface ProfileModel {
+  uploading: boolean;
   id: number;
   image?: string;
   status: string;

@@ -145,7 +145,7 @@ export class ProfileService {
         body,
         this.objectSource.value.token
       ).subscribe((object: any) => {
-        this.update({image: object.image});
+        this.update({image: object.image, uploading: false});
         this.languageService.object.subscribe(locale => {
           this.locale = locale;
           this.notificationService.new(this.locale.profileImageUpdated, object.image, 'success', 3);

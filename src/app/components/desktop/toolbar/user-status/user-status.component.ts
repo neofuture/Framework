@@ -23,6 +23,7 @@ export class UserStatusComponent implements OnInit {
   imageChange = false;
   editStatus: boolean;
   status: any;
+  uploading = false;
 
   constructor(
     private languageService: LanguageService,
@@ -41,6 +42,7 @@ export class UserStatusComponent implements OnInit {
       this.profile = profile;
       if (this.profile) {
         this.status = this.profile.status;
+        this.uploading = this.profile.uploading || false;
         this.profileService.startHeartbeat();
       } else {
         this.profileService.stopHeartbeat();
@@ -90,6 +92,7 @@ export class UserStatusComponent implements OnInit {
 
 
   changeProfileImage(event: Event) {
+    this.profileService.update({uploading: true});
     this.profileService.changeProfileImage(event);
   }
 
