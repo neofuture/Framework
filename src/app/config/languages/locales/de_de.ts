@@ -45,5 +45,6 @@ export const de_de: LanguageModel = {
   loggedOut: '',
   changeImage: '',
   profileImageUpdated: '',
-  statusTextUpdated: ''
+  statusTextUpdated: '',
+  version: ''
 };

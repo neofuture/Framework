@@ -43,4 +43,5 @@ export interface LanguageModel {
   changeImage: string;
   profileImageUpdated: string;
   statusTextUpdated: string;
+  version: string;
 }

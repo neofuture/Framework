@@ -45,5 +45,6 @@ export const no_no: LanguageModel = {
   loggedOut: '',
   changeImage: '',
   profileImageUpdated: '',
-  statusTextUpdated: ''
+  statusTextUpdated: '',
+  version: ''
 };

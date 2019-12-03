@@ -45,5 +45,6 @@ export const en_gb: LanguageModel = {
   loggedOut: 'You have been logged out',
   changeImage: 'Change Image',
   profileImageUpdated: 'You\'re Profile Image has been updated',
-  statusTextUpdated: 'You\'re Status has been set'
+  statusTextUpdated: 'You\'re Status has been set',
+  version: '0.1.1234'
 };

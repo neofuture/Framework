@@ -3,6 +3,7 @@ import {WindowService} from '../../services/window.service';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
+import { VERSION } from '../../../environments/version';
 
 @Component({
   selector: 'app-welcome',
@@ -13,6 +14,7 @@ export class WelcomeComponent implements OnInit {
   @Input() windowItem: any;
   private language$: Subscription;
   locale: LanguageModel;
+  version = VERSION;
 
   constructor(
     public windowService: WindowService,

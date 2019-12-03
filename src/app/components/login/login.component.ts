@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
 import {ProfileService} from '../../services/profile.service';
 import {NotificationService} from '../../services/notification.service';
+import { VERSION } from '../../../environments/version';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   locale: LanguageModel;
   username = '';
   password = '';
+  version = VERSION;
 
   constructor(
     private languageService: LanguageService,

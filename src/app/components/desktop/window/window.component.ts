@@ -26,7 +26,7 @@ export class WindowComponent implements OnInit {
 
   constructor(
     private windowService: WindowService,
-    private cfr: ComponentFactoryResolver,
+    private componentFactoryResolver: ComponentFactoryResolver,
     private languageService: LanguageService) {
   }
 
@@ -112,25 +112,33 @@ export class WindowComponent implements OnInit {
 
     if (this.windowItem.bodyComponent === 'demo') {
       const {DemoComponent} = await import('../../demo/demo.component');
-      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(DemoComponent));
+      const componentRef = this.viewContainer.createComponent(
+        this.componentFactoryResolver.resolveComponentFactory(DemoComponent)
+      );
       componentRef.instance.windowItem = this.windowItem;
     }
 
     if (this.windowItem.bodyComponent === 'contact-manager') {
       const {ContactManagerComponent} = await import('../../../modules/contact-manager/contact-manager.component');
-      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(ContactManagerComponent));
+      const componentRef = this.viewContainer.createComponent(
+        this.componentFactoryResolver.resolveComponentFactory(ContactManagerComponent)
+      );
       componentRef.instance.windowItem = this.windowItem;
     }
 
     if (this.windowItem.bodyComponent === 'quotes') {
       const {QuotesComponent} = await import('../../../modules/quotes/quotes.component');
-      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(QuotesComponent));
+      const componentRef = this.viewContainer.createComponent(
+        this.componentFactoryResolver.resolveComponentFactory(QuotesComponent)
+      );
       componentRef.instance.data = this.windowItem.data;
     }
 
     if (this.windowItem.bodyComponent === 'welcome') {
       const {WelcomeComponent} = await import('../../welcome/welcome.component');
-      const componentRef = this.viewContainer.createComponent(this.cfr.resolveComponentFactory(WelcomeComponent));
+      const componentRef = this.viewContainer.createComponent(
+        this.componentFactoryResolver.resolveComponentFactory(WelcomeComponent)
+      );
       componentRef.instance.windowItem = this.windowItem;
     }
 
