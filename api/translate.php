@@ -96,7 +96,7 @@ echo "Done language-model\n";
 
 
 function translate($sourceLang, $targetLang, $sourceText){
-  $apiKey = "*****";
+  include("config.php");
 
   $url = "https://translation.googleapis.com/language/translate/v2";
   $fields = [

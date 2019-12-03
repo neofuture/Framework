@@ -126,9 +126,8 @@ class system
 
     $registration = $url[0];
 
-    $host = '127.0.0.1';
-    $user = 'owuk';
-    $pass = 'Yoshi355466!';
+    include("config.php");
+
 
     $db = "owuk_registrations";
     $dsn = "mysql:host=$host;dbname=$db;";
@@ -149,9 +148,8 @@ class system
       PDO::ATTR_EMULATE_PREPARES => false,
     ];
 
-    $host = '127.0.0.1';
-    $user = 'owuk';
-    $pass = 'Yoshi355466!';
+    include("config.php");
+
 
     $db = "owuk_" . $dataset['destination'];
     $dsn = "mysql:host=$host;dbname=$db;";
