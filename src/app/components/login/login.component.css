@@ -88,3 +88,9 @@ h1 {
 .product h1 {
   font-size:42px;
 }
+
+.languageSelector {
+  position:absolute;
+  top:22px;
+  right:22px;
+}

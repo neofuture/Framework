@@ -1,5 +1,22 @@
 <div class="loginDialog">
   <div class="container">
+    <label for="language">
+      <select [(ngModel)]="language" name="language" id="language" (ngModelChange)="languageChange($event)" class="languageSelector">
+        <option value="en_gb">{{ locale.en_gb }}</option>
+        <option value="fr_fr">{{ locale.fr_fr }}</option>
+        <option value="de_de">{{ locale.de_de }}</option>
+        <option value="no_no">{{ locale.no_no }}</option>
+        <option value="ru_ru">{{ locale.ru_ru }}</option>
+        <option value="nl_nl">{{ locale.nl_nl }}</option>
+        <option value="es_es">{{ locale.es_es }}</option>
+        <option value="it_it">{{ locale.it_it }}</option>
+        <option value="da_da">{{ locale.da_da }}</option>
+        <option value="sv_sv">{{ locale.sv_sv }}</option>
+        <option value="pt_pt">{{ locale.pt_pt }}</option>
+        <option value="fi_fi">{{ locale.fi_fi }}</option>
+        <option value="zh_zh">{{ locale.zh_zh }}</option>
+      </select>
+    </label>
     <i class="ow-oceanworks"></i>
     <i class="ow-oceanworks back"></i>
     <div class="product">
@@ -8,23 +25,6 @@
     </div>
     <div class="loginForm">
 <!--      <div *ngIf="error" class="error" id="error">{{ locale[error] }}</div>-->
-      <label for="language">
-        <select [(ngModel)]="language" name="language" id="language" (ngModelChange)="languageChange($event)">
-          <option value="en_gb">{{ locale.en_gb }}</option>
-          <option value="fr_fr">{{ locale.fr_fr }}</option>
-          <option value="de_de">{{ locale.de_de }}</option>
-          <option value="no_no">{{ locale.no_no }}</option>
-          <option value="ru_ru">{{ locale.ru_ru }}</option>
-          <option value="nl_nl">{{ locale.nl_nl }}</option>
-          <option value="es_es">{{ locale.es_es }}</option>
-          <option value="it_it">{{ locale.it_it }}</option>
-          <option value="da_da">{{ locale.da_da }}</option>
-          <option value="sv_sv">{{ locale.sv_sv }}</option>
-          <option value="pt_pt">{{ locale.pt_pt }}</option>
-          <option value="fi_fi">{{ locale.fi_fi }}</option>
-          <option value="zh_zh">{{ locale.zh_zh }}</option>
-        </select>
-      </label>
       <form (ngSubmit)="login()">
         <div>
           <label for="username" [innerHTML]="locale.username"></label>
