@@ -3,17 +3,25 @@ import {LanguageModel} from '../../models/language-model';
 // tslint:disable-next-line:variable-name
 export const blank: LanguageModel = {
   language: 'blank',
-  flag: '',
   en_gb: '',
   fr_fr: '',
   de_de: '',
   no_no: '',
+  ru_ru: '',
+  nl_nl: '',
+  es_es: '',
+  it_it: '',
+  da_da: '',
+  sv_sv: '',
+  pt_pt: '',
+  fi_fi: '',
+  zh_zh: '',
   window: {
     close: '',
     minimise: '',
     maximise: '',
     restore: '',
-    centered: ''
+    centered: '',
   },
   contactManager: '',
   quotes: '',
@@ -28,7 +36,7 @@ export const blank: LanguageModel = {
   ribbon2: '',
   welcome: '',
   close: '',
-  product: '',
+  product: 'Oceanworks',
   online: '',
   offline: '',
   away: '',
@@ -46,5 +54,5 @@ export const blank: LanguageModel = {
   changeImage: '',
   profileImageUpdated: '',
   statusTextUpdated: '',
-  version: ''
+  version: '',
 };

@@ -197,11 +197,22 @@
 <table>
   <tr>
     <td>
+
       <button (click)="getLanguage('en_gb')">{{ locale.en_gb }}</button>
-
+      <button (click)="getLanguage('fr_fr')">{{ locale.fr_fr }}</button>
       <button (click)="getLanguage('de_de')">{{ locale.de_de }}</button>
+      <button (click)="getLanguage('no_no:')">{{ locale.no_no }}</button>
+      <button (click)="getLanguage('ru_ru')">{{ locale.ru_ru }}</button>
+      <button (click)="getLanguage('nl_nl')">{{ locale.nl_nl }}</button>
+      <button (click)="getLanguage('es_es')">{{ locale.es_es }}</button>
+      <button (click)="getLanguage('it_it')">{{ locale.it_it }}</button>
+      <button (click)="getLanguage('da_da')">{{ locale.da_da }}</button>
+      <button (click)="getLanguage('sv_sv')">{{ locale.sv_sv }}</button>
+      <button (click)="getLanguage('pt_pt')">{{ locale.pt_pt }}</button>
+      <button (click)="getLanguage('fi_fi')">{{ locale.fi_fi }}</button>
+      <button (click)="getLanguage('zh_zh')">{{ locale.zh_zh }}</button>
 
-      {{ locale['flag'] }} {{ locale[locale.language] }}</td>
+      {{ locale[locale.language] }}</td>
   </tr>
 </table>
 <hr>

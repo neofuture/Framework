@@ -3,11 +3,19 @@ import {LanguageModel} from '../../../models/language-model';
 // tslint:disable-next-line:variable-name
 export const en_gb: LanguageModel = {
   language: 'en_gb',
-  flag: '🇬🇧',
   en_gb: 'English',
   fr_fr: 'French',
   de_de: 'German',
   no_no: 'Norwegian',
+  ru_ru: 'Russian',
+  nl_nl: 'Dutch',
+  es_es: 'Spanish',
+  it_it: 'Italian',
+  da_da: 'Danish',
+  sv_sv: 'Swedish',
+  pt_pt: 'Portuguese',
+  fi_fi: 'Finnish',
+  zh_zh: 'Chinese',
   window: {
     close: 'Close',
     minimise: 'Minimise',

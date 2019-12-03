@@ -1,10 +1,18 @@
 export interface LanguageModel {
-  language: string;
-  flag: string;
+language: string;
   en_gb: string;
   fr_fr: string;
   de_de: string;
   no_no: string;
+  ru_ru: string;
+  nl_nl: string;
+  es_es: string;
+  it_it: string;
+  da_da: string;
+  sv_sv: string;
+  pt_pt: string;
+  fi_fi: string;
+  zh_zh: string;
   window: {
     close: string;
     minimise: string;
