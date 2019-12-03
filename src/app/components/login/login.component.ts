@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   username = '';
   password = '';
   version = VERSION;
+  language: any;
 
   constructor(
     private languageService: LanguageService,
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
+      this.language = this.locale.language;
     });
   }
 
@@ -48,5 +50,9 @@ export class LoginComponent implements OnInit {
         document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
       }, 50);
     });
+  }
+
+  languageChange(lang) {
+    this.languageService.getLanguage(lang);
   }
 }
