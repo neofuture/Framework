@@ -90,7 +90,7 @@ export class DesktopComponent implements OnInit {
     }, 300);
 
     this.api.call(
-      '/settings',
+      '/system/settings',
       'post',
       {},
       ''
@@ -164,27 +164,5 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.resize();
     }, 60);
-  }
-
-
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-
-    const reader = new FileReader();
-    reader.readAsDataURL(this.selectedFile);
-    reader.onload = () => {
-      const body = {
-        image: reader.result
-      };
-      this.api.call(
-        '/upload',
-        'post',
-        body,
-        this.profile.token
-      ).subscribe((object: any) => {
-        this.profileService.update({image: object.image});
-        console.log(object);
-      });
-    };
   }
 }
