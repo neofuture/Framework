@@ -15,8 +15,7 @@
                 <img src="{{ dialogItem.icon }}" alt="" class="notificationImage">
               </div>
             </td>
-            <td class="text">
-              {{ dialogItem.body }}
+            <td class="text" [innerHTML]="dialogItem.body">
             </td>
           </tr>
         </table>
