@@ -20,7 +20,6 @@ import {DialogService} from '../../services/dialog.service';
 })
 
 export class DesktopComponent implements OnInit {
-
   windowList = {};
   dialogList = {};
   objectKeys = Object.keys;
@@ -43,10 +42,7 @@ export class DesktopComponent implements OnInit {
   private locale: LanguageModel;
   loaded: boolean;
 
-  // * file uploads
-  selectedFile: any;
-  imgURL: string | ArrayBuffer;
-
+  testStr = 'test string';
 
   @HostListener('window:resize')
   onResize() {
@@ -163,6 +159,12 @@ export class DesktopComponent implements OnInit {
   }
 
   newDialog(title: string, body: string) {
-    this.dialogService.new('ow-oceanworks', title, body);
+    this.dialogService.new('ow-oceanworks', title, body, () => {
+      this.dialogAlert();
+    }, null, null, 'green', '', '', '');
+  }
+
+  dialogAlert() {
+    alert('yep ' + this.testStr);
   }
 }

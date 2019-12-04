@@ -1,19 +1,19 @@
 <?php
 ini_set('max_execution_time', '0');
-$lang["ru"] = "ru_ru";
-$lang["de"] = "de_de";
-$lang["nl"] = "nl_nl";
-$lang["fr"] = "fr_fr";
-$lang["es"] = "es_es";
-$lang["it"] = "it_it";
-$lang["da"] = "da_da";
-$lang["sv"] = "sv_sv";
-$lang["no"] = "no_no";
-$lang["pt"] = "pt_pt";
-$lang["fi"] = "fi_fi";
-$lang["zh"] = "zh_zh";
+$lang["ru"] = "lang_ru";
+$lang["de"] = "lang_de";
+$lang["nl"] = "lang_nl";
+$lang["fr"] = "lang_fr";
+$lang["es"] = "lang_es";
+$lang["it"] = "lang_it";
+$lang["da"] = "lang_da";
+$lang["sv"] = "lang_sv";
+$lang["no"] = "lang_no";
+$lang["pt"] = "lang_pt";
+$lang["fi"] = "lang_fi";
+$lang["zh"] = "lang_zh";
 
-$english = file_get_contents("../src/app/config/languages/locales/en_gb.ts");
+$english = file_get_contents("../src/app/config/languages/locales/lang_en.ts");
 
 $object = explode("LanguageModel = {", $english, 2)[1];
 $object = trim(trim($object), "};");

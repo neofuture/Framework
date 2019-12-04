@@ -35,7 +35,7 @@
 }
 
 i {
-  font-size: 35px;
+  font-size: 50px;
   margin-right: 12px;
   transition: all 300ms;
 }
@@ -47,6 +47,7 @@ header {
 
 section {
   padding: 20px 0 40px 0;
+  font-size:16px;
 }
 
 footer {
@@ -64,7 +65,10 @@ button.green {
 }
 
 button.red {
-  background-color: #ffabab;
+  background-color: #ff9393;
+}
+button.blue {
+  background-color: #a0e0ff;
 }
 
 footer button {

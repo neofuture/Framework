@@ -1,21 +1,21 @@
 import {LanguageModel} from '../../../models/language-model';
 
 // tslint:disable-next-line:variable-name
-export const it_it: LanguageModel = {
-  language: 'it_it',
-  en_gb: 'inglese',
-  fr_fr: 'francese',
-  de_de: 'Tedesco',
-  no_no: 'norvegese',
-  ru_ru: 'russo',
-  nl_nl: 'olandese',
-  es_es: 'spagnolo',
-  it_it: 'italiano',
-  da_da: 'danese',
-  sv_sv: 'svedese',
-  pt_pt: 'portoghese',
-  fi_fi: 'finlandese',
-  zh_zh: 'Cinese',
+export const lang_it: LanguageModel = {
+  language: 'lang_it',
+  lang_en: 'inglese',
+  lang_fr: 'francese',
+  lang_de: 'Tedesco',
+  lang_no: 'norvegese',
+  lang_ru: 'russo',
+  lang_nl: 'olandese',
+  lang_es: 'spagnolo',
+  lang_it: 'italiano',
+  lang_da: 'danese',
+  lang_sv: 'svedese',
+  lang_pt: 'portoghese',
+  lang_fi: 'finlandese',
+  lang_zh: 'Cinese',
   window: {
     close: 'Vicino',
     minimise: 'Minimizzare',
@@ -58,4 +58,5 @@ export const it_it: LanguageModel = {
   yes: 'sì',
   no: 'No',
   cancel: 'Annulla',
+  ok: 'Ok',
 };

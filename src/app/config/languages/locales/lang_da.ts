@@ -1,21 +1,21 @@
 import {LanguageModel} from '../../../models/language-model';
 
 // tslint:disable-next-line:variable-name
-export const da_da: LanguageModel = {
-  language: 'da_da',
-  en_gb: 'engelsk',
-  fr_fr: 'fransk',
-  de_de: 'tysk',
-  no_no: 'Norsk',
-  ru_ru: 'Russisk',
-  nl_nl: 'hollandsk',
-  es_es: 'spansk',
-  it_it: 'italiensk',
-  da_da: 'dansk',
-  sv_sv: 'Svensk',
-  pt_pt: 'portugisisk',
-  fi_fi: 'Finsk',
-  zh_zh: 'kinesisk',
+export const lang_da: LanguageModel = {
+  language: 'lang_da',
+  lang_en: 'engelsk',
+  lang_fr: 'fransk',
+  lang_de: 'tysk',
+  lang_no: 'Norsk',
+  lang_ru: 'Russisk',
+  lang_nl: 'hollandsk',
+  lang_es: 'spansk',
+  lang_it: 'italiensk',
+  lang_da: 'dansk',
+  lang_sv: 'Svensk',
+  lang_pt: 'portugisisk',
+  lang_fi: 'Finsk',
+  lang_zh: 'kinesisk',
   window: {
     close: 'Tæt',
     minimise: 'Minimer',
@@ -58,4 +58,5 @@ export const da_da: LanguageModel = {
   yes: 'Ja',
   no: 'Ingen',
   cancel: 'Afbestille',
+  ok: 'Okay',
 };

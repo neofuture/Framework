@@ -1,21 +1,21 @@
 import {LanguageModel} from '../../../models/language-model';
 
 // tslint:disable-next-line:variable-name
-export const fi_fi: LanguageModel = {
-  language: 'fi_fi',
-  en_gb: 'Englanti',
-  fr_fr: 'Ranskan kieli',
-  de_de: 'Saksan kieli',
-  no_no: 'Norjan kieli',
-  ru_ru: 'Venäjän kieli',
-  nl_nl: 'Hollannin kieli',
-  es_es: 'Espanja',
-  it_it: 'italialainen',
-  da_da: 'Tanskan kieli',
-  sv_sv: 'Ruotsin kieli',
-  pt_pt: 'Portugalin kieli',
-  fi_fi: 'Suomalainen',
-  zh_zh: 'Kiinalainen',
+export const lang_fi: LanguageModel = {
+  language: 'lang_fi',
+  lang_en: 'Englanti',
+  lang_fr: 'Ranskan kieli',
+  lang_de: 'Saksan kieli',
+  lang_no: 'Norjan kieli',
+  lang_ru: 'Venäjän kieli',
+  lang_nl: 'Hollannin kieli',
+  lang_es: 'Espanja',
+  lang_it: 'italialainen',
+  lang_da: 'Tanskan kieli',
+  lang_sv: 'Ruotsin kieli',
+  lang_pt: 'Portugalin kieli',
+  lang_fi: 'Suomalainen',
+  lang_zh: 'Kiinalainen',
   window: {
     close: 'kiinni',
     minimise: 'Minimoida',
@@ -58,4 +58,5 @@ export const fi_fi: LanguageModel = {
   yes: 'Joo',
   no: 'Ei',
   cancel: 'Peruuttaa',
+  ok: 'kunnossa',
 };

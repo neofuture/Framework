@@ -11,10 +11,12 @@ import {LanguageModel} from '../../../models/language-model';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
+  objectKeys = Object.keys;
   @Input() dialogItem: DialogModel;
   private language$: Subscription;
 
   locale: LanguageModel;
+
   @HostListener('window:resize')
   onResize() {
     this.resize();
@@ -23,7 +25,8 @@ export class DialogComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private languageService: LanguageService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
@@ -41,5 +44,12 @@ export class DialogComponent implements OnInit {
 
   resize() {
     this.dialogService.resize();
+  }
+
+  call(callBack: CallableFunction, dialogItem: DialogModel) {
+    setTimeout(() => {
+      callBack();
+    }, 200);
+    this.close(dialogItem);
   }
 }

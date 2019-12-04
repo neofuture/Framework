@@ -1,21 +1,21 @@
 import {LanguageModel} from '../../../models/language-model';
 
 // tslint:disable-next-line:variable-name
-export const zh_zh: LanguageModel = {
-  language: 'zh_zh',
-  en_gb: '英语',
-  fr_fr: '法文',
-  de_de: '德语',
-  no_no: '挪威',
-  ru_ru: '俄语',
-  nl_nl: '荷兰人',
-  es_es: '西班牙文',
-  it_it: '义大利文',
-  da_da: '丹麦文',
-  sv_sv: '瑞典',
-  pt_pt: '葡萄牙语',
-  fi_fi: '芬兰',
-  zh_zh: '中文',
+export const lang_zh: LanguageModel = {
+  language: 'lang_zh',
+  lang_en: '英语',
+  lang_fr: '法文',
+  lang_de: '德语',
+  lang_no: '挪威',
+  lang_ru: '俄语',
+  lang_nl: '荷兰人',
+  lang_es: '西班牙文',
+  lang_it: '义大利文',
+  lang_da: '丹麦文',
+  lang_sv: '瑞典',
+  lang_pt: '葡萄牙语',
+  lang_fi: '芬兰',
+  lang_zh: '中文',
   window: {
     close: '关',
     minimise: '最小化',
@@ -58,4 +58,5 @@ export const zh_zh: LanguageModel = {
   yes: '是',
   no: '没有',
   cancel: '取消',
+  ok: '好',
 };

@@ -22,9 +22,10 @@
         </table>
       </section>
       <footer>
-        <button class="green">{{ locale.yes }}</button>
-        <button class="red">{{ locale.no }}</button>
-        <button (click)="close(dialogItem)">{{ locale.cancel }}</button>
+        <button *ngIf="dialogItem.okCallBack" (click)="call(dialogItem.okCallBack,dialogItem)" [ngClass]="dialogItem.okClass">{{ locale.ok }}</button>
+        <button *ngIf="dialogItem.yesCallBack" (click)="call(dialogItem.yesCallBack,dialogItem)" [ngClass]="dialogItem.yesClass">{{ locale.yes }}</button>
+        <button *ngIf="dialogItem.noCallBack" (click)="call(dialogItem.noCallBack, dialogItem)" [ngClass]="dialogItem.noClass">{{ locale.no }}</button>
+        <button (click)="close(dialogItem)" [ngClass]="dialogItem.cancelClass">{{ locale.cancel }}</button>
       </footer>
     </div>
   </div>
