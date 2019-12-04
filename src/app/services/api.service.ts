@@ -48,10 +48,16 @@ export class ApiService {
   call(url, requestType, body, token): Observable<object> {
     const httpOptions = this.headers(token);
     let data;
+    if (requestType === 'get') {
+      const params = new URLSearchParams(body).toString();
 
-    body = this.encrypt(JSON.stringify(body));
+      data = this.http[requestType](this.url + url + (params ? '/?' + params : ''), httpOptions);
+    } else {
+      body = this.encrypt(JSON.stringify(body));
 
-    data = this.http[requestType](this.url + url, body, httpOptions);
+      data = this.http[requestType](this.url + url, body, httpOptions);
+    }
+
 
     return data.pipe(map((str) => {
       return  this.decrypt(str);

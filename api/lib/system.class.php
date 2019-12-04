@@ -12,6 +12,10 @@ class system
       $status[$setting['setting']] = $setting['value'];
     }
 
+//    foreach ($jsonStr as $key => $value) {
+//      $status[$key] = $value;
+//    }
+
     system::logOutput($pdo, $jsonStr, $status);
     return $status;
   }
