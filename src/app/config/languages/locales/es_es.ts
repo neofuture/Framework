@@ -55,4 +55,7 @@ export const es_es: LanguageModel = {
   profileImageUpdated: 'Su imagen de perfil ha sido actualizada',
   statusTextUpdated: 'Tu estado ha sido establecido',
   version: '0.1.1234',
+  yes: 'Sí',
+  no: 'No',
+  cancel: 'Cancelar',
 };

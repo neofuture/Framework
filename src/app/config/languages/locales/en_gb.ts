@@ -54,5 +54,8 @@ export const en_gb: LanguageModel = {
   changeImage: 'Change Image',
   profileImageUpdated: 'You\'re Profile Image has been updated',
   statusTextUpdated: 'You\'re Status has been set',
-  version: '0.1.1234'
+  version: '0.1.1234',
+  yes: 'Yes',
+  no: 'No',
+  cancel: 'Cancel'
 };

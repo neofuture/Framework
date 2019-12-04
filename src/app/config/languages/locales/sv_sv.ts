@@ -55,4 +55,7 @@ export const sv_sv: LanguageModel = {
   profileImageUpdated: 'Din profilbild har uppdaterats',
   statusTextUpdated: 'Du har ställts in',
   version: '0.1.1234',
+  yes: 'Ja',
+  no: 'Nej',
+  cancel: 'Avbryt',
 };

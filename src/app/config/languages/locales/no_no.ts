@@ -55,4 +55,7 @@ export const no_no: LanguageModel = {
   profileImageUpdated: 'Profilbildet ditt er oppdatert',
   statusTextUpdated: 'Du har blitt satt status',
   version: '0.1.1234',
+  yes: 'Ja',
+  no: 'Nei',
+  cancel: 'Avbryt',
 };

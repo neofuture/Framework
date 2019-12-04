@@ -55,4 +55,7 @@ export const ru_ru: LanguageModel = {
   profileImageUpdated: 'Ваше изображение профиля было обновлено',
   statusTextUpdated: 'Ваш статус был установлен',
   version: '0.1.1234',
+  yes: 'да',
+  no: 'нет',
+  cancel: 'Отмена',
 };

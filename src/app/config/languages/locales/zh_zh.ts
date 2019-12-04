@@ -55,4 +55,7 @@ export const zh_zh: LanguageModel = {
   profileImageUpdated: '您的个人资料图片已更新',
   statusTextUpdated: '您的状态已设置',
   version: '0.1.1234',
+  yes: '是',
+  no: '没有',
+  cancel: '取消',
 };

@@ -55,4 +55,7 @@ export const blank: LanguageModel = {
   profileImageUpdated: '',
   statusTextUpdated: '',
   version: '',
+  yes: '',
+  no: '',
+  cancel: '',
 };

@@ -1,6 +1,9 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {DialogModel} from '../../../models/dialog-model';
 import {DialogService} from '../../../services/dialog.service';
+import {LanguageService} from '../../../services/language.service';
+import {Subscription} from 'rxjs';
+import {LanguageModel} from '../../../models/language-model';
 
 @Component({
   selector: 'app-dialog',
@@ -9,14 +12,23 @@ import {DialogService} from '../../../services/dialog.service';
 })
 export class DialogComponent implements OnInit {
   @Input() dialogItem: DialogModel;
+  private language$: Subscription;
+
+  locale: LanguageModel;
   @HostListener('window:resize')
   onResize() {
     this.resize();
   }
 
-  constructor(private dialogService: DialogService) { }
+  constructor(
+    private dialogService: DialogService,
+    private languageService: LanguageService
+  ) { }
 
   ngOnInit() {
+    this.language$ = this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
   }
 
   close(dialogItem: DialogModel) {

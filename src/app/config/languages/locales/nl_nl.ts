@@ -55,4 +55,7 @@ export const nl_nl: LanguageModel = {
   profileImageUpdated: 'Je profielafbeelding is bijgewerkt',
   statusTextUpdated: 'Je status is ingesteld',
   version: '0.1.1234',
+  yes: 'Ja',
+  no: 'Nee',
+  cancel: 'Annuleer',
 };

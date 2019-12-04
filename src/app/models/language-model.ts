@@ -52,4 +52,7 @@ language: string;
   profileImageUpdated: string;
   statusTextUpdated: string;
   version: string;
+  yes: string;
+  no: string;
+  cancel: string;
 }

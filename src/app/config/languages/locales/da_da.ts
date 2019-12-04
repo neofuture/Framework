@@ -55,4 +55,7 @@ export const da_da: LanguageModel = {
   profileImageUpdated: 'Dit profilbillede er blevet opdateret',
   statusTextUpdated: 'Du er indstillet til status',
   version: '0.1.1234',
+  yes: 'Ja',
+  no: 'Ingen',
+  cancel: 'Afbestille',
 };

@@ -55,4 +55,7 @@ export const fi_fi: LanguageModel = {
   profileImageUpdated: 'Profiilikuva on päivitetty',
   statusTextUpdated: 'Sinun tila on asetettu',
   version: '0.1.1234',
+  yes: 'Joo',
+  no: 'Ei',
+  cancel: 'Peruuttaa',
 };
