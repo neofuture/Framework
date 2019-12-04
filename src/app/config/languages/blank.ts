@@ -36,7 +36,7 @@ export const blank: LanguageModel = {
   ribbon2: '',
   welcome: '',
   close: '',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: '',
   offline: '',
   away: '',

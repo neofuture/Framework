@@ -8,6 +8,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 
 import {DemoComponent} from './components/demo/demo.component';
 import {DesktopComponent} from './components/desktop/desktop.component';
+import {DialogComponent} from './components/desktop/dialog/dialog.component';
 import {ExternalComponent} from './components/external/external.component';
 import {LoginComponent} from './components/login/login.component';
 import {NotificationComponent} from './components/desktop/notifications/notification.component';
@@ -52,7 +53,8 @@ import {environment} from '../environments/environment';
     SafeHtmlPipe,
     SafeHtmlPipe,
     LoginComponent,
-    NotificationComponent
+    NotificationComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

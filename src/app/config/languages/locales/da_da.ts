@@ -36,7 +36,7 @@ export const da_da: LanguageModel = {
   ribbon2: 'Bånd 2',
   welcome: 'Velkommen',
   close: 'Tæt',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'Online',
   offline: 'Offline',
   away: 'Væk',

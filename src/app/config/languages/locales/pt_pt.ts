@@ -36,7 +36,7 @@ export const pt_pt: LanguageModel = {
   ribbon2: 'Faixa de opções 2',
   welcome: 'Bem vinda',
   close: 'Fechar',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'Conectados',
   offline: 'desligada',
   away: 'Longe',

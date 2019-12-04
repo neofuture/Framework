@@ -36,7 +36,7 @@ export const sv_sv: LanguageModel = {
   ribbon2: 'Band 2',
   welcome: 'Välkommen',
   close: 'Stänga',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'Uppkopplad',
   offline: 'Off-line',
   away: 'Bort',

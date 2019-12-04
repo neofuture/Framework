@@ -36,7 +36,7 @@ export const de_de: LanguageModel = {
   ribbon2: 'Farbband 2',
   welcome: 'Herzlich willkommen',
   close: 'Schließen',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'Online',
   offline: 'Offline',
   away: 'Weg',

@@ -36,7 +36,7 @@ export const fi_fi: LanguageModel = {
   ribbon2: 'Nauha 2',
   welcome: 'Tervetuloa',
   close: 'kiinni',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'Online',
   offline: 'Poissa',
   away: 'Pois',

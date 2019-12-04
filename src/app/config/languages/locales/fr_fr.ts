@@ -36,7 +36,7 @@ export const fr_fr: LanguageModel = {
   ribbon2: 'Ruban 2',
   welcome: 'Bienvenue',
   close: 'proche',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'En ligne',
   offline: 'Hors ligne',
   away: 'Une façon',

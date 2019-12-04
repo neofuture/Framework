@@ -11,6 +11,7 @@ import {ProfileModel} from '../../models/profile-model';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
 import {NotificationService} from '../../services/notification.service';
+import {DialogService} from '../../services/dialog.service';
 
 @Component({
   selector: 'app-desktop',
@@ -21,6 +22,7 @@ import {NotificationService} from '../../services/notification.service';
 export class DesktopComponent implements OnInit {
 
   windowList = {};
+  dialogList = {};
   objectKeys = Object.keys;
 
   innerWidth: number;
@@ -45,6 +47,7 @@ export class DesktopComponent implements OnInit {
   selectedFile: any;
   imgURL: string | ArrayBuffer;
 
+
   @HostListener('window:resize')
   onResize() {
     this.resize();
@@ -52,6 +55,7 @@ export class DesktopComponent implements OnInit {
 
   constructor(
     private windowService: WindowService,
+    private dialogService: DialogService,
     private moduleService: ModuleService,
     private dataService: DataService,
     private route: ActivatedRoute,
@@ -88,6 +92,9 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.loaded = true;
     }, 300);
+
+    this.windowList = this.windowService.windowList;
+    this.dialogList = this.dialogService.dialogList;
   }
 
   newNotificationSuccess(title, icon) {
@@ -111,8 +118,6 @@ export class DesktopComponent implements OnInit {
     this.toolbarHeight = document.getElementById('toolbar').offsetHeight;
     this.desktopHeight = this.innerHeight - this.titleBarTopHeight - this.toolbarHeight;
     this.desktopWidth = this.innerWidth;
-
-    this.windowList = this.windowService.windowList;
 
     for (const windowItem of Object.keys(this.windowList)) {
       if (this.windowList[windowItem].centered && this.windowList[windowItem].state.isMaximised === false) {
@@ -155,5 +160,9 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.resize();
     }, 60);
+  }
+
+  newDialog(title: string, body: string) {
+    this.dialogService.new('ow-oceanworks', title, body);
   }
 }

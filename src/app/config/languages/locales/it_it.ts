@@ -36,7 +36,7 @@ export const it_it: LanguageModel = {
   ribbon2: 'Nastro 2',
   welcome: 'benvenuto',
   close: 'Vicino',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'in linea',
   offline: 'disconnesso',
   away: 'Lontano',

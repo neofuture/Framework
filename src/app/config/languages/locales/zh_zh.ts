@@ -36,7 +36,7 @@ export const zh_zh: LanguageModel = {
   ribbon2: '色带2',
   welcome: '欢迎',
   close: '关',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: '线上',
   offline: '离线',
   away: '远',

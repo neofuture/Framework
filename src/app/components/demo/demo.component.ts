@@ -34,6 +34,7 @@ export class DemoComponent implements OnInit {
   language$: Subscription;
   locale: LanguageModel;
   label: string;
+  language: any;
 
   constructor(
     private windowService: WindowService,
@@ -44,10 +45,11 @@ export class DemoComponent implements OnInit {
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
+      this.language = this.locale.language;
     });
   }
 
-  getLanguage(lang) {
+  languageChange(lang) {
     this.languageService.getLanguage(lang);
   }
 

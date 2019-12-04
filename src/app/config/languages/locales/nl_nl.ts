@@ -36,7 +36,7 @@ export const nl_nl: LanguageModel = {
   ribbon2: 'Lint 2',
   welcome: 'Welkom',
   close: 'Dichtbij',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'Online',
   offline: 'offline',
   away: 'Weg',

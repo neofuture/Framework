@@ -1,0 +1,73 @@
+.dialogBackground {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999999999999;
+  opacity: 0;
+  transition: all 300ms;
+}
+
+.dialogBackground.on {
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.dialogContainer {
+  border: 1px solid var(--background-darker-grey);
+  background-color: var(--background-grey);
+  padding: 4px;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.dialog {
+  background-color: var(--primary);
+  color: white;
+  padding: 20px;
+}
+
+i {
+  font-size: 35px;
+  margin-right: 12px;
+  transition: all 300ms;
+}
+
+header {
+  display: block;
+  font-size: 20px;
+}
+
+section {
+  padding: 20px 0 40px 0;
+}
+
+footer {
+  display: block;
+  text-align: right;
+}
+
+button {
+  background-color: var(--background-color);
+  color: var(--text);
+}
+
+button.green {
+  background-color: #6bffa2;
+}
+
+button.red {
+  background-color: #ffabab;
+}
+
+footer button {
+  margin-left: 12px;
+  min-width: 100px;
+}

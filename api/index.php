@@ -38,6 +38,8 @@ if (!in_array($uri[0] . "::" . $uri[1], $safeList)) {
 
 if($authorised) {
   $status = call_user_func($uri[0] . "::" . strtolower($uri[1]), $pdo, $jsonStr, $session);
+} else {
+  $status['error'] = "Not Authorised";
 }
 
 echo system::cryptoJsAesEncrypt($key, $status);

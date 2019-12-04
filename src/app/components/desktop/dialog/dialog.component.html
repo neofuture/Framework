@@ -1,0 +1,31 @@
+<div class="dialogBackground" [ngClass]="dialogItem.class" (transitionend)="destroy(dialogItem)">
+  <div class="dialogContainer" id="dialog-{{ dialogItem.id }}">
+    <div class="dialog">
+      <header>
+        Title
+      </header>
+      <section>
+        <table>
+          <tr>
+            <td *ngIf="dialogItem.icon.match('ow-')">
+              <i class="{{ dialogItem.icon }}"></i>
+            </td>
+            <td *ngIf="dialogItem.icon.match('jpeg')">
+              <div class="notificationImageContainer">
+                <img src="{{ dialogItem.icon }}" alt="" class="notificationImage">
+              </div>
+            </td>
+            <td class="text">
+              {{ dialogItem.body }}
+            </td>
+          </tr>
+        </table>
+      </section>
+      <footer>
+        <button class="green">Yes</button>
+        <button class="red">No</button>
+        <button (click)="close(dialogItem)">Cancel</button>
+      </footer>
+    </div>
+  </div>
+</div>

@@ -36,7 +36,7 @@ export const no_no: LanguageModel = {
   ribbon2: 'Bånd 2',
   welcome: 'Velkommen',
   close: 'Lukk',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'på nett',
   offline: 'offline',
   away: 'Borte',

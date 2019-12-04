@@ -36,7 +36,7 @@ export const ru_ru: LanguageModel = {
   ribbon2: 'Лента 2',
   welcome: 'желанный',
   close: 'близко',
-  product: 'Oceanworks',
+  product: 'Framework',
   online: 'В сети',
   offline: 'Не в сети',
   away: 'Прочь',
