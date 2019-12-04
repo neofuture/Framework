@@ -25,6 +25,7 @@
     </div>
     <div class="loginForm">
 <!--      <div *ngIf="error" class="error" id="error">{{ locale[error] }}</div>-->
+
       <form (ngSubmit)="login()">
         <div>
           <label for="username" [innerHTML]="locale.username"></label>
