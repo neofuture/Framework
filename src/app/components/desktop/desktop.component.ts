@@ -99,6 +99,10 @@ export class DesktopComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+
+  }
+
   newNotificationWarning(title, icon) {
     this.notificationService.new(title, icon, 'warning', 5);
   }

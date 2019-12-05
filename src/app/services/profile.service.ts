@@ -78,6 +78,10 @@ export class ProfileService {
   }
 
   logout() {
+    this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
+
     this.api.call(
       '/user/logout',
       'post',
@@ -85,10 +89,7 @@ export class ProfileService {
       this.objectSource.value.token
     ).subscribe(() => {
       this.destroy();
-      this.languageService.object.subscribe(locale => {
-        this.locale = locale;
-        this.notificationService.new(this.locale.loggedOut, 'ow-lock_closed', 'error', 5);
-      });
+      this.notificationService.new(this.locale.loggedOut, 'ow-lock_closed', 'error', 5);
     });
   }
 
@@ -131,6 +132,9 @@ export class ProfileService {
   }
 
   changeProfileImage(event) {
+    this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
     const selectedFile = event.target.files[0];
 
     const reader = new FileReader();
@@ -146,15 +150,17 @@ export class ProfileService {
         this.objectSource.value.token
       ).subscribe((object: any) => {
         this.update({image: object.image, uploading: false});
-        this.languageService.object.subscribe(locale => {
-          this.locale = locale;
-          this.notificationService.new(this.locale.profileImageUpdated, object.image, 'success', 3);
-        });
+        this.notificationService.new(this.locale.profileImageUpdated, object.image, 'success', 3);
+        this.languageService.object.subscribe();
       });
     };
   }
 
   updateStatusText(status) {
+    this.languageService.object.subscribe(locale => {
+      this.locale = locale;
+    });
+
     const body = {
       status
     };
@@ -167,11 +173,7 @@ export class ProfileService {
     ).subscribe((object: any) => {
       console.log(object);
       this.update({status: object.status});
-
-      this.languageService.object.subscribe(locale => {
-        this.locale = locale;
-        this.notificationService.new(this.locale.statusTextUpdated, 'ow-user_over', 'success', 3);
-      });
+      this.notificationService.new(this.locale.statusTextUpdated, 'ow-user_over', 'success', 3);
     });
   }
 }
