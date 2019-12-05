@@ -158,13 +158,25 @@ export class DesktopComponent implements OnInit {
     }, 60);
   }
 
-  newDialog(title: string, body: string) {
-    this.dialogService.new('ow-oceanworks', title, body, () => {
-      this.dialogAlert();
-    }, null, null, 'green');
+  newDialog(title: string, body: string, type: object) {
+    this.dialogService.new(
+      'ow-oceanworks',
+      title,
+      body,
+      type,
+      () => {
+        this.dialogAlert('yes');
+      },
+      () => {
+        this.dialogAlert('no');
+      },
+      () => {
+        this.dialogAlert('ok');
+      },
+      'green');
   }
 
-  dialogAlert() {
-    alert('yep ' + this.testStr);
+  dialogAlert(state) {
+    console.log(this.testStr, 'State: ' + state);
   }
 }

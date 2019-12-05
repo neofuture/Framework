@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     }
     this.profileService.login(this.username, this.password, (profile) => {
       setTimeout(() => {
-        console.log(profile);
         if (profile.error) {
           this.notificationService.new(this.locale[profile.error], 'ow-lock_closed', 'error', 5);
         } else {

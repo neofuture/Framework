@@ -52,6 +52,10 @@ label {
   padding: 4px;
   border-radius: 4px;
   overflow:hidden;
+
+  -webkit-box-shadow: 0px 10px 5px -6px rgba(0,0,0,0.21);
+  -moz-box-shadow: 0px 10px 5px -6px rgba(0,0,0,0.21);
+  box-shadow: 0px 10px 5px -6px rgba(0,0,0,0.21);
 }
 
 .container {
