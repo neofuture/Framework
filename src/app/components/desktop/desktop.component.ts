@@ -161,7 +161,7 @@ export class DesktopComponent implements OnInit {
   newDialog(title: string, body: string) {
     this.dialogService.new('ow-oceanworks', title, body, () => {
       this.dialogAlert();
-    }, null, null, 'green', '', '', '');
+    }, null, null, 'green');
   }
 
   dialogAlert() {

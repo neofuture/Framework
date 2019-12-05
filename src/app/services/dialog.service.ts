@@ -14,13 +14,13 @@ export class DialogService {
     icon,
     title,
     body,
-    yesCallBack: CallableFunction,
-    noCallBack: CallableFunction,
-    okCallBack: CallableFunction,
-    yesClass: string,
-    noClass: string,
-    okClass: string,
-    cancelClass: string
+    yesCallBack?: CallableFunction,
+    noCallBack?: CallableFunction,
+    okCallBack?: CallableFunction,
+    yesClass?: string,
+    noClass?: string,
+    okClass?: string,
+    cancelClass?: string
   ) {
     let id = parseInt(Object.keys(this.dialogList)[Object.keys(this.dialogList).length - 1], 10) || 0;
     id++;
