@@ -21,10 +21,15 @@
         </table>
       </section>
       <footer>
-        <button *ngIf="dialogItem.noCallBack && dialogItem.type.yes == true" (click)="call(dialogItem.noCallBack, dialogItem)" [ngClass]="dialogItem.noClass">{{ locale.no }}</button>
-        <button *ngIf="dialogItem.type.cancel == true" (click)="close(dialogItem)" [ngClass]="dialogItem.cancelClass">{{ locale.cancel }}</button>
-        <button *ngIf="dialogItem.okCallBack && dialogItem.type.ok == true" (click)="call(dialogItem.okCallBack,dialogItem)" [ngClass]="dialogItem.okClass">{{ locale.ok }}</button>
-        <button *ngIf="dialogItem.yesCallBack && dialogItem.type.yes === true" (click)="call(dialogItem.yesCallBack,dialogItem)" [ngClass]="dialogItem.yesClass">{{ locale.yes }}</button>
+        <button *ngFor="let item of objectKeys(dialogItem.buttons)"
+                [ngClass]="dialogItem.buttons[item].class"
+                (click)="call(dialogItem.buttons[item].callback, dialogItem)"
+                [innerHTML]="dialogItem.buttons[item].label"
+        ></button>
+<!--        <button *ngIf="dialogItem.type.cancel == true" (click)="close(dialogItem)" [ngClass]="dialogItem.cancelClass">{{ locale.cancel }}</button>-->
+<!--        <button *ngIf="dialogItem.noCallBack && dialogItem.type.no == true" (click)="call(dialogItem.noCallBack, dialogItem)" [ngClass]="dialogItem.noClass">{{ locale.no }}</button>-->
+<!--        <button *ngIf="dialogItem.okCallBack && dialogItem.type.ok == true" (click)="call(dialogItem.okCallBack,dialogItem)" [ngClass]="dialogItem.okClass">{{ locale.ok }}</button>-->
+<!--        <button *ngIf="dialogItem.yesCallBack && dialogItem.type.yes === true" (click)="call(dialogItem.yesCallBack,dialogItem)" [ngClass]="dialogItem.yesClass">{{ locale.yes }}</button>-->
       </footer>
     </div>
   </div>

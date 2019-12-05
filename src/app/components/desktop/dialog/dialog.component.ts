@@ -46,10 +46,13 @@ export class DialogComponent implements OnInit {
     this.dialogService.resize();
   }
 
-  call(callBack: CallableFunction, dialogItem: DialogModel) {
-    setTimeout(() => {
-      callBack();
-    }, 200);
+  call(callback, dialogItem: DialogModel) {
+    if(typeof callback !== 'undefined') {
+      setTimeout(() => {
+        callback();
+      }, 200);
+    }
+
     this.close(dialogItem);
   }
 }

@@ -158,22 +158,66 @@ export class DesktopComponent implements OnInit {
     }, 60);
   }
 
-  newDialog(title: string, body: string, type: object) {
+  newDialog(title: string, body: string, type: number) {
+
+    let buttons = [];
+    if (type === 1) {
+      buttons = [
+        {
+          label: this.locale.no
+        }, {
+          label: this.locale.yes,
+          class: 'green',
+          callback: () => {this.dialogAlert('yes'); }
+        }
+      ];
+    }
+
+    if (type === 2) {
+      buttons = [
+        {
+          label: this.locale.cancel
+        }, {
+          label: this.locale.ok,
+          class: 'green',
+          callback: () => {this.dialogAlert('ok'); }
+        }
+      ];
+    }
+
+    if (type === 3) {
+      buttons = [
+        {
+          label: this.locale.ok,
+          class: 'green',
+          callback: () => {this.dialogAlert('ok'); }
+        }
+      ];
+    }
+
+    if (type === 4) {
+      buttons = [
+        {
+          label: this.locale.cancel
+        }, {
+          label: this.locale.no,
+          class: 'red',
+          callback: () => {this.dialogAlert('no'); }
+        }, {
+          label: this.locale.ok,
+          class: 'green',
+          callback: () => {this.dialogAlert('ok'); }
+        }
+      ];
+    }
+
+
     this.dialogService.new(
       'ow-oceanworks',
       title,
       body,
-      type,
-      () => {
-        this.dialogAlert('yes');
-      },
-      () => {
-        this.dialogAlert('no');
-      },
-      () => {
-        this.dialogAlert('ok');
-      },
-      'green');
+      buttons
+    );
   }
 
   dialogAlert(state) {

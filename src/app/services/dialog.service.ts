@@ -14,14 +14,7 @@ export class DialogService {
     icon,
     title,
     body,
-    type,
-    yesCallBack?: CallableFunction,
-    noCallBack?: CallableFunction,
-    okCallBack?: CallableFunction,
-    yesClass?: string,
-    noClass?: string,
-    okClass?: string,
-    cancelClass?: string
+    buttons
   ) {
     let id = parseInt(Object.keys(this.dialogList)[Object.keys(this.dialogList).length - 1], 10) || 0;
     id++;
@@ -32,15 +25,7 @@ export class DialogService {
       icon,
       title,
       body,
-      type,
-      class: '',
-      yesCallBack,
-      noCallBack,
-      okCallBack,
-      yesClass,
-      noClass,
-      okClass,
-      cancelClass
+      buttons
     };
 
     this.dialogList[id] = dialogItem;
