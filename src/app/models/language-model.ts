@@ -13,6 +13,9 @@ language: string;
   lang_pt: string;
   lang_fi: string;
   lang_zh: string;
+  lang_pl: string;
+  lang_ro: string;
+  lang_la: string;
   window: {
     close: string;
     minimise: string;

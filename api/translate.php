@@ -12,6 +12,9 @@ $lang["no"] = "lang_no";
 $lang["pt"] = "lang_pt";
 $lang["fi"] = "lang_fi";
 $lang["zh"] = "lang_zh";
+$lang["pl"] = "lang_pl";
+$lang["ro"] = "lang_ro";
+$lang["la"] = "lang_la";
 
 $english = file_get_contents("../src/app/config/languages/locales/lang_en.ts");
 

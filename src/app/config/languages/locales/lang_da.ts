@@ -16,6 +16,9 @@ export const lang_da: LanguageModel = {
   lang_pt: 'portugisisk',
   lang_fi: 'Finsk',
   lang_zh: 'kinesisk',
+  lang_pl: 'Polere',
+  lang_ro: 'rumænsk',
+  lang_la: 'latin',
   window: {
     close: 'Tæt',
     minimise: 'Minimer',

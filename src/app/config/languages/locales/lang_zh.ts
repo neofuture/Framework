@@ -16,6 +16,9 @@ export const lang_zh: LanguageModel = {
   lang_pt: '葡萄牙语',
   lang_fi: '芬兰',
   lang_zh: '中文',
+  lang_pl: '抛光',
+  lang_ro: '罗马尼亚语',
+  lang_la: '拉丁',
   window: {
     close: '关',
     minimise: '最小化',

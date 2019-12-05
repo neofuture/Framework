@@ -16,6 +16,9 @@ export const lang_fi: LanguageModel = {
   lang_pt: 'Portugalin kieli',
   lang_fi: 'Suomalainen',
   lang_zh: 'Kiinalainen',
+  lang_pl: 'Kiillottaa',
+  lang_ro: 'romanialainen',
+  lang_la: 'Latina',
   window: {
     close: 'kiinni',
     minimise: 'Minimoida',
@@ -29,7 +32,7 @@ export const lang_fi: LanguageModel = {
   messages: 'viestien',
   search: 'Hae',
   searchDots: 'Hae…',
-  expandRibbon: 'Laajenna Nauha',
+  expandRibbon: 'Laajenna nauha',
   contractRibbon: 'Sopimusnauha',
   moreModules: 'Lisää moduuleja',
   ribbon1: 'Nauha 1',

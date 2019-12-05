@@ -16,6 +16,9 @@ export const lang_sv: LanguageModel = {
   lang_pt: 'portugisiska',
   lang_fi: 'finska',
   lang_zh: 'kinesisk',
+  lang_pl: 'putsa',
+  lang_ro: 'rumänska',
+  lang_la: 'Latin',
   window: {
     close: 'Stänga',
     minimise: 'Minimera',

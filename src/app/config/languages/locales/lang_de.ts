@@ -16,6 +16,9 @@ export const lang_de: LanguageModel = {
   lang_pt: 'Portugiesisch',
   lang_fi: 'finnisch',
   lang_zh: 'Chinesisch',
+  lang_pl: 'Polieren',
+  lang_ro: 'rumänisch',
+  lang_la: 'Latein',
   window: {
     close: 'Schließen',
     minimise: 'Minimieren',

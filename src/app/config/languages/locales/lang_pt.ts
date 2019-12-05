@@ -16,6 +16,9 @@ export const lang_pt: LanguageModel = {
   lang_pt: 'Português',
   lang_fi: 'finlandês',
   lang_zh: 'chinês',
+  lang_pl: 'polonês',
+  lang_ro: 'romena',
+  lang_la: 'Latim',
   window: {
     close: 'Fechar',
     minimise: 'Minimizar',
@@ -49,7 +52,7 @@ export const lang_pt: LanguageModel = {
   userNotFound: 'A combinação de nome de usuário e senha está incorreta',
   usernameTooShort: 'Nome de usuário muito curto',
   passwordTooShort: 'A senha é muito curta',
-  loginSuccessful: 'Login bem sucedido',
+  loginSuccessful: 'Login bem-sucedido',
   loggedOut: 'Você foi desconectado',
   changeImage: 'Alterar imagem',
   profileImageUpdated: 'Sua imagem do perfil foi atualizada',

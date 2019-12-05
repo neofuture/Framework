@@ -16,6 +16,9 @@ export const blank: LanguageModel = {
   lang_pt: '',
   lang_fi: '',
   lang_zh: '',
+  lang_pl: '',
+  lang_ro: '',
+  lang_la: '',
   window: {
     close: '',
     minimise: '',
