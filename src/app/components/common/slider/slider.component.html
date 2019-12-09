@@ -4,6 +4,8 @@
      #sliderElementTemplate
 >
   <div class="sliderTrack {{ class }}"></div>
-  <div class="sliderThumb {{ class }} noTransition">{{ val }}</div>
-  <input type="hidden" name="{{ input }}]" id="{{ input }}" value="{{ val }}">
+  <div class="sliderThumb {{ class }} noTransition"><span>{{ val }}</span></div>
+  <div *ngIf="type=='range'" class="sliderThumb {{ class }} range noTransition"><span>{{ val }}</span></div>
+  <input type="text" name="{{ input }}]" id="{{ input }}" value="{{ val }}" style="width:49%;margin-right:1%;">
+  <input *ngIf="type=='range'" type="text" name="{{ input2 }}" id="{{ input2 }}" value="{{ val2 }}" style="width:49%;margin-left:1%;text-align: right">
 </div>

@@ -1,9 +1,18 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css']
+  styleUrls: ['./slider.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderComponent implements OnInit, AfterViewInit {
   private xOffset: any;
@@ -12,34 +21,49 @@ export class SliderComponent implements OnInit, AfterViewInit {
   @Input() min;
   @Input() max;
   @Input() val;
+  @Input() val2;
   @Input() input;
+  @Input() input2;
   @Input() steps;
   @Input() callBack;
   @Input() direction;
   @Input() inverted;
   @Input() class;
+  @Input() type;
+
 
   @ViewChild('sliderElementTemplate') sliderElement;
 
   private dragging: boolean;
   private sliderTrack: any;
   private sliderThumb: any;
+  private sliderThumbRange: any;
+  private element: any;
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
+
   }
 
   ngAfterViewInit() {
     this.sliderElement = this.sliderElement.nativeElement;
     this.sliderTrack = this.sliderElement.childNodes[0];
     this.sliderThumb = this.sliderElement.childNodes[1];
+    if (this.type === 'range') {
+      this.sliderThumbRange = this.sliderElement.childNodes[2];
+    }
+
     this.setThumbPos();
   }
 
   setThumbPos() {
     this.sliderThumb.classList.add('noTransition');
+    if (this.type === 'range') {
+      this.sliderThumbRange.classList.add('noTransition');
+    }
+
     const range = this.max - this.min;
     const correctedStartValue = this.val - this.min;
     let percent = (correctedStartValue * 100) / range;
@@ -53,25 +77,71 @@ export class SliderComponent implements OnInit, AfterViewInit {
     } else {
       this.sliderThumb.style.left = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
     }
+
     const points = this.precision(this.steps);
 
     this.val = (Math.floor(this.val / this.steps) * this.steps).toFixed(points);
 
-    this.sliderThumb.innerHTML = this.val;
+    this.sliderThumb.childNodes[0].innerHTML = this.val;
     setTimeout(() => {
       this.sliderThumb.classList.remove('noTransition');
     }, 300);
+
+    if (this.type === 'range') {
+      const correctedStartValue2 = this.val2 - this.min;
+      let percent2 = (correctedStartValue2 * 100) / range;
+      if (this.inverted) {
+        percent2 = 100 - percent2;
+      }
+      if (this.direction === 'vertical') {
+        this.sliderThumbRange.style.top = 'calc(' + percent2 + '% - ' + (this.sliderThumbRange.offsetHeight / 100 * percent2) + 'px)';
+      } else {
+        this.sliderThumbRange.style.left = 'calc(' + percent2 + '% - ' + (this.sliderThumbRange.offsetWidth / 100 * percent2) + 'px)';
+      }
+
+      const points2 = this.precision(this.steps);
+
+      this.val2 = (Math.floor(this.val2 / this.steps) * this.steps).toFixed(points2);
+
+      this.sliderThumbRange.childNodes[0].innerHTML = this.val2;
+      setTimeout(() => {
+        this.sliderThumbRange.classList.remove('noTransition');
+      }, 300);
+    }
+
+
   }
 
   dragStart(event) {
-    this.xOffset = this.sliderElement.offsetLeft;
-    this.yOffset = this.sliderElement.offsetTop;
-    this.sliderThumb.classList.add('noTransition');
-    if (event.target.className.indexOf('sliderTrack') !== -1) {
-      this.sliderThumb.classList.remove('noTransition');
-      this.dragging = true;
-      this.dragGo(event);
+
+    if (event.target.classList.contains('sliderThumb')) {
+      this.element = event.target;
+    } else {
+      this.element = event.target.parentNode;
     }
+
+    if (this.type === 'range') {
+      if (!this.element.classList.contains('sliderThumb')) {
+        return false;
+      }
+    }
+
+    const viewportOffset = this.sliderElement.getBoundingClientRect();
+    this.xOffset = viewportOffset.left;
+    this.yOffset = viewportOffset.top;
+
+    this.sliderThumb.classList.add('noTransition');
+    if (this.type === 'range') {
+      this.sliderThumbRange.classList.add('noTransition');
+    } else {
+      if (event.target.className.indexOf('sliderTrack') !== -1) {
+        this.element = this.sliderThumb;
+        this.sliderThumb.classList.remove('noTransition');
+        this.dragging = true;
+        this.dragGo(event);
+      }
+    }
+
     this.dragging = true;
 
     // tslint:disable-next-line:no-shadowed-variable
@@ -87,12 +157,12 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   dragGo(event) {
     if (this.dragging) {
-
+      this.element.style.zIndex = 1;
       let x = event.x || event.pageX;
       let y = event.y || event.pageY;
 
-      x = x - (this.sliderThumb.offsetWidth / 2);
-      y = y - (this.sliderThumb.offsetHeight / 2);
+      x = x - (this.element.offsetWidth / 2);
+      y = y - (this.element.offsetHeight / 2);
 
       if (x - this.xOffset < 0) {
         x = 0;
@@ -110,38 +180,116 @@ export class SliderComponent implements OnInit, AfterViewInit {
       }
 
       if (this.direction === 'vertical') {
-        const percent = (y - this.yOffset) / (this.sliderElement.offsetHeight - this.sliderThumb.offsetHeight) * 100;
-
+        let percent = (y - this.yOffset) / (this.sliderElement.offsetHeight - this.sliderThumb.offsetHeight) * 100;
+        if (percent < 0) {
+          percent = 0;
+        }
         const val = (percent * (this.max - this.min) / 100) + this.min;
-
-        const points = this.precision(this.steps);
+        if (this.type === 'range') {
+          if (this.element.classList.contains('range')) {
+            if (val <= this.val) {
+              return false;
+            }
+          } else {
+            if (this.val2 <= val) {
+              return false;
+            }
+          }
+        }
         if (this.inverted === true) {
-          this.val = ((this.max + this.min) - (Math.floor(val / this.steps) * this.steps)).toFixed(points);
+          if (this.element.classList.contains('range')) {
+            this.val2 = (this.max + this.min) - val;
+          } else {
+            this.val = (this.max + this.min) - val;
+          }
+          if (this.element.classList.contains('range')) {
+            this.element.style.top = 'calc(' + (100 - ((this.val2 / this.max) * 100)) + '% - ' +
+              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+          } else {
+            this.element.style.top = 'calc(' + (100 - ((this.val / this.max) * 100)) + '% - ' +
+              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+          }
         } else {
-          this.val = (Math.floor(val / this.steps) * this.steps).toFixed(points);
+          if (this.element.classList.contains('range')) {
+            this.val2 = val;
+          } else {
+            this.val = val;
+          }
+          if (this.element.classList.contains('range')) {
+            this.element.style.top = 'calc(' + ((this.val2 / this.max) * 100) + '% - ' +
+              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+          } else {
+            this.element.style.top = 'calc(' + ((this.val / this.max) * 100) + '% - ' +
+              (this.sliderThumb.offsetHeigh / 100 * percent) + 'px)';
+          }
         }
 
-        this.sliderThumb.style.top = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+        // this.element.style.top = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
       } else {
-        const percent = (x - this.xOffset) / (this.sliderElement.offsetWidth - this.sliderThumb.offsetWidth) * 100;
-
+        let percent = (x - this.xOffset) / (this.sliderElement.offsetWidth - this.sliderThumb.offsetWidth) * 100;
+        if (percent < 0) {
+          percent = 0;
+        }
         const val = (percent * (this.max - this.min) / 100) + this.min;
 
-        const points = this.precision(this.steps);
-        if (this.inverted === true) {
-          this.val = ((this.max + this.min) - (Math.floor(val / this.steps) * this.steps)).toFixed(points);
-        } else {
-          this.val = (Math.floor(val / this.steps) * this.steps).toFixed(points);
+        if (this.type === 'range') {
+          if (this.element.classList.contains('range')) {
+            if (val <= this.val) {
+              return false;
+            }
+          } else {
+            if (this.val2 <= val - 1) {
+              return false;
+            }
+          }
         }
 
-        this.sliderThumb.style.left = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
-      }
 
-      this.sliderThumb.innerHTML = this.val;
+
+        if (this.inverted === true) {
+          if (this.element.classList.contains('range')) {
+            this.val2 = (this.max + this.min) - (val);
+          } else {
+            this.val = (this.max + this.min) - (val);
+          }
+          if (this.element.classList.contains('range')) {
+            this.element.style.left = 'calc(' + (100 - (this.val2 / this.max) * 100) + '% - ' +
+              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+          } else {
+            this.element.style.left = 'calc(' + (100 - (this.val / this.max) * 100) + '% - ' +
+              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+          }
+        } else {
+          if (this.element.classList.contains('range')) {
+            this.val2 = (val);
+          } else {
+            this.val = (val);
+          }
+
+          if (this.element.classList.contains('range')) {
+            this.element.style.left = 'calc(' + ((this.val2 / this.max) * 100) + '% - ' +
+              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+          } else {
+            this.element.style.left = 'calc(' + ((this.val / this.max) * 100) + '% - ' +
+              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+          }
+        }
+
+      }
+      const points = this.precision(this.steps);
+      if (this.element.classList.contains('range')) {
+        this.val2 = this.val2.toFixed(points);
+        this.element.childNodes[0].innerHTML = this.val2;
+      } else {
+        this.val = this.val.toFixed(points);
+        this.element.childNodes[0].innerHTML = this.val;
+      }
+      this.cdr.markForCheck();
     }
   }
 
   dragStop(event) {
+    this.element.style.zIndex = null;
     this.dragging = false;
   }
 
@@ -157,4 +305,5 @@ export class SliderComponent implements OnInit, AfterViewInit {
     }
     return p;
   }
+
 }

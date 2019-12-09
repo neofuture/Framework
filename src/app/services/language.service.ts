@@ -9,9 +9,10 @@ import {LanguageModel} from '../models/language-model';
 export class LanguageService {
   private objectSource = new BehaviorSubject<LanguageModel>(blank);
   object = this.objectSource.asObservable();
+  serviceName = 'language';
 
   constructor() {
-    this.getLanguage(localStorage.getItem('language') || 'en_gb');
+    this.getLanguage(localStorage.getItem(this.serviceName) || 'lang_en');
   }
 
   getLanguage(lang) {
@@ -19,7 +20,7 @@ export class LanguageService {
       this.objectSource.next(result);
     });
 
-    localStorage.setItem('language', lang);
+    localStorage.setItem(this.serviceName, lang);
   }
 
   async loadLanguage(lang) {

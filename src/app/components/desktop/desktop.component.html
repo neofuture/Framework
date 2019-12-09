@@ -2,29 +2,59 @@
               (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
 
-  <app-slider
-    [min]="0"
-    [max]="360"
-    [val]="50"
-    [input]="'two'"
-    [steps]="1"
-    [callBack]="null"
-    [direction]="'horizontal'"
-    [inverted]="false"
-    [class]="'volume'"
-  ></app-slider>
+  <div style="width:calc(100% - 400px);left:200px;position:absolute;bottom:0;">
+    <div style="display:inline-block;width:33%;padding:12px;">
+      <app-slider
+        [min]="0"
+        [max]="1000"
+        [val]="400"
+        [val2]="900"
+        [input]="'one'"
+        [input2]="'one2'"
+        [steps]="10"
+        [callBack]="null"
+        [direction]="'horizontal'"
+        [inverted]="false"
+        [class]="'small'"
+        [type]="'range'"
+      ></app-slider>
+    </div>
+    <div style="display:inline-block;width:33%;padding:12px;">
+      <app-slider
+        [min]="0"
+        [max]="1000"
+        [val]="400"
+        [val2]="900"
+        [input]="'two'"
+        [input2]="'two2'"
+        [steps]="1"
+        [callBack]="null"
+        [direction]="'horizontal'"
+        [inverted]="false"
+        [class]="'small'"
+        [type]="'range'"
+      ></app-slider>
+    </div>
+    <div style="display:inline-block;width:33%;padding:12px;">
+      <app-slider
+        [min]="0"
+        [max]="10"
+        [val]="2"
+        [val2]="6"
+        [input]="'three'"
+        [input2]="'three2'"
+        [steps]="1"
+        [callBack]="null"
+        [direction]="'horizontal'"
+        [inverted]="false"
+        [class]="'small'"
+        [type]="'range'"
+      ></app-slider>
+    </div>
 
-  <app-slider
-    [min]="0"
-    [max]="10000"
-    [val]="900"
-    [input]="'two'"
-    [steps]="1"
-    [callBack]="null"
-    [direction]="'horizontal'"
-    [inverted]="false"
-    [class]="'heat'"
-  ></app-slider>
+
+  </div>
+
 
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
@@ -50,10 +80,22 @@
   <button (click)="newNotificationWarning('Warning', 'ow-warning')">New Warning Notification</button>
   <button (click)="newNotificationError('Error Error Error', 'ow-error')">New Warning Notification</button>
   <hr>
-  <button (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 1)">Test Dialog (Yes/No)</button>
-  <button (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 2)">Test Dialog (OK/Cancel)</button>
-  <button (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 3)">Test Dialog (OK)</button>
-  <button (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 4)">Test Dialog (Cancel/No/Yes)</button>
+  <button
+    (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 1)">
+    Test Dialog (Yes/No)
+  </button>
+  <button
+    (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 2)">
+    Test Dialog (OK/Cancel)
+  </button>
+  <button
+    (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 3)">
+    Test Dialog (OK)
+  </button>
+  <button
+    (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 4)">
+    Test Dialog (Cancel/No/Yes)
+  </button>
 
 
 </div>
