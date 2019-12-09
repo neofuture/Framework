@@ -125,6 +125,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         return false;
       }
     }
+    this.element.parentNode.classList.add('hover');
 
     const viewportOffset = this.sliderElement.getBoundingClientRect();
     this.xOffset = viewportOffset.left;
@@ -178,20 +179,21 @@ export class SliderComponent implements OnInit, AfterViewInit {
       if (y - this.yOffset > this.sliderElement.offsetHeight - this.sliderThumb.offsetHeight) {
         y = this.yOffset + this.sliderElement.offsetHeight - this.sliderThumb.offsetHeight;
       }
+      const points = this.precision(this.steps);
 
       if (this.direction === 'vertical') {
         let percent = (y - this.yOffset) / (this.sliderElement.offsetHeight - this.sliderThumb.offsetHeight) * 100;
         if (percent < 0) {
           percent = 0;
         }
-        const val = (percent * (this.max - this.min) / 100) + this.min;
+        const val = ((percent * (this.max - this.min) / 100) + this.min).toFixed(points);
         if (this.type === 'range') {
           if (this.element.classList.contains('range')) {
-            if (val <= this.val) {
+            if (parseInt(val, 10) + 1 <= parseInt(this.val, 10)) {
               return false;
             }
           } else {
-            if (this.val2 <= val) {
+            if (parseInt(this.val2, 10) <= parseInt(val, 10) - 1) {
               return false;
             }
           }
@@ -220,37 +222,35 @@ export class SliderComponent implements OnInit, AfterViewInit {
               (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
           } else {
             this.element.style.top = 'calc(' + ((this.val / this.max) * 100) + '% - ' +
-              (this.sliderThumb.offsetHeigh / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
           }
         }
 
-        // this.element.style.top = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
       } else {
+
         let percent = (x - this.xOffset) / (this.sliderElement.offsetWidth - this.sliderThumb.offsetWidth) * 100;
         if (percent < 0) {
           percent = 0;
         }
-        const val = (percent * (this.max - this.min) / 100) + this.min;
+        const val = ((percent * (this.max - this.min) / 100) + this.min).toFixed(points);
 
         if (this.type === 'range') {
           if (this.element.classList.contains('range')) {
-            if (val <= this.val) {
+            if (parseInt(val, 10) + 1 <= parseInt(this.val, 10)) {
               return false;
             }
           } else {
-            if (this.val2 <= val - 1) {
+            if (parseInt(this.val2, 10) <= parseInt(val, 10) - 1) {
               return false;
             }
           }
         }
 
-
-
         if (this.inverted === true) {
           if (this.element.classList.contains('range')) {
-            this.val2 = (this.max + this.min) - (val);
+            this.val2 = (this.max + this.min) - val;
           } else {
-            this.val = (this.max + this.min) - (val);
+            this.val = (this.max + this.min) - val;
           }
           if (this.element.classList.contains('range')) {
             this.element.style.left = 'calc(' + (100 - (this.val2 / this.max) * 100) + '% - ' +
@@ -261,9 +261,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
           }
         } else {
           if (this.element.classList.contains('range')) {
-            this.val2 = (val);
+            this.val2 = val;
           } else {
-            this.val = (val);
+            this.val = val;
           }
 
           if (this.element.classList.contains('range')) {
@@ -276,12 +276,11 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
 
       }
-      const points = this.precision(this.steps);
       if (this.element.classList.contains('range')) {
-        this.val2 = this.val2.toFixed(points);
+        // this.val2 = this.val2.toFixed(points);
         this.element.childNodes[0].innerHTML = this.val2;
       } else {
-        this.val = this.val.toFixed(points);
+        // this.val = this.val.toFixed(points);
         this.element.childNodes[0].innerHTML = this.val;
       }
       this.cdr.markForCheck();
@@ -290,6 +289,11 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   dragStop(event) {
     this.element.style.zIndex = null;
+    this.element.parentNode.classList.remove('hover');
+    this.element.parentNode.querySelectorAll('div')
+      .forEach((el) => {
+        el.classList.remove('noTransition');
+      });
     this.dragging = false;
   }
 

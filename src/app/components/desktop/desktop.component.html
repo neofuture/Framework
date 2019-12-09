@@ -2,8 +2,22 @@
               (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
 
-  <div style="width:calc(100% - 400px);left:200px;position:absolute;bottom:0;">
-    <div style="display:inline-block;width:33%;padding:12px;">
+  <div style="width:calc(100% - 400px);left:200px;position:absolute;bottom:0;height:200px;">
+    <app-slider
+      [min]="0"
+      [max]="1000"
+      [val]="400"
+      [val2]="900"
+      [input]="'o'"
+      [input2]="'o2'"
+      [steps]="10"
+      [callBack]="null"
+      [direction]="'vertical'"
+      [inverted]="false"
+      [class]="'small'"
+      [type]="'range'"
+    ></app-slider>
+    <div style="display:inline-block;width:30%;padding:12px;margin-left:20px;">
       <app-slider
         [min]="0"
         [max]="1000"
@@ -19,23 +33,20 @@
         [type]="'range'"
       ></app-slider>
     </div>
-    <div style="display:inline-block;width:33%;padding:12px;">
+    <div style="display:inline-block;width:30%;padding:12px;">
       <app-slider
         [min]="0"
         [max]="1000"
         [val]="400"
-        [val2]="900"
         [input]="'two'"
-        [input2]="'two2'"
         [steps]="1"
         [callBack]="null"
         [direction]="'horizontal'"
         [inverted]="false"
         [class]="'small'"
-        [type]="'range'"
       ></app-slider>
     </div>
-    <div style="display:inline-block;width:33%;padding:12px;">
+    <div style="display:inline-block;width:30%;padding:12px;">
       <app-slider
         [min]="0"
         [max]="10"
@@ -43,6 +54,50 @@
         [val2]="6"
         [input]="'three'"
         [input2]="'three2'"
+        [steps]="1"
+        [callBack]="null"
+        [direction]="'horizontal'"
+        [inverted]="false"
+        [class]="'small'"
+        [type]="'range'"
+      ></app-slider>
+    </div>    <div style="display:inline-block;width:30%;padding:12px;margin-left:20px;">
+      <app-slider
+        [min]="0"
+        [max]="1000"
+        [val]="400"
+        [val2]="900"
+        [input]="'o2ne'"
+        [input2]="'2one2'"
+        [steps]="10"
+        [callBack]="null"
+        [direction]="'horizontal'"
+        [inverted]="false"
+        [class]="'small'"
+        [type]="'range'"
+      ></app-slider>
+    </div>
+    <div style="display:inline-block;width:30%;padding:12px;">
+      <app-slider
+        [min]="0"
+        [max]="10"
+        [val]="4"
+        [input]="'2two'"
+        [steps]="1"
+        [callBack]="null"
+        [direction]="'horizontal'"
+        [inverted]="false"
+        [class]="'small'"
+      ></app-slider>
+    </div>
+    <div style="display:inline-block;width:30%;padding:12px;">
+      <app-slider
+        [min]="0"
+        [max]="10"
+        [val]="2"
+        [val2]="6"
+        [input]="'2three'"
+        [input2]="'2three2'"
         [steps]="1"
         [callBack]="null"
         [direction]="'horizontal'"
