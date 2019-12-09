@@ -33,6 +33,7 @@ import {PrettyPrintPipe} from './pipes/pretty-print.pipe';
 import {SafeHtmlPipe} from './pipes/safe-html.pipe';
 
 import {environment} from '../environments/environment';
+import { SliderComponent } from './components/common/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {environment} from '../environments/environment';
     SafeHtmlPipe,
     LoginComponent,
     NotificationComponent,
-    DialogComponent
+    DialogComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

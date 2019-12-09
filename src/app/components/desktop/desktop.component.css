@@ -46,3 +46,16 @@ app-notification {
   right:0;
   z-index:999999;
 }
+
+
+app-slider {
+  position:absolute;
+  bottom:0;
+  width:100%;
+}
+
+app-slider:nth-child(1) {
+  position:absolute;
+  bottom:60px;
+  width:100%;
+}

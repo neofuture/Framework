@@ -1,6 +1,31 @@
 <app-titlebar class="titleBarTop" id="titleBarTop" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth"
               (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
+
+  <app-slider
+    [min]="0"
+    [max]="360"
+    [val]="50"
+    [input]="'two'"
+    [steps]="1"
+    [callBack]="null"
+    [direction]="'horizontal'"
+    [inverted]="false"
+    [class]="'volume'"
+  ></app-slider>
+
+  <app-slider
+    [min]="0"
+    [max]="360"
+    [val]="50"
+    [input]="'two'"
+    [steps]="1"
+    [callBack]="null"
+    [direction]="'horizontal'"
+    [inverted]="false"
+    [class]="'heat'"
+  ></app-slider>
+
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
                 [titleBarTopHeight]="titleBarTopHeight"
@@ -29,6 +54,8 @@
   <button (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 2)">Test Dialog (OK/Cancel)</button>
   <button (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 3)">Test Dialog (OK)</button>
   <button (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 4)">Test Dialog (Cancel/No/Yes)</button>
+
+
 </div>
 <app-toolbar class="toolbar" id="toolbar" [desktopHeight]="desktopHeight"
              [desktopWidth]="desktopWidth"></app-toolbar>

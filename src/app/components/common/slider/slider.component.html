@@ -1,0 +1,9 @@
+<div class="slider"
+     [ngClass]="[class, direction]"
+     (mousedown)="dragStart($event)"
+     #sliderElementTemplate
+>
+  <div class="sliderTrack {{ class }}"></div>
+  <div class="sliderThumb {{ class }} noTransition">{{ val }}</div>
+  <input type="hidden" name="{{ input }}]" id="{{ input }}" value="{{ val }}">
+</div>
