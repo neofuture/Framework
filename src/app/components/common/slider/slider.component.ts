@@ -73,9 +73,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
     }
 
     if (this.direction === 'vertical') {
-      this.sliderThumb.style.top = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+      this.sliderThumb.style.top = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetHeight / 2) + 'px)';
     } else {
-      this.sliderThumb.style.left = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+      this.sliderThumb.style.left = 'calc(' + percent + '% - ' + (this.sliderThumb.offsetWidth / 2) + 'px)';
     }
 
     const points = this.precision(this.steps);
@@ -94,9 +94,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
         percent2 = 100 - percent2;
       }
       if (this.direction === 'vertical') {
-        this.sliderThumbRange.style.top = 'calc(' + percent2 + '% - ' + (this.sliderThumbRange.offsetHeight / 100 * percent2) + 'px)';
+        this.sliderThumbRange.style.top = 'calc(' + percent2 + '% - ' + (this.sliderThumbRange.offsetHeight / 2) + 'px)';
       } else {
-        this.sliderThumbRange.style.left = 'calc(' + percent2 + '% - ' + (this.sliderThumbRange.offsetWidth / 100 * percent2) + 'px)';
+        this.sliderThumbRange.style.left = 'calc(' + percent2 + '% - ' + (this.sliderThumbRange.offsetWidth / 2) + 'px)';
       }
 
       const points2 = this.precision(this.steps);
@@ -162,8 +162,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
       let x = event.x || event.pageX;
       let y = event.y || event.pageY;
 
-      x = x - (this.element.offsetWidth / 2);
-      y = y - (this.element.offsetHeight / 2);
+      x = x - (this.element.offsetWidth / 2) - (this.sliderThumb.offsetWidth / 3);
+      y = y - (this.element.offsetHeight / 2) - (this.sliderThumb.offsetHeight / 3);
 
       if (x - this.xOffset < 0) {
         x = 0;
@@ -206,10 +206,10 @@ export class SliderComponent implements OnInit, AfterViewInit {
           }
           if (this.element.classList.contains('range')) {
             this.element.style.top = 'calc(' + (100 - ((this.val2 / this.max) * 100)) + '% - ' +
-              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetHeight / 2) + 'px)';
           } else {
             this.element.style.top = 'calc(' + (100 - ((this.val / this.max) * 100)) + '% - ' +
-              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetHeight / 2) + 'px)';
           }
         } else {
           if (this.element.classList.contains('range')) {
@@ -219,10 +219,10 @@ export class SliderComponent implements OnInit, AfterViewInit {
           }
           if (this.element.classList.contains('range')) {
             this.element.style.top = 'calc(' + ((this.val2 / this.max) * 100) + '% - ' +
-              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetHeight / 2) + 'px)';
           } else {
             this.element.style.top = 'calc(' + ((this.val / this.max) * 100) + '% - ' +
-              (this.sliderThumb.offsetHeight / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetHeight / 2) + 'px)';
           }
         }
 
@@ -232,16 +232,16 @@ export class SliderComponent implements OnInit, AfterViewInit {
         if (percent < 0) {
           percent = 0;
         }
-        const val = ((percent * (this.max - this.min) / 100) + this.min).toFixed(points);
+        let val = ((percent * (this.max - this.min) / 100) + this.min).toFixed(points);
 
         if (this.type === 'range') {
           if (this.element.classList.contains('range')) {
             if (parseInt(val, 10) + 1 <= parseInt(this.val, 10)) {
-              return false;
+              val = this.val;
             }
           } else {
             if (parseInt(this.val2, 10) <= parseInt(val, 10) - 1) {
-              return false;
+              val = this.val;
             }
           }
         }
@@ -254,10 +254,10 @@ export class SliderComponent implements OnInit, AfterViewInit {
           }
           if (this.element.classList.contains('range')) {
             this.element.style.left = 'calc(' + (100 - (this.val2 / this.max) * 100) + '% - ' +
-              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetWidth / 2) + 'px)';
           } else {
             this.element.style.left = 'calc(' + (100 - (this.val / this.max) * 100) + '% - ' +
-              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetWidth / 2) + 'px)';
           }
         } else {
           if (this.element.classList.contains('range')) {
@@ -268,10 +268,10 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
           if (this.element.classList.contains('range')) {
             this.element.style.left = 'calc(' + ((this.val2 / this.max) * 100) + '% - ' +
-              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetWidth / 2) + 'px)';
           } else {
             this.element.style.left = 'calc(' + ((this.val / this.max) * 100) + '% - ' +
-              (this.sliderThumb.offsetWidth / 100 * percent) + 'px)';
+              (this.sliderThumb.offsetWidth / 2) + 'px)';
           }
         }
 

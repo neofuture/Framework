@@ -54,7 +54,7 @@
 }
 
 .slider.horizontal .sliderTrack {
-  margin: 20px 10px 20px 10px;
+  margin: 20px -10px 20px -10px;
   height: 30px;
   border-radius: 15px;
   position: relative;
@@ -62,20 +62,12 @@
 }
 
 .slider.vertical .sliderTrack {
-  margin: 10px 20px 10px 10px;
+  margin:-10px 20px -10px 20px;
   width: 30px;
   border-radius: 15px;
   position: relative;
   cursor: row-resize;
   height: calc(100% - 20px);
-}
-
-.slider.horizontal .sliderTrack {
-  margin: 20px 10px 20px 10px;
-  height: 30px;
-  border-radius: 15px;
-  position: relative;
-  cursor: col-resize;
 }
 
 .slider.vertical .sliderTrack.small {
@@ -93,6 +85,7 @@
   border-radius: 15px;
   position: relative;
   cursor: col-resize;
+
 }
 
 .slider.horizontal .sliderTrack.heat {

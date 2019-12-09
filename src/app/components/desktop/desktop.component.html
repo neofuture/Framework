@@ -106,10 +106,23 @@
         [type]="'range'"
       ></app-slider>
     </div>
-
-
   </div>
-
+  <div style="margin:30px;">
+    <app-slider
+      [min]="0"
+      [max]="1000"
+      [val]="200"
+      [val2]="600"
+      [input]="'2three'"
+      [input2]="'2three2'"
+      [steps]="1"
+      [callBack]="null"
+      [direction]="'horizontal'"
+      [inverted]="false"
+      [class]="'heat'"
+      [type]="'range'"
+    ></app-slider>
+  </div>
 
   <div *ngFor="let windowItem of objectKeys(windowList)">
     <app-window [windowItem]="windowList[windowItem]"
