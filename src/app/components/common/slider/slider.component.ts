@@ -162,8 +162,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
       let x = event.x || event.pageX;
       let y = event.y || event.pageY;
 
-      x = x - (this.element.offsetWidth / 2) - (this.sliderThumb.offsetWidth / 3);
-      y = y - (this.element.offsetHeight / 2) - (this.sliderThumb.offsetHeight / 3);
+      x = x - (this.element.offsetWidth / 2);
+      y = y - (this.element.offsetHeight / 2);
 
       if (x - this.xOffset < 0) {
         x = 0;
