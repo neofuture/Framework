@@ -26,6 +26,7 @@ export const lang_fi: LanguageModel = {
     restore: 'Palauttaa',
     centered: 'keskitetty',
   },
+  company: 'Oceanworks',
   contactManager: 'Yhteyspäällikkö',
   quotes: 'lainausmerkit',
   settings: 'asetukset',

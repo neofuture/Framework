@@ -26,6 +26,7 @@ export const lang_sv: LanguageModel = {
     restore: 'Återställa',
     centered: 'centrerad',
   },
+  company: 'Oceanworks',
   contactManager: 'Kontakta chef',
   quotes: 'Citat',
   settings: 'inställningar',

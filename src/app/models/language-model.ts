@@ -23,6 +23,7 @@ language: string;
     restore: string;
     centered: string;
   };
+  company: string;
   contactManager: string;
   quotes: string;
   settings: string;

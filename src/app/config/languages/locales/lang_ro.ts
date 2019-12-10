@@ -26,6 +26,7 @@ export const lang_ro: LanguageModel = {
     restore: 'Restabili',
     centered: 'Centrat',
   },
+  company: 'Oceanworks',
   contactManager: 'Contact Manager',
   quotes: 'Citate',
   settings: 'Setări',

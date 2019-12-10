@@ -26,6 +26,7 @@ export const lang_la: LanguageModel = {
     restore: 'restituere',
     centered: 'sitas',
   },
+  company: 'Oceanworks',
   contactManager: 'Contact Manager',
   quotes: 'quotes',
   settings: 'Optiones',

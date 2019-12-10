@@ -10,7 +10,6 @@ import {ProfileService} from '../../services/profile.service';
 import {ProfileModel} from '../../models/profile-model';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
-import {NotificationService} from '../../services/notification.service';
 import {DialogService} from '../../services/dialog.service';
 
 @Component({
@@ -85,6 +84,7 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.loaded = true;
       this.particles();
+      this.resize();
     }, 300);
 
     this.windowList = this.windowService.windowList;

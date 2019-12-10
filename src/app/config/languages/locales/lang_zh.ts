@@ -26,6 +26,7 @@ export const lang_zh: LanguageModel = {
     restore: '恢复',
     centered: '居中',
   },
+  company: '海洋工程',
   contactManager: '联系人经理',
   quotes: '行情',
   settings: '设定值',

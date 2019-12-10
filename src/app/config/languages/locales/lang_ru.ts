@@ -26,6 +26,7 @@ export const lang_ru: LanguageModel = {
     restore: 'Восстановить',
     centered: 'Сосредоточенный',
   },
+  company: 'Oceanworks',
   contactManager: 'Менеджер контактов',
   quotes: 'Цитаты',
   settings: 'настройки',

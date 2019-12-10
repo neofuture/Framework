@@ -26,6 +26,7 @@ export const lang_pl: LanguageModel = {
     restore: 'Przywracać',
     centered: 'Wyśrodkowany',
   },
+  company: 'Oceanworks',
   contactManager: 'Contact Manager',
   quotes: 'cytaty',
   settings: 'Ustawienia',

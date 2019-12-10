@@ -26,6 +26,7 @@ export const lang_da: LanguageModel = {
     restore: 'Gendan',
     centered: 'Centreret',
   },
+  company: 'Oceanworks',
   contactManager: 'Kontakt manager',
   quotes: 'Citater',
   settings: 'Indstillinger',

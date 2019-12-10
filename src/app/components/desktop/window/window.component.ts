@@ -298,6 +298,10 @@ export class WindowComponent implements OnInit {
         y = this.innerHeight - this.toolbarHeight - 6;
       }
 
+      if (this.resizeWindowItem.centered) {
+        this.resizeWindowItem.centered = false;
+      }
+
       let dx = x - this.resizeWindowItem.entities.xPosition;
       let dy = y - this.resizeWindowItem.entities.yPosition;
 

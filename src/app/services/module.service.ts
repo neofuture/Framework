@@ -20,15 +20,14 @@ export class ModuleService {
       false,
       'about',
       null,
-      400,
+      610,
       600,
       true,
       desktopWidth,
       desktopHeight,
       true,
       '0',
-      false,
-      5000
+      false
     );
   }
 
