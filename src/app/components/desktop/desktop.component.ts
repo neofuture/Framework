@@ -99,20 +99,20 @@ export class DesktopComponent implements OnInit {
     pJS('particles-js', {
       particles: {
         number: {
-          value: 80,
+          value: 60,
           density: {
             enable: true,
             value_area: 800
           }
         },
         color: {
-          value: '#b5b5b5'
+          value: '#7f7f7f'
         },
         shape: {
           type: 'circle',
           stroke: {
-            width: 0,
-            color: '#B5B5B5'
+            width: 3,
+            color: '#7f7f7f'
           },
           polygon: {
             nb_sides: 5
@@ -146,7 +146,7 @@ export class DesktopComponent implements OnInit {
         line_linked: {
           enable: true,
           distance: 150,
-          color: '#B5B5B5',
+          color: '#7f7f7f',
           opacity: 0.4,
           width: 1
         },

@@ -23,8 +23,9 @@
       <footer>
         <button *ngFor="let item of objectKeys(dialogItem.buttons)"
                 [ngClass]="dialogItem.buttons[item].class"
-                (click)="call(dialogItem.buttons[item].callback, dialogItem)"
                 [innerHTML]="dialogItem.buttons[item].label"
+                (click)="call(dialogItem.buttons[item].callback, dialogItem)"
+                (blur)="blur($event)"
         ></button>
       </footer>
     </div>

@@ -32,6 +32,20 @@ export class DialogService {
     setTimeout(() => {
       this.dialogList[id].class = 'on';
       this.resize();
+      let buttonFocus = 0;
+      for (const item of Object.keys(buttons)) {
+        if (buttons[item].focused) {
+          buttonFocus = parseInt(item, 10);
+        }
+      }
+      const buttonList = document.getElementById('dialog-' + id).querySelectorAll('button');
+
+      for (const item of Object.keys(buttonList)) {
+        if (parseInt(item, 10) === buttonFocus) {
+          buttonList[item].focus();
+          buttonList[item].classList.add('focused');
+        }
+      }
     });
   }
 

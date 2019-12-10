@@ -59,6 +59,10 @@ export class DemoComponent implements OnInit {
     this.languageService.getLanguage(lang);
   }
 
+  setHue(...args) {
+    document.documentElement.style.setProperty('--hue', args[0]);
+  }
+
   toggleCompusoft() {
     if (document.body.classList.contains('compusoft')) {
       this.theme = 'CS Theme';
@@ -150,7 +154,8 @@ export class DemoComponent implements OnInit {
         }, {
           label: this.locale.yes,
           class: 'green',
-          callback: () => {this.dialogAlert('yes'); }
+          callback: () => {this.dialogAlert('yes'); },
+          focused: true
         }
       ];
     }
@@ -162,7 +167,8 @@ export class DemoComponent implements OnInit {
         }, {
           label: this.locale.ok,
           class: 'green',
-          callback: () => {this.dialogAlert('ok'); }
+          callback: () => {this.dialogAlert('ok'); },
+          focused: true
         }
       ];
     }
@@ -172,7 +178,8 @@ export class DemoComponent implements OnInit {
         {
           label: this.locale.ok,
           class: 'green',
-          callback: () => {this.dialogAlert('ok'); }
+          callback: () => {this.dialogAlert('ok'); },
+          focused: true
         }
       ];
     }
@@ -180,7 +187,8 @@ export class DemoComponent implements OnInit {
     if (type === 4) {
       buttons = [
         {
-          label: this.locale.cancel
+          label: this.locale.cancel,
+          focused: true
         }, {
           label: this.locale.no,
           class: 'red',

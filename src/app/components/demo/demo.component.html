@@ -1,4 +1,3 @@
-<script src="../../../../../../../Downloads/particles.js"></script>
 <table>
   <tr>
     <td>Icon</td>
@@ -10,7 +9,6 @@
   </tr>
   <tr>
     <td>
-
       <select [(ngModel)]="icon" name="icon" [attr.aria-label]="'icon'">
         <option value="alarm">Alarm</option>
         <option value="bin">Bin</option>
@@ -275,3 +273,16 @@
   (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 4)">
   Test Dialog (Cancel/No/Yes)
 </button>
+<div style="width:400px;padding:20px;">
+<app-slider
+  [min]="0"
+  [max]="360"
+  [val]="210"
+  [input]="'two'"
+  [steps]="1"
+  [callBack]="setHue"
+  [direction]="'horizontal'"
+  [inverted]="false"
+  [class]="'small'"
+></app-slider>
+</div>

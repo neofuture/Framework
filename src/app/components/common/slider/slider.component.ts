@@ -273,13 +273,14 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
       }
       if (this.element.classList.contains('range')) {
-        // this.val2 = this.val2.toFixed(points);
         this.element.childNodes[0].innerHTML = this.val2;
       } else {
-        // this.val = this.val.toFixed(points);
         this.element.childNodes[0].innerHTML = this.val;
       }
       this.cdr.markForCheck();
+      if (this.callBack) {
+        this.callBack(this.val, this.val2);
+      }
     }
   }
 

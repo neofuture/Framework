@@ -8,5 +8,6 @@ export interface DialogModel {
     label: string;
     class?: string;
     callback: CallableFunction;
+    focused?: boolean;
   }];
 }

@@ -47,12 +47,16 @@ export class DialogComponent implements OnInit {
   }
 
   call(callback, dialogItem: DialogModel) {
-    if(typeof callback !== 'undefined') {
+    if (typeof callback !== 'undefined') {
       setTimeout(() => {
         callback();
       }, 200);
     }
 
     this.close(dialogItem);
+  }
+
+  blur(event) {
+    event.target.classList.remove('focused');
   }
 }

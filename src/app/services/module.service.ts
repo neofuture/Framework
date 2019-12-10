@@ -85,7 +85,7 @@ export class ModuleService {
       true,
       'demo',
       null,
-      426,
+      726,
       740,
       true,
       desktopWidth,

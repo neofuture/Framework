@@ -7,6 +7,7 @@ import {RibbonButtonModel} from '../../../models/ribbon-button-model';
 import {RibbonService} from '../../../services/ribbon.service';
 import {ProfileService} from '../../../services/profile.service';
 import {ProfileModel} from '../../../models/profile-model';
+import {ModuleService} from "../../../services/module.service";
 
 @Component({
   selector: 'app-titlebar',
@@ -23,7 +24,8 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     private windowService: WindowService,
     public ribbonService: RibbonService,
     private languageService: LanguageService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private moduleService: ModuleService
   ) {
   }
 
@@ -76,6 +78,10 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
+  welcome(desktopWidth, desktopHeight) {
+    console.log("clicked");
+    this.moduleService.welcome(desktopWidth, desktopHeight);
+  }
   setOpt1() {
     this.activeTab = 1;
     this.ribbonService.clearRibbon();
