@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 
 import {ServiceWorkerModule} from '@angular/service-worker';
+import {AboutComponent} from './components/about/about.component';
 
 import {DemoComponent} from './components/demo/demo.component';
 import {DesktopComponent} from './components/desktop/desktop.component';
@@ -38,6 +39,7 @@ import { SliderComponent } from './components/common/slider/slider.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     WindowComponent,
     DesktopComponent,
     ToolbarComponent,

@@ -78,9 +78,9 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  welcome(desktopWidth, desktopHeight) {
-    console.log("clicked");
-    this.moduleService.welcome(desktopWidth, desktopHeight);
+  about(desktopWidth, desktopHeight) {
+    console.log('clicked');
+    this.moduleService.about(desktopWidth, desktopHeight);
   }
   setOpt1() {
     this.activeTab = 1;

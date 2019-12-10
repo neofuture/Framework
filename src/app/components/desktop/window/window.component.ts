@@ -152,6 +152,14 @@ export class WindowComponent implements OnInit {
       componentRef.instance.windowItem = this.windowItem;
     }
 
+    if (this.windowItem.bodyComponent === 'about') {
+      const {AboutComponent} = await import('../../about/about.component');
+      const componentRef = this.viewContainer.createComponent(
+        this.componentFactoryResolver.resolveComponentFactory(AboutComponent)
+      );
+      componentRef.instance.windowItem = this.windowItem;
+    }
+
     this.loaded = true;
   }
 
