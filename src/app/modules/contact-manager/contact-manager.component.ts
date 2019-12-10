@@ -3,6 +3,7 @@ import {WindowService} from '../../services/window.service';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
+import {SliderComponent} from '../../components/common/slider/slider.component';
 
 @Component({
   selector: 'app-contact-manager',
@@ -52,4 +53,5 @@ export class ContactManagerComponent implements OnInit {
   maximiseWindow() {
     this.windowService.maximise(this.windowItem);
   }
+
 }

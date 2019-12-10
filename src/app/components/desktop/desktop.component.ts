@@ -42,8 +42,6 @@ export class DesktopComponent implements OnInit {
   private locale: LanguageModel;
   loaded: boolean;
 
-  testStr = 'test string';
-
   @HostListener('window:resize')
   onResize() {
     this.resize();
@@ -58,7 +56,6 @@ export class DesktopComponent implements OnInit {
     private api: ApiService,
     private profileService: ProfileService,
     private languageService: LanguageService,
-    private notificationService: NotificationService
   ) {
   }
 
@@ -95,12 +92,6 @@ export class DesktopComponent implements OnInit {
 
   }
 
-  newNotificationSuccess(title, icon) {
-    this.notificationService.new(title, icon, 'success', 5, () => {
-      alert('clicked');
-    });
-  }
-
   particles() {
     /* ---- particles.js config ---- */
 
@@ -115,13 +106,13 @@ export class DesktopComponent implements OnInit {
           }
         },
         color: {
-          value: '#6BA0B9'
+          value: '#b5b5b5'
         },
         shape: {
           type: 'circle',
           stroke: {
             width: 0,
-            color: '#6BA0B9'
+            color: '#B5B5B5'
           },
           polygon: {
             nb_sides: 5
@@ -155,7 +146,7 @@ export class DesktopComponent implements OnInit {
         line_linked: {
           enable: true,
           distance: 150,
-          color: '#6BA0B9',
+          color: '#B5B5B5',
           opacity: 0.4,
           width: 1
         },
@@ -217,14 +208,6 @@ export class DesktopComponent implements OnInit {
     });
   }
 
-  newNotificationWarning(title, icon) {
-    this.notificationService.new(title, icon, 'warning', 5);
-  }
-
-  newNotificationError(title, icon) {
-    this.notificationService.new(title, icon, 'error', 5);
-  }
-
   resize() {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
@@ -274,71 +257,5 @@ export class DesktopComponent implements OnInit {
     setTimeout(() => {
       this.resize();
     }, 60);
-  }
-
-  newDialog(title: string, body: string, type: number) {
-
-    let buttons = [];
-    if (type === 1) {
-      buttons = [
-        {
-          label: this.locale.no
-        }, {
-          label: this.locale.yes,
-          class: 'green',
-          callback: () => {this.dialogAlert('yes'); }
-        }
-      ];
-    }
-
-    if (type === 2) {
-      buttons = [
-        {
-          label: this.locale.cancel
-        }, {
-          label: this.locale.ok,
-          class: 'green',
-          callback: () => {this.dialogAlert('ok'); }
-        }
-      ];
-    }
-
-    if (type === 3) {
-      buttons = [
-        {
-          label: this.locale.ok,
-          class: 'green',
-          callback: () => {this.dialogAlert('ok'); }
-        }
-      ];
-    }
-
-    if (type === 4) {
-      buttons = [
-        {
-          label: this.locale.cancel
-        }, {
-          label: this.locale.no,
-          class: 'red',
-          callback: () => {this.dialogAlert('no'); }
-        }, {
-          label: this.locale.ok,
-          class: 'green',
-          callback: () => {this.dialogAlert('ok'); }
-        }
-      ];
-    }
-
-
-    this.dialogService.new(
-      'ow-oceanworks',
-      title,
-      body,
-      buttons
-    );
-  }
-
-  dialogAlert(state) {
-    console.log(this.testStr, 'State: ' + state);
   }
 }

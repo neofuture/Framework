@@ -3,6 +3,8 @@ import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../models/language-model';
 import {WindowService} from '../../services/window.service';
 import {LanguageService} from '../../services/language.service';
+import {NotificationService} from '../../services/notification.service';
+import {DialogService} from '../../services/dialog.service';
 
 @Component({
   selector: 'app-demo',
@@ -36,9 +38,13 @@ export class DemoComponent implements OnInit {
   label: string;
   language: any;
 
+  testStr = 'test string';
+
   constructor(
     private windowService: WindowService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private notificationService: NotificationService,
+    private dialogService: DialogService
   ) {
   }
 
@@ -118,5 +124,85 @@ export class DemoComponent implements OnInit {
 
   setLabel() {
     this.windowService.setLabel(this.windowItem, this.label);
+  }
+
+  newNotificationSuccess(title, icon) {
+    this.notificationService.new(title, icon, 'success', 5, () => {
+      alert('clicked');
+    });
+  }
+
+  newNotificationWarning(title, icon) {
+    this.notificationService.new(title, icon, 'warning', 5);
+  }
+
+  newNotificationError(title, icon) {
+    this.notificationService.new(title, icon, 'error', 5);
+  }
+
+  newDialog(title: string, body: string, type: number) {
+
+    let buttons = [];
+    if (type === 1) {
+      buttons = [
+        {
+          label: this.locale.no
+        }, {
+          label: this.locale.yes,
+          class: 'green',
+          callback: () => {this.dialogAlert('yes'); }
+        }
+      ];
+    }
+
+    if (type === 2) {
+      buttons = [
+        {
+          label: this.locale.cancel
+        }, {
+          label: this.locale.ok,
+          class: 'green',
+          callback: () => {this.dialogAlert('ok'); }
+        }
+      ];
+    }
+
+    if (type === 3) {
+      buttons = [
+        {
+          label: this.locale.ok,
+          class: 'green',
+          callback: () => {this.dialogAlert('ok'); }
+        }
+      ];
+    }
+
+    if (type === 4) {
+      buttons = [
+        {
+          label: this.locale.cancel
+        }, {
+          label: this.locale.no,
+          class: 'red',
+          callback: () => {this.dialogAlert('no'); }
+        }, {
+          label: this.locale.ok,
+          class: 'green',
+          callback: () => {this.dialogAlert('ok'); }
+        }
+      ];
+    }
+
+
+    this.dialogService.new(
+      'ow-oceanworks',
+      title,
+      body,
+      buttons
+    );
+  }
+
+  dialogAlert(state) {
+    console.log(this.testStr, 'State: ' + state);
   }
 }
