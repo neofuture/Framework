@@ -3,7 +3,7 @@ import {
   ComponentFactoryResolver,
   EventEmitter,
   HostListener,
-  Input,
+  Input, NgZone,
   OnInit,
   Output,
   ViewChild,
@@ -27,7 +27,9 @@ export class WindowComponent implements OnInit {
   constructor(
     private windowService: WindowService,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private languageService: LanguageService) {
+    private languageService: LanguageService,
+    private zone: NgZone
+  ) {
   }
 
   resizeDirection: any;
@@ -53,42 +55,50 @@ export class WindowComponent implements OnInit {
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event) {
-    if (this.resizeWindowItem !== null) {
-      this.resizeGo(event);
-    }
-    if (this.dragWindowItem !== null) {
-      this.moveGo(event);
-    }
+    this.zone.runOutsideAngular(() => {
+      if (this.resizeWindowItem !== null) {
+        this.resizeGo(event);
+      }
+      if (this.dragWindowItem !== null) {
+        this.moveGo(event);
+      }
+    });
   }
 
   @HostListener('document:mouseup')
   onMouseUp() {
-    if (this.resizeWindowItem !== null) {
-      this.resizeStop();
-    }
-    if (this.dragWindowItem !== null) {
-      this.moveStop();
-    }
+    this.zone.run(() => {
+      if (this.resizeWindowItem !== null) {
+        this.resizeStop();
+      }
+      if (this.dragWindowItem !== null) {
+        this.moveStop();
+      }
+    });
   }
 
   @HostListener('document:touchmove', ['$event'])
   onTouchMove(event) {
-    if (this.resizeWindowItem !== null) {
-      this.resizeGo(event);
-    }
-    if (this.dragWindowItem !== null) {
-      this.moveGo(event);
-    }
+    this.zone.runOutsideAngular(() => {
+      if (this.resizeWindowItem !== null) {
+        this.resizeGo(event);
+      }
+      if (this.dragWindowItem !== null) {
+        this.moveGo(event);
+      }
+    });
   }
 
   @HostListener('document:touchend')
   onTouchEnd() {
-    if (this.resizeWindowItem !== null) {
-      this.resizeStop();
-    }
-    if (this.dragWindowItem !== null) {
-      this.moveStop();
-    }
+    this.zone.run(() => {
+      if (this.resizeWindowItem !== null) {
+        this.resizeStop();
+      }
+      if (this.dragWindowItem !== null) {
+        this.moveStop();
+      }
+    });
   }
 
   @HostListener('window:resize')

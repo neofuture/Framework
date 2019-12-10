@@ -40,7 +40,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
   private sliderThumbRange: any;
   private element: any;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(
+    private cdr: ChangeDetectorRef
+  ) {
   }
 
   ngOnInit() {
@@ -145,14 +147,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
     this.dragging = true;
 
-    // tslint:disable-next-line:no-shadowed-variable
-    document.addEventListener('mousemove', (event) => {
-      this.dragGo(event);
-    });
-    // tslint:disable-next-line:no-shadowed-variable
-    document.addEventListener('mouseup', (event) => {
-      this.dragStop(event);
-    });
+    document.addEventListener('mousemove', this.dragGo.bind(this));
+    document.addEventListener('mouseup', this.dragStop.bind(this));
 
   }
 
