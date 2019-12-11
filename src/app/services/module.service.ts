@@ -122,7 +122,11 @@ export class ModuleService {
       true,
       desktopWidth,
       desktopHeight,
-      false
+      false,
+      '',
+      false,
+      null,
+      'settings'
     );
   }
 
