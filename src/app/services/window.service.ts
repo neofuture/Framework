@@ -28,8 +28,17 @@ export class WindowService {
     alwaysOnTop = false,
     label = '',
     alerted = false,
-    autoClose = 0
+    autoClose = 0,
+    singleInstance = null
   ) {
+
+    for (const key in this.windowList) {
+      if (this.windowList[key].singleInstance === singleInstance && singleInstance !== null) {
+        this.active(this.windowList[key]);
+        return false;
+      }
+    }
+
     let id = parseInt(Object.keys(this.windowList)[Object.keys(this.windowList).length - 1], 10) || 0;
     id++;
 
@@ -103,7 +112,8 @@ export class WindowService {
       alwaysOnTop,
       label,
       alerted,
-      autoClose
+      autoClose,
+      singleInstance
     };
 
     if (data !== null) {
@@ -184,6 +194,9 @@ export class WindowService {
     for (const key of Object.keys(this.windowList)) {
       if (typeof this.windowList[key] !== 'undefined') {
         this.windowList[key].class = 'closed';
+        setTimeout(() => {
+          delete this.windowList[key];
+        }, 300);
       }
     }
   }

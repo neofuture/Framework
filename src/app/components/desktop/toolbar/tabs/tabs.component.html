@@ -9,8 +9,9 @@
     <span *ngIf="!windowList[windowItem].state.active" class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
     <span *ngIf="windowList[windowItem].state.active"
           class="tabItemIcon ow-{{ windowList[windowItem].iconActive }}"></span>
-  <div class="text">
+  <div class="text" [ngClass]="{'wider': !windowList[windowItem].resizable}">
     {{ locale[windowList[windowItem].title] || windowList[windowItem].title }}
+    <span *ngIf="windowList[windowItem].extendedTitle"> - {{ windowList[windowItem].extendedTitle }}</span>
   </div>
     <button class="tabButton" *ngIf="windowList[windowItem].resizable"
             (click)="maximiseWindow($event, windowList[windowItem])">

@@ -26,6 +26,7 @@ export const blank: LanguageModel = {
     restore: '',
     centered: '',
   },
+  about: '',
   company: '',
   contactManager: '',
   quotes: '',

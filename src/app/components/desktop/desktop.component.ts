@@ -79,6 +79,10 @@ export class DesktopComponent implements OnInit {
 
     this.profileSub$ = this.profileService.object.subscribe(profile => {
       this.profile = profile;
+      setTimeout(() => {
+        this.resize();
+      });
+
     });
 
     setTimeout(() => {

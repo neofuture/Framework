@@ -1,22 +1,29 @@
 import {Injectable} from '@angular/core';
 import {WindowService} from './window.service';
+import {LanguageService} from './language.service';
+import {LanguageModel} from '../models/language-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModuleService {
+  private locale: LanguageModel;
 
-  constructor(private windowService: WindowService) {
+  constructor(
+    private windowService: WindowService,
+    private languageService: LanguageService) {
   }
 
   about(desktopWidth, desktopHeight) {
+    this.languageService.object.subscribe(locale => this.locale = locale);
+
     this.windowService.new(
       'oceanworks',
       'oceanworks',
       false,
       'about',
-      null,
-      false,
+      this.locale.product,
+      true,
       false,
       'about',
       null,
@@ -25,9 +32,11 @@ export class ModuleService {
       true,
       desktopWidth,
       desktopHeight,
-      true,
-      '0',
-      false
+      false,
+      '',
+      false,
+      null,
+      'about'
     );
   }
 
@@ -48,9 +57,10 @@ export class ModuleService {
       desktopWidth,
       desktopHeight,
       true,
-      '0',
+      '',
       false,
-      5000
+      5000,
+      'welcome'
     );
   }
 

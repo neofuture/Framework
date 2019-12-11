@@ -26,7 +26,9 @@
   left: 28px;
   font-size: 14px;
 }
-
+.tabItem .text.wider {
+  width: calc(100% - 4px);
+}
 .tabItemIcon {
   font-size: 21px;
   position: relative;

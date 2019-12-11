@@ -35,4 +35,5 @@ export interface WindowModel {
   alerted: boolean;
   autoClose?: number;
   intervalTimer?: any;
+  singleInstance?: any;
 }
