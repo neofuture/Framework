@@ -16,3 +16,11 @@
 1. Changed "About" dialogue design slightly.
 2. Added unique window to settings.
 3. Trying to open a unique window that is already open now makes it active and brings it to the front
+
+---
+Bugs found 
+
+111219-1. When minimising the ribbon the desktop does not update the resize() which causes the canvas size to be reduced by a 10's of pixels
+
+---
+1. Fixed bug 111219-1 resize does not resize desktop and then indeed the canvas element.

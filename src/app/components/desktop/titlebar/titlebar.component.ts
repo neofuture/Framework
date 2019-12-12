@@ -82,6 +82,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log('clicked');
     this.moduleService.about(desktopWidth, desktopHeight);
   }
+
   setOpt1() {
     this.activeTab = 1;
     this.ribbonService.clearRibbon();
@@ -133,6 +134,9 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     this.barWidth += this.size ? ' ow-upArrow' : ' ow-downArrow';
     this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
     this.changedSize.emit(this.size);
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 300);
   }
 
   changeStyle(event: MouseEvent) {

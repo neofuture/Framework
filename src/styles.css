@@ -155,6 +155,9 @@ select {
   --primary-mid: hsl(var(--hue), 67%, 50%);
   --primary-dark: hsl(var(--hue), 67%, 35%);
 
+  --scrollbarBG: #dadada;
+  --thumbBG: #acacac;
+
   --text: #444444;
   --background-color: #ffffff;
   --background-grey: #f0f0f0;
@@ -321,7 +324,7 @@ body.compusoft, .compusoft *:not(pre) {
   border-radius: 0 !important;
 }
 
-.compusoft .profileImage, .compusoft .profileImageMenu, .compusoft .hover, .compusoft .profileImage .label {
+.compusoft .profileImage, .compusoft .profileImageMenu, .compusoft .hover, .compusoft .profileImage .label, .compusoft .notification {
   border-radius: 0 !important;
 }
 
@@ -351,3 +354,24 @@ button {
   border-radius: 4px;
   padding-bottom: 2px;
 }
+
+
+/*::-webkit-scrollbar {*/
+/*  width: 10px;*/
+/*  height: 10px;*/
+/*}*/
+
+/*:root {*/
+/*  scrollbar-width: thin;*/
+/*  scrollbar-color: var(--thumbBG) var(--scrollbarBG);*/
+/*}*/
+
+/*::-webkit-scrollbar-track {*/
+/*  background: var(--scrollbarBG);*/
+/*  border-radius: 6px;*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb {*/
+/*  background-color: var(--thumbBG);*/
+/*  border-radius: 6px;*/
+/*}*/
