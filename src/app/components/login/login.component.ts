@@ -33,9 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (document.getElementById('error')) {
-      document.getElementById('error').classList.remove('on');
-    }
     this.profileService.login(this.username, this.password, (profile) => {
       setTimeout(() => {
         if (profile.error) {
@@ -45,8 +42,6 @@ export class LoginComponent implements OnInit {
             this.notificationService.new(this.locale.loginSuccessful, 'ow-lock_open', 'success', 5);
           }, 200);
         }
-        const tools = document.getElementById('tools');
-        document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
       }, 50);
     });
   }

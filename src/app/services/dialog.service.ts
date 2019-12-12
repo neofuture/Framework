@@ -25,7 +25,9 @@ export class DialogService {
       icon,
       title,
       body,
-      buttons
+      buttons,
+      left: 0,
+      top: 0
     };
 
     this.dialogList[id] = dialogItem;
@@ -73,7 +75,7 @@ export class DialogService {
 
   resizeItem(dialogItem: DialogModel) {
     const elm = document.getElementById('dialog-' + dialogItem.id);
-    elm.style.left = String((window.innerWidth / 2) - (elm.offsetWidth / 2)) + 'px';
-    elm.style.top = String((window.innerHeight / 2) - (elm.offsetHeight / 2)) + 'px';
+    dialogItem.left = (window.innerWidth / 2) - (elm.offsetWidth / 2);
+    dialogItem.top = (window.innerHeight / 2) - (elm.offsetHeight / 2);
   }
 }

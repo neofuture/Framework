@@ -187,6 +187,9 @@ export class WindowService {
   closeById(id: number) {
     if (typeof this.windowList[id] !== 'undefined') {
       this.windowList[id].class = 'closed';
+      setTimeout(() => {
+        delete this.windowList[id];
+      }, 300);
     }
   }
 
@@ -241,6 +244,8 @@ export class WindowService {
     for (const key in this.windowList) {
       if (this.windowList[key].state.isMinimised === false) {
         if (windowItem === this.windowList[key]) {
+          console.log(key, 'deleting');
+
           delete this.windowList[key];
         } else {
           lastWindow = this.windowList[key];

@@ -50,7 +50,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @HostListener('window:resize')
   onResize() {
-    this.resize();
+   this.resize();
   }
 
   ngOnInit() {

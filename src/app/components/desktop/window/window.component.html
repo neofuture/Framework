@@ -1,5 +1,4 @@
 <div [ngClass]="['windowItem',  windowItem.class]"
-     (transitionend)="closedWindow(windowItem)"
      (mousemove)="resizeCursorSet($event, windowItem)"
      (mouseout)="resizeCursorRestore()"
      (mousedown)="resizeStart($event, windowItem)"

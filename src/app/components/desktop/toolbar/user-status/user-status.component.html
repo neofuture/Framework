@@ -1,5 +1,5 @@
 <div class="profileImage" *ngIf="profile.id > 0">
-  <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage">
+  <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage" [ngClass]="{'hidden': !profileImage}">
   <span class="profileImageSvgSmall" *ngIf="uploading">
     <svg width="24" height="24" viewBox="0 0 300 300">
       <defs>

@@ -48,9 +48,6 @@ export class WindowComponent implements OnInit {
   @Input() desktopWidth: number;
   @Input() desktopHeight: number;
 
-  @Output() closing = new EventEmitter<boolean>();
-  @Output() closed = new EventEmitter<boolean>();
-
   @ViewChild('viewContainer', {read: ViewContainerRef}) viewContainer: ViewContainerRef;
 
   @HostListener('document:mousemove', ['$event'])
@@ -103,7 +100,7 @@ export class WindowComponent implements OnInit {
 
   @HostListener('window:resize')
   onResize() {
-    this.resize();
+   this.resize();
   }
 
   ngOnInit() {
@@ -170,14 +167,7 @@ export class WindowComponent implements OnInit {
 
   closeWindow(event, windowItem) {
     event.stopPropagation();
-    windowItem.closing = true;
-    this.closing.emit(windowItem);
-  }
-
-  closedWindow(windowItem) {
-    if (windowItem.class === 'closed') {
-      this.closed.emit(windowItem);
-    }
+    this.windowService.close(windowItem);
   }
 
   resizeCursorSet(event, windowItem) {

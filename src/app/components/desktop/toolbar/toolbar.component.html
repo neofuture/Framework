@@ -1,7 +1,7 @@
-<div class="tabs" id="tabs">
- <app-tabs></app-tabs>
+<div class="tabs" [ngStyle]="{'width': tabWidth + 'px'}">
+ <app-tabs (tabWidth)='setTabWidth($event)'></app-tabs>
 </div>
-<div class="tools" id="tools">
+<div class="tools">
   <app-user-status [desktopHeight]="desktopHeight"
                    [desktopWidth]="desktopWidth"></app-user-status>
 </div>

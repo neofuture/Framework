@@ -82,7 +82,6 @@ export class DesktopComponent implements OnInit {
       setTimeout(() => {
         this.resize();
       });
-
     });
 
     setTimeout(() => {

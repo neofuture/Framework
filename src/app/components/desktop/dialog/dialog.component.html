@@ -1,5 +1,6 @@
 <div class="dialogBackground" [ngClass]="dialogItem.class" (transitionend)="destroy(dialogItem)">
-  <div class="dialogContainer" id="dialog-{{ dialogItem.id }}">
+  <div [ngStyle]="{'top': dialogItem.top, 'left': dialogItem.left}"
+       class="dialogContainer" id="dialog-{{ dialogItem.id }}">
     <div class="dialog">
       <header>
         Title

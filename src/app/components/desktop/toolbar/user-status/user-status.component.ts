@@ -24,6 +24,7 @@ export class UserStatusComponent implements OnInit {
   editStatus: boolean;
   status: any;
   uploading = false;
+  profileImage = true;
 
   constructor(
     private languageService: LanguageService,
@@ -44,6 +45,7 @@ export class UserStatusComponent implements OnInit {
         this.status = this.profile.status;
         this.uploading = this.profile.uploading || false;
         this.profileService.startHeartbeat();
+        this.profileImage = true;
       } else {
         this.profileService.stopHeartbeat();
       }
@@ -67,8 +69,7 @@ export class UserStatusComponent implements OnInit {
     setTimeout(() => {
       this.profileService.logout();
     }, 300);
-    document.getElementById('profileImage').classList.add('hidden');
-    document.getElementById('profileLabel').classList.add('hidden');
+    this.profileImage = false;
     this.closeMenu();
   }
 

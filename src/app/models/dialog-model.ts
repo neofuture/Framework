@@ -10,4 +10,6 @@ export interface DialogModel {
     callback: CallableFunction;
     focused?: boolean;
   }];
+  left: number;
+  top: number;
 }

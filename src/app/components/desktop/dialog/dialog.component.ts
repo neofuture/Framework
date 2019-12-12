@@ -19,7 +19,7 @@ export class DialogComponent implements OnInit {
 
   @HostListener('window:resize')
   onResize() {
-    this.resize();
+   this.resize();
   }
 
   constructor(

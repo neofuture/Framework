@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
 import {WindowService} from '../../../../services/window.service';
@@ -11,21 +11,23 @@ import {WindowModel} from '../../../../models/window-model';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
+
+  constructor(
+    private windowService: WindowService,
+    private languageService: LanguageService
+  ) {
+  }
   windowList: {};
 
   objectKeys = Object.keys;
   language$: Subscription;
   locale: LanguageModel;
 
+  @Output() tabWidth = new EventEmitter();
+
   @HostListener('window:resize')
   onResize() {
-    this.resize();
-  }
-
-  constructor(
-    private windowService: WindowService,
-    private languageService: LanguageService
-  ) {
+   this.resize();
   }
 
   ngOnInit() {
@@ -59,7 +61,6 @@ export class TabsComponent implements OnInit {
   }
 
   resize() {
-    const tools = document.getElementById('tools');
-    document.getElementById('tabs').style.width = String(window.innerWidth - tools.offsetWidth - 10) + 'px';
+    this.tabWidth.emit(window.innerWidth - 46);
   }
 }
