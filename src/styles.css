@@ -149,7 +149,7 @@ select {
 }
 
 :root {
-  --hue: 200;
+  --hue: 210;
   --primary: hsl(var(--hue), 67%, 40%);
   --primary-light: hsl(var(--hue), 67%, 50%);
   --primary-mid: hsl(var(--hue), 67%, 50%);

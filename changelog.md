@@ -46,7 +46,7 @@ Bugs Found
 7. Fixed an issue with windows not closing because of th reliance on transition end, having removed this and used a timer instead.
 8. Fixed a but where the profile image at the bottom right would not show after logging out and then back in again.
 ---
-###13/13/19  11:30am Commit - 
+###13/13/19  11:30am Commit - b6f3690
 
 1. Continued to refactor `getElementById` where i can to remove reliance on editing the DOM instead of the shadow.
 2. For the desktop component i have implemented an `ngAfterViewInit` which speeds up the load time as i no longer have to set a 300 ms timer to wait for screen to render
