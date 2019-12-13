@@ -178,18 +178,39 @@ export class WindowService {
   }
 
   close(windowItem: WindowModel) {
-    if (window.event) {
-      window.event.stopPropagation();
-    }
     this.closeById(windowItem.id);
   }
 
   closeById(id: number) {
     if (typeof this.windowList[id] !== 'undefined') {
       this.windowList[id].class = 'closed';
+      this.findLastActive(this.windowList[id]);
       setTimeout(() => {
         delete this.windowList[id];
       }, 300);
+    }
+  }
+
+  findLastActive(windowItem: WindowModel) {
+    let lastWindow: WindowModel;
+    let windowActive = false;
+    for (const key in this.windowList) {
+      if (this.windowList[key].state.isMinimised === false) {
+        if (windowItem === this.windowList[key]) {
+          delete this.windowList[key];
+        } else {
+          lastWindow = this.windowList[key];
+          if (lastWindow.state.active) {
+            windowActive = true;
+          }
+        }
+      }
+    }
+
+    if (typeof lastWindow !== 'undefined') {
+      if (lastWindow.class !== 'closed' && !windowActive) {
+        this.active(lastWindow);
+      }
     }
   }
 
@@ -244,8 +265,6 @@ export class WindowService {
     for (const key in this.windowList) {
       if (this.windowList[key].state.isMinimised === false) {
         if (windowItem === this.windowList[key]) {
-          console.log(key, 'deleting');
-
           delete this.windowList[key];
         } else {
           lastWindow = this.windowList[key];

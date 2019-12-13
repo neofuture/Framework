@@ -1,6 +1,6 @@
-#11/12/19
+# 11/12/19
 
-###11/12/19 10:00pm commit - 38c19ee
+### 11/12/19 10:00pm commit - 38c19ee
 
 1. Added a canvas for testing canvas position and window positioned above.
 2. Fixed an issue with the window centralise button not showing when you resize a window.
@@ -13,7 +13,7 @@
 9. Rebuilt language files.
 
 ---
-###11/12/19 10:12pm Commit - 7e2b140
+### 11/12/19 10:12pm Commit - 7e2b140
 
 1. Changed "About" dialogue design slightly.
 2. Added unique window to settings.
@@ -27,7 +27,7 @@ Bugs found
 ---
 1. Fixed bug 111219-1 resize does not resize desktop and then indeed the canvas element.
 ---
-###12/12/19 9:25am Commit - 000b821
+### 12/12/19 9:25am Commit - 000b821
 
 1. Added CS theme settings to add square corners to notification/message alerts
 
@@ -35,7 +35,7 @@ Bugs found
 Bugs Found
 121219-1. I have an issue with constant refresh in the console, this could be an angular bug that relates to IVY issue investigated and a video sent to Angular team - https://github.com/angular/angular/issues/34336
 
-###12/12/19 16:08pm Commit - 0cd4cce
+### 12/12/19 16:08pm Commit - 0cd4cce
 
 1. Continued investigation into 121219-1 to rule out local code by trying to stop the issue.
 2. Changed the way the tabs are resized to use component interaction `@Input` and `@Output` instead of `document.getElementById`
@@ -46,8 +46,13 @@ Bugs Found
 7. Fixed an issue with windows not closing because of th reliance on transition end, having removed this and used a timer instead.
 8. Fixed a but where the profile image at the bottom right would not show after logging out and then back in again.
 ---
-###13/13/19  11:30am Commit - b6f3690
+### 13/13/19  11:30am Commit - b6f3690
 
 1. Continued to refactor `getElementById` where i can to remove reliance on editing the DOM instead of the shadow.
 2. For the desktop component i have implemented an `ngAfterViewInit` which speeds up the load time as i no longer have to set a 300 ms timer to wait for screen to render
-3. Moved window handlers out of the NGzone and into there own zone to speed up window modification, this should stop change detection from triggering when a window is modified, which re-renders all the other windows.
+3. Moved window handlers out of the `ngZone` and into there own zone to speed up window modification, this should stop change detection from triggering when a window is modified, which re-renders all the other windows.
+---
+### 13/13/19 12:15pm Commit
+
+1. Refactored the window close event so that it now finds the last active window before the current window, this ensures we always most of the time have an active window. this was in the old version but got accidentally removed when we moved from transition to timer.
+2. Formatted change log to match github markdown.
