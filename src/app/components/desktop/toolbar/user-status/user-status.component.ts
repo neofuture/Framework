@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {LanguageService} from '../../../../services/language.service';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
@@ -24,7 +24,10 @@ export class UserStatusComponent implements OnInit {
   editStatus: boolean;
   status: any;
   uploading = false;
-  profileImage = true;
+  profileImageShow = true;
+
+  @ViewChild('userMenu') userMenu: ElementRef;
+  @ViewChild('profileImage') profileImage: ElementRef;
 
   constructor(
     private languageService: LanguageService,
@@ -45,7 +48,7 @@ export class UserStatusComponent implements OnInit {
         this.status = this.profile.status;
         this.uploading = this.profile.uploading || false;
         this.profileService.startHeartbeat();
-        this.profileImage = true;
+        this.profileImageShow = true;
       } else {
         this.profileService.stopHeartbeat();
       }
@@ -69,7 +72,7 @@ export class UserStatusComponent implements OnInit {
     setTimeout(() => {
       this.profileService.logout();
     }, 300);
-    this.profileImage = false;
+    this.profileImageShow = false;
     this.closeMenu();
   }
 
@@ -79,8 +82,8 @@ export class UserStatusComponent implements OnInit {
   }
 
   closeMenu() {
-    const menu = document.getElementById('profileImage');
-    const menu2 = document.getElementById('userMenu');
+    const menu = this.profileImage.nativeElement;
+    const menu2 = this.userMenu.nativeElement;
     menu.style.pointerEvents = 'none';
     menu2.style.pointerEvents = 'none';
     menu2.classList.add('userMenuClosed');

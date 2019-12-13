@@ -1,4 +1,4 @@
-<app-titlebar class="titleBarTop" id="titleBarTop" [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth"
+<app-titlebar class="titleBarTop" id="titleBarTop" #titleBarTop [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth"
               (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
 
@@ -25,8 +25,11 @@
   <app-login *ngIf="!profile && loaded"></app-login>
 
 </div>
-<app-toolbar class="toolbar" id="toolbar" [desktopHeight]="desktopHeight"
-             [desktopWidth]="desktopWidth"></app-toolbar>
+<ng-container #toolbar>
+  <app-toolbar class="toolbar" id="toolbar" [desktopHeight]="desktopHeight"
+               [desktopWidth]="desktopWidth"></app-toolbar>
+</ng-container>
+
 <app-notification></app-notification>
 <div *ngFor="let dialogItem of objectKeys(dialogList)">
   <app-dialog [dialogItem]="dialogList[dialogItem]"></app-dialog>

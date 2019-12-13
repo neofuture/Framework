@@ -50,8 +50,7 @@ export class WindowComponent implements OnInit {
 
   @ViewChild('viewContainer', {read: ViewContainerRef}) viewContainer: ViewContainerRef;
 
-  @HostListener('document:mousemove', ['$event'])
-  onMouseMove(event) {
+  @HostListener('document:mousemove', ['$event']) onMouseMove(event) {
     this.zone.runOutsideAngular(() => {
       if (this.resizeWindowItem !== null) {
         this.resizeGo(event);
@@ -62,8 +61,7 @@ export class WindowComponent implements OnInit {
     });
   }
 
-  @HostListener('document:mouseup')
-  onMouseUp() {
+  @HostListener('document:mouseup') onMouseUp() {
     this.zone.run(() => {
       if (this.resizeWindowItem !== null) {
         this.resizeStop();
@@ -74,8 +72,7 @@ export class WindowComponent implements OnInit {
     });
   }
 
-  @HostListener('document:touchmove', ['$event'])
-  onTouchMove(event) {
+  @HostListener('document:touchmove', ['$event']) onTouchMove(event) {
     this.zone.runOutsideAngular(() => {
       if (this.resizeWindowItem !== null) {
         this.resizeGo(event);
@@ -86,8 +83,7 @@ export class WindowComponent implements OnInit {
     });
   }
 
-  @HostListener('document:touchend')
-  onTouchEnd() {
+  @HostListener('document:touchend') onTouchEnd() {
     this.zone.run(() => {
       if (this.resizeWindowItem !== null) {
         this.resizeStop();
@@ -98,8 +94,7 @@ export class WindowComponent implements OnInit {
     });
   }
 
-  @HostListener('window:resize')
-  onResize() {
+  @HostListener('window:resize') onResize() {
    this.resize();
   }
 

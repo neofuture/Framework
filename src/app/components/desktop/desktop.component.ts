@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
 import {ModuleService} from '../../services/module.service';
@@ -18,7 +18,7 @@ import {DialogService} from '../../services/dialog.service';
   styleUrls: ['./desktop.component.css']
 })
 
-export class DesktopComponent implements OnInit {
+export class DesktopComponent implements OnInit, AfterViewInit {
   windowList = {};
   dialogList = {};
   objectKeys = Object.keys;
@@ -41,8 +41,9 @@ export class DesktopComponent implements OnInit {
   private locale: LanguageModel;
   loaded: boolean;
 
-  @HostListener('window:resize')
-  onResize() {
+  @ViewChild('toolbar') toolbar: ElementRef;
+
+  @HostListener('window:resize') onResize() {
     this.resize();
   }
 
@@ -64,9 +65,6 @@ export class DesktopComponent implements OnInit {
       this.params = params;
     });
 
-    this.resize();
-    this.resizeToolBar();
-
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
@@ -84,15 +82,17 @@ export class DesktopComponent implements OnInit {
       });
     });
 
+    this.windowList = this.windowService.windowList;
+    this.dialogList = this.dialogService.dialogList;
+
+  }
+
+  ngAfterViewInit() {
     setTimeout(() => {
       this.loaded = true;
       this.particles();
       this.resize();
-    }, 300);
-
-    this.windowList = this.windowService.windowList;
-    this.dialogList = this.dialogService.dialogList;
-
+    });
   }
 
   particles() {
@@ -102,7 +102,7 @@ export class DesktopComponent implements OnInit {
     pJS('particles-js', {
       particles: {
         number: {
-          value: 60,
+          value: 40,
           density: {
             enable: true,
             value_area: 800
@@ -242,14 +242,6 @@ export class DesktopComponent implements OnInit {
         this.windowList[windowItem].left = left;
       }
     }
-  }
-
-  onClose(windowItem: WindowModel) {
-    this.windowService.onClose(windowItem);
-  }
-
-  onClosed(windowItem: WindowModel) {
-    this.windowService.onClosed(windowItem);
   }
 
   makeWindowActive(windowItem: WindowModel) {

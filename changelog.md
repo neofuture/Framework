@@ -35,7 +35,7 @@ Bugs found
 Bugs Found
 121219-1. I have an issue with constant refresh in the console, this could be an angular bug that relates to IVY issue investigated and a video sent to Angular team - https://github.com/angular/angular/issues/34336
 
-
+###12/12/19 16:08pm Commit - 0cd4cce
 
 1. Continued investigation into 121219-1 to rule out local code by trying to stop the issue.
 2. Changed the way the tabs are resized to use component interaction `@Input` and `@Output` instead of `document.getElementById`
@@ -45,3 +45,9 @@ Bugs Found
 6. Fixed a further issue introduced in tabs and the tab width.
 7. Fixed an issue with windows not closing because of th reliance on transition end, having removed this and used a timer instead.
 8. Fixed a but where the profile image at the bottom right would not show after logging out and then back in again.
+---
+###13/13/19  11:30am Commit - 
+
+1. Continued to refactor `getElementById` where i can to remove reliance on editing the DOM instead of the shadow.
+2. For the desktop component i have implemented an `ngAfterViewInit` which speeds up the load time as i no longer have to set a 300 ms timer to wait for screen to render
+3. Moved window handlers out of the NGzone and into there own zone to speed up window modification, this should stop change detection from triggering when a window is modified, which re-renders all the other windows.

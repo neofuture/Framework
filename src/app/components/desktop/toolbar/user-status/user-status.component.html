@@ -1,5 +1,5 @@
 <div class="profileImage" *ngIf="profile.id > 0">
-  <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage" [ngClass]="{'hidden': !profileImage}">
+  <img [src]="profile.image | safeHtml" class="profileImage" alt="{{ profile.name }}" id="profileImage" #profileImage [ngClass]="{'hidden': !profileImageShow}">
   <span class="profileImageSvgSmall" *ngIf="uploading">
     <svg width="24" height="24" viewBox="0 0 300 300">
       <defs>
@@ -26,7 +26,7 @@
     </svg>
     </span>
   <div class="label" [ngClass]="profile.active" *ngIf="profile.id > 0" id="profileLabel"></div>
-  <div class="userMenu" *ngIf="profile.id > 0" id="userMenu" [ngClass]="{'on': editStatus}">
+  <div class="userMenu" *ngIf="profile.id > 0" id="userMenu" [ngClass]="{'on': editStatus}" #userMenu>
 
     <div>
       <span class="profileName">{{ profile.name }}</span>

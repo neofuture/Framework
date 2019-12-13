@@ -32,7 +32,7 @@
   </div>
   <div class="clientArea" [ngClass]="{'fullHeight': windowItem.hasTitleBar !== true}">
     <div *ngIf="!loaded">Loading... </div>
-    <ng-container  *ngIf="windowItem.bodyComponent !== null else windowBody" #viewContainer></ng-container>
+    <ng-container *ngIf="windowItem.bodyComponent !== null else windowBody" #viewContainer></ng-container>
   </div>
 </div>
 
