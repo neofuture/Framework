@@ -1,4 +1,4 @@
-# 11/12/19
+##Changelog
 
 ### 11/12/19 10:00pm commit - 38c19ee
 
@@ -52,7 +52,7 @@ Bugs Found
 2. For the desktop component i have implemented an `ngAfterViewInit` which speeds up the load time as i no longer have to set a 300 ms timer to wait for screen to render
 3. Moved window handlers out of the `ngZone` and into there own zone to speed up window modification, this should stop change detection from triggering when a window is modified, which re-renders all the other windows.
 ---
-### 13/13/19 12:15pm Commit
+### 13/13/19 12:15pm Commit - a420893
 
 1. Refactored the window close event so that it now finds the last active window before the current window, this ensures we always most of the time have an active window. this was in the old version but got accidentally removed when we moved from transition to timer.
 2. Formatted change log to match github markdown.
