@@ -184,6 +184,7 @@ export class WindowService {
   closeById(id: number) {
     if (typeof this.windowList[id] !== 'undefined') {
       this.windowList[id].class = 'closed';
+      clearInterval(this.windowList[id].intervalTimer);
       this.findLastActive(this.windowList[id]);
       setTimeout(() => {
         delete this.windowList[id];

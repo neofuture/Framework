@@ -175,10 +175,10 @@ select {
 }
 
 .compusoft {
-  --primary: #009b3a;
-  --primary-light: #bac696;
-  --primary-mid: #009b3a;
-  --primary-dark: #214332;
+  --primary: rgb(113, 189, 171);
+  --primary-light: rgb(171, 215, 205);
+  --primary-mid: rgb(127, 207, 189);
+  --primary-dark: rgb(102, 171, 154);
 }
 
 body, .menuSubTree, .menuIcon span {
@@ -196,6 +196,7 @@ body.compusoft, .compusoft *:not(pre) {
   border: none !important;
   background-color: rgba(0, 0, 0, 0) !important;
   padding: 7px !important;
+  border-radius: 0 !important;
 }
 
 .compusoft .windowItem.active {
@@ -216,6 +217,15 @@ body.compusoft, .compusoft *:not(pre) {
   margin: 0 !important;
   width: 100% !important;
   border-radius: 0 !important;
+  color:var(--text) !important;
+}
+
+.compusoft .titleBarTop, .compusoft .titleBarQuickLinks {
+  color:var(--text) !important;
+}
+
+.compusoft .logo {
+  color: var(--text) !important;
 }
 
 .compusoft .clientArea {
@@ -229,6 +239,11 @@ body.compusoft, .compusoft *:not(pre) {
   height: calc(100% - 32px) !important;
 }
 
+.compusoft .clientArea.fullHeight {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
 .compusoft .windowButton {
   border-radius: 0 !important;
   background-color: transparent !important;
@@ -236,7 +251,7 @@ body.compusoft, .compusoft *:not(pre) {
 }
 
 .compusoft .active .windowButton {
-  color: var(--background-color) !important;
+  color: var(--text) !important;
 }
 
 .compusoft .tabButton {
@@ -246,11 +261,21 @@ body.compusoft, .compusoft *:not(pre) {
 }
 
 .compusoft .active .tabButton {
-  color: var(--background-color) !important;
+  color: var(--text) !important;
+
 }
 
 .compusoft .tabItem {
   border-radius: 0 !important;
+}
+
+.compusoft .tabItem.active {
+  background-color: var(--primary-light);
+  color: var(--text);
+}
+
+.compusoft .tabItem .tabButton {
+  color: var(--text) !important;
 }
 
 .compusoft .fullHeight {
@@ -270,6 +295,7 @@ body.compusoft, .compusoft *:not(pre) {
 
 .compusoft button {
   border-radius: 0;
+  color:var(--text) !important;
 }
 
 .compusoft .active .titleBar {
@@ -326,6 +352,27 @@ body.compusoft, .compusoft *:not(pre) {
 
 .compusoft .profileImage, .compusoft .profileImageMenu, .compusoft .hover, .compusoft .profileImage .label, .compusoft .notification {
   border-radius: 0 !important;
+}
+
+.compusoft .loginDialog {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  background-color: transparent !important;
+}
+
+.compusoft .loginDialog .container, app-welcome .container {
+  border-radius: 0 !important;
+  padding: 24px 23px !important;
+  color:var(--text) !important;
+}
+
+.compusoft .loginDialog .container i.back {
+  right: -126px !important;
+  top: 68px !important;
+}
+.compusoft .loginDialog .product {
+  bottom: 26px;
 }
 
 .noTransition * {

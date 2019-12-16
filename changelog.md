@@ -56,3 +56,18 @@ Bugs Found
 
 1. Refactored the window close event so that it now finds the last active window before the current window, this ensures we always most of the time have an active window. this was in the old version but got accidentally removed when we moved from transition to timer.
 2. Formatted change log to match github markdown.
+---
+### 13/13/19 - 4eb5a8c
+
+~~131319-1. When a window is set an auto timer to close, and the window is manually closed then the window time is still running in the background. This will also close any windows that are opened between closing the timed window and its closure time~~
+
+1. Updated to Angular 9.0.0.rc6
+2. fixed bug 131319-1
+---
+### 16/12/19 - 
+
+1. Fixed CS theme background tab button colour
+2. Fixed CS theme padding on window client area for border-less windows (full height)
+3. Fixed CS theme padding on window client area for login box
+4. Fixed CS theme single border issue on full height windows (on login window and splash screen)
+5. CS theme settings additional elements to set the correct colour scheme

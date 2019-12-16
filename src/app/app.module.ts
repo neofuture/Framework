@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {AboutComponent} from './components/about/about.component';
+// import {AboutComponent} from './components/about/about.component';
 
 import {DemoComponent} from './components/demo/demo.component';
 import {DesktopComponent} from './components/desktop/desktop.component';
@@ -19,7 +19,7 @@ import {TabsComponent} from './components/desktop/toolbar/tabs/tabs.component';
 import {TitleBarComponent} from './components/desktop/titlebar/titlebar.component';
 import {ToolbarComponent} from './components/desktop/toolbar/toolbar.component';
 import {UserStatusComponent} from './components/desktop/toolbar/user-status/user-status.component';
-import {WelcomeComponent} from './components/welcome/welcome.component';
+// import {WelcomeComponent} from './components/welcome/welcome.component';
 import {WindowComponent} from './components/desktop/window/window.component';
 
 import {ApiService} from './services/api.service';
@@ -39,7 +39,6 @@ import { SliderComponent } from './components/common/slider/slider.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
     WindowComponent,
     DesktopComponent,
     ToolbarComponent,
@@ -50,7 +49,6 @@ import { SliderComponent } from './components/common/slider/slider.component';
     SearchBarComponent,
     DemoComponent,
     ExternalComponent,
-    WelcomeComponent,
     UserStatusComponent,
     TabsComponent,
     SafeHtmlPipe,

@@ -15,6 +15,7 @@ export class AboutComponent implements OnInit {
   private language$: Subscription;
   locale: LanguageModel;
   version = VERSION;
+  testing: any;
 
   constructor(
     public windowService: WindowService,

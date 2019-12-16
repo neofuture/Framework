@@ -32,7 +32,7 @@ export class ModuleService {
       true,
       desktopWidth,
       desktopHeight,
-      false,
+      true,
       '',
       false,
       null,
@@ -59,7 +59,7 @@ export class ModuleService {
       true,
       '',
       false,
-      5000,
+      56666000,
       'welcome'
     );
   }
