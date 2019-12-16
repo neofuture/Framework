@@ -32,6 +32,7 @@ export const lang_ro: LanguageModel = {
   quotes: 'Citate',
   settings: 'Setări',
   messages: 'Mesaje',
+  fullSize: 'Dimensiune completă',
   search: 'Căutare',
   searchDots: 'Căutare…',
   expandRibbon: 'Extindeți Panglică',

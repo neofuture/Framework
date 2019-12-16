@@ -47,7 +47,9 @@ export class TabsComponent implements OnInit {
   }
 
   maximiseWindow(event: MouseEvent, windowItem: WindowModel) {
-    this.windowService.maximise(windowItem);
+    if (!windowItem.maximised){
+      this.windowService.maximise(windowItem);
+    }
   }
 
   tabCount() {

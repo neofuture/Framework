@@ -32,6 +32,7 @@ export const blank: LanguageModel = {
   quotes: '',
   settings: '',
   messages: '',
+  fullSize: '',
   search: '',
   searchDots: '',
   expandRibbon: '',

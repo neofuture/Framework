@@ -32,6 +32,7 @@ export const lang_fi: LanguageModel = {
   quotes: 'lainausmerkit',
   settings: 'asetukset',
   messages: 'viestien',
+  fullSize: 'Täysikokoinen',
   search: 'Hae',
   searchDots: 'Hae…',
   expandRibbon: 'Laajenna nauha',

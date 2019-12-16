@@ -5,6 +5,7 @@
     [ngStyle]="{width: 'calc(' + (100 / tabCount()) + '% - 8px)'}"
     (click)="makeWindowActive(windowList[windowItem])"
     (dblclick)="maximiseWindow($event, windowList[windowItem])">
+
   <span [ngClass]="{'minimised': windowList[windowItem].state.isMinimised}">
     <span *ngIf="!windowList[windowItem].state.active" class="tabItemIcon ow-{{ windowList[windowItem].icon }}"></span>
     <span *ngIf="windowList[windowItem].state.active"
@@ -13,6 +14,7 @@
     {{ locale[windowList[windowItem].title] || windowList[windowItem].title }}
     <span *ngIf="windowList[windowItem].extendedTitle"> - {{ windowList[windowItem].extendedTitle }}</span>
   </div>
+    <ng-container *ngIf="!windowList[windowItem].maximised">
     <button class="tabButton" *ngIf="windowList[windowItem].resizable"
             (click)="maximiseWindow($event, windowList[windowItem])">
       <span title="{{ locale.window.restore }}" *ngIf="windowList[windowItem].state.isMaximised"
@@ -20,6 +22,8 @@
       <span title="{{ locale.window.maximise }}" *ngIf="!windowList[windowItem].state.isMaximised"
             class="ow-maximise"></span>
     </button>
+    </ng-container>
+
   </span>
     <div *ngIf="windowList[windowItem].label" class="label">{{ windowList[windowItem].label }}</div>
   </span>

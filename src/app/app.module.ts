@@ -35,6 +35,7 @@ import {SafeHtmlPipe} from './pipes/safe-html.pipe';
 
 import {environment} from '../environments/environment';
 import { SliderComponent } from './components/common/slider/slider.component';
+import { FullSizeComponent } from './components/full-size/full-size.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { SliderComponent } from './components/common/slider/slider.component';
     LoginComponent,
     NotificationComponent,
     DialogComponent,
-    SliderComponent
+    SliderComponent,
+    FullSizeComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,7 @@ export const lang_zh: LanguageModel = {
   quotes: '行情',
   settings: '设定值',
   messages: '留言内容',
+  fullSize: '全尺寸',
   search: '搜索',
   searchDots: '搜索…',
   expandRibbon: '展开功能区',

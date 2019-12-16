@@ -112,6 +112,7 @@ export class SearchBarComponent implements OnInit {
       this.searchTerm,
       true,
       true,
+      false,
       null,
       {body: 'Search Results For: ' + this.searchTerm},
       200,

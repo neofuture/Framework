@@ -82,6 +82,7 @@ export class DemoComponent implements OnInit {
       null,
       JSON.parse(String(this.hasTab)),
       JSON.parse(String(this.resizable)),
+      false,
       this.bodyComponent
     );
   }

@@ -32,6 +32,7 @@ export const lang_de: LanguageModel = {
   quotes: 'Zitate',
   settings: 'die Einstellungen',
   messages: 'Mitteilungen',
+  fullSize: 'Volle Größe',
   search: 'Suche',
   searchDots: 'Suche…',
   expandRibbon: 'Erweitern Sie Multifunktionsleiste',

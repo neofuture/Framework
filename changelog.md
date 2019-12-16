@@ -71,3 +71,9 @@ Bugs Found
 3. Fixed CS theme padding on window client area for login box
 4. Fixed CS theme single border issue on full height windows (on login window and splash screen)
 5. CS theme settings additional elements to set the correct colour scheme
+6. Added a maximised window setting to have full real estate windows (for grids and other full screen activities)
+7. Refactored tab logic so that double clicking does not toggle the maximise/restore of the window settings.
+8. Added logic to remove maximise buttons from the tab if a window is a forced to max window
+9. Added 'Always on top' to window service so that the full screen windows can always exist above the other windows.
+10. Added a test "Full Size" ribbon button
+11. Added a test "Full Size" component to show a large block of text (this in ideal would be a grid of room shapes etc)

@@ -32,6 +32,7 @@ export const lang_la: LanguageModel = {
   quotes: 'quotes',
   settings: 'Optiones',
   messages: 'nuntiis',
+  fullSize: 'Location plena',
   search: 'Quaerere',
   searchDots: 'Quaerere…',
   expandRibbon: 'Expand Ribbon',

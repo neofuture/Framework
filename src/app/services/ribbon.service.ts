@@ -62,6 +62,15 @@ export class RibbonService {
       };
     }
 
+    if (button === 'fullSize') {
+      buttonObject = {
+        icon: 'ow-maximise',
+        iconOver: 'ow-maximise',
+        label: 'fullSize',
+        module: 'fullSize'
+      };
+    }
+
     this.ribbonButtonList.push(buttonObject);
   }
 

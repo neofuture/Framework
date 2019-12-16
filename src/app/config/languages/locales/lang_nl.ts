@@ -32,6 +32,7 @@ export const lang_nl: LanguageModel = {
   quotes: 'Citaten',
   settings: 'instellingen',
   messages: 'berichten',
+  fullSize: 'Volledige grootte',
   search: 'Zoeken',
   searchDots: 'Zoeken…',
   expandRibbon: 'Lint uitvouwen',

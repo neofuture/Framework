@@ -32,6 +32,7 @@ export const lang_it: LanguageModel = {
   quotes: 'Citazioni',
   settings: 'impostazioni',
   messages: 'messaggi',
+  fullSize: 'Dimensione piena',
   search: 'Ricerca',
   searchDots: 'Ricerca…',
   expandRibbon: 'Espandi barra multifunzione',

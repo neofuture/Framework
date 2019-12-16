@@ -152,6 +152,14 @@ export class WindowComponent implements OnInit {
       componentRef.instance.windowItem = this.windowItem;
     }
 
+    if (this.windowItem.bodyComponent === 'fullSize') {
+      const {FullSizeComponent} = await import('../../full-size/full-size.component');
+      const componentRef = this.viewContainer.createComponent(
+        this.componentFactoryResolver.resolveComponentFactory(FullSizeComponent)
+      );
+      componentRef.instance.windowItem = this.windowItem;
+    }
+
     this.loaded = true;
   }
 

@@ -32,6 +32,7 @@ export const lang_sv: LanguageModel = {
   quotes: 'Citat',
   settings: 'inställningar',
   messages: 'meddelanden',
+  fullSize: 'Full storlek',
   search: 'Sök',
   searchDots: 'Sök…',
   expandRibbon: 'Expandera bandet',

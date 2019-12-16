@@ -32,6 +32,7 @@ export const lang_da: LanguageModel = {
   quotes: 'Citater',
   settings: 'Indstillinger',
   messages: 'Beskeder',
+  fullSize: 'Fuld størrelse',
   search: 'Søg',
   searchDots: 'Søg…',
   expandRibbon: 'Udvid bånd',

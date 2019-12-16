@@ -18,6 +18,7 @@ export class WindowService {
     extendedTitle: any,
     hasTab: boolean,
     resizable: boolean,
+    maximised: boolean,
     bodyComponent: string,
     data = null,
     height = null,
@@ -98,6 +99,7 @@ export class WindowService {
       maximizable: true,
       minimizable: true,
       resizable,
+      maximised,
       entities: {},
       hasTab,
       hasTitleBar,
@@ -124,6 +126,9 @@ export class WindowService {
     setTimeout(() => {
       this.windowList[id].class = 'open';
       this.active(windowItem);
+      if (maximised) {
+        this.maximise(windowItem);
+      }
     });
 
     if (this.windowList[id].autoClose > 0) {
@@ -252,36 +257,36 @@ export class WindowService {
       (windowItem.state.isMinimised ? ' minimised' : '');
   }
 
-  onClose(windowItem: WindowModel) {
-    windowItem.class = 'closed';
-  }
-
-  onClosed(windowItem: WindowModel) {
-    let lastWindow: WindowModel;
-    let windowActive = false;
-    if (windowItem.intervalTimer) {
-      clearInterval(windowItem.intervalTimer);
-    }
-
-    for (const key in this.windowList) {
-      if (this.windowList[key].state.isMinimised === false) {
-        if (windowItem === this.windowList[key]) {
-          delete this.windowList[key];
-        } else {
-          lastWindow = this.windowList[key];
-          if (lastWindow.state.active) {
-            windowActive = true;
-          }
-        }
-      }
-    }
-
-    if (typeof lastWindow !== 'undefined') {
-      if (lastWindow.class !== 'closed' && !windowActive) {
-        this.active(lastWindow);
-      }
-    }
-  }
+  // onClose(windowItem: WindowModel) {
+  //   windowItem.class = 'closed';
+  // }
+  //
+  // onClosed(windowItem: WindowModel) {
+  //   let lastWindow: WindowModel;
+  //   let windowActive = false;
+  //   if (windowItem.intervalTimer) {
+  //     clearInterval(windowItem.intervalTimer);
+  //   }
+  //
+  //   for (const key in this.windowList) {
+  //     if (this.windowList[key].state.isMinimised === false) {
+  //       if (windowItem === this.windowList[key]) {
+  //         delete this.windowList[key];
+  //       } else {
+  //         lastWindow = this.windowList[key];
+  //         if (lastWindow.state.active) {
+  //           windowActive = true;
+  //         }
+  //       }
+  //     }
+  //   }
+  //
+  //   if (typeof lastWindow !== 'undefined') {
+  //     if (lastWindow.class !== 'closed' && !windowActive) {
+  //       this.active(lastWindow);
+  //     }
+  //   }
+  // }
 
   maximise(windowItem: WindowModel) {
     if (windowItem.resizable) {

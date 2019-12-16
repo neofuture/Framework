@@ -14,6 +14,31 @@ export class ModuleService {
     private languageService: LanguageService) {
   }
 
+  fullSize(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'maximise',
+      'maximise',
+      false,
+      'about',
+      '',
+      true,
+      true,
+      true,
+      'fullSize',
+      null,
+      610,
+      600,
+      true,
+      desktopWidth,
+      desktopHeight,
+      true,
+      '',
+      false,
+      null,
+      'about'
+    );
+  }
+
   about(desktopWidth, desktopHeight) {
     this.languageService.object.subscribe(locale => this.locale = locale);
 
@@ -24,6 +49,7 @@ export class ModuleService {
       'about',
       this.locale.product,
       true,
+      false,
       false,
       'about',
       null,
@@ -49,6 +75,7 @@ export class ModuleService {
       null,
       false,
       false,
+      false,
       'welcome',
       null,
       400,
@@ -59,7 +86,7 @@ export class ModuleService {
       true,
       '',
       false,
-      56666000,
+      5000,
       'welcome'
     );
   }
@@ -73,6 +100,7 @@ export class ModuleService {
       null,
       true,
       true,
+      false,
       'contact-manager',
       null,
       null,
@@ -94,6 +122,7 @@ export class ModuleService {
       null,
       true,
       true,
+      false,
       null,
       {body: 'Testing Profile'},
       null,
@@ -114,7 +143,8 @@ export class ModuleService {
       'settings',
       null,
       true,
-      true,
+      false,
+      false,
       'demo',
       null,
       726,
@@ -139,6 +169,7 @@ export class ModuleService {
       null,
       true,
       true,
+      false,
       'quotes',
       null,
       null,
@@ -160,6 +191,7 @@ export class ModuleService {
       null,
       true,
       true,
+      false,
       null,
       {body: 'Testing Messages'},
       null,

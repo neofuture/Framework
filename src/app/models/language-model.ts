@@ -29,6 +29,7 @@ language: string;
   quotes: string;
   settings: string;
   messages: string;
+  fullSize: string;
   search: string;
   searchDots: string;
   expandRibbon: string;

@@ -91,6 +91,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ribbonService.add('quotes');
     this.ribbonService.add('settings');
     this.ribbonService.add('messages');
+    this.ribbonService.add('fullSize');
     this.ribbonService.add('contactManager');
     this.ribbonService.add('quotes');
     this.ribbonService.add('settings');
@@ -119,6 +120,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ribbonService.add('settings');
     this.ribbonService.add('messages');
     this.ribbonService.add('contactManager');
+    this.ribbonService.add('fullSize');
 
     this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
   }

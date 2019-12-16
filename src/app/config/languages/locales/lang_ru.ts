@@ -32,6 +32,7 @@ export const lang_ru: LanguageModel = {
   quotes: 'Цитаты',
   settings: 'настройки',
   messages: 'Сообщения',
+  fullSize: 'Полный размер',
   search: 'Поиск',
   searchDots: 'Поиск…',
   expandRibbon: 'Развернуть ленту',
