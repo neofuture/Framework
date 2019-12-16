@@ -19,7 +19,7 @@ export class ModuleService {
       'maximise',
       'maximise',
       false,
-      'about',
+      'fullSize',
       '',
       true,
       true,

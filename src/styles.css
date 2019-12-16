@@ -290,7 +290,7 @@ body.compusoft, .compusoft *:not(pre) {
 }
 
 .compusoft .tabItem .text {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .compusoft button {
@@ -361,7 +361,7 @@ body.compusoft, .compusoft *:not(pre) {
   background-color: transparent !important;
 }
 
-.compusoft .loginDialog .container, app-welcome .container {
+.compusoft .loginDialog .container, app-welcome .container, app-about .container {
   border-radius: 0 !important;
   padding: 24px 23px !important;
   color:var(--text) !important;
