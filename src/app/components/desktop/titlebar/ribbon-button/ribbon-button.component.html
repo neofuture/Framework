@@ -1,5 +1,9 @@
-<div (mouseover)="hover = true" (mouseleave)="hover = false" [ngClass]="size ? 'ribbonButton' : 'ribbonButton small'" (click)="ribbonService.clickAction(ribbonItem, desktopWidth, desktopHeight)" title="{{ locale[ribbonItem.label] || ribbonItem.label }}" [attr.aria-label]="locale[ribbonItem.label] || ribbonItem.label">
-  <i [ngClass]="['icon', hover == true ? ribbonItem.iconOver : ribbonItem.icon]" [ngStyle]="{'color': hover  ? ribbonItem.overColor : '' }"></i>
+<div (mouseover)="hover = true" (mouseleave)="hover = false" class="ribbonButton" [ngClass]="{'small': !size, 'activeButton': ribbonItem.showActive  && windowList | ribbonActive:ribbonItem.module}"
+     (click)="ribbonService.clickAction(ribbonItem, desktopWidth, desktopHeight)"
+     title="{{ locale[ribbonItem.label] || ribbonItem.label }}"
+     [attr.aria-label]="locale[ribbonItem.label] || ribbonItem.label">
+  <i [ngClass]="['icon', hover == true ? ribbonItem.iconOver : ribbonItem.icon]"
+     [ngStyle]="{'color': hover  ? ribbonItem.overColor : '' }"></i>
   <i [ngClass]="['iconBackground', ribbonItem.icon]"></i>
   <div class="ribbonText">
     {{ locale[ribbonItem.label] || ribbonItem.label }}

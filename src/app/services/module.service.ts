@@ -35,7 +35,32 @@ export class ModuleService {
       '',
       false,
       null,
-      'about'
+      'fullSize'
+    );
+  }
+
+  fullSizeNoTab(desktopWidth, desktopHeight) {
+    this.windowService.new(
+      'maximise',
+      'maximise',
+      false,
+      'fullSizeNoTab',
+      '',
+      false,
+      true,
+      true,
+      'fullSizeNoTab',
+      null,
+      610,
+      600,
+      true,
+      desktopWidth,
+      desktopHeight,
+      true,
+      '',
+      false,
+      null,
+      'fullSizeNoTab'
     );
   }
 

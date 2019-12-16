@@ -80,6 +80,13 @@ export class WindowService {
     }
 
     let windowItem: WindowModel;
+    // if (!singleInstance) {
+    //   if (typeof data.body !== 'undefined') {
+    //     singleInstance = data.body;
+    //   } else {
+    //     singleInstance = bodyComponent;
+    //   }
+    // }
     windowItem = {
       id,
       icon,

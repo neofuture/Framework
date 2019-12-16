@@ -160,6 +160,14 @@ export class WindowComponent implements OnInit {
       componentRef.instance.windowItem = this.windowItem;
     }
 
+    if (this.windowItem.bodyComponent === 'fullSizeNoTab') {
+      const {FullSizeNoTabComponent} = await import('../../full-size-no-tab/full-size-no-tab.component');
+      const componentRef = this.viewContainer.createComponent(
+        this.componentFactoryResolver.resolveComponentFactory(FullSizeNoTabComponent)
+      );
+      componentRef.instance.windowItem = this.windowItem;
+    }
+
     this.loaded = true;
   }
 

@@ -55,7 +55,7 @@ export class DesktopComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private api: ApiService,
     private profileService: ProfileService,
-    private languageService: LanguageService,
+    private languageService: LanguageService
   ) {
   }
 

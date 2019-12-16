@@ -36,6 +36,8 @@ import {SafeHtmlPipe} from './pipes/safe-html.pipe';
 import {environment} from '../environments/environment';
 import { SliderComponent } from './components/common/slider/slider.component';
 import { FullSizeComponent } from './components/full-size/full-size.component';
+import { RibbonActivePipe } from './pipes/ribbon-active.pipe';
+import { FullSizeNoTabComponent } from './components/full-size-no-tab/full-size-no-tab.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { FullSizeComponent } from './components/full-size/full-size.component';
     NotificationComponent,
     DialogComponent,
     SliderComponent,
-    FullSizeComponent
+    FullSizeComponent,
+    RibbonActivePipe,
+    FullSizeNoTabComponent
   ],
   imports: [
     BrowserModule,

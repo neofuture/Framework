@@ -18,6 +18,15 @@
   -o-transform: translateZ(0);
   transform: translateZ(0);
 }
+.ribbonButton.activeButton {
+  background-color: var(--primary-light);
+  color:var(--background-color);
+}
+
+.ribbonButton.activeButton:hover {
+  color:var(--text);
+}
+
 .ribbonButton:hover {
   background-color:var(--background-darker-grey);
   transition: all 200ms;

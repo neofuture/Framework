@@ -4,4 +4,5 @@ export interface RibbonButtonModel {
   overColor?: string;
   label: string;
   module: any;
+  showActive?: boolean;
 }

@@ -50,7 +50,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @HostListener('window:resize')
   onResize() {
-   this.resize();
+    this.resize();
   }
 
   ngOnInit() {
@@ -74,7 +74,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.setOpt1();
+      this.build();
     });
   }
 
@@ -83,7 +83,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     this.moduleService.about(desktopWidth, desktopHeight);
   }
 
-  setOpt1() {
+  build() {
     this.activeTab = 1;
     this.ribbonService.clearRibbon();
 
@@ -91,6 +91,20 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ribbonService.add('quotes');
     this.ribbonService.add('settings');
     this.ribbonService.add('messages');
+    this.ribbonService.add('fullSize');
+    this.ribbonService.add('fullSizeNoTab');
+
+    this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
+  }
+
+  furnish() {
+    this.activeTab = 2;
+    this.ribbonService.clearRibbon();
+
+    this.ribbonService.add('quotes');
+    this.ribbonService.add('settings');
+    this.ribbonService.add('messages');
+    this.ribbonService.add('contactManager');
     this.ribbonService.add('fullSize');
     this.ribbonService.add('contactManager');
     this.ribbonService.add('quotes');
@@ -112,15 +126,18 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
   }
 
-  setOpt2() {
-    this.activeTab = 2;
+  view() {
+    this.activeTab = 3;
     this.ribbonService.clearRibbon();
 
+    this.ribbonService.add('messages');
+    this.ribbonService.add('fullSize');
+    this.ribbonService.add('fullSizeNoTab');
+    this.ribbonService.add('messages');
+    this.ribbonService.add('contactManager');
     this.ribbonService.add('quotes');
     this.ribbonService.add('settings');
     this.ribbonService.add('messages');
-    this.ribbonService.add('contactManager');
-    this.ribbonService.add('fullSize');
 
     this.ribbonService.setRibbonButtons(this.size, this.desktopWidth, this.desktopHeight);
   }

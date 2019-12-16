@@ -224,6 +224,10 @@ body.compusoft, .compusoft *:not(pre) {
   color:var(--text) !important;
 }
 
+.compusoft .titleBarTop .button i {
+  display: none;
+}
+
 .compusoft .logo {
   color: var(--text) !important;
 }
@@ -285,13 +289,13 @@ body.compusoft, .compusoft *:not(pre) {
   border-color: var(--background-grey) !important;
 }
 
-.compusoft .titleBarText {
-  text-align: center;
-}
+/*.compusoft .titleBarText {*/
+/*  text-align: center;*/
+/*}*/
 
-.compusoft .tabItem .text {
-  /*text-align: center;*/
-}
+/*.compusoft .tabItem .text {*/
+/*  text-align: center;*/
+/*}*/
 
 .compusoft button {
   border-radius: 0;
@@ -309,6 +313,10 @@ body.compusoft, .compusoft *:not(pre) {
 .compusoft .ribbonButton:hover {
   border: 1px solid !important;
   border-color: var(--background-grey) !important;
+}
+
+.compusoft .ribbonButton.activeButton {
+  color:var(--text) !important;
 }
 
 .compusoft input, .compusoft select {
@@ -341,7 +349,7 @@ body.compusoft, .compusoft *:not(pre) {
 
 .compusoft .button {
   display: inline-block;
-  padding: 4px 12px 4px 12px !important;
+  padding: 5px 12px 5px 12px !important;
   border-radius: 0 !important;
   margin-top: 0 !important;
 }

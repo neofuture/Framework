@@ -7,8 +7,8 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class RibbonService {
-  private objectSource1 = new BehaviorSubject([]);
-  private objectSource2 = new BehaviorSubject([]);
+  objectSource1 = new BehaviorSubject([]);
+  objectSource2 = new BehaviorSubject([]);
   ribbonButtons = this.objectSource1.asObservable();
   menuButtons = this.objectSource2.asObservable();
 
@@ -31,7 +31,8 @@ export class RibbonService {
         icon: 'ow-contacts',
         iconOver: 'ow-contacts_over',
         label: 'contactManager',
-        module: 'contactManager'
+        module: 'contactManager',
+        showActive: true
       };
     }
 
@@ -40,7 +41,8 @@ export class RibbonService {
         icon: 'ow-quotations',
         iconOver: 'ow-quotations_over',
         label: 'quotes',
-        module: 'quotes'
+        module: 'quotes',
+        showActive: true
       };
     }
 
@@ -49,7 +51,8 @@ export class RibbonService {
         icon: 'ow-cog',
         iconOver: 'ow-cog_over',
         label: 'settings',
-        module: 'settings'
+        module: 'settings',
+        showActive: true
       };
     }
 
@@ -58,7 +61,8 @@ export class RibbonService {
         icon: 'ow-messages',
         iconOver: 'ow-messages_over',
         label: 'messages',
-        module: 'messages'
+        module: 'messages',
+        showActive: false
       };
     }
 
@@ -67,7 +71,18 @@ export class RibbonService {
         icon: 'ow-maximise',
         iconOver: 'ow-maximise',
         label: 'fullSize',
-        module: 'fullSize'
+        module: 'fullSize',
+        showActive: true
+      };
+    }
+
+    if (button === 'fullSizeNoTab') {
+      buttonObject = {
+        icon: 'ow-maximise',
+        iconOver: 'ow-maximise',
+        label: 'fullSizeNoTab',
+        module: 'fullSizeNoTab',
+        showActive: true
       };
     }
 
@@ -102,6 +117,7 @@ export class RibbonService {
     }
     this.objectSource1.next(ribbonButtons);
     this.objectSource2.next(menuButtons);
+
     // this.ribbonBar = true;
   }
 }

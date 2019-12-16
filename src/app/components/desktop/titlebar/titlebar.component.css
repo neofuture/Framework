@@ -8,7 +8,7 @@
   line-height: 30px;
   padding: 0 0 0 8px;
   color: white;
-  height: 36px;
+  height: 40px;
 }
 
 .titleBarTop span {
@@ -286,7 +286,7 @@ app-search-bar {
   line-height: 26px;
   color: white;
   position: relative;
-  top: 5px;
+  top: 7px;
 }
 
 .titleBarQuickLinks {
@@ -347,7 +347,7 @@ app-search-bar {
 .button {
   cursor: pointer;
   display: inline-block;
-  padding: 0 12px 4px 12px;
+  padding: 3px 13px 4px 13px;
   margin-top: 4px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
