@@ -63,3 +63,5 @@ We have started to include a test api (written in PHP) this include bidirectiona
 To start the api
 
 `php -S 0.0.0.0:1234`
+
+Extra configuration is required to use the API but if you connect with us on Gitter we will be happy to help you set it up.

@@ -100,7 +100,7 @@ Bugs Found
 9. Changed window title bar height to match 40px as per the design
 10. Changed some of the window resize dynamics so that the windows are resizable within the desktop area
 ---
-### 17/12/19 - 
+### 17/12/19 - f6789d0
 
 1. A refactor on the resize window logic broke the notification centre positioning, as there was no unit on the css property.
 2. Updated the readme with some info.
