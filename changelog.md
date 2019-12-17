@@ -78,9 +78,24 @@ Bugs Found
 10. Added a test "Full Size" ribbon button
 11. Added a test "Full Size" component to show a large block of text (this in ideal would be a grid of room shapes etc)
 ---
-### 16/12/19
+### 16/12/19 - 17:01 Commit
 
 1. Fixed the title bar ribbon selectors, clicking these would show the about window. Now only clicking on the top product name / logo should show product information and licence
 2. Changed the windows heading alignments as it would seem that only the main windows requires the centre alignment
 3. Linked the ribbon buttons to the window active status, if a windows is open then it can show active, this is also a `showActive` on tbe ribbon button object definition (messages does not have `showActive` set in this demo)
+---
+### 17/12/19 - 14:54 Commit 
 
+~~171219-1. Found an issue with the close window logic when the window close button is clicked the window will activate and add a no transition declaration to stop the window resize or drag being sluggish this in turn destroys the window fade out transition~~
+~~171219-2. There seems to be a weird behaviour with border-less windows, the transitions do not seem to be working correctly.~~
+
+1. Added a flag to suppress transitions when opening a new window, ideal for full maximised windows that hide the content behind.
+2. but 171219-2 was the result of an incorrect event stop propagation, clicking on a button to close in a window would make the window active and add a noTransition to the window, in order to stop propagation when a close button is clicked i have moved the event to the window close function in the windows service - fixed.
+3. Fixed for 171219-1.
+4. Added a check on window maximisation on closing to retain the maximised class and not deform the window.
+5. Windows are now created already maximised instead of the maximise action being called after the window creation event.
+6. Changed the window ID tracking so that all new windows are given a new id (within this session) We had an issue that recycling of ID's could some times lead to old windows reopening randomly if the timers clashed.
+7. Further changes to the opening and closing and how a window (full screen mostly) interacts with CSS
+8. Fixes to the 100% window over the canvas caused a side effect that stopped other window transitions working like when using the centre window button.
+9. Changed window title bar height to match 40px as per the design
+10. Changed some of the window resize dynamics so that the windows are resizable within the desktop area

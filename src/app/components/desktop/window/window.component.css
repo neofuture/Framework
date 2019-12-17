@@ -1,13 +1,12 @@
 .closed, .new {
   opacity: 0;
-  transition: opacity 200ms, width 200ms, height, 200ms;
+  transition: opacity 400ms, left 400ms, top, 400ms;
   padding: 0;
-  height: 0;
 }
 
 .open {
   opacity: 1;
-  transition: opacity 200ms, width 200ms, height, 200ms;
+  transition: opacity 400ms, left 400ms, top, 400ms;
 }
 
 .windowItem {
@@ -31,8 +30,8 @@
 
 .titleBar {
   background-color: var(--background-grey);
-  height: 32px;
-  padding: 4px;
+  height: 40px;
+  padding: 8px;
   border-radius: 3px;
   transition: all 0.3s;
   cursor: move;
@@ -71,11 +70,6 @@
 .active {
   box-shadow: var(--box-shadow);
 }
-
-.active .titleBarText {
-  font-weight: 600;
-}
-
 .windowButton {
   border: none;
   background-color: var(--primary-mid);
@@ -102,7 +96,7 @@
 }
 
 .clientArea {
-  height: calc(100% - 36px);
+  height: calc(100% - 44px);
   width: 100%;
   background-color: var(--background-color);
   border-radius: 3px;

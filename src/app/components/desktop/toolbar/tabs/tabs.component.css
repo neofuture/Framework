@@ -38,7 +38,6 @@
 .active {
   color: var(--background-color);
   background-color: var(--primary-mid);
-  font-weight: 600;
 }
 
 .tabButton {
@@ -68,7 +67,8 @@
 }
 
 .minimised {
-  border-bottom: 4px solid orange;
+  border-bottom: 4px solid;
+  border-color:var(--primary-dark);
   border-bottom-style: inset;
   padding-bottom: 0;
 }

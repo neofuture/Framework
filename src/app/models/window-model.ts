@@ -19,6 +19,7 @@ export interface WindowModel {
   minimizable: boolean;
   resizable: boolean;
   maximised: boolean;
+  suppressTransitions: boolean;
   closing?: boolean;
   hasTab: boolean;
   hasTitleBar: boolean;

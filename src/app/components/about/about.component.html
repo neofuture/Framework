@@ -18,7 +18,7 @@
     <h1> {{ locale.product }}</h1>
     <div>v {{ version.version }} ({{ version.hash }})</div>
   </div>
-  <button class="ow-close closeButton" (click)="windowService.close(windowItem)"></button>
+  <button class="ow-close closeButton" (click)="windowService.close(windowItem, $event)"></button>
   <div class="license">
     <h3>{{ locale.company }} License Agreement</h3>
 

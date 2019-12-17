@@ -217,7 +217,7 @@ body.compusoft, .compusoft *:not(pre) {
   margin: 0 !important;
   width: 100% !important;
   border-radius: 0 !important;
-  color:var(--text) !important;
+  /*color:var(--text) !important;*/
 }
 
 .compusoft .titleBarTop, .compusoft .titleBarQuickLinks {
@@ -234,13 +234,13 @@ body.compusoft, .compusoft *:not(pre) {
 
 .compusoft .clientArea {
   border: 1px solid !important;
-  border-color: var(--background-darker-grey) !important;
+  border-color: var(--background-darkest-grey) !important;
   border-top: none !important;
   margin: 0 !important;
   padding: 6px !important;
   border-radius: 0 !important;
   width: 100% !important;
-  height: calc(100% - 32px) !important;
+  height: calc(100% - 40px) !important;
 }
 
 .compusoft .clientArea.fullHeight {
@@ -251,17 +251,17 @@ body.compusoft, .compusoft *:not(pre) {
 .compusoft .windowButton {
   border-radius: 0 !important;
   background-color: transparent !important;
-  color: var(--text) !important;
+  /*color: var(--text) !important;*/
 }
 
 .compusoft .active .windowButton {
-  color: var(--text) !important;
+  /*color: var(--text) !important;*/
 }
 
 .compusoft .tabButton {
   border-radius: 0 !important;
   background-color: transparent !important;
-  color: var(--text) !important;
+  /*color: var(--text) !important;*/
 }
 
 .compusoft .active .tabButton {
@@ -274,12 +274,16 @@ body.compusoft, .compusoft *:not(pre) {
 }
 
 .compusoft .tabItem.active {
-  background-color: var(--primary-light);
-  color: var(--text);
+  background-color: var(--primary-dark) !important;
+  /*color: var(--text);*/
+}
+.compusoft .tabItem {
+  background-color: var(--primary-light) !important;
+  /*color: var(--text);*/
 }
 
 .compusoft .tabItem .tabButton {
-  color: var(--text) !important;
+  /*color: var(--text) !important;*/
 }
 
 .compusoft .fullHeight {
@@ -304,6 +308,9 @@ body.compusoft, .compusoft *:not(pre) {
 
 .compusoft .active .titleBar {
   border-color: var(--primary) !important;
+}
+.compusoft .active .titleBar button {
+  color: var(--background-color) !important;
 }
 
 .compusoft .ribbonButton {

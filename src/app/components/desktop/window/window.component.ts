@@ -177,8 +177,7 @@ export class WindowComponent implements OnInit {
   }
 
   closeWindow(event, windowItem) {
-    event.stopPropagation();
-    this.windowService.close(windowItem);
+    this.windowService.close(windowItem, event);
   }
 
   resizeCursorSet(event, windowItem) {
@@ -263,6 +262,11 @@ export class WindowComponent implements OnInit {
   resizeGo(event) {
     if (this.resizeWindowItem !== null) {
 
+      let padding = 0;
+      if (document.body.classList.contains('compusoft')) {
+        padding = 7;
+      }
+
       let north = false;
       let south = false;
       let east = false;
@@ -287,16 +291,16 @@ export class WindowComponent implements OnInit {
         x = 5;
       }
 
-      if (x >= this.innerWidth - 5) {
-        x = this.innerWidth - 5;
+      if (x >= this.innerWidth - 5 + padding) {
+        x = this.innerWidth - 5 + padding;
       }
 
       if (y <= this.titleBarTopHeight) {
         y = this.titleBarTopHeight;
       }
 
-      if (y >= this.innerHeight - this.toolbarHeight - 6) {
-        y = this.innerHeight - this.toolbarHeight - 6;
+      if (y >= this.innerHeight - this.toolbarHeight - 3 + padding) {
+        y = this.innerHeight - this.toolbarHeight - 3 + padding;
       }
 
       if (this.resizeWindowItem.centered) {
@@ -355,9 +359,10 @@ export class WindowComponent implements OnInit {
   }
 
   moveStart(event, windowItem: WindowModel) {
-    if (windowItem.state.isMaximised) {
+    if (windowItem.state.isMaximised || event.target.nodeName === 'BUTTON') {
       return false;
     }
+
     this.dragWindowItem = windowItem;
     this.makeWindowActive(this.dragWindowItem);
 
@@ -382,8 +387,8 @@ export class WindowComponent implements OnInit {
       this.dragWindowItem.centered = false;
 
       let padding = 0;
-      if (document.body.classList.contains('blocky')) {
-        padding = 10;
+      if (document.body.classList.contains('compusoft')) {
+        padding = 7;
       }
       const x = event.pageX;
       const y = event.pageY;

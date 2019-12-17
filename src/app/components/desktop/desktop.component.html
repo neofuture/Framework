@@ -1,9 +1,10 @@
-<app-titlebar class="titleBarTop" id="titleBarTop" #titleBarTop [desktopHeight]="desktopHeight" [desktopWidth]="desktopWidth"
+<app-titlebar class="titleBarTop" id="titleBarTop" #titleBarTop [desktopHeight]="desktopHeight"
+              [desktopWidth]="desktopWidth"
               (changedSize)="resizeToolBar()"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
 
   <div id="particles-js" [ngStyle]="{'width': desktopWidth, 'height': desktopHeight}">
-    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;"></canvas>
+    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" (mousedown)="console('mouse down')"></canvas>
   </div>
 
 
@@ -21,7 +22,6 @@
     <div>test/test</div>
     <div>john/john</div>
   </div>
-
   <app-login *ngIf="!profile && loaded"></app-login>
 </div>
 <ng-container #toolbar>

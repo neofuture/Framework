@@ -42,6 +42,7 @@ export class ContactManagerComponent implements OnInit {
       true,
       true,
       false,
+      false,
       'quotes',
     {id: this.id}
     );

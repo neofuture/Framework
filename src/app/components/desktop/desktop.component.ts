@@ -73,7 +73,6 @@ export class DesktopComponent implements OnInit, AfterViewInit {
       this.data = object || {};
     });
 
-    this.moduleService.fullSize(this.desktopWidth, this.desktopHeight);
     this.moduleService.welcome(this.desktopWidth, this.desktopHeight);
 
     this.profileSub$ = this.profileService.object.subscribe(profile => {
@@ -253,5 +252,9 @@ export class DesktopComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.resize();
     }, 60);
+  }
+
+  console(str: string) {
+    console.log(str);
   }
 }
