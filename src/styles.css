@@ -167,6 +167,8 @@ select {
   --box-shadow: 0 0 52px 12px rgba(0, 0, 0, 0.10);
   --alerted: #ff0000;
 
+  --accent-color: #004400;
+
   ---darker: calc(
     ((((var(--red) * 299) +
     (var(--green) * 587) +

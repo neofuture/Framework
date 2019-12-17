@@ -68,7 +68,7 @@
 
 .minimised {
   border-bottom: 4px solid;
-  border-color:var(--primary-dark);
+  border-color:var(--accent-color);
   border-bottom-style: inset;
   padding-bottom: 0;
 }

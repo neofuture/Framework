@@ -1,6 +1,6 @@
 ## Changelog
 
-### 11/12/19 10:00pm commit - 38c19ee
+### 11/12/19 - 10:00pm commit - 38c19ee
 
 1. Added a canvas for testing canvas position and window positioned above.
 2. Fixed an issue with the window centralise button not showing when you resize a window.
@@ -13,7 +13,7 @@
 9. Rebuilt language files.
 
 ---
-### 11/12/19 10:12pm Commit - 7e2b140
+### 11/12/19 - 10:12pm Commit - 7e2b140
 
 1. Changed "About" dialogue design slightly.
 2. Added unique window to settings.
@@ -27,7 +27,7 @@ Bugs found
 ---
 1. Fixed bug 111219-1 resize does not resize desktop and then indeed the canvas element.
 ---
-### 12/12/19 9:25am Commit - 000b821
+### 12/12/19 - 9:25am Commit - 000b821
 
 1. Added CS theme settings to add square corners to notification/message alerts
 
@@ -35,7 +35,7 @@ Bugs found
 Bugs Found
 121219-1. I have an issue with constant refresh in the console, this could be an angular bug that relates to IVY issue investigated and a video sent to Angular team - https://github.com/angular/angular/issues/34336
 
-### 12/12/19 16:08pm Commit - 0cd4cce
+### 12/12/19 - 16:08pm Commit - 0cd4cce
 
 1. Continued investigation into 121219-1 to rule out local code by trying to stop the issue.
 2. Changed the way the tabs are resized to use component interaction `@Input` and `@Output` instead of `document.getElementById`
@@ -46,18 +46,18 @@ Bugs Found
 7. Fixed an issue with windows not closing because of th reliance on transition end, having removed this and used a timer instead.
 8. Fixed a but where the profile image at the bottom right would not show after logging out and then back in again.
 ---
-### 13/13/19  11:30am Commit - b6f3690
+### 13/13/19 - 11:30am Commit - b6f3690
 
 1. Continued to refactor `getElementById` where i can to remove reliance on editing the DOM instead of the shadow.
 2. For the desktop component i have implemented an `ngAfterViewInit` which speeds up the load time as i no longer have to set a 300 ms timer to wait for screen to render
 3. Moved window handlers out of the `ngZone` and into there own zone to speed up window modification, this should stop change detection from triggering when a window is modified, which re-renders all the other windows.
 ---
-### 13/13/19 12:15pm Commit - a420893
+### 13/13/19 - 12:15pm Commit - a420893
 
 1. Refactored the window close event so that it now finds the last active window before the current window, this ensures we always most of the time have an active window. this was in the old version but got accidentally removed when we moved from transition to timer.
 2. Formatted change log to match github markdown.
 ---
-### 13/13/19 12:35pm Commit - 4eb5a8c
+### 13/13/19 - 12:35pm Commit - 4eb5a8c
 
 ~~131319-1. When a window is set an auto timer to close, and the window is manually closed then the window time is still running in the background. This will also close any windows that are opened between closing the timed window and its closure time~~
 
@@ -78,13 +78,13 @@ Bugs Found
 10. Added a test "Full Size" ribbon button
 11. Added a test "Full Size" component to show a large block of text (this in ideal would be a grid of room shapes etc)
 ---
-### 16/12/19 - 17:01 Commit
+### 16/12/19 - 17:01 Commit - e2d8856
 
 1. Fixed the title bar ribbon selectors, clicking these would show the about window. Now only clicking on the top product name / logo should show product information and licence
 2. Changed the windows heading alignments as it would seem that only the main windows requires the centre alignment
 3. Linked the ribbon buttons to the window active status, if a windows is open then it can show active, this is also a `showActive` on tbe ribbon button object definition (messages does not have `showActive` set in this demo)
 ---
-### 17/12/19 - 14:54 Commit 
+### 17/12/19 - 14:54 Commit - d2f881
 
 ~~171219-1. Found an issue with the close window logic when the window close button is clicked the window will activate and add a no transition declaration to stop the window resize or drag being sluggish this in turn destroys the window fade out transition~~
 ~~171219-2. There seems to be a weird behaviour with border-less windows, the transitions do not seem to be working correctly.~~
@@ -99,3 +99,8 @@ Bugs Found
 8. Fixes to the 100% window over the canvas caused a side effect that stopped other window transitions working like when using the centre window button.
 9. Changed window title bar height to match 40px as per the design
 10. Changed some of the window resize dynamics so that the windows are resizable within the desktop area
+---
+### 17/12/19 - 
+
+1. A refactor on the resize window logic broke the notification centre positioning, as there was no unit on the css property.
+2. Updated the readme with some info.

@@ -7,7 +7,7 @@ import {RibbonButtonModel} from '../../../models/ribbon-button-model';
 import {RibbonService} from '../../../services/ribbon.service';
 import {ProfileService} from '../../../services/profile.service';
 import {ProfileModel} from '../../../models/profile-model';
-import {ModuleService} from "../../../services/module.service";
+import {ModuleService} from '../../../services/module.service';
 
 @Component({
   selector: 'app-titlebar',
