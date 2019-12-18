@@ -7,7 +7,19 @@ import {WindowModel} from '../models/window-model';
 export class WindowService {
   windowList = {};
   id = 0;
+  desktopWidth: any;
+  desktopHeight: any;
+
   constructor() {
+  }
+
+  getDesktopWidthAndHeight() {
+    const innerWidth = window.innerWidth;
+    const innerHeight = window.innerHeight;
+    const titleBarTopHeight = document.getElementById('titleBarTop').offsetHeight;
+    const toolbarHeight = document.getElementById('toolbar').offsetHeight;
+    const desktopHeight = innerHeight - titleBarTopHeight - toolbarHeight;
+    return [innerWidth, desktopHeight];
   }
 
   new(
@@ -25,125 +37,135 @@ export class WindowService {
     height = null,
     width = null,
     centered = false,
-    desktopWidth = null,
-    desktopHeight = null,
+    x = null,
+    y = null,
     alwaysOnTop = false,
     label = '',
     alerted = false,
     autoClose = 0,
     singleInstance = null
   ) {
-
-    for (const key in this.windowList) {
-      if (this.windowList[key].singleInstance === singleInstance && singleInstance !== null) {
-        this.active(this.windowList[key]);
-        return false;
-      }
-    }
-
-    // let id = parseInt(Object.keys(this.windowList)[Object.keys(this.windowList).length - 1], 10) || 0;
-    // id++;
-    const id = this.id++;
-
-    if (height === null) {
-      height = this.randomIntFromInterval(200, 400);
-    }
-    if (width === null) {
-      width = this.randomIntFromInterval(400, 800);
-    }
-
-    const position = this.findXYPosition(height, width);
-    let zIndex = 0;
-
-    for (const key in this.windowList) {
-      if (this.windowList[key].zIndex > zIndex) {
-        zIndex = this.windowList[key].zIndex;
-      }
-    }
-
-    if (data === null) {
-      data = {};
-      data.body = null;
-    }
-
-    if (centered) {
-
-      let top = desktopHeight / 2 - height / 2;
-      if (top < 0) {
-        top = 0;
-      }
-      let left = desktopWidth / 2 - width / 2;
-      if (left < 0) {
-        left = 0;
-      }
-      position.top = top;
-      position.left = left;
-
-    }
-
-    let windowItem: WindowModel;
-
-    windowItem = {
-      id,
-      icon,
-      iconActive,
-      title,
-      extendedTitle,
-      body: data.body,
-      bodyComponent,
-      class: 'new active ' + (maximised ? 'maximised' : ''),
-      zIndex,
-      top: position.top,
-      left: position.left,
-      height,
-      width,
-      minimumWidth: 200,
-      minimumHeight: 120,
-      maximizable: true,
-      minimizable: true,
-      resizable,
-      maximised,
-      suppressTransitions,
-      entities: {},
-      hasTab,
-      hasTitleBar,
-      state: {
-        active: true,
-        isMinimised: false,
-        isMaximised: maximised,
-        isMaximisedLeft: false,
-        isMaximisedRight: false
-      },
-      centered,
-      alwaysOnTop,
-      label,
-      alerted,
-      autoClose,
-      singleInstance
-    };
-
-    if (data !== null) {
-      windowItem.data = data;
-    }
-    this.windowList[id] = windowItem;
-
-    if (suppressTransitions) {
-      this.windowList[id].class = 'open noTransition';
+    [this.desktopWidth, this.desktopHeight] = this.getDesktopWidthAndHeight();
+    if (typeof window.event !== 'undefined') {
+      window.event.stopPropagation();
     }
     setTimeout(() => {
-      this.windowList[id].class = 'open ';
-      this.active(windowItem);
+      for (const key in this.windowList) {
+        if (this.windowList[key].singleInstance === singleInstance && singleInstance !== null) {
+          this.active(this.windowList[key]);
+          return false;
+        }
+      }
+
+      const id = this.id++;
+
+      if (height === null) {
+        height = this.randomIntFromInterval(200, 400);
+      }
+      if (width === null) {
+        width = this.randomIntFromInterval(400, 800);
+      }
+
+      const position = this.findXYPosition(height, width);
+      let zIndex = 0;
+
+      for (const key in this.windowList) {
+        if (this.windowList[key].zIndex > zIndex) {
+          zIndex = this.windowList[key].zIndex;
+        }
+      }
+
+      if (data === null) {
+        data = {};
+        data.body = null;
+      }
+
+      if (centered) {
+
+        let top = this.desktopHeight / 2 - height / 2;
+        if (top < 0) {
+          top = 0;
+        }
+        let left = this.desktopWidth / 2 - width / 2;
+        if (left < 0) {
+          left = 0;
+        }
+        position.top = top;
+        position.left = left;
+
+      }
+
+      if (x) {
+        position.left = x - (width / 2);
+      }
+      if (y) {
+        position.top = y - (height / 2);
+      }
+
+      if (position.top < 0) {
+        position.top = 0;
+      }
+
+      let windowItem: WindowModel;
+
+      windowItem = {
+        id,
+        icon,
+        iconActive,
+        title,
+        extendedTitle,
+        body: data.body,
+        bodyComponent,
+        class: 'new active ' + (maximised ? 'maximised' : ''),
+        zIndex,
+        top: position.top,
+        left: position.left,
+        height,
+        width,
+        minimumWidth: 200,
+        minimumHeight: 120,
+        maximizable: true,
+        minimizable: true,
+        resizable,
+        maximised,
+        suppressTransitions,
+        entities: {},
+        hasTab,
+        hasTitleBar,
+        state: {
+          active: true,
+          isMinimised: false,
+          isMaximised: maximised,
+          isMaximisedLeft: false,
+          isMaximisedRight: false
+        },
+        centered,
+        alwaysOnTop,
+        label,
+        alerted,
+        autoClose,
+        singleInstance
+      };
+
+      if (data !== null) {
+        windowItem.data = data;
+      }
+      this.windowList[id] = windowItem;
+
+      if (suppressTransitions) {
+        this.windowList[id].class = 'open noTransition';
+      }
+      setTimeout(() => {
+        this.windowList[id].class = 'open ';
+        this.active(windowItem);
+      });
+
+      if (this.windowList[id].autoClose > 0) {
+        this.windowList[id].intervalTimer = setTimeout(() => {
+          this.close(this.windowList[id]);
+        }, this.windowList[id].autoClose);
+      }
     });
-
-    // if (maximised) {
-    //   //this.maximise(windowItem);
-    // }
-
-    if (this.windowList[id].autoClose > 0) {
-      this.windowList[id].intervalTimer = setTimeout(() => {
-        this.close(this.windowList[id]);
-      }, this.windowList[id].autoClose);
-    }
   }
 
   findXYPosition(height, width) {
@@ -299,13 +321,14 @@ export class WindowService {
     windowItem.extendedTitle = str;
   }
 
-  centre(event: Event, windowItem: WindowModel, desktopWidth: number, desktopHeight: number) {
+  centre(event: Event, windowItem: WindowModel) {
+    [this.desktopWidth, this.desktopHeight] = this.getDesktopWidthAndHeight();
     windowItem.centered = true;
-    let top = desktopHeight / 2 - windowItem.height / 2;
+    let top = this.desktopHeight / 2 - windowItem.height / 2;
     if (top < 0) {
       top = 0;
     }
-    let left = desktopWidth / 2 - windowItem.width / 2;
+    let left = this.desktopWidth / 2 - windowItem.width / 2;
     if (left < 0) {
       left = 0;
     }

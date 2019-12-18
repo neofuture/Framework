@@ -105,7 +105,13 @@ Bugs Found
 1. A refactor on the resize window logic broke the notification centre positioning, as there was no unit on the css property.
 2. Updated the readme with some info.
 ---
-### 18/12/19 
+### 18/12/19 - 17:00 Commit
 
 1. Added an external service that will be able to implement external calls into the 3d engine from outside angular
 2. Added facility to call an external function by function call or name space from within angular from the external service
+3. Angual => Third Party JS interaction.
+4. Third Party JS => Angular interaction.
+5. Edited window service to take an x and y coordinates to plot a window at certain positions
+6. Refactored the new window service to no longer require the `desktopHeight` and `desktopWidth` for simplified creation of windows
+7. Fixed an issue where some times the window would open and the event handler would bubble to the window and cancel the transition, due to an active call being fired before the window is generated.
+8. Fixed the transition on the window title bar to be more graceful

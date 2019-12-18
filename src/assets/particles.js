@@ -492,7 +492,7 @@ var pJS = function(tag_id, params){
       pJS.canvas.ctx.stroke();
     }
 
-    
+
 
     pJS.canvas.ctx.fill();
 
@@ -1114,9 +1114,12 @@ var pJS = function(tag_id, params){
 
       pJS.interactivity.el.addEventListener('click', function(){
 
+
         pJS.interactivity.mouse.click_pos_x = pJS.interactivity.mouse.pos_x;
         pJS.interactivity.mouse.click_pos_y = pJS.interactivity.mouse.pos_y;
         pJS.interactivity.mouse.click_time = new Date().getTime();
+
+        app.openWindow(pJS.interactivity.mouse.click_pos_x / 2, pJS.interactivity.mouse.click_pos_y / 2);
 
         if(pJS.interactivity.events.onclick.enable){
 

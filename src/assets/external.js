@@ -1,7 +1,13 @@
 let app = {
-  callAngular: function (value) {
+  callAngular: function (...value) {
     window.angular.zone.run(() => {
-      window.angular.callAngular(value, 'test', {object: 'test', test: 'demo'});
+      window.angular.callAngular(value);
+    });
+    return null;
+  },
+  openWindow: function (x, y) {
+    window.angular.zone.run(() => {
+      window.angular.openWindow(x, y);
     });
     return null;
   },

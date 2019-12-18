@@ -33,7 +33,7 @@
   height: 40px;
   padding: 8px;
   border-radius: 3px;
-  transition: all 0.3s;
+  transition: all 0.3s !important;
   cursor: move;
   color: var(--text);
 }

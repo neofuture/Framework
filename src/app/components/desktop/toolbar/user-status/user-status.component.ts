@@ -13,9 +13,6 @@ import {ModuleService} from '../../../../services/module.service';
   styleUrls: ['./user-status.component.css']
 })
 export class UserStatusComponent implements OnInit {
-  @Input() desktopWidth: number;
-  @Input() desktopHeight: number;
-
   profile: ProfileModel;
   locale: LanguageModel;
   language$: Subscription;
@@ -77,7 +74,7 @@ export class UserStatusComponent implements OnInit {
   }
 
   openProfile() {
-    this.moduleService.userProfile(this.desktopWidth, this.desktopHeight);
+    this.moduleService.userProfile();
     this.closeMenu();
   }
 

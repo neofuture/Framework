@@ -14,7 +14,7 @@ export class ModuleService {
     private languageService: LanguageService) {
   }
 
-  fullSize(desktopWidth, desktopHeight) {
+  fullSize() {
     this.windowService.new(
       'maximise',
       'maximise',
@@ -30,8 +30,8 @@ export class ModuleService {
       610,
       600,
       true,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       true,
       '',
       false,
@@ -40,7 +40,7 @@ export class ModuleService {
     );
   }
 
-  fullSizeNoTab(desktopWidth, desktopHeight) {
+  fullSizeNoTab() {
     this.windowService.new(
       'maximise',
       'maximise',
@@ -56,8 +56,8 @@ export class ModuleService {
       610,
       600,
       true,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       true,
       '',
       false,
@@ -66,7 +66,7 @@ export class ModuleService {
     );
   }
 
-  about(desktopWidth, desktopHeight) {
+  about() {
     this.languageService.object.subscribe(locale => this.locale = locale);
 
     this.windowService.new(
@@ -84,8 +84,8 @@ export class ModuleService {
       610,
       600,
       true,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       true,
       '',
       false,
@@ -94,7 +94,7 @@ export class ModuleService {
     );
   }
 
-  welcome(desktopWidth, desktopHeight) {
+  welcome() {
     this.windowService.new(
       'oceanworks',
       'oceanworks',
@@ -110,8 +110,8 @@ export class ModuleService {
       400,
       600,
       true,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       true,
       '',
       false,
@@ -120,7 +120,7 @@ export class ModuleService {
     );
   }
 
-  contactManager(desktopWidth, desktopHeight) {
+  contactManager() {
     this.windowService.new(
       'contacts',
       'contacts_over',
@@ -136,14 +136,14 @@ export class ModuleService {
       null,
       null,
       null,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       false,
       ''
     );
   }
 
-  userProfile(desktopWidth, desktopHeight) {
+  userProfile() {
     this.windowService.new(
       'user',
       'user_over',
@@ -159,14 +159,14 @@ export class ModuleService {
       null,
       null,
       null,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       false,
       ''
     );
   }
 
-  settings(desktopWidth, desktopHeight) {
+  settings() {
     this.windowService.new(
       'cog',
       'cog_over',
@@ -182,8 +182,8 @@ export class ModuleService {
       726,
       740,
       true,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       false,
       '',
       false,
@@ -192,7 +192,7 @@ export class ModuleService {
     );
   }
 
-  quotes(desktopWidth, desktopHeight) {
+  quotes() {
     this.windowService.new(
       'quotations',
       'quotations_over',
@@ -208,14 +208,14 @@ export class ModuleService {
       null,
       null,
       false,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       false,
       ''
     );
   }
 
-  messages(desktopWidth, desktopHeight) {
+  messages() {
     this.windowService.new(
       'messages',
       'messages_over',
@@ -231,11 +231,34 @@ export class ModuleService {
       null,
       null,
       false,
-      desktopWidth,
-      desktopHeight,
+      null,
+      null,
       false,
       '10',
       true
+    );
+  }
+
+  canvasWindow(x, y) {
+    this.windowService.new(
+      'quotations',
+      'quotations_over',
+      true,
+      'quotes',
+      null,
+      true,
+      true,
+      false,
+      false,
+      'quotes',
+      null,
+      null,
+      null,
+      false,
+      x,
+      y,
+      false,
+      ''
     );
   }
 }

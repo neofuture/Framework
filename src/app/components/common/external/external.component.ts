@@ -1,6 +1,7 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {DataService} from '../../../services/data.service';
+import {ModuleService} from '../../../services/module.service';
 
 @Component({
   selector: 'app-external',
@@ -13,13 +14,15 @@ export class ExternalComponent implements OnInit {
 
   public constructor(
     private zone: NgZone,
-    private dataService: DataService
+    private dataService: DataService,
+    private moduleService: ModuleService
   ) {
 
     // @ts-ignore
     window.angular = {
       zone: this.zone,
-      test1: (...value) => this.test1(value),
+      callAngular: (value) => this.callAngular(value),
+      openWindow: (x, y) => this.openWindow(x, y),
       component: this,
     };
   }
@@ -30,8 +33,11 @@ export class ExternalComponent implements OnInit {
     });
   }
 
-  public test1(...value) {
+  public callAngular(value) {
     this.dataService.updateItem({message: value});
   }
 
+  public openWindow(x, y) {
+    this.moduleService.canvasWindow(x, y);
+  }
 }

@@ -9,16 +9,12 @@ declare const dispatchFunction: any;
 export class ExternalService {
 
   constructor(private zone: NgZone) {
-    // @ts-ignore
-    window.angular = {
-      zone: this.zone,
-      callAngular: (...value) => this.callAngular(value),
-      component: this,
-    };
   }
 
   callExternal(value: any) {
-    dispatchFunction(...value);
+    this.zone.runOutsideAngular(() => {
+      dispatchFunction(...value);
+    });
   }
 
   public callAngular(value) {

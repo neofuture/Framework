@@ -73,7 +73,7 @@ export class DesktopComponent implements OnInit, AfterViewInit {
       this.data = object || {};
     });
 
-    this.moduleService.welcome(this.desktopWidth, this.desktopHeight);
+    this.moduleService.welcome();
 
     this.profileSub$ = this.profileService.object.subscribe(profile => {
       this.profile = profile;

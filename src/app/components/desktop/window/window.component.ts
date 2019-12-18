@@ -210,7 +210,6 @@ export class WindowComponent implements OnInit {
       }
 
       document.body.style.cursor = this.resizeDirection + '-resize';
-      console.log(document.body.style.cursor);
     } else {
       this.resizeCursorRestore();
     }
@@ -439,6 +438,6 @@ export class WindowComponent implements OnInit {
   }
 
   centreWindow(event: MouseEvent, windowItem: WindowModel) {
-    this.windowService.centre(event, windowItem, this.desktopWidth, this.desktopHeight);
+    this.windowService.centre(event, windowItem);
   }
 }

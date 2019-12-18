@@ -7,8 +7,6 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  @Input() desktopWidth: number;
-  @Input() desktopHeight: number;
   tabWidth: any;
 
   constructor() {
