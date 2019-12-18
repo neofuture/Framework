@@ -5,6 +5,7 @@ import {WindowService} from '../../services/window.service';
 import {LanguageService} from '../../services/language.service';
 import {NotificationService} from '../../services/notification.service';
 import {DialogService} from '../../services/dialog.service';
+import {ExternalService} from '../../services/external.service';
 
 @Component({
   selector: 'app-demo',
@@ -44,7 +45,8 @@ export class DemoComponent implements OnInit {
     private windowService: WindowService,
     private languageService: LanguageService,
     private notificationService: NotificationService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private externalService: ExternalService
   ) {
   }
 
@@ -214,5 +216,9 @@ export class DemoComponent implements OnInit {
 
   dialogAlert(state) {
     console.log(this.testStr, 'State: ' + state);
+  }
+
+  callExternal(...value) {
+    this.externalService.callExternal(value);
   }
 }

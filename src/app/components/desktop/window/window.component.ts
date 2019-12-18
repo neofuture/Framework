@@ -210,6 +210,7 @@ export class WindowComponent implements OnInit {
       }
 
       document.body.style.cursor = this.resizeDirection + '-resize';
+      console.log(document.body.style.cursor);
     } else {
       this.resizeCursorRestore();
     }

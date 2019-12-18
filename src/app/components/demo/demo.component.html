@@ -273,6 +273,10 @@
   (click)="newDialog('Title', 'Are you sure you wish to perform this action on this dialog<br><br>You can not undo this action.', 4)">
   Test Dialog (Cancel/No/Yes)
 </button>
+<hr>
+<button (click)="callExternal('app.demo', 'testing 123 abc', 'testing', {demo: 'test'})">Call External Namespace Function</button>
+<button (click)="callExternal('app.deeper.test', 'testing 123 abc xxx', 'testing xxxx', {demo: 'test xxxx'})">Call External Namespace Function (Deeper)</button>
+<button (click)="callExternal('standardFunction', 'testing 123 abc yyy', 'testing yyy', {demo: 'test yyy'})">Call External Function</button>
 <div style="width:400px;padding:20px;">
 <app-slider
   [min]="0"

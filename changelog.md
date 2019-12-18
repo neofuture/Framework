@@ -100,7 +100,12 @@ Bugs Found
 9. Changed window title bar height to match 40px as per the design
 10. Changed some of the window resize dynamics so that the windows are resizable within the desktop area
 ---
-### 17/12/19 - f6789d0
+### 17/12/19 - 16:22 Commit - f6789d0
 
 1. A refactor on the resize window logic broke the notification centre positioning, as there was no unit on the css property.
 2. Updated the readme with some info.
+---
+### 18/12/19 
+
+1. Added an external service that will be able to implement external calls into the 3d engine from outside angular
+2. Added facility to call an external function by function call or name space from within angular from the external service

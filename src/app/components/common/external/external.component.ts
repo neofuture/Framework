@@ -1,6 +1,6 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {DataService} from '../../services/data.service';
+import {DataService} from '../../../services/data.service';
 
 @Component({
   selector: 'app-external',
