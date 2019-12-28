@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild, AfterViewInit, Input} from '@angular/core';
 import {WindowModel} from '../../models/window-model';
 import {WindowService} from '../../services/window.service';
 import {ModuleService} from '../../services/module.service';
@@ -11,6 +11,7 @@ import {ProfileModel} from '../../models/profile-model';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
 import {DialogService} from '../../services/dialog.service';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-desktop',
@@ -19,6 +20,8 @@ import {DialogService} from '../../services/dialog.service';
 })
 
 export class DesktopComponent implements OnInit, AfterViewInit {
+  @Input() desktopId: number;
+
   windowList = {};
   dialogList = {};
   objectKeys = Object.keys;
@@ -38,10 +41,12 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   profileSub$: Subscription;
 
   private language$: Subscription;
-  private locale: LanguageModel;
+  locale: LanguageModel;
   loaded: boolean;
 
   @ViewChild('toolbar') toolbar: ElementRef;
+  private message: any;
+  desktopList = {};
 
   @HostListener('window:resize') onResize() {
     this.resize();
@@ -73,7 +78,9 @@ export class DesktopComponent implements OnInit, AfterViewInit {
       this.data = object || {};
     });
 
-    this.moduleService.welcome();
+    if (this.desktopId === 1) {
+      this.moduleService.welcome();
+    }
 
     this.profileSub$ = this.profileService.object.subscribe(profile => {
       this.profile = profile;
@@ -83,7 +90,32 @@ export class DesktopComponent implements OnInit, AfterViewInit {
     });
 
     this.windowList = this.windowService.windowList;
+
+    this.windowService.object.subscribe(windowList => {
+      this.windowList = windowList;
+    });
+
     this.dialogList = this.dialogService.dialogList;
+
+    window.addEventListener('storage', (e) => {
+      if (e.storageArea === localStorage) {
+        this.desktopList = JSON.parse(localStorage.getItem('desktopList'));
+      }
+    });
+    this.desktopList = JSON.parse(localStorage.getItem('desktopList')) || {};
+    this.desktopList[this.desktopId] = {status: 'open'};
+    localStorage.setItem('desktopList', JSON.stringify(this.desktopList));
+
+    window.addEventListener('unload', (event) => {
+      this.desktopList[this.desktopId] = {status: 'closed'};
+      for (const item of Object.keys(this.windowList)) {
+        if (this.windowList[item].desktopId === this.desktopId) {
+          this.windowList[item].desktopId = 1;
+        }
+      }
+      localStorage.setItem('windowList', JSON.stringify(this.windowList));
+      localStorage.setItem('desktopList', JSON.stringify(this.desktopList));
+    });
 
   }
 
@@ -257,4 +289,35 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   console(str: string) {
     console.log(str);
   }
+
+  spawnWindow() {
+    // @ts-ignore
+    window.popupWindow = window.open('/?desktopId=2',
+      'popUpWindow2',
+      'height=600,' +
+      'width=1000,' +
+      'left=50,' +
+      'top=50,' +
+      'resizable=yes,' +
+      'scrollbars=yes,' +
+      'toolbar=yes,' +
+      'menubar=no,' +
+      'location=no,' +
+      'directories=no,' +
+      'status=yes');
+    return false;
+  }
+
+  sendMessage() {
+    localStorage.setItem('message', JSON.stringify({message: this.message, time: new Date()}));
+  }
+
+  createScreenShot(id) {
+    const elm = document.querySelector('#window--' + id);
+    html2canvas(<HTMLElement>elm, {removeContainer: false}).then((canvas) => {
+      const dataUrl = canvas.toDataURL();
+      console.log(dataUrl);
+    });
+  }
 }
+

@@ -1,16 +1,54 @@
 import {Injectable} from '@angular/core';
 import {WindowModel} from '../models/window-model';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
+//
+// export class DataService {
+//   private objectSource = new BehaviorSubject(JSON.parse(localStorage.getItem('state')) || {});
+//   object = this.objectSource.asObservable();
+//   authToken: any;
+//   endpoint: any;
+//
+//   constructor() {
+//   }
+//
+//   update(message: object) {
+//     this.objectSource.next(message);
+//     localStorage.setItem('state', JSON.stringify(this.objectSource.value));
+//   }
+//
+//   updateItem(message: object) {
+//     this.objectSource.next({...this.objectSource.value, ...message});
+//     localStorage.setItem('state', JSON.stringify(this.objectSource.value));
+//   }
+//
+//   getItem(item) {
+//     return this.objectSource.value[item];
+//   }
+// }
+
+
 export class WindowService {
+
+  private objectSource = new BehaviorSubject({});
+  object = this.objectSource.asObservable();
+
   windowList = {};
-  id = 0;
+  id = 1;
   desktopWidth: any;
   desktopHeight: any;
 
   constructor() {
+  }
+
+  update(windowList: object) {
+    this.objectSource.next(windowList);
+    this.windowList = windowList;
+    localStorage.setItem('windowList', JSON.stringify(windowList));
   }
 
   getDesktopWidthAndHeight() {
@@ -144,7 +182,8 @@ export class WindowService {
         label,
         alerted,
         autoClose,
-        singleInstance
+        singleInstance,
+        desktopId: 1
       };
 
       if (data !== null) {
@@ -165,17 +204,19 @@ export class WindowService {
           this.close(this.windowList[id]);
         }, this.windowList[id].autoClose);
       }
+
+      this.update(this.windowList);
     });
   }
 
-  findXYPosition(height, width) {
+  findXYPosition(height, width, desktopId = 1) {
     const grid = 30;
     let rows = 0;
 
     for (let left = 8; (left + width) < window.innerWidth; left += grid) {
       for (let top = 10; (top + height) < window.innerHeight; top += grid) {
 
-        if (!this.isAtPosition(top, left)) {
+        if (!this.isAtPosition(top, left, desktopId)) {
           return {top, left};
         }
 
@@ -191,25 +232,27 @@ export class WindowService {
     return {left: 100, top: 100};
   }
 
-  randomIntFromInterval(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  isAtPosition(top, left) {
+  isAtPosition(top, left, desktopId) {
     for (const item of Object.keys(this.windowList)) {
-      if (this.windowList[item].top === top && this.windowList[item].left === left) {
+      if (this.windowList[item].top === top && this.windowList[item].left === left && this.windowList[item].desktopId === desktopId) {
         return true;
       }
     }
     return false;
   }
 
+  randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
   setLabel(windowItem: WindowModel, label) {
     windowItem.label = label;
+
   }
 
   setAlerted(windowItem: WindowModel, alerted) {
     windowItem.alerted = alerted;
+
   }
 
   close(windowItem: WindowModel, event?: MouseEvent) {
@@ -217,6 +260,7 @@ export class WindowService {
       event.stopPropagation();
     }
     this.closeById(windowItem.id);
+
   }
 
   closeById(id: number) {
@@ -230,7 +274,9 @@ export class WindowService {
       setTimeout(() => {
         this.findLastActive(this.windowList[id]);
         delete this.windowList[id];
+        this.update(this.windowList);
       }, 300);
+
     }
   }
 
@@ -255,6 +301,7 @@ export class WindowService {
         this.active(lastWindow);
       }
     }
+
   }
 
   closeAll() {
@@ -266,6 +313,7 @@ export class WindowService {
         }, 300);
       }
     }
+    this.update(this.windowList);
   }
 
   active(windowItem: WindowModel) {
@@ -285,6 +333,9 @@ export class WindowService {
     windowItem.state.isMinimised = false;
     windowItem.class = 'open active' +
       (windowItem.state.isMaximised ? ' maximised' : '');
+
+    this.update(this.windowList);
+
   }
 
   inactive(windowItem) {
@@ -292,6 +343,9 @@ export class WindowService {
     windowItem.class = 'open' +
       (windowItem.state.isMaximised ? ' maximised' : '') +
       (windowItem.state.isMinimised ? ' minimised' : '');
+
+    this.update(this.windowList);
+
   }
 
   maximise(windowItem: WindowModel) {
@@ -310,15 +364,21 @@ export class WindowService {
       windowItem.entities = {};
     }
     windowItem.state.isMinimised = !windowItem.state.isMinimised;
-    this.inactive(windowItem);
+
   }
 
   setTitle(windowItem: WindowModel, str: string) {
     windowItem.title = str;
+    this.windowList[windowItem.id].title = str;
+    this.update(this.windowList);
+
   }
 
   setExtendedTitle(windowItem: WindowModel, str: string) {
     windowItem.extendedTitle = str;
+    this.windowList[windowItem.id].extendedTitle = str;
+
+    this.update(this.windowList);
   }
 
   centre(event: Event, windowItem: WindowModel) {
@@ -335,5 +395,17 @@ export class WindowService {
     windowItem.top = top;
     windowItem.left = left;
 
+  }
+
+  setDesktopId(windowItem: WindowModel, id: number) {
+    console.log(windowItem, id);
+    if (id === windowItem.desktopId) {
+      return false;
+    }
+    const position = this.findXYPosition(windowItem.height, windowItem.width, id);
+    this.windowList[windowItem.id].desktopId = id;
+    this.windowList[windowItem.id].top = position.top;
+    this.windowList[windowItem.id].left = position.left;
+    this.update(this.windowList);
   }
 }

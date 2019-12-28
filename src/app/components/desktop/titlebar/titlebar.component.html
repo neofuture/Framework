@@ -1,9 +1,8 @@
 <div class="toolbarContainer">
   <div class="progress-bar progress-bar-danger" *ngIf="danger">&nbsp;</div>
-  <div class="titleBarTop">
+  <div class="titleBarTop" *ngIf="desktopId == 1">
     <span (click)="about()" style="display:inline-block;cursor:pointer;">
-      <i class="logo ow-oceanworks"></i>
-      {{ locale.product }}
+      <img src="/assets/images/logo_main.png" class="logo">
     </span>
     <span *ngIf="profile">
       <div (click)="build()" class="button" [ngClass]="activeTab === 1 ? 'active' : ''"><i
@@ -33,8 +32,8 @@
     </div>
     <app-search-bar *ngIf="profile"></app-search-bar>
   </div>
-  <div class="toolbar" *ngIf="profile">
-    <div class="ribbon">
+  <div class="toolbar" *ngIf="profile" >
+    <div class="ribbon" *ngIf="desktopId == 1">
       <table>
         <tr>
           <td valign="top">
@@ -48,7 +47,7 @@
         </tr>
       </table>
     </div>
-    <div *ngIf="objectKeys(menuButtons).length > 0" [ngClass]="size ? 'menuItems' : 'menuItemsBig'">
+    <div *ngIf="objectKeys(menuButtons).length > 0 && desktopId == 1" [ngClass]="size ? 'menuItems' : 'menuItemsBig'">
       <div [ngClass]="size ? 'menu big ow-downArrow' : 'menu ow-downArrow'">
         <span class="label">{{ objectKeys(menuButtons).length }}</span>
         <div class="menuSubTree">
@@ -64,7 +63,7 @@
       {{ locale.moreModules }}
     </div>
   </div>
-  <span *ngIf="profile" (click)="toggleSize()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"
+  <span *ngIf="profile  && desktopId == 1" (click)="toggleSize()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)"
         [ngClass]="barWidth" [title]="size ? locale.contractRibbon : locale.expandRibbon"></span>
 </div>
 

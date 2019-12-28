@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
   tabWidth: any;
-
+  @Input() desktopId: number;
   constructor() {
   }
 

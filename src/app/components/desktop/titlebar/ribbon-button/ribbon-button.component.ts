@@ -30,12 +30,13 @@ export class RibbonButtonComponent implements OnInit {
   language$: Subscription;
   locale: LanguageModel;
   hover = false;
-  WindowModel: WindowModel;
 
   ngOnInit() {
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
-    this.windowList = this.windowService.windowList;
+    this.windowService.object.subscribe(windowList => {
+      this.windowList = windowList;
+    });
   }
 }

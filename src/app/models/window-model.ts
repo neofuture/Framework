@@ -38,4 +38,5 @@ export interface WindowModel {
   autoClose?: number;
   intervalTimer?: any;
   singleInstance?: any;
+  desktopId: number;
 }

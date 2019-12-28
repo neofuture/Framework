@@ -56,4 +56,12 @@ export class ContactManagerComponent implements OnInit {
     this.windowService.maximise(this.windowItem);
   }
 
+  setDesktopId(event, id: number) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.windowService.setDesktopId(this.windowItem, id);
+    // @ts-ignore
+    console.log(window.popupWindow);
+    return false;
+  }
 }

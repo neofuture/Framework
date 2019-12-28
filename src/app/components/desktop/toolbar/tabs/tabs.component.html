@@ -1,4 +1,5 @@
-<span *ngFor="let windowItem of objectKeys(windowList)">
+<ng-container *ngFor="let windowItem of objectKeys(windowList)">
+  <span *ngIf="windowList[windowItem].desktopId == desktopId">
   <span
     *ngIf="windowList[windowItem].hasTab"
     [ngClass]="windowList[windowItem].alerted ? ['tabItem alerted ',  windowList[windowItem].class] : ['tabItem ',  windowList[windowItem].class]"
@@ -27,4 +28,5 @@
   </span>
     <div *ngIf="windowList[windowItem].label" class="label">{{ windowList[windowItem].label }}</div>
   </span>
-</span>
+  </span>
+</ng-container>

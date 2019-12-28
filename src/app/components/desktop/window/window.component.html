@@ -9,7 +9,8 @@
                   width: windowItem.width + 'px',
                   height: windowItem.height + 'px',
                   zIndex: windowItem.alwaysOnTop ? 999999 : windowItem.zIndex
-                 }">
+                 }"  id="window--{{ windowItem.id }}">
+
   <div *ngIf="windowItem.hasTitleBar === true" class="titleBar"
        (mousedown)="moveStart($event, windowItem)"
        (touchstart)="moveStart($event, windowItem)"

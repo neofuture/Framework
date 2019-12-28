@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {LanguageModel} from '../../../../models/language-model';
 import {WindowService} from '../../../../services/window.service';
@@ -17,21 +17,24 @@ export class TabsComponent implements OnInit {
     private languageService: LanguageService
   ) {
   }
+
   windowList: {};
 
   objectKeys = Object.keys;
   language$: Subscription;
   locale: LanguageModel;
-
+  @Input() desktopId: number;
   @Output() tabWidth = new EventEmitter();
 
   @HostListener('window:resize')
   onResize() {
-   this.resize();
+    this.resize();
   }
 
   ngOnInit() {
-    this.windowList = this.windowService.windowList;
+    this.windowService.object.subscribe(windowList => {
+      this.windowList = windowList;
+    });
 
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
@@ -47,7 +50,7 @@ export class TabsComponent implements OnInit {
   }
 
   maximiseWindow(event: MouseEvent, windowItem: WindowModel) {
-    if (!windowItem.maximised){
+    if (!windowItem.maximised) {
       this.windowService.maximise(windowItem);
     }
   }
@@ -55,7 +58,7 @@ export class TabsComponent implements OnInit {
   tabCount() {
     let tabs = 0;
     for (const item in this.windowList) {
-      if (this.windowList[item].hasTab) {
+      if (this.windowList[item].hasTab && this.windowList[item].desktopId === this.desktopId) {
         tabs++;
       }
     }
@@ -63,6 +66,12 @@ export class TabsComponent implements OnInit {
   }
 
   resize() {
-    this.tabWidth.emit(window.innerWidth - 46);
+    if(this.desktopId===1){
+      this.tabWidth.emit(window.innerWidth - 46);
+
+    } else {
+      this.tabWidth.emit(window.innerWidth - 4);
+
+    }
   }
 }

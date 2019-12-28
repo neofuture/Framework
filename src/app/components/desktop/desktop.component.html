@@ -1,15 +1,14 @@
 <app-titlebar class="titleBarTop" id="titleBarTop" #titleBarTop [desktopHeight]="desktopHeight"
               [desktopWidth]="desktopWidth"
-              (changedSize)="resizeToolBar()"></app-titlebar>
+              (changedSize)="resizeToolBar()" [desktopId]="desktopId"></app-titlebar>
 <div class="desktop" [ngStyle]="{height: desktopHeight + 'px'}">
-
-  <div id="particles-js" [ngStyle]="{'width': desktopWidth, 'height': desktopHeight}">
+  <button (click)="spawnWindow()" *ngIf="desktopId==1">Spawn Desktop 2</button>
+  <div id="particles-js" [ngStyle]="{'width': desktopWidth, 'height': desktopHeight}" *ngIf="desktopId == 1">
     <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;"></canvas>
   </div>
 
-
   <div *ngFor="let windowItem of objectKeys(windowList)">
-    <app-window [windowItem]="windowList[windowItem]"
+    <app-window *ngIf="windowList[windowItem].desktopId == desktopId" [windowItem]="windowList[windowItem]"
                 [titleBarTopHeight]="titleBarTopHeight"
                 [toolbarHeight]="toolbarHeight"
                 [desktopHeight]="desktopHeight"
@@ -17,15 +16,26 @@
                 (click)="makeWindowActive(windowList[windowItem])">
     </app-window>
   </div>
-  <div *ngIf="!profile && loaded">
-    <h2>Demo Logins</h2>
-    <div>test/test</div>
-    <div>john/john</div>
-  </div>
   <app-login *ngIf="!profile && loaded"></app-login>
+  <div>{{ desktopId }}</div>
+  <ng-container *ngIf="desktopId==1">
+    <ng-container *ngFor="let item of objectKeys(desktopList)">
+      <div *ngIf="desktopList[item].status=='open'">
+        <h1>Desktop {{ item }} </h1>
+        <ng-container *ngFor="let windowItem of objectKeys(windowList)">
+          <div *ngIf="windowList[windowItem].desktopId == item">
+            {{ locale[windowList[windowItem].title] || windowList[windowItem].title }}<span *ngIf="windowList[windowItem].extendedTitle">
+         - {{ windowList[windowItem].extendedTitle }}
+      </span>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+  <button (click)="createScreenShot(2)">Create Screenshot</button>
 </div>
 <ng-container #toolbar>
-  <app-toolbar class="toolbar" id="toolbar"></app-toolbar>
+  <app-toolbar class="toolbar" id="toolbar" [desktopId]="desktopId"></app-toolbar>
 </ng-container>
 
 <app-notification></app-notification>

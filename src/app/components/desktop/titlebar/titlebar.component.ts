@@ -33,6 +33,7 @@ export class TitleBarComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Input() desktopWidth: number;
   @Input() desktopHeight: number;
+  @Input() desktopId: number;
   @Output() changedSize = new EventEmitter<boolean>();
 
   icon = 'locationPin';

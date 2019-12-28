@@ -1,6 +1,6 @@
 <div class="tabs" [ngStyle]="{'width': tabWidth + 'px'}">
- <app-tabs (tabWidth)='setTabWidth($event)'></app-tabs>
+ <app-tabs (tabWidth)='setTabWidth($event)' [desktopId]="desktopId"></app-tabs>
 </div>
-<div class="tools">
+<div class="tools" *ngIf="desktopId == 1">
   <app-user-status></app-user-status>
 </div>
