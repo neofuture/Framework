@@ -69,4 +69,8 @@ export const lang_zh: LanguageModel = {
   no: '没有',
   cancel: '取消',
   ok: '好',
+  desktop: '桌面',
+  desktops: '台式机',
+  noWindowsFound: '找不到Windows',
+  windows: '视窗',
 };

@@ -11,7 +11,7 @@ import {ProfileModel} from '../../models/profile-model';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
 import {DialogService} from '../../services/dialog.service';
-import html2canvas from 'html2canvas';
+import {DesktopService} from '../../services/desktop.service';
 
 @Component({
   selector: 'app-desktop',
@@ -20,7 +20,7 @@ import html2canvas from 'html2canvas';
 })
 
 export class DesktopComponent implements OnInit, AfterViewInit {
-  @Input() desktopId: number;
+  desktopId: number;
 
   windowList = {};
   dialogList = {};
@@ -47,6 +47,7 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   @ViewChild('toolbar') toolbar: ElementRef;
   private message: any;
   desktopList = {};
+  desktopPeek = false;
 
   @HostListener('window:resize') onResize() {
     this.resize();
@@ -60,7 +61,8 @@ export class DesktopComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private api: ApiService,
     private profileService: ProfileService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private desktopService: DesktopService
   ) {
   }
 
@@ -70,6 +72,7 @@ export class DesktopComponent implements OnInit, AfterViewInit {
       this.params = params;
     });
 
+    this.desktopId = this.desktopService.desktopId;
     this.language$ = this.languageService.object.subscribe(locale => {
       this.locale = locale;
     });
@@ -95,28 +98,25 @@ export class DesktopComponent implements OnInit, AfterViewInit {
       this.windowList = windowList;
     });
 
+    if (this.desktopId > 1) {
+      this.windowService.setWindowList(JSON.parse(localStorage.getItem('windowList')) || {});
+    }
+
     this.dialogList = this.dialogService.dialogList;
 
     window.addEventListener('storage', (e) => {
-      if (e.storageArea === localStorage) {
-        this.desktopList = JSON.parse(localStorage.getItem('desktopList'));
-      }
+      this.desktopList = this.desktopService.storageListener(e);
     });
-    this.desktopList = JSON.parse(localStorage.getItem('desktopList')) || {};
-    this.desktopList[this.desktopId] = {status: 'open'};
-    localStorage.setItem('desktopList', JSON.stringify(this.desktopList));
+    this.desktopList = this.desktopService.get(this.desktopId);
 
     window.addEventListener('unload', (event) => {
-      this.desktopList[this.desktopId] = {status: 'closed'};
-      for (const item of Object.keys(this.windowList)) {
-        if (this.windowList[item].desktopId === this.desktopId) {
-          this.windowList[item].desktopId = 1;
-        }
-      }
-      localStorage.setItem('windowList', JSON.stringify(this.windowList));
-      localStorage.setItem('desktopList', JSON.stringify(this.desktopList));
+      this.desktopService.endListener(this.desktopId);
     });
 
+  }
+
+  c() {
+    this.desktopService.closePopUps();
   }
 
   ngAfterViewInit() {
@@ -290,34 +290,33 @@ export class DesktopComponent implements OnInit, AfterViewInit {
     console.log(str);
   }
 
-  spawnWindow() {
-    // @ts-ignore
-    window.popupWindow = window.open('/?desktopId=2',
-      'popUpWindow2',
-      'height=600,' +
-      'width=1000,' +
-      'left=50,' +
-      'top=50,' +
-      'resizable=yes,' +
-      'scrollbars=yes,' +
-      'toolbar=yes,' +
-      'menubar=no,' +
-      'location=no,' +
-      'directories=no,' +
-      'status=yes');
+  spawnDesktop(id) {
+    this.desktopService.spawnDesktop(id);
     return false;
   }
 
-  sendMessage() {
-    localStorage.setItem('message', JSON.stringify({message: this.message, time: new Date()}));
+  setDesktopId(windowItem: WindowModel, id) {
+    this.windowService.setDesktopId(windowItem, id);
   }
 
-  createScreenShot(id) {
-    const elm = document.querySelector('#window--' + id);
-    html2canvas(<HTMLElement>elm, {removeContainer: false}).then((canvas) => {
-      const dataUrl = canvas.toDataURL();
-      console.log(dataUrl);
-    });
+  togglePeek() {
+    this.desktopPeek = !this.desktopPeek;
+  }
+
+  focusDesktop(id) {
+      window['popupWindow' + id].focus();
+  }
+
+  parseint(item: string) {
+    return parseInt(item, 10);
+  }
+
+  closeDesktop(id) {
+    this.desktopService.endListener(id);
+  }
+
+  desktopCount() {
+    return this.desktopService.desktopCount();
   }
 }
 

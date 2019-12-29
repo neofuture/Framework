@@ -8,7 +8,7 @@ export const lang_da: LanguageModel = {
   lang_de: 'tysk',
   lang_no: 'Norsk',
   lang_ru: 'Russisk',
-  lang_nl: 'hollandsk',
+  lang_nl: 'hollandske',
   lang_es: 'spansk',
   lang_it: 'italiensk',
   lang_da: 'dansk',
@@ -69,4 +69,8 @@ export const lang_da: LanguageModel = {
   no: 'Ingen',
   cancel: 'Afbestille',
   ok: 'Okay',
+  desktop: 'Desktop',
+  desktops: 'Desktops',
+  noWindowsFound: 'Intet Windows fundet',
+  windows: 'vinduer',
 };

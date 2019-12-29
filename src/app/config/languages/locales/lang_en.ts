@@ -68,5 +68,9 @@ export const lang_en: LanguageModel = {
   yes: 'Yes',
   no: 'No',
   cancel: 'Cancel',
-  ok: 'Ok'
+  ok: 'Ok',
+  desktop: 'Desktop',
+  desktops: 'Desktops',
+  noWindowsFound: 'No Windows Found',
+  windows: 'Windows'
 };

@@ -43,7 +43,7 @@ export const lang_it: LanguageModel = {
   ribbon2: 'Nastro 2',
   build: 'Costruire',
   furnish: 'Fornire',
-  view: 'vista',
+  view: 'Visualizza',
   welcome: 'benvenuto',
   close: 'Vicino',
   product: 'Framework',
@@ -69,4 +69,8 @@ export const lang_it: LanguageModel = {
   no: 'No',
   cancel: 'Annulla',
   ok: 'Ok',
+  desktop: 'Desktop',
+  desktops: 'Desktops',
+  noWindowsFound: 'Nessuna finestra trovata',
+  windows: 'finestre',
 };

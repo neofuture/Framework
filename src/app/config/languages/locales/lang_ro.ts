@@ -55,7 +55,7 @@ export const lang_ro: LanguageModel = {
   logout: 'Deconectare',
   username: 'Nume de utilizator',
   password: 'Parola',
-  login: 'Logare',
+  login: 'Autentificare',
   userNotFound: 'Numele de utilizator și combinația de parolă sunt incorecte',
   usernameTooShort: 'Numele de utilizator este prea scurt',
   passwordTooShort: 'Parola este prea scurtă',
@@ -69,4 +69,8 @@ export const lang_ro: LanguageModel = {
   no: 'Nu',
   cancel: 'Anulare',
   ok: 'O.K',
+  desktop: 'Spațiul de lucru',
+  desktops: 'Desktop-uri',
+  noWindowsFound: 'Nu s-a găsit Windows',
+  windows: 'ferestre',
 };

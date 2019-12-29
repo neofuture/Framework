@@ -9,7 +9,7 @@
                   width: windowItem.width + 'px',
                   height: windowItem.height + 'px',
                   zIndex: windowItem.alwaysOnTop ? 999999 : windowItem.zIndex
-                 }"  id="window--{{ windowItem.id }}">
+                 }">
 
   <div *ngIf="windowItem.hasTitleBar === true" class="titleBar"
        (mousedown)="moveStart($event, windowItem)"
@@ -31,7 +31,7 @@
     <button  title="{{ locale.window.centered }}" [attr.aria-label]="locale.window.centered" class="windowButton ow-centered" *ngIf="windowItem.resizable && windowItem.hasTab && !windowItem.centered" (click)="centreWindow($event, windowItem)">
     </button>
   </div>
-  <div class="clientArea" [ngClass]="{'fullHeight': windowItem.hasTitleBar !== true}">
+  <div class="clientArea" [ngClass]="{'fullHeight': windowItem.hasTitleBar !== true}"  id="window--{{ windowItem.id }}">
     <div *ngIf="!loaded">Loading... </div>
     <ng-container *ngIf="windowItem.bodyComponent !== null else windowBody" #viewContainer></ng-container>
   </div>

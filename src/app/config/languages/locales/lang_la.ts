@@ -69,4 +69,8 @@ export const lang_la: LanguageModel = {
   no: 'nullum',
   cancel: 'Cancel',
   ok: 'ok',
+  desktop: 'Desktop',
+  desktops: 'desktops',
+  noWindowsFound: 'Fenestra non inveni',
+  windows: 'Fenestra',
 };

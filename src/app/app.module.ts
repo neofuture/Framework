@@ -29,6 +29,7 @@ import {WindowService} from './services/window.service';
 import {ContactManagerModule} from './modules/contact-manager/contact-manager.module';
 import {QuotesModule} from './modules/quotes/quotes.module';
 
+import {CountDesktopsPipe} from './pipes/count-desktops';
 import {JsonPipe} from './pipes/json.pipe';
 import {PrettyPrintPipe} from './pipes/pretty-print.pipe';
 import {SafeHtmlPipe} from './pipes/safe-html.pipe';
@@ -38,6 +39,7 @@ import { SliderComponent } from './components/common/slider/slider.component';
 import { FullSizeComponent } from './components/full-size/full-size.component';
 import { RibbonActivePipe } from './pipes/ribbon-active.pipe';
 import { FullSizeNoTabComponent } from './components/full-size-no-tab/full-size-no-tab.component';
+import {CountWindowsPipe} from './pipes/count-windows.pipe';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { FullSizeNoTabComponent } from './components/full-size-no-tab/full-size-
     SliderComponent,
     FullSizeComponent,
     RibbonActivePipe,
-    FullSizeNoTabComponent
+    FullSizeNoTabComponent,
+    CountDesktopsPipe,
+    CountWindowsPipe
   ],
   imports: [
     BrowserModule,

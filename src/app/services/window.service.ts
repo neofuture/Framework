@@ -41,8 +41,11 @@ export class WindowService {
   id = 1;
   desktopWidth: any;
   desktopHeight: any;
+  desktopId: number;
 
   constructor() {
+    const urlParams = new URLSearchParams(window.location.search);
+    this.desktopId = parseInt(urlParams.get('desktopId'), 10) || 1;
   }
 
   update(windowList: object) {
@@ -183,7 +186,7 @@ export class WindowService {
         alerted,
         autoClose,
         singleInstance,
-        desktopId: 1
+        desktopId: this.desktopId
       };
 
       if (data !== null) {
@@ -209,7 +212,7 @@ export class WindowService {
     });
   }
 
-  findXYPosition(height, width, desktopId = 1) {
+  findXYPosition(height, width, desktopId = this.desktopId) {
     const grid = 30;
     let rows = 0;
 
@@ -353,6 +356,7 @@ export class WindowService {
       windowItem.state.isMaximised = !windowItem.state.isMaximised;
       windowItem.class = 'open active' +
         (windowItem.state.isMaximised ? ' maximised' : '');
+      this.update(this.windowList);
     }
   }
 
@@ -360,18 +364,19 @@ export class WindowService {
     event.stopPropagation();
     if (windowItem.state.isMinimised === false) {
       windowItem.entities.minimisedTop = windowItem.top;
+      windowItem.class = 'open minimised';
     } else {
       windowItem.entities = {};
     }
     windowItem.state.isMinimised = !windowItem.state.isMinimised;
 
+    this.update(this.windowList);
   }
 
   setTitle(windowItem: WindowModel, str: string) {
     windowItem.title = str;
     this.windowList[windowItem.id].title = str;
     this.update(this.windowList);
-
   }
 
   setExtendedTitle(windowItem: WindowModel, str: string) {
@@ -397,15 +402,18 @@ export class WindowService {
 
   }
 
-  setDesktopId(windowItem: WindowModel, id: number) {
-    console.log(windowItem, id);
+  setDesktopId(windowItem: WindowModel, id) {
     if (id === windowItem.desktopId) {
       return false;
     }
-    const position = this.findXYPosition(windowItem.height, windowItem.width, id);
-    this.windowList[windowItem.id].desktopId = id;
+    this.windowList[windowItem.id].desktopId = parseInt(id, 10);
+    const position = this.findXYPosition(windowItem.height, windowItem.width, parseInt(id, 10));
     this.windowList[windowItem.id].top = position.top;
     this.windowList[windowItem.id].left = position.left;
     this.update(this.windowList);
+  }
+
+  setWindowList(windowList: WindowModel) {
+    this.update(windowList);
   }
 }

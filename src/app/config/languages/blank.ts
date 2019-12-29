@@ -69,4 +69,8 @@ export const blank: LanguageModel = {
   no: '',
   cancel: '',
   ok: '',
+  desktop: '',
+  desktops: '',
+  noWindowsFound: '',
+  windows: '',
 };

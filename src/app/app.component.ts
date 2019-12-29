@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
     private api: ApiService,
     private windowService: WindowService
   ) {
-    const urlParams = new URLSearchParams(window.location.search);
-    this.desktopId = parseInt(urlParams.get('desktopId'), 10) || 1;
   }
 
   ngOnInit() {
@@ -30,9 +28,7 @@ export class AppComponent implements OnInit {
 
     window.addEventListener('storage', (e) => {
       if (e.storageArea === localStorage) {
-
         const windowList = JSON.parse(localStorage.getItem('windowList'));
-        console.log(windowList);
         this.windowService.update(windowList);
       }
     });

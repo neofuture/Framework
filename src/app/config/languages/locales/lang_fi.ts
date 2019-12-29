@@ -69,4 +69,8 @@ export const lang_fi: LanguageModel = {
   no: 'Ei',
   cancel: 'Peruuttaa',
   ok: 'kunnossa',
+  desktop: 'pöytä-',
+  desktops: 'Pöytäkoneet',
+  noWindowsFound: 'Windowsia ei löytynyt',
+  windows: 'Windows',
 };

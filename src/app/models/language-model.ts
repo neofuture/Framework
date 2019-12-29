@@ -66,4 +66,8 @@ language: string;
   no: string;
   cancel: string;
   ok: string;
+  desktop: string;
+  desktops: string;
+  noWindowsFound: string;
+  windows: string;
 }

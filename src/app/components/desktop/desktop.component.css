@@ -1,20 +1,20 @@
 .desktop {
-  width:100%;
-  overflow:hidden;
-  background-color:var(--background-color);
-  position:relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--background-color);
+  position: relative;
 }
 
 .toolbar {
-  display:block;
-  bottom:0;
-  width:100%;
-  background-color:var(--primary);
-  left:0;
-  height:42px;
-  padding:2px 4px 0 4px;
-  position:fixed;
-  z-index:999999999;
+  display: block;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--primary);
+  left: 0;
+  height: 42px;
+  padding: 2px 4px 0 4px;
+  position: fixed;
+  z-index: 999999999;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -23,23 +23,35 @@
 }
 
 .titleBarTop {
-  display:block;
-  top:0;
-  width:100%;
+  display: block;
+  top: 0;
+  width: 100%;
 
 }
 
 .active {
-  color:red;
+  color: red;
 }
 
+.desktopButton {
+  background-color: white;
+  color: var(--primary);
+  -webkit-box-shadow: inset 0 0px 0px 1px var(--primary);
+  -moz-box-shadow: inset 0px 0px 0px 1px var(--primary);
+  box-shadow: inset 0px 0px 0px 1px var(--primary);
+}
+
+.activeWindow.desktopButton{
+  background-color:var(--primary);
+  color:var(--background-color);
+}
 
 app-notification {
-  position:absolute;
-  top:0;
-  width:300px;
-  right:0;
-  z-index:999999;
+  position: absolute;
+  top: 0;
+  width: 300px;
+  right: 0;
+  z-index: 999999;
 }
 
 canvas {
@@ -80,3 +92,140 @@ canvas {
 /*  bottom:180px;*/
 /*  width:100%;*/
 /*}*/
+
+.desktopPeek {
+  display:block;
+  position:absolute;
+  top:-100%;
+  left:0;
+  width:100%;
+  background-color:var(--primary);
+  text-align:center;
+  z-index:999999999;
+  opacity:0;
+  transition: all 300ms;
+  padding-bottom: 20px;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.desktopPeekClose {
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:30px;
+  height:30px;
+  color:var(--background-color);
+  font-size:28px;
+}
+
+.desktopPeek.open {
+  opacity:1;
+  top:0;
+  transition: all 300ms;
+}
+.desktopPeekContainer {
+  display:inline-flex;
+  width:300px;
+  height:200px;
+  margin:12px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.desktopPeekWindows {
+  width:100%;
+  height:100%;
+  border:1px solid;
+  border-color:var(--background-darker-grey);
+  background-color:var(--background-color);
+  border-radius:6px;
+  overflow:auto;
+  display:block;
+  position: absolute;
+  top: 30px;
+}
+
+.opaque {
+  background-color:rgba(255,255,255,0.15);
+}
+
+.desktopPeekWindowsNew {
+  width: 40px;
+  height: 40px;
+  border: 1px solid;
+  border-color: var(--background-darker-grey);
+  background-color: var(--background-color);
+  border-radius: 50px;
+  overflow: auto;
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 128px;
+  color: var(--primary);
+  font-size: 59px;
+  padding: 0;
+  margin: 0;
+  line-height: 27px;
+  cursor:pointer;
+}
+.desktopPeekContainer h3{
+  margin:0;
+  margin-bottom:12px;
+  font-weight:400;
+  padding:0;
+  text-align:left;
+  width: 285px;
+  height: 10px;
+  cursor: pointer;
+}
+
+.desktopPeekContainer .closeButton {
+  float:right;
+  color:white;
+  margin-top:3px;
+}
+.desktopPeekItem {
+  width: calc(100% - 8px);
+  margin: 4px;
+  display: block;
+  height: 30px;
+  text-align: left;
+  padding: 6px;
+  border-radius: 4px;
+  position:relative;
+}
+.desktopPeekItem.active {
+  background-color:var(--primary);
+  color:var(--background-color);
+}
+.desktopPeekItem .buttons {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.desktopPeekItem button {
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 16px;
+  margin-left:2px;
+}
+
+.desktopsButton {
+  position:absolute;
+  top:-3px;
+  right:4px;
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  border-color:var(--primary);
+  border:1px solid;
+  background-color:var(--background-color);
+  color:var(--primary);
+}
+
+.nothingFound {
+  padding:40px;
+}
