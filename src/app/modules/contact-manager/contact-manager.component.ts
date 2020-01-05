@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../../services/language.service';
 import {LanguageModel} from '../../models/language-model';
 import {SliderComponent} from '../../components/common/slider/slider.component';
+import {DesktopService} from '../../services/desktop.service';
 
 @Component({
   selector: 'app-contact-manager',
@@ -19,7 +20,8 @@ export class ContactManagerComponent implements OnInit {
 
   constructor(
     private windowService: WindowService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    public desktopService: DesktopService
   ) { }
 
   ngOnInit() {
@@ -60,8 +62,11 @@ export class ContactManagerComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
     this.windowService.setDesktopId(this.windowItem, id);
-    // @ts-ignore
-    console.log(window.popupWindow);
     return false;
   }
+
+  dispatchFunctionCall(func, ...data) {
+    this.desktopService.dispatchFunction(func, data);
+  }
+
 }

@@ -17,6 +17,13 @@ export class DesktopService {
   storageListener(e) {
     if (e.storageArea === localStorage) {
       this.desktopList = JSON.parse(localStorage.getItem('desktopList'));
+      if (this.desktopId === 1) {
+        const command = localStorage.getItem('desktopCommand') || false;
+        if (command) {
+          localStorage.removeItem('desktopCommand');
+          this.receiveFunctionCall(command);
+        }
+      }
     }
 
     return this.desktopList;
@@ -85,13 +92,40 @@ export class DesktopService {
     }
   }
 
-  desktopCount() {
-    let c = 0;
-    for (const item of this.desktopList) {
-      if (item.status.open) {
-        c++;
-      }
+  // desktopCount() {
+  //   let c = 0;
+  //   for (const item of this.desktopList) {
+  //     if (item.status.open) {
+  //       c++;
+  //     }
+  //   }
+  //   return c;
+  // }
+
+  dispatchFunction(functionCall, args) {
+    const command = {
+      func: functionCall,
+      args
+    };
+    if (this.desktopId === 1) {
+      this.receiveFunctionCall(JSON.stringify(command));
+    } else {
+      localStorage.setItem('desktopCommand', JSON.stringify(command));
     }
-    return c;
+  }
+
+  receiveFunctionCall(data) {
+    const object = JSON.parse(data);
+
+    if (object.func === 'sayHi') {
+      console.log(object.args);
+    }
+    if (object.func === 'alertDemo') {
+      this[object.func](object.args);
+    }
+  }
+
+  alertDemo(args) {
+    alert('demo' + JSON.stringify(args));
   }
 }

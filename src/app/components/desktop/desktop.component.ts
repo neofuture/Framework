@@ -314,9 +314,5 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   closeDesktop(id) {
     this.desktopService.endListener(id);
   }
-
-  desktopCount() {
-    return this.desktopService.desktopCount();
-  }
 }
 

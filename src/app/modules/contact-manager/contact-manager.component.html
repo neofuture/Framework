@@ -21,7 +21,10 @@ Window Body ::: {{ windowItem }}
 <button (click)="setDesktopId($event, 2)">Desktop 2</button>
 <button (click)="setDesktopId($event, 3)">Desktop 3</button>
 {{ option | json }}
-
+<button (click)="dispatchFunctionCall('sayHi', 'abcdef', {test: 'demo'})">Function Call</button>
+<button (click)="dispatchFunctionCall('alertDemo', 'ABC', {test: 'demo1'})">Demo1</button>
+<button (click)="dispatchFunctionCall('alertDemo', 'DEF', {test: 'demo2'})">Demo2</button>
+<button (click)="dispatchFunctionCall('alertDemo', 'GHI', {test: 'demo3'})">Demo3</button>
 <!--  <div style="width:calc(100% - 400px);left:200px;position:absolute;bottom:0;height:200px;">-->
 <!--    <app-slider-->
 <!--      [min]="0"-->
